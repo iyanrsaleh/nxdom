@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Branch Name - Primer CSS Demo</title>
+
+   <link rel="stylesheet" href="../nexa.css">
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Avatars</h1>
+
+  <h2>Avatar Sizes</h2>
+  <div class="demo-row" style="align-items:flex-end;">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4" width="16" height="16" alt="@octocat">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4" width="20" height="20" alt="@octocat">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4" width="24" height="24" alt="@octocat">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4" width="32" height="32" alt="@octocat">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4" width="40" height="40" alt="@octocat">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4" width="48" height="48" alt="@octocat">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4" width="64" height="64" alt="@octocat">
+  </div>
+
+  <h2>Avatar with User Info</h2>
+  <div class="demo-row" style="align-items:center;gap:8px;">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4" width="32" height="32" alt="@octocat">
+    <span style="font-weight:600;font-size:14px;">octocat</span>
+  </div>
+  <div class="demo-row" style="align-items:center;gap:8px;margin-top:8px;">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/9919?v=4" width="32" height="32" alt="@github">
+    <span style="font-weight:600;font-size:14px;">github</span>
+    <span style="color:var(--fgColor-muted);font-size:12px;">Organization</span>
+  </div>
+
+  <h2>Avatar Stack</h2>
+  <div class="AvatarStack">
+    <div class="AvatarStack-body">
+      <img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4" width="20" height="20" alt="@octocat">
+      <img class="avatar" src="https://avatars.githubusercontent.com/u/9919?v=4" width="20" height="20" alt="@github">
+      <img class="avatar" src="https://avatars.githubusercontent.com/u/1?v=4" width="20" height="20" alt="@user1">
+    </div>
+  </div>
+
+  <h2>Parent &amp; Child Avatar</h2>
+  <div class="demo-row">
+    <span class="avatar-parent-child" style="display:inline-block;position:relative;width:48px;height:48px;">
+      <img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4" width="48" height="48" alt="@octocat">
+      <img class="avatar avatar-child" src="https://avatars.githubusercontent.com/u/9919?v=4" width="20" height="20" alt="@github">
+    </span>
+    <span class="avatar-parent-child" style="display:inline-block;position:relative;width:64px;height:64px;margin-left:24px;">
+      <img class="avatar" src="https://avatars.githubusercontent.com/u/1?v=4" width="64" height="64" alt="@user1">
+      <img class="avatar avatar-child" src="https://avatars.githubusercontent.com/u/2?v=4" width="24" height="24" alt="@user2">
+    </span>
+  </div>
+
+  <h2>CircleBadge — Small / Medium / Large</h2>
+  <div class="demo-row" style="align-items:flex-end;gap:16px;">
+    <div>
+      <div class="CircleBadge CircleBadge--small">
+        <img class="CircleBadge-icon" src="https://avatars.githubusercontent.com/u/583231?v=4" alt="octocat">
+      </div>
+      <p style="text-align:center;font-size:11px;color:var(--fgColor-muted);margin-top:4px;">small</p>
+    </div>
+    <div>
+      <div class="CircleBadge CircleBadge--medium">
+        <img class="CircleBadge-icon" src="https://avatars.githubusercontent.com/u/583231?v=4" alt="octocat">
+      </div>
+      <p style="text-align:center;font-size:11px;color:var(--fgColor-muted);margin-top:4px;">medium</p>
+    </div>
+    <div>
+      <div class="CircleBadge CircleBadge--large">
+        <img class="CircleBadge-icon" src="https://avatars.githubusercontent.com/u/583231?v=4" alt="octocat">
+      </div>
+      <p style="text-align:center;font-size:11px;color:var(--fgColor-muted);margin-top:4px;">large</p>
+    </div>
+  </div>
+
+  <h2>CircleBadge — With App Icon</h2>
+  <div class="demo-row" style="gap:16px;align-items:center;">
+    <div class="CircleBadge CircleBadge--medium" style="background-color:#24292f;">
+      <svg class="CircleBadge-icon" height="46" viewBox="0 0 16 16" width="46" aria-hidden="true" fill="white">
+        <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+      </svg>
+    </div>
+    <div class="CircleBadge CircleBadge--medium" style="background-color:#0070f3;">
+      <svg class="CircleBadge-icon" height="46" width="46" viewBox="0 0 24 24" fill="white">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+  </div>
+
+  <h2>DashedConnection</h2>
+  <div class="DashedConnection" style="display:flex;align-items:center;justify-content:center;gap:0;width:320px;padding:16px 0;">
+    <div class="CircleBadge CircleBadge--medium">
+      <img class="CircleBadge-icon" src="https://avatars.githubusercontent.com/u/583231?v=4" alt="octocat">
+    </div>
+    <div style="flex:1;height:2px;border-bottom:2px dashed var(--borderColor-default);"></div>
+    <div class="CircleBadge CircleBadge--medium" style="background-color:#24292f;">
+      <svg class="CircleBadge-icon" height="46" viewBox="0 0 16 16" width="46" fill="white">
+        <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+      </svg>
+    </div>
+  </div>
+
+</body>
+</html>

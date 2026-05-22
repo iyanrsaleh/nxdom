@@ -1,0 +1,348 @@
+/*
+  NexaWizard (NexaWizard.js) — layout & progres selaras modul `forms` + `buttons` (token Primer).
+  Kelas: .form-nexa-wizard, .form-nexa-wizard-progress(-step), .form-nexa-wizard-step, .form-nexa-wizard-buttons
+*/
+
+.form-nexa-wizard {
+  margin-bottom: 0;
+}
+
+/*
+  Kolom (`nx-col-*`) memakai float (grid/index.css). `.nx-row` tanpa clearfix
+  membuat tinggi baris kolaps; footer form menjadi sibling yang “menempel” di
+  samping kolom pertama — tombol wizard harus paksa baris baru di bawah grid.
+*/
+.form-nexa-wizard .form-nexa-wizard-step .nx-row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* --- Progress (breadcrumb langkah) --- */
+.form-nexa-wizard-progress {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  position: relative;
+  list-style: none;
+}
+
+.form-nexa-wizard-progress::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--borderColor-default, var(--color-border-default));
+  z-index: 1;
+}
+
+.form-nexa-wizard-progress-step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+
+.form-nexa-wizard .step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: var(--bgColor-default, var(--color-canvas-default));
+  border: 2px solid var(--borderColor-default, var(--color-border-default));
+  color: var(--fgColor-muted, var(--color-fg-muted));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--base-text-weight-semibold, 600);
+  font-size: 14px;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  transition:
+    color 80ms cubic-bezier(0.33, 1, 0.68, 1),
+    background-color 80ms cubic-bezier(0.33, 1, 0.68, 1),
+    border-color 80ms cubic-bezier(0.33, 1, 0.68, 1),
+    box-shadow 80ms cubic-bezier(0.33, 1, 0.68, 1);
+  position: relative;
+  z-index: 2;
+}
+
+.form-nexa-wizard .step-text {
+  color: var(--fgColor-muted, var(--color-fg-muted));
+  font-size: 12px;
+  font-weight: var(--base-text-weight-medium, 500);
+  line-height: 1.25;
+  transition: color 80ms cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.form-nexa-wizard-progress-step.active .step-number {
+  background: var(--button-primary-bgColor-rest, var(--color-btn-primary-bg));
+  border-color: var(--button-primary-borderColor-rest, var(--color-btn-primary-border));
+  color: var(--button-primary-fgColor-rest, var(--color-btn-primary-text));
+  box-shadow:
+    var(--shadow-resting-small, none),
+    0 0 0 3px rgba(9, 105, 218, 0.18);
+}
+
+.form-nexa-wizard-progress-step.active .step-text {
+  color: var(--fgColor-default, var(--color-fg-default));
+}
+
+.form-nexa-wizard-progress-step.completed .step-number {
+  background: var(--bgColor-default, var(--color-canvas-default));
+  border-color: var(--button-primary-bgColor-rest, var(--color-btn-primary-bg));
+  color: var(--button-primary-bgColor-rest, var(--color-btn-primary-bg));
+}
+
+.form-nexa-wizard-progress-step.completed .step-text {
+  color: var(--fgColor-muted, var(--color-fg-muted));
+}
+
+.form-nexa-wizard-progress-step.completed::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--button-primary-bgColor-rest, var(--color-btn-primary-bg));
+  z-index: 1;
+}
+
+/* --- Panel langkah --- */
+.form-nexa-wizard-step {
+  display: none;
+}
+
+.form-nexa-wizard-step.active {
+  display: block;
+}
+
+/* --- Footer: kelas Primer `.btn` / `.btn-primary` / `.btn-outline` / `.btn-sm` (sama `forms/form.js`) --- */
+.form-nexa-wizard-buttons {
+  clear: both;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--base-size-8, 8px);
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--borderColor-muted, var(--color-border-muted));
+}
+
+.form-nexa-wizard-buttons .btn:disabled {
+  cursor: default;
+}
+
+/*
+  Error validasi — teks inline setelah label (bukan bubble position:absolute).
+  `forms/index.css` memakai `.form-group.errored .error` untuk tooltip; wizard
+  memakai anchor di `dt.form-group-header` seperti NexaFloating (span/small.error).
+*/
+.form-nexa-wizard dl.form-group.errored dt.form-group-header > span.error,
+.form-nexa-wizard dl.form-group.errored dt.form-group-header label small.error {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: auto !important;
+  max-width: none !important;
+  width: auto !important;
+  padding: 0 !important;
+  margin: 0 0 0 6px !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: inherit !important;
+  color: var(--fgColor-danger, #cf222e) !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  vertical-align: baseline;
+}
+
+.form-nexa-wizard dl.form-group.errored dt.form-group-header > span.error::before,
+.form-nexa-wizard dl.form-group.errored dt.form-group-header > span.error::after,
+.form-nexa-wizard dl.form-group.errored dt.form-group-header label small.error::before,
+.form-nexa-wizard dl.form-group.errored dt.form-group-header label small.error::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Referensi UI: label tetap warna default; yang merah hanya anchor `.error`. */
+.form-nexa-wizard dl.form-group.errored dt.form-group-header label {
+  color: var(--fgColor-default, var(--color-fg-default)) !important;
+}
+
+/*
+  Tanpa border merah pada kontrol: `forms/index.css` memakai
+  `.form-group.errored .form-control { border-color: danger }` — cukup teks
+  validasi (wajib diisi) di header wizard.
+*/
+.form-nexa-wizard .form-group.errored .form-control:not(:focus, :focus-visible),
+.form-nexa-wizard .form-group.errored textarea.form-control:not(:focus, :focus-visible),
+.form-nexa-wizard .form-group.errored select.form-control:not(:focus, :focus-visible),
+.form-nexa-wizard .form-group.errored .form-select:not(:focus, :focus-visible),
+.form-nexa-wizard .form-group.errored .nx-wizard-select:not(:focus, :focus-visible) {
+  border-color: var(--borderColor-default, var(--color-border-default));
+}
+
+/* Legacy markup .form-nexa-btn (opsional) */
+.form-nexa-wizard .form-nexa-btn {
+  padding: 5px var(--base-size-16, 16px);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: var(--base-text-weight-medium, 500);
+  line-height: 20px;
+  cursor: pointer;
+  border: 1px solid;
+  transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.form-nexa-wizard .form-nexa-btn.primary {
+  color: var(--button-primary-fgColor-rest, var(--color-btn-primary-text));
+  background: var(--button-primary-bgColor-rest, var(--color-btn-primary-bg));
+  border-color: var(--button-primary-borderColor-rest, var(--color-btn-primary-border));
+}
+
+.form-nexa-wizard .form-nexa-btn.secondary {
+  color: var(--button-outline-fgColor-rest, var(--color-btn-outline-text));
+  background: var(--bgColor-default, var(--color-canvas-default));
+  border-color: var(--borderColor-default, var(--color-border-default));
+}
+
+/* Halaman demo route `/wizard` */
+.nexa-wizard-demo {
+  max-width: 42rem;
+}
+
+.nexa-wizard-demo > h1 {
+  font-size: 1.25rem;
+  font-weight: var(--base-text-weight-semibold, 600);
+  color: var(--fgColor-default, var(--color-fg-default));
+  margin: 0 0 0.5rem;
+}
+
+.nexa-wizard-demo > p {
+  color: var(--fgColor-muted, var(--color-fg-muted));
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+.nexa-wizard-demo__output-title {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 1rem;
+  font-weight: var(--base-text-weight-semibold, 600);
+  color: var(--fgColor-default, var(--color-fg-default));
+}
+
+.nexa-wizard-demo pre,
+.nexa-wizard-demo__output {
+  background: var(--bgColor-muted, var(--color-canvas-subtle));
+  border: 1px solid var(--borderColor-default, var(--color-border-default));
+  border-radius: 6px;
+  padding: 1rem;
+  font-size: 12px;
+  line-height: 1.45;
+  overflow: auto;
+  color: var(--fgColor-default, var(--color-fg-default));
+}
+
+/* --- Responsif --- */
+@media (max-width: 576px) {
+  .form-nexa-wizard-progress {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-nexa-wizard .step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .form-nexa-wizard .step-text {
+    font-size: 11px;
+  }
+
+  .form-nexa-wizard-progress::before,
+  .form-nexa-wizard-progress-step.completed::after {
+    top: 16px;
+  }
+
+  .form-nexa-wizard-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-nexa-wizard-buttons .btn,
+  .form-nexa-wizard .form-nexa-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* prefers-color-scheme: dark — garis & lingkaran mengikuti token */
+@media (prefers-color-scheme: dark) {
+  .form-nexa-wizard-progress::before {
+    background: var(--borderColor-default, var(--color-border-default));
+  }
+}
+
+/* Mode aplikasi (selaras Mode/index.css) */
+body.dark-mode-grid .form-nexa-wizard-progress::before {
+  background: var(--dm-border, var(--borderColor-default));
+}
+
+body.dark-mode-grid .form-nexa-wizard .step-number {
+  background: var(--dm-bg-surface, var(--bgColor-default));
+  border-color: var(--dm-border, var(--borderColor-default));
+  color: var(--dm-text-secondary, var(--fgColor-muted));
+}
+
+body.dark-mode-grid .form-nexa-wizard .step-text {
+  color: var(--dm-text-secondary, var(--fgColor-muted));
+}
+
+body.dark-mode-grid .form-nexa-wizard-progress-step.active .step-number {
+  background: var(--dm-primary, var(--button-primary-bgColor-rest));
+  border-color: var(--dm-primary, var(--button-primary-borderColor-rest));
+  color: var(--dm-text-invert, var(--button-primary-fgColor-rest));
+  box-shadow: 0 0 0 3px rgba(63, 158, 255, 0.25);
+}
+
+body.dark-mode-grid .form-nexa-wizard-progress-step.active .step-text {
+  color: var(--dm-text-main, var(--fgColor-default));
+}
+
+body.dark-mode-grid .form-nexa-wizard-progress-step.completed .step-number {
+  background: var(--dm-bg-surface, var(--bgColor-default));
+  border-color: var(--dm-primary, var(--button-primary-bgColor-rest));
+  color: var(--dm-primary, var(--button-primary-bgColor-rest));
+}
+
+body.dark-mode-grid .form-nexa-wizard-progress-step.completed::after {
+  background: var(--dm-primary, var(--button-primary-bgColor-rest));
+}
+
+body.dark-mode-grid .form-nexa-wizard-buttons {
+  border-top-color: var(--dm-border, var(--borderColor-muted));
+}
+
+body.dark-mode-grid .nexa-wizard-demo pre,
+body.dark-mode-grid .nexa-wizard-demo__output {
+  background: var(--dm-bg-surface, var(--bgColor-muted));
+  border-color: var(--dm-border, var(--borderColor-default));
+  color: var(--dm-text-main, var(--fgColor-default));
+}

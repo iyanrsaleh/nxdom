@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh Penggunaan NexaPrind</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .controls {
+            background: #f0f0f0;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        #printArea {
+            background: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        #printArea h1 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        
+        #printArea table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        #printArea table th,
+        #printArea table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        #printArea table th {
+            background: #007bff;
+            color: white;
+        }
+        
+        .no-print {
+            background: #fff3cd;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .info {
+            background: #d1ecf1;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h2>📄 Contoh Penggunaan NexaPrind</h2>
+        <p>Klik tombol di bawah untuk mencoba berbagai opsi pencetakan.</p>
+    </div>
+    
+    <div class="controls">
+        <h3>Opsi Pencetakan:</h3>
+        <button onclick="cetakSederhana()">1. Cetak Sederhana</button>
+        <button onclick="cetakDenganMargin()">2. Cetak dengan Margin</button>
+        <button onclick="cetakLandscape()">3. Cetak Landscape</button>
+        <button onclick="cetakFontCustom()">4. Cetak Font Custom</button>
+        <button onclick="cetakWindowBaru()">5. Cetak di Window Baru</button>
+        <button onclick="cetakDenganExclude()">6. Cetak dengan Style Exclude</button>
+    </div>
+    
+    <!-- Area yang akan dicetak -->
+    <div id="printArea">
+        <h1>Laporan Bulanan</h1>
+        <p><strong>Periode:</strong> <span id="tanggal"></span></p>
+        <p><strong>Dibuat oleh:</strong> Sistem Informasi</p>
+        
+        <h2>Ringkasan</h2>
+        <p>Ini adalah contoh dokumen yang akan dicetak menggunakan NexaPrind. 
+           Dokumen ini berisi berbagai elemen HTML seperti heading, paragraf, dan tabel.</p>
+        
+        <h2>Data Transaksi</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Tanggal</th>
+                    <th>Keterangan</th>
+                    <th>Jumlah</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>01/01/2024</td>
+                    <td>Pembelian Barang A</td>
+                    <td>Rp 1.000.000</td>
+                    <td>Lunas</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>02/01/2024</td>
+                    <td>Pembelian Barang B</td>
+                    <td>Rp 2.500.000</td>
+                    <td>Lunas</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>03/01/2024</td>
+                    <td>Pembelian Barang C</td>
+                    <td>Rp 1.750.000</td>
+                    <td>Pending</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>04/01/2024</td>
+                    <td>Pembelian Barang D</td>
+                    <td>Rp 3.200.000</td>
+                    <td>Lunas</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>Kesimpulan</h2>
+        <p>Total transaksi: <strong>Rp 8.450.000</strong></p>
+        <p>Jumlah transaksi: <strong>4</strong></p>
+        
+        <div class="tcx-center" style="margin-top: 30px;">
+            <p><em>Dokumen ini dicetak secara otomatis oleh sistem.</em></p>
+        </div>
+    </div>
+    
+    <div class="no-print">
+        <p><strong>Catatan:</strong> Area ini tidak akan tercetak karena menggunakan class "no-print"</p>
+    </div>
+    
+    <script type="module">
+        import { NexaPrind } from './NexaPrind.js';
+        
+        // Set tanggal saat ini
+        const now = new Date();
+        document.getElementById('tanggal').textContent = 
+            now.toLocaleDateString('id-ID', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        
+        // Fungsi-fungsi untuk berbagai opsi pencetakan
+        window.cetakSederhana = function() {
+            console.log('Mencetak dengan opsi default...');
+            NexaPrind.printById('printArea', {
+                title: 'Laporan Bulanan - Sederhana'
+            });
+        };
+        
+        window.cetakDenganMargin = function() {
+            console.log('Mencetak dengan margin custom...');
+            NexaPrind.printById('printArea', {
+                title: 'Laporan Bulanan - Dengan Margin',
+                paperSize: 'A4',
+                orientation: 'portrait',
+                marginTop: '20mm',
+                marginRight: '15mm',
+                marginBottom: '20mm',
+                marginLeft: '15mm',
+                fontSize: '11pt',
+                lineHeight: '1.3'
+            });
+        };
+        
+        window.cetakLandscape = function() {
+            console.log('Mencetak landscape...');
+            NexaPrind.printById('printArea', {
+                title: 'Laporan Bulanan - Landscape',
+                paperSize: 'A4',
+                orientation: 'landscape',
+                margins: '15mm',
+                fontSize: '10pt'
+            });
+        };
+        
+        window.cetakFontCustom = function() {
+            console.log('Mencetak dengan font custom...');
+            NexaPrind.printById('printArea', {
+                title: 'Laporan Bulanan - Font Custom',
+                paperSize: 'A4',
+                fontSize: '12pt',
+                fontFamily: 'Times New Roman, serif',
+                lineHeight: '1.5',
+                margins: '20mm'
+            });
+        };
+        
+        window.cetakWindowBaru = function() {
+            console.log('Mencetak di window baru...');
+            NexaPrind.printById('printArea', {
+                title: 'Laporan Bulanan - Preview',
+                paperSize: 'A4',
+                newWindow: true,
+                removeAfterPrint: true, // Tutup otomatis setelah print
+                margins: '20mm'
+            });
+        };
+        
+        window.cetakDenganExclude = function() {
+            console.log('Mencetak dengan style exclusion...');
+            NexaPrind.printById('printArea', {
+                title: 'Laporan Bulanan - Dengan Exclude',
+                paperSize: 'A4',
+                margins: '20mm',
+                // Exclude elemen dengan class .tcx-center dari style capture
+                styleNot: ['.tcx-center']
+            });
+        };
+    </script>
+</body>
+</html>
+

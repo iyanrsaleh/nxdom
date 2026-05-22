@@ -1,0 +1,76 @@
+/* Dokumentasi NXDOM — header fixed + sidebar sticky (theme / wwwOne) */
+
+:root {
+  --nx-docs-header-height: var(--github-header-height, 66px);
+  --nx-docs-sidebar-width: var(--docs-sidebar-width, 240px);
+  --nx-docs-sidebar-gap: var(--docs-sidebar-gap, 24px);
+  --nx-docs-container-pad: var(--docs-container-pad, 16px);
+}
+
+html:has(.docs-layout) {
+  scroll-padding-top: var(--nx-docs-header-height);
+}
+
+html:has(.docs-layout) body {
+  padding-top: var(--nx-docs-header-height);
+}
+
+@supports (overflow: clip) {
+  html:has(.docs-layout),
+  html:has(.docs-layout) body {
+    overflow-x: clip;
+  }
+}
+
+header.Header.github-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: block !important;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
+}
+
+#main-content,
+main#main-content,
+.docs-layout {
+  overflow: visible;
+}
+
+@media (min-width: 768px) {
+  .docs-layout {
+    display: grid;
+    grid-template-columns: var(--nx-docs-sidebar-width) minmax(0, 1fr);
+    gap: var(--nx-docs-sidebar-gap);
+    align-items: start;
+  }
+
+  .docs-sidebar {
+    position: sticky;
+    top: calc(var(--nx-docs-header-height) + var(--nx-docs-container-pad));
+    align-self: start;
+    max-height: calc(100vh - var(--nx-docs-header-height) - 32px);
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .docs-sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  @supports (height: 100dvh) {
+    .docs-sidebar {
+      max-height: calc(100dvh - var(--nx-docs-header-height) - 32px);
+    }
+  }
+
+  .docs-layout .docs-article {
+    min-width: 0;
+  }
+}

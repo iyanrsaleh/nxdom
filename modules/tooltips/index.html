@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexa Primer CSS Demo</title>
+
+  <link rel="stylesheet" href="../nexa.css">
+
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tooltip Component Demo</h1>
+
+  <h2>Directions</h2>
+  <div class="demo-row" style="padding:48px 24px;gap:32px;justify-content:center;">
+    <button class="tooltipped tooltipped-n tooltipped-no-delay" aria-label="Tooltip di atas (north)"
+      style="padding:6px 14px;border:1px solid var(--borderColor-default);border-radius:6px;background:var(--bgColor-default);cursor:pointer;">
+      North (n)
+    </button>
+    <button class="tooltipped tooltipped-s tooltipped-no-delay" aria-label="Tooltip di bawah (south)"
+      style="padding:6px 14px;border:1px solid var(--borderColor-default);border-radius:6px;background:var(--bgColor-default);cursor:pointer;">
+      South (s)
+    </button>
+    <button class="tooltipped tooltipped-e tooltipped-no-delay" aria-label="Tooltip kanan (east)"
+      style="padding:6px 14px;border:1px solid var(--borderColor-default);border-radius:6px;background:var(--bgColor-default);cursor:pointer;">
+      East (e)
+    </button>
+    <button class="tooltipped tooltipped-w tooltipped-no-delay" aria-label="Tooltip kiri (west)"
+      style="padding:6px 14px;border:1px solid var(--borderColor-default);border-radius:6px;background:var(--bgColor-default);cursor:pointer;">
+      West (w)
+    </button>
+  </div>
+
+  <h2>Diagonal Directions</h2>
+  <div class="demo-row" style="padding:48px 24px;gap:32px;justify-content:center;">
+    <button class="tooltipped tooltipped-ne tooltipped-no-delay" aria-label="Tooltip NE"
+      style="padding:6px 14px;border:1px solid var(--borderColor-default);border-radius:6px;background:var(--bgColor-default);cursor:pointer;">
+      NE
+    </button>
+    <button class="tooltipped tooltipped-nw tooltipped-no-delay" aria-label="Tooltip NW"
+      style="padding:6px 14px;border:1px solid var(--borderColor-default);border-radius:6px;background:var(--bgColor-default);cursor:pointer;">
+      NW
+    </button>
+    <button class="tooltipped tooltipped-se tooltipped-no-delay" aria-label="Tooltip SE"
+      style="padding:6px 14px;border:1px solid var(--borderColor-default);border-radius:6px;background:var(--bgColor-default);cursor:pointer;">
+      SE
+    </button>
+    <button class="tooltipped tooltipped-sw tooltipped-no-delay" aria-label="Tooltip SW"
+      style="padding:6px 14px;border:1px solid var(--borderColor-default);border-radius:6px;background:var(--bgColor-default);cursor:pointer;">
+      SW
+    </button>
+  </div>
+
+  <h2>Multiline Tooltip</h2>
+  <div class="demo-row" style="padding:48px 24px;justify-content:center;">
+    <button class="tooltipped tooltipped-n tooltipped-multiline tooltipped-no-delay"
+      aria-label="Ini adalah tooltip dengan teks lebih panjang yang akan tampil dalam beberapa baris."
+      style="padding:6px 14px;border:1px solid var(--borderColor-default);border-radius:6px;background:var(--bgColor-default);cursor:pointer;">
+      Multiline Tooltip
+    </button>
+  </div>
+
+  <h2>Tooltip on Icon</h2>
+  <div class="demo-row" style="padding:32px 24px;gap:24px;justify-content:center;">
+    <span class="tooltipped tooltipped-n tooltipped-no-delay" aria-label="Tambah item" style="cursor:pointer;font-size:20px;">➕</span>
+    <span class="tooltipped tooltipped-n tooltipped-no-delay" aria-label="Hapus item" style="cursor:pointer;font-size:20px;">🗑</span>
+    <span class="tooltipped tooltipped-n tooltipped-no-delay" aria-label="Edit item" style="cursor:pointer;font-size:20px;">✏️</span>
+    <span class="tooltipped tooltipped-n tooltipped-no-delay" aria-label="Bagikan" style="cursor:pointer;font-size:20px;">🔗</span>
+  </div>
+
+</body>
+</html>

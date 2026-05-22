@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NexaHighlig - Syntax Highlighting Demo</title>
+
+    <!-- Highlight.js Theme (GitHub) -->
+    <link id="nexaHighligTheme" rel="stylesheet" href="./github.min.css" />
+
+    <!-- CSS NexaHighlig -->
+    <link rel="stylesheet" href="./nexaHighlig.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          "Helvetica Neue", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f5f5f5;
+        padding: 2rem;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #222;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid #007bff;
+      }
+
+      h2 {
+        color: #444;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .demo-section {
+        margin-bottom: 2rem;
+      }
+
+      .controls {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: #f9f9f9;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+      }
+
+      .control-group {
+        margin-bottom: 1rem;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #555;
+      }
+
+      select,
+      input,
+      textarea {
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 14px;
+      }
+
+      select {
+        min-width: 200px;
+        cursor: pointer;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 100px;
+        font-family: "Menlo", "Monaco", "Courier New", monospace;
+        resize: vertical;
+      }
+
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+
+      .output {
+        margin-top: 1rem;
+      }
+
+      .info {
+        padding: 1rem;
+        background: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        border-radius: 4px;
+        margin-top: 1rem;
+        color: #1565c0;
+      }
+
+      .example-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .example-card {
+        padding: 1rem;
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .example-card:hover {
+        background: #f0f0f0;
+        border-color: #007bff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .example-card h3 {
+        margin-bottom: 0.5rem;
+        color: #007bff;
+      }
+
+      .example-card p {
+        font-size: 13px;
+        color: #666;
+      }
+
+      .status {
+        padding: 0.5rem 1rem;
+        background: #dff0d8;
+        color: #3c763d;
+        border-radius: 4px;
+        margin-top: 0.5rem;
+        display: none;
+      }
+
+      .status.show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎨 NexaHighlig - Syntax Highlighting Demo</h1>
+
+      <!-- Demo 1: Highlight Editor -->
+      <div class="demo-section">
+        <h2>1. Real-time Syntax Highlighting</h2>
+
+        <div class="controls">
+          <div class="control-group">
+            <label for="language">Pilih Bahasa:</label>
+            <select id="language">
+              <option value="javascript">JavaScript</option>
+              <option value="php">PHP</option>
+              <option value="python">Python</option>
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="json">JSON</option>
+              <option value="sql">SQL</option>
+              <option value="java">Java</option>
+              <option value="cpp">C++</option>
+              <option value="ruby">Ruby</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="code-input">Kode Anda:</label>
+            <textarea id="code-input" placeholder="Masukkan kode di sini...">
+function hello() {
+  console.log('Hello, World!');
+}</textarea
+            >
+          </div>
+
+          <button id="highlight-btn">Highlight Code</button>
+          <div id="status" class="status"></div>
+        </div>
+
+        <div class="output">
+          <label>Output (Highlighted):</label>
+          <div id="code-output"></div>
+        </div>
+      </div>
+
+      <!-- Demo 2: Theme Selector -->
+      <div class="demo-section">
+        <h2>2. Theme Manager</h2>
+
+        <div class="controls">
+          <div class="control-group">
+            <label for="theme-selector">Pilih Tema:</label>
+            <select id="theme-selector">
+            <option value="github">GitHub (Local)</option>
+            <option value="atom-one-dark">Atom One Dark</option>
+            <option value="atom-one-light">Atom One Light</option>
+            <option value="dracula">Dracula</option>
+            <option value="github-dark">GitHub Dark</option>
+            <option value="github-light">GitHub Light</option>
+            <option value="monokai">Monokai</option>
+            <option value="nord">Nord</option>
+            <option value="solarized-light">Solarized Light</option>
+            <option value="tomorrow-night">Tomorrow Night</option>
+            <option value="xcode">Xcode</option>
+            <option value="idea">Idea</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="info">
+          Tema akan langsung berubah. Klik "Highlight Code" di atas untuk
+          melihat efeknya.
+        </div>
+      </div>
+
+      <!-- Demo 3: Predefined Examples -->
+      <div class="demo-section">
+        <h2>3. Contoh Code Snippets</h2>
+
+        <div class="example-list">
+          <div
+            class="example-card"
+            onclick="
+              loadExample(
+                'javascript',
+                `function fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.log(fibonacci(10));`,
+              )
+            "
+          >
+            <h3>JavaScript</h3>
+            <p>Fibonacci Function</p>
+          </div>
+
+          <div
+            class="example-card"
+            onclick="
+              loadExample(
+                'php',
+                `&lt;?php
+class User {
+  public function getName() {
+    return 'John Doe';
+  }
+}
+
+$user = new User();
+echo $user->getName();
+?&gt;`,
+              )
+            "
+          >
+            <h3>PHP</h3>
+            <p>Simple Class</p>
+          </div>
+
+          <div
+            class="example-card"
+            onclick="
+              loadExample(
+                'python',
+                `def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[0]
+    left = [x for x in arr[1:] if x &lt; pivot]
+    right = [x for x in arr[1:] if x >= pivot]
+    return quicksort(left) + [pivot] + quicksort(right)`,
+              )
+            "
+          >
+            <h3>Python</h3>
+            <p>Quicksort Algorithm</p>
+          </div>
+
+          <div
+            class="example-card"
+            onclick="
+              loadExample(
+                'html',
+                `&lt;div class=&quot;container&quot;&gt;
+  &lt;h1&gt;Welcome&lt;/h1&gt;
+  &lt;p&gt;This is a paragraph.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;`,
+              )
+            "
+          >
+            <h3>HTML</h3>
+            <p>HTML Structure</p>
+          </div>
+
+          <div
+            class="example-card"
+            onclick="
+              loadExample(
+                'css',
+                `.button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}`,
+              )
+            "
+          >
+            <h3>CSS</h3>
+            <p>Button Styling</p>
+          </div>
+
+          <div
+            class="example-card"
+            onclick="
+              loadExample(
+                'json',
+                `{
+  &quot;name&quot;: &quot;John Doe&quot;,
+  &quot;age&quot;: 30,
+  &quot;email&quot;: &quot;john@example.com&quot;,
+  &quot;skills&quot;: [&quot;JavaScript&quot;, &quot;PHP&quot;, &quot;Python&quot;],
+  &quot;active&quot;: true
+}`,
+              )
+            "
+          >
+            <h3>JSON</h3>
+            <p>User Data</p>
+          </div>
+
+          <div
+            class="example-card"
+            onclick="
+              loadExample(
+                'sql',
+                `SELECT users.name, users.email, COUNT(orders.id) as order_count
+FROM users
+LEFT JOIN orders ON users.id = orders.user_id
+GROUP BY users.id
+HAVING order_count > 5
+ORDER BY order_count DESC
+LIMIT 10;`,
+              )
+            "
+          >
+            <h3>SQL</h3>
+            <p>Database Query</p>
+          </div>
+
+          <div
+            class="example-card"
+            onclick="
+              loadExample(
+                'java',
+                `public class HelloWorld {
+  public static void main(String[] args) {
+    String message = &quot;Hello, Java!&quot;;
+    System.out.println(message);
+    
+    for (int i = 1; i &lt;= 5; i++) {
+      System.out.println(&quot;Count: &quot; + i);
+    }
+  }
+}`,
+              )
+            "
+          >
+            <h3>Java</h3>
+            <p>Java Program</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo 4: Info & Stats -->
+      <div class="demo-section">
+        <h2>4. Informasi</h2>
+
+        <div class="controls">
+          <button id="list-languages-btn">Daftar Bahasa Didukung</button>
+          <button id="list-themes-btn">Daftar Tema Tersedia</button>
+          <div id="info-output" style="margin-top: 1rem"></div>
+        </div>
+      </div>
+
+      <div class="info" style="margin-top: 2rem">
+        <strong>Tips:</strong> NexaHighlig mendukung 190+ bahasa dan 20+ tema
+        dari highlight.js. Tekan tombol "Highlight Code" atau klik salah satu
+        contoh untuk melihat hasilnya!
+      </div>
+    </div>
+
+    <!-- Load Highlight.js dari CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- Load NexaHighlig -->
+    <script type="module">
+      import NexaHighlig from "./NexaHighlig.js";
+
+      // Setup global instance
+      const highlighter = new NexaHighlig({
+        theme: "github",
+        lineNumbers: true,
+        copyButton: true,
+        autoDetect: true,
+      });
+
+      window.highlighter = highlighter;
+      window.lastTheme = "github";
+
+      // Theme mapping - local files
+      const themeFiles = {
+        github: "./github.min.css",
+        "atom-one-dark":
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css",
+        "atom-one-light":
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css",
+        dracula:
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dracula.min.css",
+        "github-dark":
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css",
+        "github-light":
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-light.min.css",
+        monokai:
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css",
+        nord: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/nord.min.css",
+        "solarized-light":
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/solarized-light.min.css",
+        "tomorrow-night":
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tomorrow-night.min.css",
+        xcode:
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/xcode.min.css",
+        idea: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/idea.min.css",
+      };
+
+      // Event Listeners
+      document.getElementById("highlight-btn").addEventListener("click", () => {
+        const code = document.getElementById("code-input").value;
+        const language = document.getElementById("language").value;
+        const output = document.getElementById("code-output");
+
+        try {
+          const html = highlighter.highlight(code, language);
+          output.innerHTML = `<pre class="nexaHighlig-block"><code>${html}</code></pre>`;
+
+          // Add copy button
+          const codeEl = output.querySelector("code");
+          setTimeout(() => highlighter._addCopyButton(codeEl), 100);
+
+          showStatus(`✓ Highlighted with ${language}`);
+        } catch (error) {
+          showStatus(`✗ Error: ${error.message}`, "error");
+        }
+      });
+
+      document
+        .getElementById("theme-selector")
+        .addEventListener("change", (e) => {
+          const themeName = e.target.value;
+          const themeFile = themeFiles[themeName];
+
+          if (themeFile) {
+            const themeLink = document.getElementById("nexaHighligTheme");
+            themeLink.href = themeFile;
+            window.lastTheme = themeName;
+
+            // Re-highlight current code
+            document.getElementById("highlight-btn").click();
+            showStatus(`✓ Theme changed to ${themeName}`);
+          }
+        });
+
+      document
+        .getElementById("list-languages-btn")
+        .addEventListener("click", () => {
+          const languages = highlighter.listLanguages();
+          const output = document.getElementById("info-output");
+          output.innerHTML = `<strong>Supported Languages (${languages.length}):</strong><br><span style="color: #666; font-size: 13px;">${languages.join(", ")}</span>`;
+        });
+
+      document
+        .getElementById("list-themes-btn")
+        .addEventListener("click", () => {
+          const themes = [
+            "atom-one-dark",
+            "atom-one-light",
+            "dracula",
+            "github-dark",
+            "github-light",
+            "monokai",
+            "nord",
+            "solarized-light",
+            "tomorrow-night",
+            "xcode",
+            "idea",
+          ];
+          const output = document.getElementById("info-output");
+          output.innerHTML = `<strong>Available Themes:</strong><br><span style="color: #666; font-size: 13px;">${themes.join(", ")}</span>`;
+        });
+
+      // Helper function
+      window.loadExample = (language, code) => {
+        document.getElementById("language").value = language;
+        document.getElementById("code-input").value = code;
+        document.getElementById("highlight-btn").click();
+      };
+
+      function showStatus(message, type = "success") {
+        const status = document.getElementById("status");
+        status.textContent = message;
+        status.className = `status show`;
+        setTimeout(() => status.classList.remove("show"), 3000);
+      }
+
+      // Initial highlight
+      document.getElementById("highlight-btn").click();
+    </script>
+  </body>
+</html>
