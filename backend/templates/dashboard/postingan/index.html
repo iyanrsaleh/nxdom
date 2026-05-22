@@ -1,0 +1,68 @@
+<!-- PostinganController::index -->
+<div class="postingan-page">
+  <div class="postingan-page-head" style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:0.5rem">
+    <div>
+      <h2 class="page-title-bar" style="margin-bottom:0.25rem"><i class="fas fa-newspaper"></i> Artikel</h2>
+      <p class="page-subtitle" style="margin:0">Daftar postingan dengan pagination. Total: {total_records}.</p>
+    </div>
+    <a href="{page_index}/create" class="user-btn-package" style="text-decoration:none;display:inline-flex;align-items:center;gap:0.35rem"><i class="fas fa-plus"></i> Artikel baru</a>
+  </div>
+
+  <div class="grid-cards" style="margin-bottom:1.25rem">
+    <div class="card">
+      <div class="card-icon" style="color:#3b82f6"><i class="fas fa-newspaper"></i></div>
+      <div class="card-title">Total</div>
+      <div class="card-value">{total_posts}</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="color:#10b981"><i class="fas fa-check-circle"></i></div>
+      <div class="card-title">Terbit</div>
+      <div class="card-value">{published_posts}</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="color:#f59e0b"><i class="fas fa-file-pen"></i></div>
+      <div class="card-title">Draft</div>
+      <div class="card-value">{draft_posts}</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="color:#8b5cf6"><i class="fas fa-eye"></i></div>
+      <div class="card-title">Dilihat</div>
+      <div class="card-value">{total_views}</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="recent-activity">
+      {if total_records > 0}
+      <table>
+        <thead>
+          <tr>
+            <th>Judul</th>
+            <th>Kategori</th>
+            <th>Status</th>
+            <th>Tanggal</th>
+            <th style="white-space:nowrap">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- NEXA post -->
+          <tr>
+            <td>{title}</td>
+            <td>{categori}</td>
+            <td><span class="status status-success">{status}</span></td>
+            <td>{pubdate}</td>
+            <td style="white-space:nowrap">
+              <a href="{page_index}/update/{id}" class="user-btn-edit" style="text-decoration:none;margin-right:0.35rem" title="Edit"><i class="fas fa-pen"></i></a>
+              <a href="{page_index}/delete/{id}" class="user-btn-delete" style="text-decoration:none" title="Hapus" onclick="return confirm('Hapus artikel ini?');"><i class="fas fa-trash"></i></a>
+            </td>
+          </tr>
+          <!-- END post -->
+        </tbody>
+      </table>
+      <div style="margin-top:1rem">{pagination}</div>
+      {else}
+      <p style="padding:1rem;color:#666">Belum ada artikel. Gunakan tombol <strong>Artikel baru</strong> di atas untuk menambah.</p>
+      {endif}
+    </div>
+  </div>
+</div>

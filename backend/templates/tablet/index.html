@@ -1,0 +1,211 @@
+
+<!-- Hero Slider Section -->
+<section class="hero-slider" id="home">
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            <div class="slide active">
+                <img src="/assets/images/tr2.png" alt="Program Beasiswa Prestasi">
+            </div>
+            <div class="slide">
+                <img src="/assets/images/tr1.png" alt="Program Beasiswa Akhir Studi">
+            </div>
+            <div class="slide">
+                <img src="/assets/images/tr3.png" alt="Program Beasiswa Magister">
+            </div>
+            <div class="slide">
+                <img src="/assets/images/tr4.png" alt="Program Beasiswa Hafidz Quran">
+            </div>
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <button class="slider-nav prev" onclick="changeSlide(-1)">
+            <span class="material-icons">chevron_left</span>
+        </button>
+        <button class="slider-nav next" onclick="changeSlide(1)">
+            <span class="material-icons">chevron_right</span>
+        </button>
+        
+        <!-- Dots Navigation -->
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+</section>
+ 
+<!-- Program Cards Section -->
+<section class="programs-section" id="programs">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Jenis Program Beasiswa</h2>
+            <p class="section-subtitle">Pilih program beasiswa yang sesuai dengan kebutuhan Anda</p>
+        </div>
+
+        <div class="programs-grid">
+            <!-- Beasiswa S1 SIAP Prestasi -->
+            <div class="program-card" data-program="prestasi">
+                <div class="card-icon">
+                    <span class="material-icons">emoji_events</span>
+                </div>
+                <h3 class="card-title">Beasiswa S1 SIAP Prestasi</h3>
+                <p class="card-description">Untuk mahasiswa berprestasi semester III - VI dengan IPK minimal 3.00</p>
+                <button class="btn-detail" onclick="showDetail('prestasi')">
+                    Lihat Persyaratan
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+
+            <!-- Beasiswa S1 SIAP Akhir Studi -->
+            <div class="program-card" data-program="akhir">
+                <div class="card-icon">
+                    <span class="material-icons">school</span>
+                </div>
+                <h3 class="card-title">Beasiswa S1 SIAP Akhir Studi</h3>
+                <p class="card-description">Untuk mahasiswa semester VII - VIII yang akan menyelesaikan studi</p>
+                <button class="btn-detail" onclick="showDetail('akhir')">
+                    Lihat Persyaratan
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+
+            <!-- Beasiswa S1 Perguruan Tinggi Lainnya -->
+            <div class="program-card" data-program="pt-lain">
+                <div class="card-icon">
+                    <span class="material-icons">account_balance</span>
+                </div>
+                <h3 class="card-title">Beasiswa S1 Perguruan Tinggi Lainnya</h3>
+                <p class="card-description">Untuk mahasiswa di perguruan tinggi luar Pohuwato</p>
+                <button class="btn-detail" onclick="showDetail('pt-lain')">
+                    Lihat Persyaratan
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+
+            <!-- Beasiswa S2 Magister -->
+            <div class="program-card" data-program="s2">
+                <div class="card-icon">
+                    <span class="material-icons">workspace_premium</span>
+                </div>
+                <h3 class="card-title">Beasiswa S2 Magister</h3>
+                <p class="card-description">Untuk mahasiswa pascasarjana semester I - IV dengan IPK minimal 3.00</p>
+                <button class="btn-detail" onclick="showDetail('s2')">
+                    Lihat Persyaratan
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+
+            <!-- Beasiswa SIAP Hafalan Quran -->
+            <div class="program-card" data-program="quran">
+                <div class="card-icon">
+                    <span class="material-icons">menu_book</span>
+                </div>
+                <h3 class="card-title">Beasiswa SIAP Hafalan Quran</h3>
+                <p class="card-description">Untuk penghafal Al-Quran dari 1 Juz sampai 30 Juz</p>
+                <button class="btn-detail" onclick="showDetail('quran')">
+                    Lihat Persyaratan
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+
+            <!-- Beasiswa S1 SIAP Atlet -->
+<!--             <div class="program-card" data-program="atlet">
+                <div class="card-icon">
+                    <span class="material-icons">sports</span>
+                </div>
+                <h3 class="card-title">Beasiswa S1 SIAP Atlet</h3>
+                <p class="card-description">Untuk atlet berprestasi yang aktif kuliah di perguruan tinggi</p>
+                <button class="btn-detail" onclick="showDetail('atlet')">
+                    Lihat Persyaratan
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+<!-- Detail Modal -->
+<div id="detailModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle"></h3>
+            <button class="modal-close" onclick="closeModal()">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="requirements-list" id="modalRequirements"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-primary" onclick="applyScholarship()">
+                Ajukan Beasiswa
+                <span class="material-icons">send</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Info Section -->
+<section class="info-section" id="requirements">
+    <div class="container">
+        <div class="info-header">
+            <h2 class="info-title">Kenapa Memilih Program Beasiswa SIAP?</h2>
+            <p class="info-subtitle">Kemudahan dan keuntungan yang Anda dapatkan</p>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card card-1">
+                <div class="info-card-inner">
+                    <div class="info-icon-wrapper">
+                        <span class="material-icons info-icon">description</span>
+                    </div>
+                    <div class="info-number">01</div>
+                    <h4>Dokumen Lengkap</h4>
+                    <p>Pastikan semua dokumen persyaratan sudah disiapkan dalam format digital</p>
+                    <div class="info-card-bg"></div>
+                </div>
+            </div>
+            
+            <div class="info-card card-2">
+                <div class="info-card-inner">
+                    <div class="info-icon-wrapper">
+                        <span class="material-icons info-icon">verified</span>
+                    </div>
+                    <div class="info-number">02</div>
+                    <h4>Verifikasi Cepat</h4>
+                    <p>Proses verifikasi dokumen dilakukan secara online dan transparan</p>
+                    <div class="info-card-bg"></div>
+                </div>
+            </div>
+            
+            <div class="info-card card-3">
+                <div class="info-card-inner">
+                    <div class="info-icon-wrapper">
+                        <span class="material-icons info-icon">support_agent</span>
+                    </div>
+                    <div class="info-number">03</div>
+                    <h4>Bantuan 24/7</h4>
+                    <p>Tim kami siap membantu Anda dalam proses pengajuan beasiswa</p>
+                    <div class="info-card-bg"></div>
+                </div>
+            </div>
+            
+            <div class="info-card card-4">
+                <div class="info-card-inner">
+                    <div class="info-icon-wrapper">
+                        <span class="material-icons info-icon">payments</span>
+                    </div>
+                    <div class="info-number">04</div>
+                    <h4>Tanpa Biaya</h4>
+                    <p>Proses pendaftaran dan pengajuan beasiswa 100% gratis tanpa dipungut biaya</p>
+                    <div class="info-card-bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- External JavaScript -->
+<script src="/assets/js/app.js"></script>
+

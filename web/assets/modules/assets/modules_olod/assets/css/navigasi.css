@@ -1,0 +1,592 @@
+
+.nx-sidebar {
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid #e6e6e6;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+    height: calc(100vh - 56px);
+    position: fixed;
+    top: 56px;
+    /*left: 0;*/
+    width: 280px;
+    /*z-index: 100;*/
+}
+
+
+ul li {
+  position: relative;
+  padding-left: 20px; /* jarak antara marker dengan teks */
+}
+.nx-sidebar-section {
+    margin-bottom: 1rem;
+}
+
+.nx-sidebar-section h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    color: var(--sidebar-text);
+}
+
+.nx-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-left: 0.5rem;
+}
+
+.nx-nav-item {
+    display: block;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    border-radius: 4px;
+
+    font-size: 0.9rem;
+}
+
+.nx-nav-item:hover {
+    background-color: var(--hover-bg);
+}
+
+.nx-nav-item.active-grid {
+    background-color: var(--active-link);
+    color: white;
+}
+
+
+
+/* Right Sidebar */
+.nx-right-sidebar {
+    padding: 2rem 1rem;
+    border-left: 1px solid var(--border-color);
+    position: fixed;
+    top: 56px;
+    right: 0;
+    width: 250px;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+    background-color: var(--bg-color);
+}
+
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+
+    .nx-right-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+  
+    
+    .nx-sidebar {
+        left: -280px;
+        
+    }
+
+    .nx-sidebar.active-grid {
+        left: 0;
+    }
+
+    .nx-sidebar-section {
+        display: block;
+        margin-bottom: 1.5rem;
+    }
+
+    .nx-sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .sidebar-overlay-grid {
+        display: none;
+        position: fixed;
+        top: 56px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        backdrop-filter: blur(2px);
+    }
+
+    .sidebar-overlay-grid.active-grid {
+        display: block;
+    }
+
+ 
+}
+
+/* Additional styles for extra small devices */
+@media (max-width: 480px) {
+    .nx-sidebar {
+        width: 260px;
+    }
+
+    .header-right-grid {
+        gap: 0.5rem;
+    }
+
+}
+/* Update responsive styles */
+@media (max-width: 768px) {
+
+
+    .nx-sidebar {
+        position: fixed;
+        left: -280px; /* Hide sidebar by default */
+        top: 56px;
+        bottom: 0;
+        width: 280px;
+        z-index: 1000;
+        
+        background-color: var(--sidebar-bg);
+    }
+
+    .nx-sidebar.active-grid {
+        left: 0;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Add overlay when sidebar is active */
+    .sidebar-overlay-grid {
+        display: none;
+        position: fixed;
+        top: 56px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    .sidebar-overlay-grid.active-grid {
+        display: block;
+    }
+}
+
+/* Tambahkan style untuk section headers dan sub-menu */
+.section-header-grid {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--sidebar-text);
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.section-header-grid:hover {
+    color: var(--text-color);
+}
+
+
+
+.section-header-grid[aria-expanded="true"] .arrow-icon-grid {
+    transform: rotate(90deg);
+}
+
+.nx-sidebar-nav.collapsed {
+    display: none;
+}
+
+/* Update existing sidebar styles */
+.nx-sidebar-section {
+    margin-bottom: 1rem;
+}
+
+.nx-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-left: 0.5rem;
+}
+
+.nx-nav-item {
+    display: block;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    border-radius: 4px;
+    
+    font-size: 0.9rem;
+}
+
+.nx-nav-item:hover {
+    background-color: var(--hover-bg);
+}
+
+.nx-nav-item.active-grid {
+    background-color: var(--active-link);
+    color: white;
+}
+
+
+body.dark-mode-grid .nx-sidebar {
+  background-color: #2a2a2a;
+}
+
+
+
+body.dark-mode-grid .nx-sidebar::-webkit-scrollbar-thumb {
+  background-color: var(--border-primary);
+}
+
+
+
+body.dark-mode-grid aside {
+  background-color: var(--aside-bg);
+  color: var(--aside-text);
+  border-color: var(--aside-border);
+}
+
+body.dark-mode-grid aside a {
+  color: var(--aside-link);
+}
+
+body.dark-mode-grid aside a:hover {
+  color: var(--aside-link-hover);
+}
+
+body.dark-mode-grid aside .active {
+  color: var(--aside-active);
+}
+
+body.dark-mode-grid aside h2,
+body.dark-mode-grid aside h3,
+body.dark-mode-grid aside h4 {
+  color: var(--aside-text);
+}
+
+
+
+
+
+
+   .nx-sidebar::-webkit-scrollbar {
+        width: 0; /* Sembunyikan scrollbar secara default */
+        transition: width 0.3s ease;
+    }
+
+    .nx-sidebar:hover::-webkit-scrollbar {
+        width: 6px; /* Tampilkan scrollbar saat hover */
+    }
+
+    .nx-sidebar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .nx-sidebar::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 3px;
+    }
+
+
+
+    /* Styling untuk scrollbar */
+    .nx-sidebar::-webkit-scrollbar {
+        width: 0; /* Sembunyikan scrollbar secara default */
+        transition: width 0.3s ease;
+    }
+
+    .nx-sidebar:hover::-webkit-scrollbar {
+        width: 6px; /* Tampilkan scrollbar saat hover */
+    }
+
+    .nx-sidebar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .nx-sidebar::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 3px;
+    }
+
+
+    
+
+    /* Update style untuk scrollbar */
+    .nx-sidebar::-webkit-scrollbar {
+      width: 0;
+      transition: width 0.3s ease;
+    }
+
+    .nx-sidebar:hover::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .nx-sidebar::-webkit-scrollbar-track {
+      background: var(--scrollbar-track);
+    }
+
+    .nx-sidebar::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-thumb);
+      border-radius: 3px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nx-sidebar::-webkit-scrollbar-thumb:hover {
+      background-color: var(--scrollbar-thumb-hover);
+    }
+
+    /* Update scrollbar untuk dark mode */
+    body.dark-mode-grid .nx-sidebar::-webkit-scrollbar-track {
+      background: var(--scrollbar-track);
+    }
+
+    body.dark-mode-grid .nx-sidebar::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-thumb);
+    }
+
+    body.dark-mode-grid .nx-sidebar::-webkit-scrollbar-thumb:hover {
+      background-color: var(--scrollbar-thumb-hover);
+    }
+
+
+    /* Tambahkan style untuk menu link di dark mode */
+    body.dark-mode-grid .nx-sidebar a,
+    body.dark-mode-grid .nx-main-content a,
+    body.dark-mode-grid .nx-page-gridnav a {
+          color: var(--nav-subtext);
+
+    }
+
+    body.dark-mode-grid .nx-main-content a:hover,
+    body.dark-mode-grid .nx-page-gridnav a:hover {
+      color: var(--menu-text-hover);
+    }
+    body.dark-mode-grid .nx-sidebar a:hover {
+      color: var(--text-color);
+    }    
+
+    body.dark-mode-grid .nx-sidebar a.active,
+    body.dark-mode-grid .nx-main-content a.active,
+    body.dark-mode-grid .nx-page-gridnav a.active {
+      color: var(--menu-text-active);
+    }
+
+
+
+body.dark-mode-grid .nx-page-gridnav {
+  background-color: var(--page-nav-bg);
+  color: var(--page-nav-text);
+  border-color: var(--page-nav-border);
+}
+
+body.dark-mode-grid .nx-page-gridnav a {
+  color: var(--page-nav-link);
+}
+
+body.dark-mode-grid .nx-page-gridnav a:hover {
+  color: var(--page-nav-hover);
+}
+
+body.dark-mode-grid .nx-page-gridnav h1,
+body.dark-mode-grid .nx-page-gridnav h2,
+body.dark-mode-grid .nx-page-gridnav h3,
+body.dark-mode-grid .nx-page-gridnav h4 {
+  color: var(--page-nav-text);
+}
+
+
+  .nx-page-gridnav {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 280px;
+        height: calc(100vh - 60px);
+        overflow-y: auto;
+ padding-top: 10px;
+        background: #fff;
+        border-left: 1px solid #eaecef;
+        z-index: 100;
+        direction: rtl;
+    }
+
+
+
+
+
+
+    /* nx-gridnavigation styling */
+    .nx-gridnav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        direction: ltr;
+    }
+
+    .nx-gridnav li {
+        margin-bottom: 2px;
+    }
+
+    .nx-gridnav > li > a {
+        color: #1a1a1a;
+        font-weight: 500;
+        font-size: 14px;
+        padding: 6px 12px;
+        display: block;
+        text-decoration: none;
+        border-radius: 4px;
+       
+    }
+
+    .nx-gridnav > li > a:hover,
+    .nx-gridnav > li > a.active {
+        background: #f6f8fa;
+        color: #087ea4;
+    }
+
+    /* Sub menu styling */
+    .nx-gridnav ul {
+        list-style: none;
+        padding: 0;
+        margin: 2px 0 8px 0;
+    }
+
+    .nx-gridnav ul li a {
+        color: #666;
+        font-size: 13px;
+        padding: 4px 12px 4px 24px;
+        display: block;
+        text-decoration: none;
+        border-radius: 4px;
+       
+    }
+
+    .nx-gridnav ul li a:hover,
+    .nx-gridnav ul li a.active {
+        background: #f6f8fa;
+        color: #087ea4;
+    }
+
+    /* Active state styles */
+    .nx-gridnav li > a.active {
+        background-color: #e6f3ff;
+        color: #087ea4;
+        font-weight: 600;
+    }
+    
+    .nx-gridnav ul li > a.active {
+        background-color: #e6f3ff;
+        color: #087ea4;
+        font-weight: 500;
+    }
+    
+    /* Parent active state when child is active */
+    .nx-gridnav li.active > a {
+        background-color: #e6f3ff;
+        color: #087ea4;
+        font-weight: 600;
+    }
+
+    /* Update style untuk menu dalam dark mode */
+    body.dark-mode-grid .nx-gridnav > li > a {
+      color: var(--nav-text);
+      font-weight: 500;
+    }
+
+    body.dark-mode-grid .nx-gridnav > li > a:hover,
+    body.dark-mode-grid .nx-gridnav > li > a.active {
+      background: var(--hover-bg);
+      color: var(--nav-hover-text);
+    }
+
+    body.dark-mode-grid .nx-gridnav ul li a {
+      color: var(--nav-subtext);
+    }
+
+    body.dark-mode-grid .nx-gridnav ul li a:hover,
+    body.dark-mode-grid .nx-gridnav ul li a.active {
+      background: var(--hover-bg);
+      color: var(--hover-text);
+    }
+
+    /* Active state dalam dark mode */
+    body.dark-mode-grid .nx-gridnav li > a.active,
+    body.dark-mode-grid .nx-gridnav ul li > a.active,
+    body.dark-mode-grid .nx-gridnav li.active > a {
+      background-color: var(--nav-active-bg);
+      color: var(--nav-active-text);
+      font-weight: 600;
+    }
+
+
+
+    /* Update style untuk scrollbar  */
+    .nx-page-gridnav::-webkit-scrollbar {
+      width: 0;
+      transition: width 0.3s ease;
+    }
+
+    .nx-page-gridnav:hover::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .nx-page-gridnav::-webkit-scrollbar-track {
+      background: var(--scrollbar-track);
+    }
+
+    .nx-page-gridnav::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-thumb);
+      border-radius: 3px;
+    }
+
+
+
+
+
+    /* Update style untuk scrollbar dalam dark mode */
+    body.dark-mode-grid .nx-page-gridnav::-webkit-scrollbar {
+      width: 0;
+      transition: width 0.3s ease;
+    }
+
+    body.dark-mode-grid .nx-page-gridnav:hover::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    body.dark-mode-grid .nx-page-gridnav::-webkit-scrollbar-track {
+      background: var(--scrollbar-track);
+    }
+
+    body.dark-mode-grid .nx-page-gridnav::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-thumb);
+      border-radius: 3px;
+    }
+
+
+
+
+    /* Style untuk submenu */
+    body.dark-mode-grid .nx-sidebar ul a,
+    body.dark-mode-grid .nx-page-gridnav ul a {
+      color: var(--menu-subtext);
+    }
+
+    body.dark-mode-grid .nx-sidebar ul a:hover,
+    body.dark-mode-grid .nx-page-gridnav ul a:hover {
+      color: var(--text-color);
+    }
+
+    body.dark-mode-grid .nx-sidebar ul a.active,
+    body.dark-mode-grid .nx-page-gridnav ul a.active {
+      color: var(--menu-text-active);
+    }
+
+
+    body.dark-mode-grid a[class*="-link"]:hover,
+    body.dark-mode-grid a[class*="link-"]:hover {
+      color: var(--menu-text-hover);
+    }
+

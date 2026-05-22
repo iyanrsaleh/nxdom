@@ -1,0 +1,2452 @@
+/*        body.dark-mode-grid {
+            background-color: #2D2D2D;
+            color: #ffffff;
+        }
+        
+        body.dark-mode-grid * {
+            color: inherit;
+        }
+
+        body.dark-mode-grid .sidebar-grid {
+            background-color:#2D2D2D;
+            color: #ffffff;
+        }
+
+
+
+
+
+*/
+
+
+
+
+:root {
+  /* Warna Dasar Dark Mode */
+  --dm-bg-main: #121212; /* Background paling gelap (untuk body) */
+  --dm-bg-card: #1e1e1e; /* Background kartu, sidebar, dll. */
+  --dm-bg-surface: #2c2c2c; /* Background elemen di atas kartu (input, header) */
+  --dm-bg-hover: #2a2a2a; /* Background saat hover (sedikit terang dari card) */
+  --dm-bg-input: #2c2c2c; /* Alias untuk bg input field (= bg-surface) */
+
+  /* Warna Teks Dark Mode */
+  --dm-text-main: #e0e0e0; /* Teks utama */
+  --dm-text-secondary: #a0a0a0; /* Teks sekunder/muted */
+  --dm-text-faint: #616161; /* Teks paling redup */
+  --dm-text-invert: #1e1e1e; /* Teks yang diletakkan di atas warna aksen terang */
+
+  /* Warna Border Dark Mode */
+  --dm-border: #3d3d3d; /* Border standar */
+  --dm-border-dark: #505050; /* Border yang sedikit lebih gelap */
+  
+  /* Aksen & Status Warna (Sesuai dengan Light Mode) */
+  --dm-blue-accent: #3f9eff; /* Darkened Blue dari --primary */
+  
+  --dm-primary: #3f9eff; 
+  --dm-secondary: #a0a0a0;
+  --dm-success: #38c172; /* Darkened Green */
+  --dm-info: #00e5ff; /* Darkened Cyan */
+  --dm-warning: #ffb74d; /* Darkened Yellow */
+  --dm-danger: #ef5350; /* Darkened Red */
+
+  /* Heatmap Preferences History (Prepereces) — kontras di atas --dm-bg-card */
+  --dm-gh-cell: #30363d;
+  --dm-gh-lv1: #196c2e;
+  --dm-gh-lv2: #238636;
+  --dm-gh-lv3: #2ea043;
+  --dm-gh-lv4: #56d364;
+}
+
+
+
+
+
+
+
+
+/*DARK MODE*/
+/* --- 1. GAYA DASAR (HTML & BODY) --- */
+
+body.dark-mode-grid {
+    /* Background utama (seringkali lebih gelap) */
+    background-color: var(--dm-bg-main) !important;
+    /* Warna teks default */
+    color: var(--dm-text-main) !important;
+}
+
+/* Support FOUC-prevention: class di <html> sebelum JS framework load */
+html.dark-mode-grid body {
+    background-color: var(--dm-bg-main) !important;
+    color: var(--dm-text-main) !important;
+}
+
+/* --- 2. WARNA TEKS UTILITY --- */
+
+body.dark-mode-grid .tx-primary { color: var(--dm-blue-accent) !important; }
+body.dark-mode-grid .tx-secondary { color: var(--dm-text-secondary) !important; }
+body.dark-mode-grid .tx-success { color: var(--dm-success) !important; }
+body.dark-mode-grid .tx-info { color: var(--dm-info) !important; }
+body.dark-mode-grid .tx-warning { color: var(--dm-warning) !important; }
+body.dark-mode-grid .tx-danger { color: var(--dm-danger) !important; }
+body.dark-mode-grid .tx-red { color: var(--dm-danger) !important; }
+body.dark-mode-grid .tx-light { color: var(--dm-text-faint) !important; }
+body.dark-mode-grid .tx-dark { color: var(--dm-text-main) !important; }
+body.dark-mode-grid .tx-white { color: var(--dm-text-main) !important; /* Atau warna terang jika di atas bg gelap */ }
+
+/* Warna teks untuk t-classes (yang tidak menggunakan variabel) */
+body.dark-mode-grid .t-danger { color: var(--dm-danger) !important; }
+body.dark-mode-grid .t-primary { color: var(--dm-blue-accent) !important; }
+body.dark-mode-grid .t-success { color: var(--dm-success) !important; }
+body.dark-mode-grid .t-warning { color: var(--dm-warning) !important; }
+body.dark-mode-grid .t-info { color: var(--dm-info) !important; }
+body.dark-mode-grid .t-secondary { color: var(--dm-text-secondary) !important; }
+body.dark-mode-grid .t-dark { color: var(--dm-text-main) !important; }
+body.dark-mode-grid .t-muted { color: var(--dm-text-faint) !important; }
+
+
+
+
+/* --- 2. SIDEBAR & NAVIGASI --- */
+
+body.dark-mode-grid .sidebar {
+    /* Background dan border sidebar */
+    background: var(--dm-bg-card) !important;
+    border-right: 1px solid var(--dm-border) !important;
+}
+
+body.dark-mode-grid .menu-toggle {
+    /* Tombol toggle menu */
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .menu-toggle:hover {
+    color: var(--dm-blue-accent) !important;
+}
+
+body.dark-mode-grid .sidebar-header {
+    border-bottom: 1px solid var(--dm-border) !important;
+}
+
+/* Brand/Logo */
+body.dark-mode-grid .sidebar .brand {
+    border-bottom: 1px solid var(--dm-border) !important;
+}
+
+body.dark-mode-grid .sidebar .brand-logo {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .sidebar .brand-logo span {
+    /* Warna aksen logo */
+    color: var(--dm-blue-accent) !important;
+}
+
+/* Profil Sidebar */
+body.dark-mode-grid .sidebar .profile {
+    border-bottom: 1px solid var(--dm-border) !important;
+}
+
+body.dark-mode-grid .sidebar .profile-info .name {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .sidebar .profile-info .role {
+    color: var(--dm-text-secondary) !important;
+}
+
+/* Navigasi */
+body.dark-mode-grid .nav-label {
+    /* Label grup navigasi */
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .nav-link {
+    /* Link navigasi default */
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nav-link:hover {
+    background-color: var(--dm-bg-hover) !important;
+}
+
+body.dark-mode-grid .nav-link.active {
+    /* Link aktif */
+    color: var(--dm-blue-accent) !important;
+    border-left: 3px solid var(--dm-blue-accent) !important;
+    background-color: var(--dm-bg-hover) !important; /* Background hover untuk active state */
+}
+
+body.dark-mode-grid .nav-link .material-symbols-outlined {
+    /* Icon navigasi default */
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .nav-link.active .material-symbols-outlined {
+    /* Icon navigasi aktif */
+    color: var(--dm-blue-accent) !important;
+}
+
+/* Icon apps/nav-link2 */
+body.dark-mode-grid .apps .material-symbols-outlined,
+body.dark-mode-grid .nav-link2 .material-symbols-outlined,
+body.dark-mode-grid .idsettings span {
+    background-color: var(--dm-bg-surface) !important;
+    color: var(--dm-text-secondary) !important;
+}
+
+/* Scrollbar Sidebar */
+body.dark-mode-grid .sidebar-body::-webkit-scrollbar-thumb {
+    background: var(--dm-border-dark) !important;
+}
+
+body.dark-mode-grid .sidebar-body::-webkit-scrollbar-thumb:hover {
+    background: var(--dm-text-faint) !important;
+}
+
+
+
+/* --- 3. MAIN CONTENT & HEADER --- */
+
+body.dark-mode-grid .main-content {
+    /* Main content tidak perlu background karena sudah diatur di body */
+}
+
+body.dark-mode-grid .header {
+    /* Header bar */
+    background: var(--dm-bg-card) !important;
+    border-bottom: 1px solid var(--dm-border) !important;
+}
+
+/* Search Box */
+body.dark-mode-grid .search-wrapper input {
+    /* Input search */
+    background: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .search-wrapper .material-symbols-outlined {
+    /* Icon search */
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .search-wrapper input::placeholder {
+    color: var(--dm-text-faint) !important;
+}
+
+/* Header Right Icons */
+body.dark-mode-grid .header-right .material-symbols-outlined {
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .header-right .material-symbols-outlined:hover {
+    color: var(--dm-blue-accent) !important;
+}
+
+
+/* --- 4. NOTIFIKASI & DROPDOWN --- */
+
+body.dark-mode-grid .notifications-dropdown {
+    /* Dropdown notifikasi */
+    background: var(--dm-bg-card) !important;
+    border: 1px solid var(--dm-border) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode-grid .notifications-header {
+    /* Header notifikasi */
+    background: var(--dm-bg-surface) !important;
+    border-bottom: 1px solid var(--dm-border) !important;
+}
+
+body.dark-mode-grid .notifications-header h4 {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .notifications-list {
+    /* List notifikasi */
+}
+
+body.dark-mode-grid .notifications-footer {
+    /* Footer notifikasi */
+    background: var(--dm-bg-surface) !important;
+    border-top: 1px solid var(--dm-border) !important;
+}
+
+body.dark-mode-grid .view-all-link {
+    color: var(--dm-blue-accent) !important;
+}
+
+
+
+/* --- 5. TOMBOL (NEXA STYLE) — DIHAPUS (intentional) ---
+   Permintaan user: semua button (`.btn`, `.btn-primary`, `.btn-secondary`,
+   `.btn-danger`, `.btn-success`, `.btn-outline`, dst.) tetap memakai
+   style asli Primer/light walaupun dark mode aktif.
+
+   Catatan: Section 13 (token overrides) menimpa `--control-borderColor-rest`
+   ke warna gelap (--dm-border) untuk kebutuhan form/input. Karena `.btn`
+   juga membaca variabel ini melalui `--button-default-borderColor-rest`,
+   border button bisa “menyatu” dengan latar gelap → tampak hilang saat
+   hover/normal. Solusi: scope-ulang variabel border control khusus
+   button kembali ke nilai Primer-light agar button tetap tampil utuh. */
+
+/* Tetap dipertahankan: nav-link aktif (bukan button) */
+body.dark-mode-grid .nav-link.active span {
+     color: var(--dm-blue-accent) !important;
+}
+
+/* Reset token border control khusus pada button agar tetap memakai
+   warna Primer-light. Tidak menyentuh bg/fg → button tampil apa adanya. */
+body.dark-mode-grid .btn,
+body.dark-mode-grid .Button,
+body.dark-mode-grid .BtnGroup-item {
+    --control-borderColor-rest: #d1d9e0;
+    --control-borderColor-active: #d1d9e0;
+    --button-default-borderColor-rest: #d1d9e0;
+    --button-default-borderColor-active: #d1d9e0;
+    --button-default-borderColor-hover: #d1d9e0;
+    --button-outline-borderColor-rest: #d1d9e0;
+    --button-outline-borderColor-hover: #d1d9e0;
+    --button-danger-borderColor-rest: #d1d9e0;
+}
+
+
+/* --- 6. GITHUB HEADER --- */
+
+body.dark-mode-grid .github-header {
+    background-color: var(--dm-bg-card) !important;
+    border-bottom: 1px solid var(--dm-border) !important;
+    --header-bgColor: var(--dm-bg-card);
+    --header-fgColor-default: var(--dm-text-main);
+}
+
+body.dark-mode-grid .github-header .Header-link,
+body.dark-mode-grid .github-header .octicon,
+body.dark-mode-grid .github-header .btn-octicon {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .github-header .header-search-wrap input,
+body.dark-mode-grid .github-header input[type="search"],
+body.dark-mode-grid .github-header input[type="text"] {
+    background: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+
+/* --- 7. SETTINGS PAGE (gh-* classes) --- */
+
+/* Nav tabs */
+body.dark-mode-grid .gh-settings__nav a {
+    background: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .gh-settings__nav a:hover {
+    background: var(--dm-bg-card) !important;
+}
+
+body.dark-mode-grid .gh-settings__nav a.active {
+    background: #2a1a14 !important;
+    border-color: #7a3520 !important;
+    color: #ff8c68 !important;
+}
+
+/* Title & lead */
+body.dark-mode-grid .gh-settings__title {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .gh-settings__lead,
+body.dark-mode-grid .gh-muted,
+body.dark-mode-grid .gh-note {
+    color: var(--dm-text-secondary) !important;
+}
+
+/* Cards */
+body.dark-mode-grid .gh-card {
+    border-color: var(--dm-border) !important;
+    background: var(--dm-bg-card) !important;
+}
+
+body.dark-mode-grid .gh-card__header {
+    background: var(--dm-bg-surface) !important;
+    border-bottom-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .gh-card__title {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .gh-card__body {
+    background: var(--dm-bg-card) !important;
+}
+
+/* Inputs */
+body.dark-mode-grid .gh-input {
+    background: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .gh-input:focus {
+    border-color: var(--dm-blue-accent) !important;
+    box-shadow: 0 0 0 3px rgba(63, 158, 255, 0.2) !important;
+}
+
+body.dark-mode-grid .gh-input[readonly],
+body.dark-mode-grid .gh-input[disabled] {
+    background: var(--dm-bg-main) !important;
+    color: var(--dm-text-faint) !important;
+}
+
+/* Password toggle button */
+body.dark-mode-grid .gh-toggle-pass {
+    background: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .gh-toggle-pass:hover {
+    background: var(--dm-bg-main) !important;
+}
+
+/* Labels */
+body.dark-mode-grid .gh-label {
+    color: var(--dm-text-main) !important;
+}
+
+/* Alert/info box */
+body.dark-mode-grid .gh-alert {
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .gh-alert .octicon {
+    color: var(--dm-blue-accent) !important;
+}
+
+/* Buttons */
+body.dark-mode-grid .gh-btn--primary {
+    background: #1a6632 !important;
+    color: #d0f0dc !important;
+    border-color: #2a7a42 !important;
+}
+
+body.dark-mode-grid .gh-btn--primary:hover {
+    background: #1f7a3c !important;
+}
+
+body.dark-mode-grid .gh-btn--secondary {
+    background: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .gh-btn--secondary:hover {
+    background: var(--dm-bg-main) !important;
+}
+
+
+/* --- 8. NAV CARD & GENERAL CARDS --- */
+
+body.dark-mode-grid .nav-card {
+    background: var(--dm-bg-card) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nav-group-title {
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .nav-item {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nav-item:hover {
+    background-color: var(--dm-bg-surface) !important;
+}
+
+body.dark-mode-grid .nav-item.active {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nav-item.active::before {
+    background-color: #fd8c73 !important;
+}
+
+
+/* --- 9. DROPDOWN MENU --- */
+
+body.dark-mode-grid .dropdown-menu {
+    background: var(--dm-bg-card) !important;
+    border-color: var(--dm-border) !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
+}
+
+body.dark-mode-grid .dropdown-item {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .dropdown-item:hover {
+    background-color: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .dropdown-menu a {
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .system-text {
+    color: var(--dm-text-faint) !important;
+}
+
+body.dark-mode-grid .dropdown-divider {
+    border-top-color: var(--dm-border) !important;
+}
+
+
+/* --- 10. PROFILE SECTION --- */
+
+body.dark-mode-grid .profile-info .name {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .profile-info .status {
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .more-icon {
+    color: var(--dm-text-secondary) !important;
+}
+
+
+/* --- 11. DIVIDER --- */
+
+body.dark-mode-grid .divider {
+    border-top-color: var(--dm-border) !important;
+}
+
+
+/* --- 12. NX SIDEBAR & NAV --- */
+
+body.dark-mode-grid .nx-nav-item {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nx-nav-item i {
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .nx-nav-item:hover {
+    background: var(--dm-bg-surface) !important;
+}
+
+body.dark-mode-grid .nx-nav-item.active {
+    color: var(--dm-blue-accent) !important;
+}
+
+body.dark-mode-grid .nx-nav-group a {
+    color: var(--dm-text-main) !important;
+}
+
+
+/* ============================================================
+   13. PRIMER & NEXA TOKEN OVERRIDES — Dark Mode
+   Banyak komponen (tables, forms, branch, dll) memakai CSS variables
+   Primer/Nexa. Dengan menimpa nilai variabel ini saat dark-mode aktif,
+   semua komponen yang membaca variabel tersebut langsung ikut gelap.
+   ============================================================ */
+html.dark-mode-grid body,
+body.dark-mode-grid {
+    /* Primer color tokens (.table, .form-control, .branch-name, dll) */
+    --bgColor-default: var(--dm-bg-card) !important;
+    --bgColor-muted: var(--dm-bg-surface) !important;
+    --bgColor-accent-muted: rgba(63, 158, 255, 0.16) !important;
+    --color-canvas-default: var(--dm-bg-card) !important;
+    --color-canvas-subtle: var(--dm-bg-main) !important;
+    --color-canvas-inset: var(--dm-bg-surface) !important;
+    --fgColor-default: var(--dm-text-main) !important;
+    --fgColor-muted: var(--dm-text-secondary) !important;
+    --fgColor-accent: var(--dm-blue-accent) !important;
+    --color-fg-default: var(--dm-text-main) !important;
+    --color-fg-muted: var(--dm-text-secondary) !important;
+    --color-accent-fg: var(--dm-blue-accent) !important;
+    --color-accent-subtle: rgba(63, 158, 255, 0.16) !important;
+    --borderColor-default: var(--dm-border) !important;
+    --borderColor-muted: var(--dm-border) !important;
+    --color-border-default: var(--dm-border) !important;
+    --color-border-muted: var(--dm-border) !important;
+    --control-borderColor-rest: var(--dm-border) !important;
+    --focus-outlineColor: var(--dm-blue-accent) !important;
+    --color-shadow-small: 0 1px 0 rgba(0, 0, 0, 0.3) !important;
+    --color-shadow-medium: 0 3px 6px rgba(0, 0, 0, 0.4) !important;
+    --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.02) !important;
+    --color-primer-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.02) !important;
+
+    /* Nexa custom tokens (dipakai .nx-table) */
+    --nx-white: var(--dm-bg-card) !important;
+    --nx-gray-25: var(--dm-bg-surface) !important;
+    --nx-gray-50: var(--dm-bg-surface) !important;
+    --nx-gray-75: var(--dm-border) !important;
+    --nx-gray-100: var(--dm-border) !important;
+    --nx-gray-600: var(--dm-text-secondary) !important;
+    --nx-gray-700: var(--dm-text-main) !important;
+    --nx-text-primary: var(--dm-text-main) !important;
+    --nx-primary-dark: var(--dm-blue-accent) !important;
+
+    /* Nexa card tokens */
+    --nx-card-bg: var(--dm-bg-card) !important;
+    --nx-card-border-color: var(--dm-border) !important;
+    --text-primary: var(--dm-text-main) !important;
+    --text-secondary: var(--dm-text-secondary) !important;
+}
+
+
+/* ============================================================
+   14. TABLES (.nx-table & .table) — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .nx-table,
+body.dark-mode-grid .table {
+    background-color: var(--dm-bg-card) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nx-table thead,
+body.dark-mode-grid .table thead,
+body.dark-mode-grid .nx-table thead tr,
+body.dark-mode-grid .table thead tr {
+    background-color: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nx-table th,
+body.dark-mode-grid .table th {
+    background-color: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nx-table td,
+body.dark-mode-grid .table td {
+    background-color: transparent !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nx-table tbody tr,
+body.dark-mode-grid .table tbody tr {
+    background-color: var(--dm-bg-card) !important;
+}
+
+body.dark-mode-grid .nx-table tbody tr:nth-child(odd),
+body.dark-mode-grid .nx-table-striped tbody tr:nth-child(odd),
+body.dark-mode-grid .table-striped tbody tr:nth-child(even) {
+    background-color: var(--dm-bg-surface) !important;
+}
+
+body.dark-mode-grid .nx-table tbody tr:hover,
+body.dark-mode-grid .nx-table-hover tbody tr:hover,
+body.dark-mode-grid .table-hover tbody tr:hover {
+    background-color: rgba(63, 158, 255, 0.08) !important;
+}
+
+body.dark-mode-grid .nx-table-bordered th,
+body.dark-mode-grid .nx-table-bordered td,
+body.dark-mode-grid .table-bordered th,
+body.dark-mode-grid .table-bordered td {
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nx-table td:first-child {
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .nx-table-success { background-color: rgba(56, 193, 114, 0.12) !important; }
+body.dark-mode-grid .nx-table-warning { background-color: rgba(255, 183, 77, 0.12) !important; }
+body.dark-mode-grid .nx-table-danger  { background-color: rgba(239, 83, 80, 0.12) !important; }
+
+body.dark-mode-grid .nx-table-sortable th.sortable:hover {
+    background-color: var(--dm-bg-main) !important;
+}
+
+body.dark-mode-grid .nx-table-header-primary thead {
+    background-color: var(--dm-blue-accent) !important;
+    color: var(--dm-text-invert) !important;
+}
+
+
+/* ============================================================
+   15. PAGINATION — Dark Mode (override hardcoded #fff/#666/#ddd)
+   ============================================================ */
+body.dark-mode-grid .pagination .page-link {
+    color: var(--dm-text-main) !important;
+    background-color: var(--dm-bg-card) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .pagination .page-link:hover:not(.disabled) {
+    background-color: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border-dark) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .pagination .page-link.active,
+body.dark-mode-grid .pagination .page-item.active .page-link {
+    background-color: var(--dm-blue-accent) !important;
+    border-color: var(--dm-blue-accent) !important;
+    color: var(--dm-text-invert) !important;
+}
+
+body.dark-mode-grid .pagination .page-item.disabled .page-link {
+    color: var(--dm-text-faint) !important;
+    background-color: var(--dm-bg-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .pagination .page-link:focus {
+    box-shadow: 0 0 0 2px rgba(63, 158, 255, 0.35) !important;
+}
+
+body.dark-mode-grid .page-info {
+    color: var(--dm-text-secondary) !important;
+}
+
+
+/* ============================================================
+   16. FORMS / INPUTS — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .form-control,
+body.dark-mode-grid .form-select,
+body.dark-mode-grid .form-nexa-control,
+body.dark-mode-grid .input-monospace,
+body.dark-mode-grid input[type="text"],
+body.dark-mode-grid input[type="search"],
+body.dark-mode-grid input[type="email"],
+body.dark-mode-grid input[type="password"],
+body.dark-mode-grid input[type="number"],
+body.dark-mode-grid input[type="url"],
+body.dark-mode-grid input[type="tel"],
+body.dark-mode-grid input[type="date"],
+body.dark-mode-grid textarea,
+body.dark-mode-grid select {
+    background-color: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .form-control:focus,
+body.dark-mode-grid .form-select:focus,
+body.dark-mode-grid .form-nexa-control:focus,
+body.dark-mode-grid input:focus,
+body.dark-mode-grid textarea:focus,
+body.dark-mode-grid select:focus {
+    border-color: var(--dm-blue-accent) !important;
+    box-shadow: inset 0 0 0 1px var(--dm-blue-accent) !important;
+}
+
+body.dark-mode-grid .form-control::placeholder,
+body.dark-mode-grid .form-nexa-control::placeholder,
+body.dark-mode-grid input::placeholder,
+body.dark-mode-grid textarea::placeholder {
+    color: var(--dm-text-faint) !important;
+}
+
+body.dark-mode-grid .form-control[disabled],
+body.dark-mode-grid .form-control[readonly],
+body.dark-mode-grid input[disabled],
+body.dark-mode-grid input[readonly],
+body.dark-mode-grid textarea[disabled] {
+    background-color: var(--dm-bg-main) !important;
+    color: var(--dm-text-faint) !important;
+}
+
+body.dark-mode-grid label,
+body.dark-mode-grid .form-group-header label {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .note,
+body.dark-mode-grid .form-note {
+    color: var(--dm-text-secondary) !important;
+}
+
+
+/* ============================================================
+   17. CARDS (NEXA) — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .nx-card,
+body.dark-mode-grid .nx-card-form {
+    background-color: var(--dm-bg-card) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nx-card-header,
+body.dark-mode-grid .nx-card-footer {
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nx-card-title,
+body.dark-mode-grid .nx-card-text,
+body.dark-mode-grid .nx-card-body {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nx-card-borderless {
+    background: var(--dm-bg-surface) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode-grid .nx-card-minimized {
+    background: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nx-card-menu {
+    background: var(--dm-bg-card) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+
+/* ============================================================
+   18. MODAL — Dark Mode
+   ============================================================ */
+/* Wrapper dialog & content dibuat transparan agar tidak menimbulkan
+   "double layer" gelap di belakang modal. Yang membentuk tampilan
+   kartu modal adalah .nx-modal-header / .nx-modal-body / .nx-modal-footer
+   yang masing-masing punya background sendiri. */
+body.dark-mode-grid .nx-modal-dialog,
+body.dark-mode-grid .nx-modal-content {
+    background-color: #1e1e1e00 !important;
+    color: var(--dm-text-main) !important;
+    border-color: #3d3d3d00 !important;
+}
+
+body.dark-mode-grid .nx-modal-header,
+body.dark-mode-grid .nx-modal-footer {
+    background-color: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+
+/* Tombol footer: Batal / sekunder (hanya `.btn` atau `.btn-secondary`) sering
+   masih memakai background putih Primer — selaraskan dengan footer gelap.
+   Sumber: NexaForm.js (`.form-footer` + `.form-footer-buttons`), NexaModal.js
+   (`.nx-modal-footer` + `.nx-footer-buttons`, cancel = `.btn.btn-secondary`). */
+body.dark-mode-grid .form-footer .form-footer-buttons .btn:not(.btn-primary):not(.btn-danger):not(.btn-success),
+body.dark-mode-grid .form-footer-buttons .btn:not(.btn-primary):not(.btn-danger):not(.btn-success),
+body.dark-mode-grid .nx-modal-footer .nx-footer-buttons .btn:not(.btn-primary):not(.btn-danger):not(.btn-success) {
+    background-color: var(--dm-bg-card) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+    box-shadow: none !important;
+}
+body.dark-mode-grid .form-footer .form-footer-buttons .btn:not(.btn-primary):not(.btn-danger):not(.btn-success):hover,
+body.dark-mode-grid .form-footer-buttons .btn:not(.btn-primary):not(.btn-danger):not(.btn-success):hover,
+body.dark-mode-grid .nx-modal-footer .nx-footer-buttons .btn:not(.btn-primary):not(.btn-danger):not(.btn-success):hover {
+    background-color: var(--dm-bg-hover) !important;
+    border-color: var(--dm-border-dark) !important;
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid .form-footer .form-footer-buttons .btn.btn-outline,
+body.dark-mode-grid .form-footer-buttons .btn.btn-outline,
+body.dark-mode-grid .nx-modal-footer .btn.btn-outline {
+    background-color: transparent !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nx-modal-title {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nx-modal-body {
+    color: var(--dm-text-main) !important;
+    background-color: var(--dm-bg-card) !important;
+}
+
+body.dark-mode-grid .nx-modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* PENTING: jangan beri background di .nx-modal (full-viewport container).
+   `.nx-modal` punya pseudo `::before` (position:absolute, z-index:-1,
+   background:inherit) yang akan mewarisi warna dan menjadikan kotak
+   gelap besar di belakang dialog. Cukup `.nx-modal-backdrop` untuk
+   overlay, dan `.nx-modal-content` untuk panel dialog. */
+body.dark-mode-grid .nx-modal {
+    background-color: transparent !important;
+}
+body.dark-mode-grid .nx-modal::before {
+    background: transparent !important;
+}
+
+/* Tombol close & minimize di header */
+body.dark-mode-grid .nx-modal-close,
+body.dark-mode-grid .nx-modal-minimize {
+    color: var(--dm-text-secondary) !important;
+    background: transparent !important;
+}
+body.dark-mode-grid .nx-modal-close:hover,
+body.dark-mode-grid .nx-modal-minimize:hover {
+    color: var(--dm-text-main) !important;
+    background-color: rgba(255, 255, 255, 0.06) !important;
+}
+body.dark-mode-grid .nx-modal-close:active,
+body.dark-mode-grid .nx-modal-minimize:active {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Scrollbar di body modal */
+body.dark-mode-grid .nx-modal-body::-webkit-scrollbar-track {
+    background: var(--dm-bg-card) !important;
+}
+body.dark-mode-grid .nx-modal-body::-webkit-scrollbar-thumb {
+    background-color: var(--dm-border-dark) !important;
+    border: 1px solid var(--dm-bg-card) !important;
+}
+body.dark-mode-grid .nx-modal-body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--dm-text-faint) !important;
+}
+
+/* Minimized modal item (taskbar) */
+body.dark-mode-grid .nx-modal-minimized {
+    background: linear-gradient(135deg, #1f6feb 0%, #1a5de6 100%) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+    color: #ffffff !important;
+}
+body.dark-mode-grid .nx-modal-minimized:hover {
+    background: linear-gradient(135deg, #1a5de6 0%, #1450d1 100%) !important;
+}
+body.dark-mode-grid .nx-minimized-close {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+}
+body.dark-mode-grid .nx-minimized-close:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+}
+
+
+/* ============================================================
+   19. SELECT2 — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .select2-container--default .select2-selection,
+body.dark-mode-grid .select2-container--default .select2-selection--single,
+body.dark-mode-grid .select2-container--default .select2-selection--multiple {
+    background-color: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .select2-container--default .select2-selection--single .select2-selection__rendered,
+body.dark-mode-grid .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: var(--dm-bg-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .select2-dropdown {
+    background-color: var(--dm-bg-card) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .select2-results__option {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .select2-container--default .select2-results__option--highlighted[aria-selected],
+body.dark-mode-grid .select2-results__option[aria-selected="true"] {
+    background-color: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .select2-search--dropdown .select2-search__field {
+    background-color: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+
+
+/* ============================================================
+   20. TOOLTIPS, TOASTS, TAGS, LABELS, BRANCH — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .tooltip,
+body.dark-mode-grid .nx-tooltip,
+body.dark-mode-grid .tooltipped::before,
+body.dark-mode-grid .tooltipped::after {
+    background-color: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .toast,
+body.dark-mode-grid .nx-toast {
+    background-color: var(--dm-bg-card) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nx-tag,
+body.dark-mode-grid .tag-item,
+body.dark-mode-grid .Label,
+body.dark-mode-grid .IssueLabel {
+    background-color: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .branch-name {
+    color: var(--dm-text-main) !important;
+    background-color: rgba(63, 158, 255, 0.16) !important;
+}
+
+body.dark-mode-grid a.branch-name {
+    color: var(--dm-blue-accent) !important;
+}
+
+
+/* ============================================================
+   21. NOTIFIKASI / INFO BOX — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .nx-notif,
+body.dark-mode-grid .nx-notif-info,
+body.dark-mode-grid .nx-notif-success,
+body.dark-mode-grid .nx-notif-warning,
+body.dark-mode-grid .nx-notif-danger {
+    background-color: var(--dm-bg-card) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+
+/* ============================================================
+   22. SCROLLBAR (umum) — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .nx-scroll::-webkit-scrollbar-thumb,
+body.dark-mode-grid .nx-scroll-thin::-webkit-scrollbar-thumb {
+    background: var(--dm-border-dark) !important;
+}
+
+body.dark-mode-grid .nx-scroll::-webkit-scrollbar-thumb:hover,
+body.dark-mode-grid .nx-scroll-thin::-webkit-scrollbar-thumb:hover {
+    background: var(--dm-text-faint) !important;
+}
+
+body.dark-mode-grid .nx-scroll::-webkit-scrollbar-track,
+body.dark-mode-grid .nx-scroll-thin::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+
+/* ============================================================
+   23. UTILITY CLASSES (f-* / text-*) — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .f-default,
+body.dark-mode-grid .f-mono,
+body.dark-mode-grid .f-bold {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .f-muted,
+body.dark-mode-grid .text-muted {
+    color: var(--dm-text-secondary) !important;
+}
+
+
+/* ============================================================
+   24. GRID/index.css — token & link tambahan
+   `--nx-tabel-*` (beda dari --nx-gray-*) belum di-override.
+   ============================================================ */
+html.dark-mode-grid body,
+body.dark-mode-grid {
+    --nx-tabel-25: var(--dm-bg-surface) !important;
+    --nx-tabel-50: var(--dm-bg-surface) !important;
+    --nx-tabel-75: var(--dm-border) !important;
+    --nx-tabel-600: var(--dm-text-secondary) !important;
+    --nx-tabel-700: var(--dm-text-main) !important;
+    --nx-card-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+    --nx-card-hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
+    --nx-text-primary: var(--dm-text-main) !important;
+    --nx-primary-dark: var(--dm-blue-accent) !important;
+}
+
+/* Anchor color — KECUALIKAN element yang berperan sebagai button.
+   Tanpa :not() ini, semua <a class="btn-*"> akan kena warna biru
+   sehingga teks button hijau/merah/dst jadi biru saat rest/hover. */
+body.dark-mode-grid a:not(.Header-link):not(.nx-nav-item):not(.btn):not(.btn-primary):not(.btn-outline):not(.btn-danger):not(.btn-sm):not(.btn-large):not(.btn-block):not(.btn-link):not(.btn-invisible):not(.btn-octicon):not(.close-button):not(.BtnGroup-item) {
+    color: var(--dm-blue-accent) !important;
+}
+
+body.dark-mode-grid a:not(.Header-link):not(.nx-nav-item):not(.btn):not(.btn-primary):not(.btn-outline):not(.btn-danger):not(.btn-sm):not(.btn-large):not(.btn-block):not(.btn-link):not(.btn-invisible):not(.btn-octicon):not(.close-button):not(.BtnGroup-item):hover {
+    color: #6cb2ff !important; /* lebih terang dari --dm-blue-accent saat hover */
+}
+
+body.dark-mode-grid hr {
+    border-color: var(--dm-border) !important;
+}
+
+
+/* ============================================================
+   25. CHECK / SWITCH (check/index.css) — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .nx-switch-item label {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nx-switch {
+    background: var(--dm-bg-surface) !important;
+}
+
+body.dark-mode-grid .nx-switch::after {
+    background: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nx-switch-item label:hover .nx-switch {
+    background: var(--dm-border-dark) !important;
+}
+
+body.dark-mode-grid .nx-switch-item input:checked ~ label .nx-switch {
+    background: var(--dm-blue-accent) !important;
+}
+
+body.dark-mode-grid .nx-switch-item input:checked ~ label:hover .nx-switch {
+    background: #6cb2ff !important;
+}
+
+
+/* ============================================================
+   26. NOTIFIKASI (notifikasi/index.css) — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .nx-notif-card {
+    background-color: var(--dm-bg-card) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode-grid .nx-notif-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode-grid .nx-notif-title {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nx-notif-subtitle {
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .nx-notif-action-btn {
+    background: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nx-notif-action-btn:hover {
+    background-color: var(--dm-bg-main) !important;
+    border-color: var(--dm-border-dark) !important;
+}
+
+body.dark-mode-grid .nx-notif-action-btn:active {
+    background-color: var(--dm-bg-card) !important;
+}
+
+body.dark-mode-grid .nx-notif-trigger-btn {
+    background-color: var(--dm-blue-accent) !important;
+    color: var(--dm-text-invert) !important;
+}
+
+body.dark-mode-grid .nx-notif-trigger-btn:hover {
+    background-color: #6cb2ff !important;
+}
+
+
+/* ============================================================
+   27. TAGS (tags/index.css) — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .nx-tag {
+    background: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nx-tag.nx-tag-active {
+    background: rgba(63, 158, 255, 0.16) !important;
+    color: var(--dm-blue-accent) !important;
+    border-color: var(--dm-blue-accent) !important;
+}
+
+body.dark-mode-grid .nx-tag .nx-tag-remove {
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .nx-tag .nx-tag-remove:hover {
+    color: var(--dm-danger) !important;
+}
+
+body.dark-mode-grid .nx-tag-input {
+    color: var(--dm-text-main) !important;
+}
+
+
+/* ============================================================
+   28. SCROLLBAR (scroll/index.css) — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .nx-scroll::-webkit-scrollbar-track,
+body.dark-mode-grid .nx-scroll-x::-webkit-scrollbar-track {
+    background: var(--dm-bg-main) !important;
+}
+
+body.dark-mode-grid .nx-scroll::-webkit-scrollbar-thumb,
+body.dark-mode-grid .nx-scroll-x::-webkit-scrollbar-thumb {
+    background: var(--dm-border-dark) !important;
+}
+
+body.dark-mode-grid .nx-scroll::-webkit-scrollbar-thumb:hover,
+body.dark-mode-grid .nx-scroll-x::-webkit-scrollbar-thumb:hover {
+    background: var(--dm-text-faint) !important;
+}
+
+body.dark-mode-grid .nx-scroll-rounded::-webkit-scrollbar-track {
+    background: var(--dm-bg-main) !important;
+}
+
+body.dark-mode-grid .nx-scroll-rounded::-webkit-scrollbar-thumb {
+    background: var(--dm-border-dark) !important;
+    border: 3px solid var(--dm-bg-main) !important;
+}
+
+body.dark-mode-grid .nx-scroll-rounded::-webkit-scrollbar-thumb:hover {
+    background: var(--dm-text-faint) !important;
+}
+
+
+/* ============================================================
+   29. EDITOR (editor/index.css) — Dark Mode
+   ============================================================ */
+body.dark-mode-grid .nexa-editor-toolbar {
+    background: var(--dm-bg-surface) !important;
+    border-bottom-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nexa-editor-btn {
+    background: transparent !important;
+    color: var(--dm-text-main) !important;
+    border-color: transparent !important;
+}
+
+body.dark-mode-grid .nexa-editor-btn:hover {
+    background: var(--dm-bg-main) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nexa-editor-btn:active {
+    background: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nexa-editor-format-select {
+    background: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nexa-editor-separator {
+    color: var(--dm-border-dark) !important;
+}
+
+body.dark-mode-grid .nexa-editor-content {
+    color: var(--dm-text-main) !important;
+}
+
+
+/* ============================================================
+   30. PRISM (prism/index.css) — Dark Mode (code highlighting)
+   ============================================================ */
+body.dark-mode-grid code[class*="language-"],
+body.dark-mode-grid pre[class*="language-"] {
+    color: var(--dm-text-main) !important;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.4) !important;
+    background: transparent !important;
+}
+
+body.dark-mode-grid code[class*="language-"] ::-moz-selection,
+body.dark-mode-grid code[class*="language-"]::-moz-selection,
+body.dark-mode-grid pre[class*="language-"] ::-moz-selection,
+body.dark-mode-grid pre[class*="language-"]::-moz-selection,
+body.dark-mode-grid code[class*="language-"] ::selection,
+body.dark-mode-grid code[class*="language-"]::selection,
+body.dark-mode-grid pre[class*="language-"] ::selection,
+body.dark-mode-grid pre[class*="language-"]::selection {
+    background: rgba(63, 158, 255, 0.35) !important;
+}
+
+body.dark-mode-grid :not(pre) > code[class*="language-"] {
+    background: var(--dm-bg-surface) !important;
+}
+
+/* Token color tweaks supaya lebih terbaca di background gelap */
+body.dark-mode-grid .token.cdata,
+body.dark-mode-grid .token.comment,
+body.dark-mode-grid .token.doctype,
+body.dark-mode-grid .token.prolog {
+    color: #8b949e !important;
+}
+body.dark-mode-grid .token.punctuation { color: #c9d1d9 !important; }
+body.dark-mode-grid .token.property,
+body.dark-mode-grid .token.tag,
+body.dark-mode-grid .token.boolean,
+body.dark-mode-grid .token.number,
+body.dark-mode-grid .token.constant,
+body.dark-mode-grid .token.symbol,
+body.dark-mode-grid .token.deleted { color: #79c0ff !important; }
+body.dark-mode-grid .token.selector,
+body.dark-mode-grid .token.attr-name,
+body.dark-mode-grid .token.string,
+body.dark-mode-grid .token.char,
+body.dark-mode-grid .token.builtin,
+body.dark-mode-grid .token.inserted { color: #a5d6ff !important; }
+body.dark-mode-grid .token.operator,
+body.dark-mode-grid .token.entity,
+body.dark-mode-grid .token.url {
+    color: #ff7b72 !important;
+    background: transparent !important;
+    text-shadow: none !important;
+}
+body.dark-mode-grid .token.atrule,
+body.dark-mode-grid .token.attr-value,
+body.dark-mode-grid .token.keyword { color: #ff7b72 !important; }
+body.dark-mode-grid .token.function,
+body.dark-mode-grid .token.class-name { color: #d2a8ff !important; }
+body.dark-mode-grid .token.regex,
+body.dark-mode-grid .token.important,
+body.dark-mode-grid .token.variable { color: #ffa657 !important; }
+
+
+/* ============================================================
+   31. NEXA TREE (tree/index.css) — definisi token global --tv-*
+   tree/index.css membaca --tv-* tapi nilainya hanya didefinisikan di
+   template literal TabelView. Saat tree dipakai di tempat lain, kita
+   beri nilai default agar tetap tampil benar di dark-mode.
+   ============================================================ */
+html.dark-mode-grid body,
+body.dark-mode-grid {
+    --tv-canvas: var(--dm-bg-main);
+    --tv-surface: var(--dm-bg-card);
+    --tv-surface-muted: var(--dm-bg-surface);
+    --tv-border: var(--dm-border);
+    --tv-border-muted: var(--dm-border);
+    --tv-text: var(--dm-text-main);
+    --tv-text-muted: var(--dm-text-secondary);
+    --tv-accent: var(--dm-blue-accent);
+    --tv-accent-muted: rgba(63, 158, 255, 0.16);
+    --tv-success: var(--dm-success);
+    --tv-shadow: none;
+    --tv-panel-shadow: 0 0 0 1px var(--dm-border);
+}
+
+body.dark-mode-grid .nexa-tree-leaf-title,
+body.dark-mode-grid .nexa-tree-label {
+    color: var(--dm-text-main) !important;
+}
+
+
+/* ============================================================
+   32. JSON viewer (Json/jsonbundle.css)
+   Di dark-mode: panel lebih terang dari inset kartu + tanpa bayangan teks/box
+   berlebihan (jsonbundle .light punya text-shadow & inset kuat).
+   ============================================================ */
+body.dark-mode-grid json-viewer.light {
+    /* Shadow DOM membaca --background-color (inline light = transparan → terlihat “tembus” gelap) */
+    --background-color: #3f4656 !important;
+    --color: #f1f5f9 !important;
+    --property-color: #7dd3fc !important;
+    --string-color: #86efac !important;
+    --number-color: #fcd34d !important;
+    --boolean-color: #c4b5fd !important;
+    --null-color: #f0abfc !important;
+    --preview-color: rgba(226, 232, 240, 0.72) !important;
+    --highlight-color: rgba(253, 230, 138, 0.18) !important;
+    --outline-color: rgba(255, 255, 255, 0.12) !important;
+    --indentguide-color: rgba(255, 255, 255, 0.12) !important;
+    --indentguide-color-active: rgba(255, 255, 255, 0.28) !important;
+    color: #f1f5f9 !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+body.dark-mode-grid json-viewer.light .json-key,
+body.dark-mode-grid json-viewer.light .json-string,
+body.dark-mode-grid json-viewer.light .json-number,
+body.dark-mode-grid json-viewer.light .json-boolean,
+body.dark-mode-grid json-viewer.light .json-null,
+body.dark-mode-grid json-viewer.light .json-toggle,
+body.dark-mode-grid json-viewer.light .json-bracket,
+body.dark-mode-grid json-viewer.light .json-comma {
+    text-shadow: none !important;
+}
+
+body.dark-mode-grid json-viewer.light .json-expandable {
+    border-left: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    padding-left: 8px;
+}
+
+body.dark-mode-grid json-viewer.light .json-expandable:hover {
+    background-color: rgba(255, 255, 255, 0.07) !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode-grid json-viewer.light .json-toggle:hover {
+    transform: none !important;
+    text-shadow: none !important;
+}
+
+body.dark-mode-grid json-viewer.light * {
+    -webkit-text-stroke: 0 transparent !important;
+}
+
+
+/* ============================================================
+   33. HIGHLIGHT (Highlight/index.css) — copy button & inline code
+   ============================================================ */
+body.dark-mode-grid .nexaHighlig-inline {
+    background: var(--dm-bg-surface) !important;
+    color: #ff7b72 !important;
+}
+
+
+/* ============================================================
+   34. forms/form.css — Custom checkbox / radio (legacy)
+   File `forms/form.css` punya custom checkbox & radio yang dibuat
+   via `::before` (kotak/lingkaran) dan `::after` (centang). Bagian
+   ini hardcoded `#fff` background / `#d1d5db` border / `#212529`
+   text dan tidak punya selector `body.dark-mode-grid`.
+   ============================================================ */
+
+/* Label & teks */
+body.dark-mode-grid .form-nexa label,
+body.dark-mode-grid .form-nexa-group label,
+body.dark-mode-grid .form-nexa-check-label,
+body.dark-mode-grid .form-checkbox label,
+body.dark-mode-grid .form-nexa-radio-label,
+body.dark-mode-grid .form-radio label {
+    color: var(--dm-text-main) !important;
+}
+
+/* Default unchecked: kotak/lingkaran (pakai ::before) */
+body.dark-mode-grid .form-nexa-check-label::before,
+body.dark-mode-grid .form-checkbox label::before,
+body.dark-mode-grid .form-nexa-radio-label::before,
+body.dark-mode-grid .form-radio label::before {
+    background-color: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+}
+
+/* Hover unchecked */
+body.dark-mode-grid .form-nexa-check-input:not(:disabled):not(:checked) ~ .form-nexa-check-label:hover::before,
+body.dark-mode-grid .form-checkbox input[type=checkbox]:not(:disabled):not(:checked) ~ label:hover::before,
+body.dark-mode-grid .form-nexa-radio-input:not(:disabled):not(:checked) ~ .form-nexa-radio-label:hover::before,
+body.dark-mode-grid .form-radio input[type=radio]:not(:disabled):not(:checked) ~ label:hover::before {
+    border-color: var(--dm-text-secondary) !important;
+    background-color: var(--dm-bg-main) !important;
+}
+
+/* Checked state — biarkan biru (#3b82f6) tapi pastikan border match */
+body.dark-mode-grid .form-nexa-check-input:checked ~ .form-nexa-check-label::before,
+body.dark-mode-grid .form-checkbox input[type=checkbox]:checked ~ label::before,
+body.dark-mode-grid .form-nexa-radio-input:checked ~ .form-nexa-radio-label::before,
+body.dark-mode-grid .form-radio input[type=radio]:checked ~ label::before {
+    background-color: var(--dm-blue-accent) !important;
+    border-color: var(--dm-blue-accent) !important;
+}
+
+/* Checked hover */
+body.dark-mode-grid .form-nexa-check-input:not(:disabled):checked ~ .form-nexa-check-label:hover::before,
+body.dark-mode-grid .form-checkbox input[type=checkbox]:not(:disabled):checked ~ label:hover::before,
+body.dark-mode-grid .form-nexa-radio-input:not(:disabled):checked ~ .form-nexa-radio-label:hover::before,
+body.dark-mode-grid .form-radio input[type=radio]:not(:disabled):checked ~ label:hover::before {
+    background-color: #6cb2ff !important;
+    border-color: #6cb2ff !important;
+}
+
+/* Focus ring */
+body.dark-mode-grid .form-nexa-check-input:focus ~ .form-nexa-check-label::before,
+body.dark-mode-grid .form-checkbox input[type=checkbox]:focus ~ label::before,
+body.dark-mode-grid .form-nexa-radio-input:focus ~ .form-nexa-radio-label::before,
+body.dark-mode-grid .form-radio input[type=radio]:focus ~ label::before {
+    box-shadow: 0 0 0 3px rgba(63, 158, 255, 0.25) !important;
+}
+
+/* Disabled state */
+body.dark-mode-grid .form-nexa-check-input:disabled ~ .form-nexa-check-label,
+body.dark-mode-grid .form-checkbox input[type=checkbox]:disabled ~ label,
+body.dark-mode-grid .form-nexa-radio-input:disabled ~ .form-nexa-radio-label,
+body.dark-mode-grid .form-radio input[type=radio]:disabled ~ label {
+    color: var(--dm-text-faint) !important;
+}
+
+body.dark-mode-grid .form-nexa-check-input:disabled ~ .form-nexa-check-label::before,
+body.dark-mode-grid .form-checkbox input[type=checkbox]:disabled ~ label::before,
+body.dark-mode-grid .form-nexa-radio-input:disabled ~ .form-nexa-radio-label::before,
+body.dark-mode-grid .form-radio input[type=radio]:disabled ~ label::before {
+    background-color: var(--dm-bg-main) !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .form-nexa-check-input:disabled:checked ~ .form-nexa-check-label::before,
+body.dark-mode-grid .form-checkbox input[type=checkbox]:disabled:checked ~ label::before,
+body.dark-mode-grid .form-nexa-radio-input:disabled:checked ~ .form-nexa-radio-label::before,
+body.dark-mode-grid .form-radio input[type=radio]:disabled:checked ~ label::before {
+    background-color: var(--dm-text-faint) !important;
+    border-color: var(--dm-text-faint) !important;
+}
+
+/* Radio dot center (::after lingkaran kecil putih di tengah) */
+body.dark-mode-grid .form-nexa-radio-input:checked ~ .form-nexa-radio-label::after,
+body.dark-mode-grid .form-radio input[type=radio]:checked ~ label::after {
+    background-color: var(--dm-text-invert) !important;
+}
+
+
+/* ============================================================
+   35. forms/form.css — Floating Label
+   ============================================================ */
+body.dark-mode-grid .form-nexa-floating label,
+body.dark-mode-grid .form-floating label {
+    color: var(--dm-text-secondary) !important;
+}
+
+/* Saat label naik ke atas (focus / has-value) — label punya background
+   untuk "memotong" border input. Di dark perlu pakai bg card. */
+body.dark-mode-grid .form-nexa-floating .form-nexa-control:focus ~ label,
+body.dark-mode-grid .form-nexa-floating .form-nexa-control:not(:placeholder-shown) ~ label,
+body.dark-mode-grid .form-nexa-floating .form-nexa-control:valid ~ label,
+body.dark-mode-grid .form-nexa-floating input[type="number"]:not([value=""]) ~ label,
+body.dark-mode-grid .form-nexa-floating input[type="number"]:focus ~ label,
+body.dark-mode-grid .form-nexa-floating input[type="number"]:valid ~ label,
+body.dark-mode-grid .form-nexa-floating select:focus ~ label,
+body.dark-mode-grid .form-nexa-floating select:valid ~ label,
+body.dark-mode-grid .form-nexa-floating select:not([value=""]) ~ label,
+body.dark-mode-grid .form-nexa-floating label.active,
+body.dark-mode-grid .form-floating .form-control:focus ~ label,
+body.dark-mode-grid .form-floating .form-control:not(:placeholder-shown) ~ label,
+body.dark-mode-grid .form-floating label.active {
+    background-color: var(--dm-bg-card) !important;
+    color: var(--dm-blue-accent) !important;
+}
+
+
+/* ============================================================
+   36. forms/form.css — Validation feedback colors
+   `.is-invalid ~ .invalid-feedback` (#f44336) & `.is-valid` (#4caf50)
+   sudah cukup terbaca di dark, tapi border error perlu sedikit
+   diterangkan biar tidak tenggelam dengan border default.
+   ============================================================ */
+body.dark-mode-grid .is-invalid,
+body.dark-mode-grid .form-control.is-invalid,
+body.dark-mode-grid .form-nexa-control.is-invalid {
+    border-color: #505050 !important;
+}
+
+body.dark-mode-grid .is-valid,
+body.dark-mode-grid .form-control.is-valid,
+body.dark-mode-grid .form-nexa-control.is-valid {
+    border-color: #54d58b !important;
+}
+
+body.dark-mode-grid .invalid-feedback,
+body.dark-mode-grid .form-nexa-feedback.invalid {
+    color: #ff8a87 !important;
+}
+
+body.dark-mode-grid .valid-feedback,
+body.dark-mode-grid .form-nexa-feedback.valid {
+    color: #54d58b !important;
+}
+
+
+/* ============================================================
+   37. field/NexaField.js + NexaChild.js — inline style overrides
+   File JS men-set warna lewat `element.style.cssText` (light bg/text)
+   dan menambahkan class `nexa-disabled`/`nexa-readonly`/`nexa-editable`/
+   `nexa-tag-chip`. Karena inline style biasa kalah dengan `!important`
+   pada stylesheet, kita override semua via class.
+   ============================================================ */
+
+/* Disabled state (bg #f5f5f5 + opacity 0.7) */
+body.dark-mode-grid .nexa-disabled {
+    background-color: var(--dm-bg-main) !important;
+    color: var(--dm-text-faint) !important;
+    opacity: 0.6 !important;
+}
+
+/* Readonly state (bg #f9f9f9, color #666, border #e0e0e0) */
+body.dark-mode-grid .nexa-readonly {
+    background-color: var(--dm-bg-surface) !important;
+    color: var(--dm-text-secondary) !important;
+    border: 1px solid var(--dm-border) !important;
+}
+
+/* Editable element — hover background di JS = #f0f8ff (light blue).
+   Override pakai `!important` agar menang dari `style.backgroundColor`
+   yang di-set JS event mouseenter. */
+body.dark-mode-grid .nexa-editable {
+    background-color: transparent !important;
+}
+
+body.dark-mode-grid .nexa-editable:hover {
+    background-color: rgba(63, 158, 255, 0.12) !important;
+}
+
+/* Tag chip — JS set bg #e3f2fd, color #1976d2, border #90caf9 */
+body.dark-mode-grid .nexa-tag-chip {
+    background-color: rgba(63, 158, 255, 0.16) !important;
+    color: var(--dm-blue-accent) !important;
+    border: 1px solid rgba(63, 158, 255, 0.4) !important;
+}
+
+/* Field type indicator — JS set inline color sesuai type (ok, biru/hijau/dst sudah accessible di dark) */
+/* tapi pastikan field-builder text default punya kontras */
+body.dark-mode-grid .nexa-field-builder,
+body.dark-mode-grid .nexa-field-display {
+    color: var(--dm-text-main) !important;
+}
+
+
+/* ============================================================
+   38. buttons/index.css — KOSONG (intentional)
+   Permintaan user: jangan daftarkan dark-mode untuk modul `buttons`.
+   `.btn`, `.btn-primary`, `.btn-outline`, `.btn-danger`, `.btn-link`,
+   `.btn-invisible`, `.btn-octicon`, `.BtnGroup-*`, `.close-button`,
+   `.social-count`, `.hidden-text-expander`, `.ellipsis-expander`
+   tetap memakai style asli Primer (dari `primitives/tokens-light.css`)
+   walaupun `body.dark-mode-grid` aktif. Ini menghasilkan kontras
+   tinggi: button putih/hijau-Primer di atas background gelap.
+
+   Catatan penting yang tetap berlaku dari section lain:
+   - Section 24 (`a:hover` global) sudah meng-exclude semua kelas
+     button (`a:not(.btn):not(.btn-primary)…:hover`), sehingga teks
+     button yang dirender sebagai `<a>` tidak akan ter-override
+     menjadi biru terang saat hover.
+   ============================================================ */
+
+
+/* ============================================================
+   39. GATEWAY (.nx-ssh-*) — Dark Mode
+   `templates/Workspace/gateway/index.js` mengembalikan HTML dengan
+   <style> inline yang men-hardcode warna GitHub-light. Section ini
+   meng-override semua kelas `nx-ssh-*` agar konsisten di dark mode
+   tanpa mengubah file gateway-nya.
+   ============================================================ */
+
+body.dark-mode-grid .nx-ssh-container {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nx-ssh-section {
+    border-bottom-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nx-ssh-title {
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .nx-ssh-description,
+body.dark-mode-grid .nx-ssh-text,
+body.dark-mode-grid .nx-ssh-desc-muted {
+    color: var(--dm-text-secondary) !important;
+}
+
+/* Badge default */
+body.dark-mode-grid .nx-ssh-badge {
+    background: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-secondary) !important;
+}
+/* Badge "Active"/"Production" — hijau di dark dengan kontras yang cukup */
+body.dark-mode-grid .nx-ssh-badge-active {
+    color: #4ade80 !important;
+    background: rgba(56, 193, 114, 0.15) !important;
+    border-color: rgba(56, 193, 114, 0.5) !important;
+}
+
+/* Field group panel (bagian luar bertanda card) */
+body.dark-mode-grid .nx-ssh-field-group {
+    background: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+/* Variasi dashed (meta grid) — biarkan transparan, hanya update border */
+body.dark-mode-grid .nx-ssh-field-group[style*="dashed"] {
+    background: transparent !important;
+    border-color: var(--dm-border) !important;
+}
+
+body.dark-mode-grid .nx-ssh-label,
+body.dark-mode-grid .nx-ssh-label-bold {
+    color: var(--dm-text-main) !important;
+}
+
+/* Input readonly / select / date / textarea pakai class yang sama */
+body.dark-mode-grid .nx-ssh-input-readonly,
+body.dark-mode-grid input.nx-ssh-input-readonly,
+body.dark-mode-grid select.nx-ssh-input-readonly,
+body.dark-mode-grid textarea.nx-ssh-input-readonly {
+    background-color: var(--dm-bg-card) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid .nx-ssh-input-readonly:focus {
+    border-color: var(--dm-blue-accent) !important;
+    outline-color: var(--dm-blue-accent) !important;
+}
+
+/* Tombol copy / show */
+body.dark-mode-grid .nx-ssh-btn-copy {
+    background-color: var(--dm-bg-surface) !important;
+    border: 1px solid var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid .nx-ssh-btn-copy:hover {
+    background-color: var(--dm-bg-main) !important;
+    border-color: var(--dm-border-dark) !important;
+    color: var(--dm-text-main) !important;
+}
+
+/* Tombol primary "Produksi ke publik" — hijau success, teks putih */
+body.dark-mode-grid .nx-ssh-btn-primary {
+    color: #ffffff !important;
+    background-color: var(--dm-success) !important;
+    border-color: rgba(0, 0, 0, 0.25) !important;
+}
+body.dark-mode-grid .nx-ssh-btn-primary:hover {
+    background-color: #54d58b !important;
+    border-color: rgba(0, 0, 0, 0.25) !important;
+    color: #ffffff !important;
+}
+body.dark-mode-grid .nx-ssh-btn-primary:active {
+    background-color: #2fa15f !important;
+}
+body.dark-mode-grid .nx-ssh-btn-primary:disabled {
+    color: rgba(255, 255, 255, 0.6) !important;
+    background-color: rgba(56, 193, 114, 0.4) !important;
+    cursor: not-allowed !important;
+}
+
+/* Status copy (success / warning) */
+body.dark-mode-grid .nx-ssh-copy-status {
+    background: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid .nx-ssh-copy-status.is-success {
+    color: #4ade80 !important;
+    background: rgba(56, 193, 114, 0.12) !important;
+    border-color: rgba(56, 193, 114, 0.5) !important;
+}
+body.dark-mode-grid .nx-ssh-copy-status.is-warning {
+    color: #fbbf24 !important;
+    background: rgba(212, 167, 44, 0.12) !important;
+    border-color: rgba(212, 167, 44, 0.45) !important;
+}
+
+/* Warning panel (Security & limit) */
+body.dark-mode-grid .nx-ssh-warning {
+    background-color: rgba(212, 167, 44, 0.12) !important;
+    border: 1px solid rgba(212, 167, 44, 0.45) !important;
+    color: #fde68a !important;
+}
+/* Variant warning bertema danger (override inline di method-warning &
+   never-expire-warning yang punya inline border/color/bg merah) */
+body.dark-mode-grid #method-warning,
+body.dark-mode-grid #never-expire-warning {
+    background: rgba(239, 83, 80, 0.12) !important;
+    border-color: rgba(239, 83, 80, 0.5) !important;
+    color: #fca5a5 !important;
+}
+
+/* Method card (GET/POST/PUT/PATCH/DELETE/OPTIONS) */
+body.dark-mode-grid .nx-ssh-method-card {
+    border: 1px solid var(--dm-border) !important;
+    background: var(--dm-bg-card) !important;
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid .nx-ssh-method-card:hover {
+    background-color: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border-dark) !important;
+}
+/* Checkbox di dalamnya — pakai accent color yang konsisten */
+body.dark-mode-grid .nx-ssh-checkbox-group input[type="checkbox"] {
+    accent-color: var(--dm-blue-accent) !important;
+}
+
+/* Meta grid (Version / App Name / App ID / Developer) */
+body.dark-mode-grid .nx-ssh-meta-item .nx-ssh-label {
+    color: var(--dm-text-secondary) !important;
+}
+body.dark-mode-grid .nx-ssh-meta-value {
+    color: var(--dm-text-faint) !important;
+}
+
+/* Date picker calendar icon di Chrome — invert agar terlihat di dark */
+body.dark-mode-grid .nx-ssh-custom-date::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(0.85) !important;
+}
+
+/* Method badges berwarna (inline style hardcoded di HTML) — tidak diubah,
+   kontrasnya sudah cukup baik di dark karena pakai bg pastel + text saturated.
+   Jika ingin di-tone-down, tambahkan override khusus di sini. */
+
+
+/* ============================================================
+   40. DEPLOYMENT (templates/Workspace/deployment/) — Dark Mode
+   File-file di folder ini banyak memakai `style="..."` inline dengan
+   warna GitHub-light (#d0d7de, #e5e7eb, #f1f5f9, #57606a, #64748b,
+   #94a3b8, #b0b6be, #e0e7ef, #334155, #0f172a, #0f766e). Inline style
+   punya specificity sangat tinggi sehingga membutuhkan override
+   attribute-selector + `!important`.
+
+   Cakupan:
+   - form.js              (Inisialisasi GitHub form + output box)
+   - index.js             (getDefaultContent fallback card)
+   - build.js / rilis.js  (List apps dengan IssueLabel)
+   - version.js / install/{packages,repository,item}.js
+   ============================================================ */
+
+/* -- Default fallback card (#fff bg, light border, slate text) ------ */
+body.dark-mode-grid section[style*="margin:24px auto"] > div[style*="background:#fff"],
+body.dark-mode-grid div[style*="background:#fff"][style*="border:1px solid #d0d7de"] {
+    background: var(--dm-bg-card) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid section[style*="margin:24px auto"] p[style*="#57606a"] {
+    color: var(--dm-text-secondary) !important;
+}
+
+/* -- IssueLabel (badge versi di list apps) -------------------------- */
+body.dark-mode-grid .IssueLabel,
+body.dark-mode-grid span.IssueLabel[style*="#e0e7ef"] {
+    background: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* -- List items dengan border-bottom #f1f5f9 ------------------------ */
+body.dark-mode-grid li[style*="#f1f5f9"] {
+    border-bottom-color: var(--dm-border) !important;
+}
+
+/* -- Avatar img border ---------------------------------------------- */
+body.dark-mode-grid img[style*="#e5e7eb"] {
+    border-color: var(--dm-border) !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* -- Card "archive/inventory" wrapper (#e5e7eb border) -------------- */
+body.dark-mode-grid div[style*="border:1px solid #e5e7eb"] {
+    border-color: var(--dm-border) !important;
+    background: var(--dm-bg-card) !important;
+    color: var(--dm-text-main) !important;
+}
+
+/* -- Material icon dgn warna inline slate (#64748b / #0f766e) ------- */
+body.dark-mode-grid .material-symbols-outlined[style*="#64748b"],
+body.dark-mode-grid .material-icons[style*="#64748b"] {
+    color: var(--dm-text-secondary) !important;
+}
+body.dark-mode-grid .material-symbols-outlined[style*="#0f766e"],
+body.dark-mode-grid .material-icons[style*="#0f766e"] {
+    /* Hijau teal di dark — naikkan sedikit lightness agar kontras */
+    color: #5eead4 !important;
+}
+
+/* -- Description / muted text inline (#64748b / #94a3b8 / #b0b6be) -- */
+body.dark-mode-grid div[style*="color:#64748b"],
+body.dark-mode-grid div[style*="color: #64748b"],
+body.dark-mode-grid span[style*="color:#64748b"],
+body.dark-mode-grid span[style*="color: #64748b"],
+body.dark-mode-grid b[style*="color:#64748b"] {
+    color: var(--dm-text-secondary) !important;
+}
+body.dark-mode-grid div[style*="color:#94a3b8"],
+body.dark-mode-grid span[style*="color:#94a3b8"] {
+    color: var(--dm-text-faint) !important;
+}
+body.dark-mode-grid div[style*="color:#b0b6be"],
+body.dark-mode-grid span[style*="color:#b0b6be"] {
+    color: var(--dm-text-faint) !important;
+}
+/* SVG creator icon (stroke="#94a3b8") */
+body.dark-mode-grid svg[stroke="#94a3b8"] {
+    stroke: var(--dm-text-faint) !important;
+}
+
+/* -- Empty state "No data available." color:#888 -------------------- */
+body.dark-mode-grid div[style*="color:#888"] {
+    color: var(--dm-text-secondary) !important;
+}
+
+/* -- Output placeholder (githubPackageOutput): heading dark slate
+      (#0f172a) + body slate (#64748b) ------------------------------ */
+body.dark-mode-grid #githubPackageOutput div[style*="#0f172a"] {
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid #githubPackageOutput div[style*="color:#64748b"] {
+    color: var(--dm-text-secondary) !important;
+}
+/* Wrapper input-block override: pakai surface agar konten kontras */
+body.dark-mode-grid #githubPackageOutput {
+    background: var(--dm-bg-card) !important;
+    border: 1px solid var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+    border-radius: 6px !important;
+}
+
+/* -- json-viewer (Web Component) di output box ---------------------- *
+ * applyTheme(jsonViewer, "light") di-set static dengan banyak custom
+ * properties. Override via `body.dark-mode-grid` agar palette gelap
+ * dipakai untuk semua `<json-viewer>` di area deployment. */
+body.dark-mode-grid #githubPackageOutput json-viewer.light,
+body.dark-mode-grid #githubPackageOutput json-viewer {
+    --background-color: transparent !important;
+    --color: var(--dm-text-main) !important;
+    --property-color: #7dd3fc !important;        /* sky-300 */
+    --string-color: #86efac !important;          /* green-300 */
+    --number-color: #fcd34d !important;          /* amber-300 */
+    --boolean-color: #c4b5fd !important;         /* violet-300 */
+    --null-color: #f0abfc !important;            /* fuchsia-300 */
+    --preview-color: var(--dm-text-faint) !important;
+    --highlight-color: rgba(253, 230, 138, 0.2) !important;
+    --outline-color: var(--dm-border-dark) !important;
+    --indentguide-color: var(--dm-border) !important;
+    --indentguide-color-active: var(--dm-text-secondary) !important;
+}
+
+
+/* =============================================================
+   41. ARCHITECT (templates/Workspace/architect/) — Dark Mode
+   File-file di folder ini banyak memakai:
+   - `style="color:#ccc"` pada tombol aksi (Settings/Save/Delete) di
+     development.js → kontras kurang di latar gelap.
+   - Hardcoded `background:#dafbe1`, `#fff8c5`, `#f6f8fa`, `#fff` pada
+     panduan trigger (development.js) lewat fallback Primer.
+   - Hardcoded warna SQL highlight `#0969da`, `#8250df`, `#dc3545` pada
+     contoh trigger. Beberapa di antaranya tanpa fallback CSS variable.
+   - `.nx-table-wrapper` + `.editable` (tags-input) di tabel
+     Create Table. Sebagian sudah pakai token Primer—butuh tambah
+     beberapa token muted yang belum di-override.
+   ============================================================ */
+
+/* -- Tokens Primer "muted" (success/attention/neutral/danger) ------ *
+ * Banyak dipakai sebagai background panel info di trigger/architect.
+ * Tanpa override, fallback hardcoded #dafbe1/#fff8c5/#f6f8fa muncul. */
+html.dark-mode-grid body,
+body.dark-mode-grid {
+    --bgColor-success-muted: rgba(63, 185, 80, 0.12) !important;
+    --bgColor-attention-muted: rgba(187, 128, 9, 0.16) !important;
+    --bgColor-neutral-muted: rgba(110, 118, 129, 0.18) !important;
+    --bgColor-danger-muted: rgba(248, 81, 73, 0.14) !important;
+    --bgColor-done-muted: rgba(163, 113, 247, 0.16) !important;
+    --color-success-muted: rgba(63, 185, 80, 0.12) !important;
+    --color-attention-muted: rgba(187, 128, 9, 0.16) !important;
+    --color-neutral-muted: rgba(110, 118, 129, 0.18) !important;
+    --color-danger-muted: rgba(248, 81, 73, 0.14) !important;
+    /* Foreground "soft" agar teks pada panel masih kontras */
+    --fgColor-success: #56d364 !important;
+    --fgColor-attention: #e3b341 !important;
+    --fgColor-danger: #f85149 !important;
+    --fgColor-done: #c297ff !important;
+    --color-fg-success: #56d364 !important;
+    --color-fg-attention: #e3b341 !important;
+    --color-fg-danger: #f85149 !important;
+}
+
+/* -- Tombol aksi di tabel Create Table (development.js) ------------ *
+ * Inline `style="color:#ccc"` lemah di latar gelap. Kuatkan kontras. */
+body.dark-mode-grid .nx-table-wrapper a.btn[style*="color:#ccc"],
+body.dark-mode-grid .nx-table-wrapper a.btn[style*="color: #ccc"] {
+    color: var(--dm-text-secondary) !important;
+}
+body.dark-mode-grid .nx-table-wrapper a.btn[style*="color:#ccc"]:hover,
+body.dark-mode-grid .nx-table-wrapper a.btn[style*="color: #ccc"]:hover {
+    color: var(--dm-text-main) !important;
+}
+
+/* -- Ikon Material "delete" hardcoded merah --------------------- */
+body.dark-mode-grid .architect-development-host .material-symbols-outlined[style*="#dc3545"],
+body.dark-mode-grid .sf-row .material-symbols-outlined[style*="#dc3545"] {
+    color: #f85149 !important;
+}
+
+/* -- Panduan trigger (development.js) ------------------------------ *
+ * Background panel hardcoded fallback: #dafbe1 (success), #fff8c5
+ * (attention), #f6f8fa (neutral). Override per attribute selector. */
+body.dark-mode-grid div[style*="background:var(--bgColor-success-muted"][style*="#dafbe1"],
+body.dark-mode-grid div[style*="background:#dafbe1"] {
+    background: rgba(63, 185, 80, 0.12) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid div[style*="background:var(--bgColor-attention-muted"][style*="#fff8c5"],
+body.dark-mode-grid div[style*="background:#fff8c5"] {
+    background: rgba(187, 128, 9, 0.16) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid div[style*="background:var(--bgColor-neutral-muted"][style*="#f6f8fa"],
+body.dark-mode-grid div[style*="background:#f6f8fa"] {
+    background: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid code[style*="background:var(--color-canvas-subtle"][style*="#f6f8fa"] {
+    background: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+}
+
+/* -- SQL highlight inline pada contoh trigger ---------------------- *
+ * `<span style="color:#0969da">AFTER</span>` (keyword), `#8250df`
+ * (table name), tanpa fallback. Buat lebih cerah agar terbaca. */
+body.dark-mode-grid span[style*="color:#0969da"],
+body.dark-mode-grid span[style*="color: #0969da"] {
+    color: #79c0ff !important;
+}
+body.dark-mode-grid span[style*="color:#8250df"],
+body.dark-mode-grid span[style*="color: #8250df"] {
+    color: #d2a8ff !important;
+}
+
+/* -- IssueLabel hardcoded `background:#1a7f37; color:#fff` -------- *
+ * Sudah cukup kontras di latar gelap, tetap dipertahankan apa adanya
+ * (tidak perlu override warna), tetapi pastikan border tidak putus. */
+body.dark-mode-grid .Label[style*="background:#1a7f37"] {
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* -- Listview view item (.vw-list-item) ---------------------------- *
+ * Inline bg `var(--color-canvas-default,#fff)` + border ringan. */
+body.dark-mode-grid .vw-list-item[style*="background:var(--color-canvas-default"],
+body.dark-mode-grid button.vw-list-item[style*="background:var(--color-canvas-default"] {
+    background: var(--dm-bg-card) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid .vw-list-item:hover {
+    background: var(--dm-bg-hover) !important;
+    border-color: var(--dm-border-dark) !important;
+}
+
+/* -- Empty state & info text (vw-where-empty / vw-order-empty / dst.) */
+body.dark-mode-grid #vw-where-empty,
+body.dark-mode-grid #vw-order-empty,
+body.dark-mode-grid #vw-group-empty {
+    color: var(--dm-text-faint) !important;
+}
+
+/* -- HR pemisah panduan View di explorer/development.js ------------ */
+body.dark-mode-grid hr[style*="border-color:var(--color-border-muted"][style*="#d0d7de"],
+body.dark-mode-grid hr[style*="border-color: var(--color-border-muted"][style*="#d0d7de"] {
+    border-color: var(--dm-border) !important;
+}
+
+/* -- Tags input (`.editable[type="tags-input"]`) di kolom Index ----- *
+ * Pillnya sudah di-style modul tags, hanya pastikan label "Failed"
+ * (rendered sebagai placeholder/aside) dan ikon label tetap terbaca. */
+body.dark-mode-grid .nx-table-wrapper .editable[type="tags-input"] {
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid .nx-table-wrapper .editable[type="tags-input"][label]::before {
+    color: var(--dm-text-faint) !important;
+}
+
+/* -- NexaTags (#dropdown Create Table) — tag.css default background #fff -- */
+body.dark-mode-grid .nx-tags-input-container {
+    background: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+}
+body.dark-mode-grid .nx-tags-input-container:focus-within {
+    border-color: var(--dm-blue-accent) !important;
+    box-shadow: 0 0 0 1px rgba(63, 158, 255, 0.22) !important;
+}
+body.dark-mode-grid .nx-tags-input-field {
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid .nx-tags-input-field::placeholder {
+    color: var(--dm-text-faint) !important;
+}
+body.dark-mode-grid .nx-tag {
+    background: var(--dm-bg-hover) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+body.dark-mode-grid .nx-tag:hover {
+    background: var(--dm-bg-card) !important;
+    border-color: var(--dm-blue-accent) !important;
+}
+body.dark-mode-grid .nx-drag-handle {
+    color: var(--dm-text-secondary) !important;
+}
+body.dark-mode-grid .nx-remove-tag {
+    color: var(--dm-text-secondary) !important;
+}
+body.dark-mode-grid .nx-remove-tag:hover {
+    color: var(--dm-danger) !important;
+}
+body.dark-mode-grid .nx-tags-readonly {
+    background: var(--dm-bg-card) !important;
+    border-color: var(--dm-border) !important;
+}
+
+/* -- NexaTags.js (bukan tag.css): wrapper + chips + dropdown (inline #fff) -- */
+body.dark-mode-grid .nexa-tags-container,
+html.dark-mode-grid .nexa-tags-container {
+    background: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+}
+body.dark-mode-grid .nexa-tags-chips,
+html.dark-mode-grid .nexa-tags-chips {
+    background: transparent !important;
+}
+body.dark-mode-grid .nexa-tags-dropdown,
+html.dark-mode-grid .nexa-tags-dropdown {
+    background: var(--dm-bg-card) !important;
+    border-color: var(--dm-border) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45) !important;
+}
+body.dark-mode-grid .nexa-tag-chip,
+html.dark-mode-grid .nexa-tag-chip {
+    background: var(--dm-blue-accent) !important;
+    color: #f0f6fc !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+body.dark-mode-grid .nexa-tags-suggestion-item,
+html.dark-mode-grid .nexa-tags-suggestion-item {
+    color: var(--dm-text-main) !important;
+    border-bottom-color: var(--dm-border) !important;
+}
+body.dark-mode-grid .nexa-tags-suggestion-item strong,
+html.dark-mode-grid .nexa-tags-suggestion-item strong {
+    color: var(--dm-blue-accent) !important;
+}
+body.dark-mode-grid .nexa-tags-suggestion-limit,
+html.dark-mode-grid .nexa-tags-suggestion-limit {
+    background: rgba(255, 152, 0, 0.14) !important;
+    color: var(--dm-warning) !important;
+    border-bottom-color: var(--dm-border) !important;
+}
+
+/* -- #CreateTabel: tombol aksi baris (.btn-sm tanpa variant Bootstrap) ----- */
+body.dark-mode-grid #CreateTabel .nx-architect-create-table a.btn.btn-sm,
+body.dark-mode-grid #CreateTabel .nx-architect-create-table button.btn.btn-sm {
+    background: var(--dm-bg-surface) !important;
+    border: 1px solid var(--dm-border) !important;
+    color: var(--dm-text-secondary) !important;
+}
+body.dark-mode-grid #CreateTabel .nx-architect-create-table a.btn.btn-sm:hover,
+body.dark-mode-grid #CreateTabel .nx-architect-create-table button.btn.btn-sm:hover {
+    background: var(--dm-bg-hover) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border-dark) !important;
+}
+body.dark-mode-grid #CreateTabel .nx-architect-create-table a.btn.btn-sm .octicon,
+body.dark-mode-grid #CreateTabel .nx-architect-create-table button.btn.btn-sm .octicon {
+    color: inherit !important;
+}
+
+/* -- #CreateTabel: isi sel tabel + jarak form atas ------------------------ */
+body.dark-mode-grid #CreateTabel .nx-table-wrapper .nx-table thead th {
+    background-color: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+body.dark-mode-grid #CreateTabel .nx-table-wrapper .nx-table tbody td,
+body.dark-mode-grid #CreateTabel .nx-table-wrapper .nx-table tbody th {
+    background-color: var(--dm-bg-card) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+body.dark-mode-grid #CreateTabel .nx-architect-create-table .form-nexa-group {
+    margin-bottom: 0.75rem !important;
+}
+
+/* -- #CreateTabel: kolom panduan (production.js) ------------------------- */
+body.dark-mode-grid #CreateTabel .nx-architect-panduan,
+body.dark-mode-grid #CreateTabel .nx-architect-panduan .nx-card-content,
+body.dark-mode-grid #CreateTabel .nx-architect-panduan .nx-step-content,
+body.dark-mode-grid #CreateTabel .nx-architect-panduan p {
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid #CreateTabel .nx-architect-panduan strong {
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid #CreateTabel .nx-architect-panduan .octicon {
+    color: var(--dm-text-secondary) !important;
+    vertical-align: middle;
+}
+
+
+/* =============================================================
+   42. PAGINATION (assets/modules/pagination/pagination.css) — Dark Mode
+   File pagination.css memakai banyak warna hardcoded:
+   - `.page-link`         → bg #fff, border #ddd, color #666
+   - `.page-link:hover`   → bg #f8f9fa, border #bbb, color #333
+   - `.page-link.active`  → bg #DC2626 / #1730B4 (varian -sm)
+   - `.page-item.disabled .page-link` → bg #f8f9fa, color #ccc
+   - `.page-info / .page-info-sm`     → color #666
+   Override hanya saat dark-mode aktif; varian aktif (merah/biru)
+   tetap tampil agar identitas halaman aktif tidak hilang.
+   ============================================================ */
+
+/* -- Container info teks (di atas / di bawah pagination) ----------- */
+body.dark-mode-grid .page-info,
+body.dark-mode-grid .page-info-sm {
+    color: var(--dm-text-secondary) !important;
+}
+
+/* -- Item normal (rest state) -------------------------------------- */
+body.dark-mode-grid .pagination .page-link,
+body.dark-mode-grid .pagination-sm .page-link {
+    background-color: var(--dm-bg-card) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-secondary) !important;
+}
+
+/* -- Hover state (non-disabled) ------------------------------------ */
+body.dark-mode-grid .pagination .page-link:hover:not(.disabled),
+body.dark-mode-grid .pagination-sm .page-link:hover:not(.disabled) {
+    background-color: var(--dm-bg-hover) !important;
+    border-color: var(--dm-border-dark) !important;
+    color: var(--dm-text-main) !important;
+}
+
+/* -- Disabled state ------------------------------------------------ */
+body.dark-mode-grid .pagination .page-item.disabled .page-link,
+body.dark-mode-grid .pagination-sm .page-item.disabled .page-link {
+    background-color: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+    color: var(--dm-text-faint) !important;
+}
+
+/* -- Active state (halaman saat ini) ------------------------------- *
+ * Pertahankan varian merah `.pagination` & biru `.pagination-sm`
+ * yang ada di pagination.css; hanya naikkan kontras border + teks. */
+body.dark-mode-grid .pagination .page-link.active {
+    background-color: #dc2626 !important;
+    border-color: #dc2626 !important;
+    color: #ffffff !important;
+}
+body.dark-mode-grid .pagination .page-item.active .page-link:hover {
+    background-color: #b91c1c !important;
+    border-color: #b91c1c !important;
+    color: #ffffff !important;
+}
+body.dark-mode-grid .pagination-sm .page-link.active {
+    background-color: #1730b4 !important;
+    border-color: #1730b4 !important;
+    color: #ffffff !important;
+}
+body.dark-mode-grid .pagination-sm .page-item.active .page-link:hover {
+    background-color: #122790 !important;
+    border-color: #122790 !important;
+    color: #ffffff !important;
+}
+
+/* -- Focus ring (a11y) --------------------------------------------- */
+body.dark-mode-grid .pagination .page-link:focus,
+body.dark-mode-grid .pagination-sm .page-link:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(63, 158, 255, 0.35) !important;
+}
+
+
+/* =============================================================
+   43. TABLES MODULE (assets/modules/tables/) — Dark Mode
+   - `tables/index.css` & `table/index.css` sudah pakai token Primer
+     (--bgColor-default, --fgColor-default) → ter-cover Section 13.
+   - `tables/table.css` punya block dark-mode bawaan, namun masih
+     menyisakan beberapa hardcoded warna terang pada:
+       a. `.nx-btn` (di assets/css/button.css) — bg #fff, color #18181b.
+          Dipakai juga oleh export buttons (CSV/JSON/XLSX/PDF) di
+          NexaTables.js → label tampak hampir hitam di latar gelap.
+       b. `.nx-table-date`, `.nx-table-optimized .date` — color #6c757d.
+       c. `.optimized-container` — bg #f8f9fa.
+       d. Komponen inline editing (`.nexa-inline-*`) — bg #fff, dst.
+   - Tidak menyentuh `.nx-table.facebook-style` (varian tema sengaja
+     terang).
+   ============================================================ */
+
+/* -- (a) `.nx-btn` base — perbaiki kontras teks di dark mode ------ *
+ * `.nx-btn` (assets/css/button.css) hardcoded `background:white;
+ * color:#18181b;border:1px solid #e4e4e7`. Buttons export di NexaTables
+ * memakai inline `background:transparent;border:none` namun teks
+ * (color) tetap mengambil dari rule base → label tidak terbaca. */
+body.dark-mode-grid .nx-btn {
+    background-color: var(--dm-bg-card) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+body.dark-mode-grid .nx-btn:hover {
+    background-color: var(--dm-bg-hover) !important;
+    border-color: var(--dm-border-dark) !important;
+    color: var(--dm-text-main) !important;
+}
+/* Export buttons di topbar memakai inline `background:transparent;
+   border:none` — pertahankan transparan, hanya pastikan teks terbaca. */
+body.dark-mode-grid .nx-table-export .nx-btn,
+body.dark-mode-grid .nx-table-export .nx-btn:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid .nx-table-export .nx-btn:hover {
+    background-color: var(--dm-bg-hover) !important;
+}
+
+/* -- (b) Kolom tanggal/muted di dalam tabel ----------------------- */
+body.dark-mode-grid .nx-table-date,
+body.dark-mode-grid .nx-table-optimized .date {
+    color: var(--dm-text-secondary) !important;
+}
+
+/* -- (c) Optimized container (wrapper info di atas tabel) -------- */
+body.dark-mode-grid .optimized-container {
+    background: var(--dm-bg-card) !important;
+    border: 1px solid var(--dm-border) !important;
+    color: var(--dm-text-main) !important;
+}
+
+/* -- (d) Inline editing form elements ---------------------------- *
+ * Block dark-mode di table.css (line 1170-1190) sudah meng-handle
+ * cell `.nexa-inline-cell:hover/.editing/.success/.error`. Tambahkan
+ * yang belum: input/select/loading/checkbox/radio/file containers. */
+body.dark-mode-grid .nexa-inline-input,
+body.dark-mode-grid .nexa-inline-select {
+    background: var(--dm-bg-input) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-blue-accent) !important;
+    box-shadow: 0 0 5px rgba(63, 158, 255, 0.3) !important;
+}
+body.dark-mode-grid .nexa-inline-input.invalid,
+body.dark-mode-grid .nexa-inline-select.invalid {
+    border-color: #f85149 !important;
+    box-shadow: 0 0 5px rgba(248, 81, 73, 0.5) !important;
+}
+body.dark-mode-grid .nexa-inline-loading {
+    background: rgba(13, 17, 23, 0.85) !important;
+    color: var(--dm-blue-accent) !important;
+}
+body.dark-mode-grid .nexa-inline-spinner {
+    border-color: var(--dm-border) !important;
+    border-top-color: var(--dm-blue-accent) !important;
+}
+body.dark-mode-grid .nexa-inline-checkbox-container,
+body.dark-mode-grid .nexa-inline-radio-container,
+body.dark-mode-grid .nexa-inline-file-container {
+    background: var(--dm-bg-card) !important;
+    border-color: var(--dm-blue-accent) !important;
+    box-shadow: 0 0 5px rgba(63, 158, 255, 0.3) !important;
+    color: var(--dm-text-main) !important;
+}
+body.dark-mode-grid .nexa-inline-file-preview {
+    background: var(--dm-bg-surface) !important;
+    border-color: var(--dm-border) !important;
+}
+body.dark-mode-grid .nexa-inline-pending {
+    background: #d29922 !important;
+    color: #1c1e21 !important;
+}
+body.dark-mode-grid .nexa-inline-tooltip {
+    background: var(--dm-bg-card) !important;
+    color: var(--dm-text-main) !important;
+    border: 1px solid var(--dm-border) !important;
+}
+
+/* -- Search input topbar — pastikan placeholder & ikon konsisten -- */
+body.dark-mode-grid .nx-table-filter .form-control {
+    background: var(--dm-bg-input) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+}
+body.dark-mode-grid .nx-table-filter .form-control::placeholder {
+    color: var(--dm-text-faint) !important;
+}
+body.dark-mode-grid .nx-table-filter .material-symbols-outlined {
+    color: var(--dm-text-faint) !important;
+}
+
+
+/* =============================================================
+   44. FORMS — Tombol di dalam input (Primer `.input-group`)
+   Struktur: `forms/form.js` + `forms/index.css`
+     <div class="input-group">   <!-- atau class="input-group inline" -->
+       <input class="form-control" … />
+       <div class="input-group-button"><button class="btn">…</button></div>
+     </div>
+   Tombol memakai `.btn` bawaan Primer (bg putih, teks gelap) sehingga
+   “petak” putih menempel di kanan input di dark mode.
+
+   PENTING: Wajib ada leluhur `.input-group` di selector, supaya tombol
+   yang hanya `<button type="button" class="btn">Batal</button>` di
+   footer modal / `.form-footer-buttons` (NexaForm.js) tetap memakai
+   style Primer asli — tidak ikut override gelap ini.
+   ============================================================ */
+
+body.dark-mode-grid .input-group .input-group-button .btn {
+    background-color: var(--dm-bg-surface) !important;
+    color: var(--dm-text-main) !important;
+    border-color: var(--dm-border) !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode-grid .input-group .input-group-button .btn:hover {
+    background-color: var(--dm-bg-hover) !important;
+    border-color: var(--dm-border-dark) !important;
+    color: var(--dm-text-main) !important;
+}
+
+body.dark-mode-grid .input-group .input-group-button .btn:focus,
+body.dark-mode-grid .input-group .input-group-button .btn:focus-visible {
+    outline: none !important;
+    border-color: var(--dm-blue-accent) !important;
+    box-shadow: 0 0 0 2px rgba(63, 158, 255, 0.35) !important;
+}
+
+body.dark-mode-grid .input-group .input-group-button .btn .material-symbols-outlined,
+body.dark-mode-grid .input-group .input-group-button .btn .material-symbols-rounded,
+body.dark-mode-grid .input-group .input-group-button .btn .octicon {
+    color: var(--dm-text-secondary) !important;
+}
+
+body.dark-mode-grid .input-group .input-group-button .btn:hover .material-symbols-outlined,
+body.dark-mode-grid .input-group .input-group-button .btn:hover .material-symbols-rounded,
+body.dark-mode-grid .input-group .input-group-button .btn:hover .octicon {
+    color: var(--dm-text-main) !important;
+}
+
+/* Saat fokus di dalam grup, samakan border tombol dengan input */
+body.dark-mode-grid .input-group:focus-within .input-group-button .btn:not(.btn-primary):not(.btn-danger):not(.btn-success) {
+    border-color: var(--dm-border-dark) !important;
+}
+
+/* Varian semantic pada append (jarang, tetapi tetap kontras) */
+body.dark-mode-grid .input-group .input-group-button .btn.btn-primary {
+    background-color: var(--dm-success) !important;
+    border-color: var(--dm-success) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode-grid .input-group .input-group-button .btn.btn-danger {
+    background-color: rgba(248, 81, 73, 0.15) !important;
+    border-color: var(--dm-danger) !important;
+    color: var(--dm-danger) !important;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Branch Name - Primer CSS Demo</title>
+
+    <link rel="stylesheet" href="../nexa.css">
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+    <h1>Header Component Demo</h1>
+
+    <h2>Basic Header</h2>
+    <header class="Header" style="margin-bottom:24px;">
+      <div class="Header-item">
+        <a class="Header-link" href="#">Logo</a>
+      </div>
+      <div class="Header-item Header-item--full">
+        <input class="Header-input" type="text" placeholder="Cari..." style="padding:4px 8px;border-radius:4px;min-width:120px;">
+      </div>
+      <div class="Header-item">
+        <a class="Header-link" href="#">Docs</a>
+      </div>
+      <div class="Header-item">
+        <a class="Header-link" href="#">Profil</a>
+      </div>
+    </header>
+
+    <h2>Header with More Items</h2>
+    <header class="Header">
+      <div class="Header-item">
+        <a class="Header-link" href="#">Brand</a>
+      </div>
+      <div class="Header-item">
+        <a class="Header-link" href="#">Home</a>
+      </div>
+      <div class="Header-item">
+        <a class="Header-link" href="#">Features</a>
+      </div>
+      <div class="Header-item">
+        <a class="Header-link" href="#">Pricing</a>
+      </div>
+      <div class="Header-item Header-item--full">
+        <input class="Header-input" type="search" placeholder="Search..." style="padding:4px 8px;border-radius:4px;min-width:120px;">
+      </div>
+      <div class="Header-item">
+        <a class="Header-link" href="#">Sign In</a>
+      </div>
+    </header>
+  <h1>Autocomplete Demo</h1>
+  <div style="max-width: 320px;">
+    <label for="autocomplete-input">Cari buah:</label>
+    <input id="autocomplete-input" type="text" autocomplete="off" style="width:100%;margin-bottom:8px;" placeholder="Ketik nama buah...">
+    <ul class="suggester" id="autocomplete-list" style="display:none;">
+      <li><span>Apel</span> <small>Buah segar</small></li>
+      <li><span>Pisang</span> <small>Buah kaya potasium</small></li>
+      <li><span>Jeruk</span> <small>Vitamin C</small></li>
+      <li><span>Anggur</span> <small>Buah manis</small></li>
+      <li><span>Mangga</span> <small>Musiman</small></li>
+    </ul>
+  </div>
+  <script>
+    // Simple JS to show/hide suggestions
+    const input = document.getElementById('autocomplete-input');
+    const list = document.getElementById('autocomplete-list');
+    input.addEventListener('input', function() {
+      if (this.value.length > 0) {
+        list.style.display = '';
+      } else {
+        list.style.display = 'none';
+      }
+    });
+    input.addEventListener('blur', function() {
+      setTimeout(() => { list.style.display = 'none'; }, 100);
+    });
+    input.addEventListener('focus', function() {
+      if (this.value.length > 0) list.style.display = '';
+    });
+    // Optional: click to fill
+    list.addEventListener('mousedown', function(e) {
+      if (e.target.closest('li')) {
+        input.value = e.target.closest('li').innerText.split('\n')[0];
+        list.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>

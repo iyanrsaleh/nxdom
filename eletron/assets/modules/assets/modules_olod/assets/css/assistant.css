@@ -1,0 +1,1615 @@
+      .assistant-body {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+   
+      }
+
+      .assistant-chat-container {
+        width: 100%;
+        max-width: 100%;
+        height:500px;
+        background-color: #ffffff;
+     
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .assistant-chat-header {
+        background-color: #fff;
+        color: #000;
+        padding: 15px 20px;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .assistant-chat-header h2 {
+        margin: 0;
+        font-size: 1.2em;
+      }
+
+      .assistant-header-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .assistant-copy-all-button,
+      .assistant-clear-chat {
+        background: #E8E9EA;
+        border: none;
+        color: rgba(27, 46, 75, 0.65);
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 0.7em;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .assistant-copy-all-button svg,
+      .assistant-clear-chat svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .assistant-copy-all-button:hover,
+      .assistant-clear-chat:hover {
+        background: #d1d3d4;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .assistant-copy-all-button:active,
+      .assistant-clear-chat:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .assistant-status svg {
+        width: 12px !important;
+        height: 12px !important;
+        margin-right: 6px;
+        vertical-align: middle;
+      }
+
+      .assistant-chat-header .assistant-status {
+        margin: 0;
+        font-size: 0.75em;
+        opacity: 0.9;
+        color: #000;
+      }
+
+      .assistant-chat-messages {
+        flex: 1;
+        padding: 16px;
+        overflow-y: auto;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .assistant-chat-row {
+        display: flex;
+        margin-bottom: 16px;
+        width: 100%;
+      }
+
+      .assistant-chat-row.assistant-ai {
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+
+      .assistant-chat-row.assistant-user {
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+      }
+
+      .assistant-chat-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        object-fit: cover;
+      }
+
+      .assistant-chat-row.assistant-ai .assistant-chat-avatar {
+        margin-right: 10px;
+      }
+
+      .assistant-chat-row.assistant-user .assistant-chat-avatar {
+        margin-left: 10px;
+      }
+
+      .assistant-chat-bubble {
+        max-width: 85%;
+        padding: 12px 16px;
+        border-radius: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .assistant-chat-row.assistant-ai .assistant-chat-bubble {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-top-left-radius: 4px;
+      }
+
+      .assistant-chat-row.assistant-user .assistant-chat-bubble {
+        background-color: #007aff;
+        color: white;
+        border-top-right-radius: 4px;
+      }
+
+      .assistant-chat-name {
+        font-size: 0.8em;
+        font-weight: 500;
+        margin-bottom: 4px;
+        color: #666;
+      }
+
+      .assistant-chat-row.assistant-user .assistant-chat-name {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .assistant-chat-text {
+        margin: 0 0 4px 0;
+        line-height: 1.4;
+        word-wrap: break-word;
+      }
+
+      .assistant-chat-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 8px;
+      }
+
+      .assistant-chat-row.assistant-user .assistant-chat-footer {
+        justify-content: flex-end;
+      }
+
+      .assistant-message-actions {
+        display: flex !important;
+        gap: 5px !important;
+        margin-left: 5px;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transition: opacity 0.2s ease, visibility 0.2s ease !important;
+        pointer-events: auto !important;
+      }
+
+      .assistant-message-actions .assistant-delete-button,
+      .assistant-message-actions .assistant-copy-button {
+        display: inline-flex !important;
+      }
+
+      .assistant-force-visible {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+      }
+
+      .assistant-copy-button,
+      .assistant-delete-button {
+        background: none;
+        border: 1px solid #e5e5ea;
+        color: #666;
+        padding: 3px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+        width: 20px;
+        height: 20px;
+      }
+
+      /* Default styling for AI message delete button */
+      .assistant-chat-row.assistant-ai .assistant-delete-button {
+        border: 1px solid #e5e5ea;
+        color: #666;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .assistant-chat-row.assistant-ai .assistant-delete-button svg {
+        color: #666;
+        stroke: #666;
+      }
+
+      /* Styling for USER message delete button */
+      .assistant-chat-row.assistant-user .assistant-delete-button {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .assistant-chat-row.assistant-user .assistant-delete-button svg {
+        color: rgba(255, 255, 255, 0.9);
+        stroke: rgba(255, 255, 255, 0.9);
+      }
+
+      /* Copy button styling */
+      .assistant-copy-button:hover {
+        background-color: #f0f0f0;
+        border-color: #d0d0d0;
+      }
+
+      /* AI delete button hover */
+      .assistant-chat-row.assistant-ai .assistant-delete-button:hover {
+        background-color: #dc3545;
+        color: white;
+        border-color: #dc3545;
+      }
+
+      .assistant-chat-row.assistant-ai .assistant-delete-button:hover svg {
+        color: white;
+        stroke: white;
+      }
+
+      /* USER delete button hover */
+      .assistant-chat-row.assistant-user .assistant-delete-button:hover {
+        background-color: rgba(220, 53, 69, 0.9);
+        color: white;
+        border-color: rgba(220, 53, 69, 0.9);
+      }
+
+      .assistant-chat-row.assistant-user .assistant-delete-button:hover svg {
+        color: white;
+        stroke: white;
+      }
+
+      /* Additional styling for better differentiation */
+      .assistant-ai-delete {
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .assistant-user-delete {
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Active/pressed state */
+      .assistant-ai-delete:active {
+        transform: scale(0.95);
+        background-color: #c82333;
+      }
+
+      .assistant-user-delete:active {
+        transform: scale(0.95);
+        background-color: rgba(200, 35, 51, 0.8);
+      }
+
+      /* Copy button styling for AI messages */
+      .assistant-ai-copy {
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .assistant-ai-copy:hover {
+        background-color: #e9ecef;
+        border-color: #adb5bd;
+        transform: translateY(-1px);
+      }
+
+      .assistant-copy-button.assistant-copied {
+        color: #28a745;
+        border-color: #28a745;
+      }
+
+      .assistant-chat-time {
+        font-size: 0.7em;
+        color: #999;
+        text-align: right;
+        margin-top: 4px;
+      }
+
+      .assistant-chat-row.assistant-user .assistant-chat-time {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .assistant-chat-input-form {
+        display: flex;
+        padding: 16px;
+        background-color: #ffffff;
+        border-top: 1px solid #e5e5ea;
+        gap: 8px;
+      }
+
+      .assistant-attachment-button {
+        padding: 12px;
+        border: none;
+        background-color: #6c757d;
+        color: white;
+        border-radius: 24px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 48px;
+      }
+
+      .assistant-message-input {
+        flex: 1;
+        padding: 12px 16px;
+        border: 1px solid #e5e5ea;
+        border-radius: 24px;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.2s;
+        background-color: #f8f9fa;
+      }
+
+      .assistant-voice-button {
+        padding: 12px 16px;
+        border: none;
+        background-color: #28a745;
+        color: white;
+        border-radius: 24px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: background-color 0.2s;
+        min-width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .assistant-voice-button:hover {
+        background-color: #218838;
+      }
+
+      .assistant-voice-button:disabled {
+        background-color: #6c757d;
+        cursor: not-allowed;
+      }
+
+      .assistant-voice-button.speaking {
+        background-color: #dc3545;
+        animation: pulse 1.5s infinite;
+      }
+
+      .assistant-voice-button.speaking:hover {
+        background-color: #c82333;
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+
+      .assistant-typing-indicator {
+        position: absolute;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 123, 255, 0.9);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        opacity: 0;
+        transition: all 0.3s;
+        pointer-events: none;
+        z-index: 1000;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .assistant-typing-indicator.assistant-show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .assistant-loading-dots {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+      }
+
+      .assistant-loading-dots span {
+        width: 8px;
+        height: 8px;
+        margin: 0 3px;
+        background-color: #8e8e8e;
+        border-radius: 50%;
+        display: inline-block;
+        animation-name: assistant-bounce;
+        animation-duration: 1.4s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+      }
+
+      .assistant-loading-dots span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .assistant-loading-dots span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes assistant-bounce {
+        0%,
+        75%,
+        100% {
+          transform: translateY(0);
+          opacity: 0.6;
+        }
+        25% {
+          transform: translateY(-8px);
+          opacity: 1;
+        }
+      }
+
+      /* Assistant Chat content styling */
+      .assistant-chat-image {
+        max-width: 200px;
+        max-height: 200px;
+        border-radius: 8px;
+        margin-top: 8px;
+        cursor: pointer;
+      }
+
+      .assistant-file-attachment {
+        background: #f0f0f0;
+        padding: 8px 12px;
+        border-radius: 8px;
+        margin-top: 8px;
+        font-size: 0.9em;
+        color: #666;
+      }
+
+      .assistant-file-preview {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 12px;
+        margin: 8px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        position: relative;
+      }
+
+      .assistant-file-preview img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+
+      .assistant-file-icon {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f0f0f0;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      .assistant-file-info {
+        flex: 1;
+      }
+
+      .assistant-file-content {
+        background: #f8f9fa;
+        padding: 8px;
+        border-radius: 4px;
+        margin-top: 4px;
+        font-size: 0.8em;
+        color: #666;
+        max-height: 100px;
+        overflow: hidden;
+      }
+
+      .assistant-remove-file {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      /* Table styling for Assistant AI responses */
+      .assistant-table-container {
+        overflow-x: auto;
+        margin: 10px 0;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+      }
+
+      .assistant-chat-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9em;
+      }
+
+      .assistant-chat-table th,
+      .assistant-chat-table td {
+        padding: 8px 12px;
+        text-align: left;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .assistant-chat-table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        color: #495057;
+      }
+
+      .assistant-chat-table tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+
+      .assistant-chat-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* Specific styling for accounting/financial tables */
+      .assistant-chat-table td:nth-child(1) {
+        white-space: nowrap; /* Date column */
+      }
+
+      .assistant-chat-table td:nth-child(4),
+      .assistant-chat-table td:nth-child(5) {
+        text-align: right; /* Amount columns */
+        font-family: monospace;
+      }
+
+      .assistant-chat-table th:nth-child(4),
+      .assistant-chat-table th:nth-child(5) {
+        text-align: right; /* Amount headers */
+      }
+
+      /* Number formatting for financial data */
+      .assistant-chat-table td:contains('Rp'),
+      .assistant-chat-table td[data-type="currency"],
+      .assistant-chat-table td.assistant-currency-cell {
+        text-align: right;
+        font-weight: 500;
+        font-family: monospace;
+      }
+
+      .assistant-currency-cell {
+        color: #2d5a27;
+        background-color: #f0f8f0;
+      }
+
+      .assistant-date-cell {
+        white-space: nowrap;
+        font-weight: 500;
+        min-width: 100px;
+      }
+
+      .assistant-description-cell {
+        max-width: 200px;
+        word-wrap: break-word;
+      }
+
+      .assistant-empty-amount {
+        background-color: #f9f9f9 !important;
+        color: #ccc !important;
+        text-align: center !important;
+      }
+
+      .assistant-empty-amount:before {
+        content: '—';
+        color: #ddd;
+      }
+
+      /* Text formatting in assistant chat */
+      .assistant-chat-text strong {
+        font-weight: 600;
+      }
+
+      .assistant-chat-text em {
+        font-style: italic;
+      }
+
+      .assistant-chat-text code {
+        background: #f1f3f4;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 0.9em;
+      }
+
+      .assistant-chat-text ul {
+        margin: 8px 0;
+        padding-left: 20px;
+      }
+
+      .assistant-chat-text li {
+        margin: 4px 0;
+      }
+
+      /* ✅ MODERN CODE BLOCK STYLING - Like Standard AI Assistants */
+      .assistant-code-block {
+        margin: 16px 0;
+        border-radius: 8px;
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        overflow: hidden;
+        font-family: 'SFMono-Regular', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', monospace;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.2s ease;
+      }
+
+      .assistant-code-block:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .assistant-code-block.modern-highlight {
+        background: #ffffff;
+        border: 1px solid #d0d7de;
+      }
+
+      .assistant-code-header {
+        background: linear-gradient(135deg, #f6f8fa 0%, #f1f3f4 100%);
+        padding: 12px 16px;
+        border-bottom: 1px solid #d0d7de;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 44px;
+      }
+
+      .assistant-code-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .assistant-code-language {
+        font-weight: 600;
+        color: #24292f;
+        font-size: 13px;
+        letter-spacing: 0.02em;
+        background: rgba(175, 184, 193, 0.2);
+        padding: 4px 8px;
+        border-radius: 6px;
+        cursor: help;
+        transition: background-color 0.2s ease;
+      }
+
+      .assistant-code-language:hover {
+        background: rgba(175, 184, 193, 0.3);
+      }
+
+      .assistant-code-lines {
+        font-size: 12px;
+        color: #656d76;
+        font-weight: 400;
+      }
+
+      .assistant-code-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .assistant-copy-code-button {
+        background: #f6f8fa !important;
+        border: 1px solid #d0d7de !important;
+        color: #24292f !important;
+        padding: 6px 12px !important;
+        border-radius: 6px !important;
+        cursor: pointer !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        transition: all 0.2s ease !important;
+        min-height: 32px !important;
+        width: auto !important;
+        height: auto !important;
+      }
+
+      .assistant-copy-code-button:hover {
+        background: #f3f4f6 !important;
+        border-color: #afb8c1 !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+      }
+
+      .assistant-copy-code-button:active {
+        transform: translateY(0) !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+      }
+
+      .assistant-copy-code-button.assistant-copied {
+        background: #dafbe1 !important;
+        border-color: #28a745 !important;
+        color: #22863a !important;
+      }
+
+      .assistant-copy-code-button svg,
+      .assistant-copy-code-button i[data-feather] {
+        width: 14px !important;
+        height: 14px !important;
+        stroke-width: 2 !important;
+      }
+
+      .assistant-copy-code-button .copy-text {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1;
+      }
+
+      .assistant-code-content {
+        margin: 0;
+        padding: 16px;
+        background: #ffffff;
+        color: #24292f;
+        font-size: 14px;
+        line-height: 1.6;
+        overflow-x: auto;
+        border: none;
+        font-family: 'SFMono-Regular', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', monospace;
+        white-space: pre;
+        tab-size: 2;
+      }
+
+      .assistant-code-content code {
+        background: transparent !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        font-family: inherit !important;
+        font-size: inherit !important;
+        color: inherit !important;
+        border: none !important;
+        display: block;
+        width: 100%;
+      }
+
+      /* ✅ ENHANCED SYNTAX HIGHLIGHTING - Professional Colors */
+      
+      /* Comments */
+      .assistant-code-content .hljs-comment,
+      .assistant-code-content .hljs-quote {
+        color: #6a737d;
+        font-style: italic;
+      }
+
+      /* Strings */
+      .assistant-code-content .hljs-string,
+      .assistant-code-content .hljs-template-string {
+        color: #032f62;
+      }
+
+      /* Numbers */
+      .assistant-code-content .hljs-number {
+        color: #005cc5;
+      }
+
+      /* Keywords */
+      .assistant-code-content .hljs-keyword,
+      .assistant-code-content .hljs-selector-tag,
+      .assistant-code-content .hljs-literal,
+      .assistant-code-content .hljs-type {
+        color: #d73a49;
+        font-weight: 600;
+      }
+
+      /* Functions */
+      .assistant-code-content .hljs-function,
+      .assistant-code-content .hljs-title,
+      .assistant-code-content .hljs-title.function_ {
+        color: #6f42c1;
+        font-weight: 600;
+      }
+
+      /* Variables */
+      .assistant-code-content .hljs-variable,
+      .assistant-code-content .hljs-template-variable {
+        color: #e36209;
+      }
+
+      /* Operators */
+      .assistant-code-content .hljs-operator {
+        color: #d73a49;
+      }
+
+      /* Class names */
+      .assistant-code-content .hljs-class .hljs-title,
+      .assistant-code-content .hljs-title.class_ {
+        color: #6f42c1;
+        font-weight: 600;
+      }
+
+      /* Attributes */
+      .assistant-code-content .hljs-attr,
+      .assistant-code-content .hljs-attribute {
+        color: #6f42c1;
+      }
+
+      /* Built-ins */
+      .assistant-code-content .hljs-built_in,
+      .assistant-code-content .hljs-builtin-name {
+        color: #005cc5;
+      }
+
+      /* Meta */
+      .assistant-code-content .hljs-meta {
+        color: #6a737d;
+      }
+
+      /* Punctuation */
+      .assistant-code-content .hljs-punctuation {
+        color: #24292f;
+      }
+
+      /* Tags (HTML) */
+      .assistant-code-content .hljs-tag {
+        color: #22863a;
+      }
+
+      .assistant-code-content .hljs-name {
+        color: #22863a;
+        font-weight: 600;
+      }
+
+      /* Selectors (CSS) */
+      .assistant-code-content .hljs-selector-id,
+      .assistant-code-content .hljs-selector-class {
+        color: #6f42c1;
+        font-weight: 600;
+      }
+
+      /* Properties (CSS) */
+      .assistant-code-content .hljs-property {
+        color: #005cc5;
+      }
+
+      /* Values (CSS) */
+      .assistant-code-content .hljs-value {
+        color: #032f62;
+      }
+
+      /* Language-specific enhancements */
+      
+      /* JavaScript/TypeScript */
+      .assistant-code-content.language-javascript .hljs-title.function_,
+      .assistant-code-content.language-typescript .hljs-title.function_ {
+        color: #6f42c1;
+      }
+
+      /* Python */
+      .assistant-code-content.language-python .hljs-decorator {
+        color: #6f42c1;
+        font-weight: 600;
+      }
+
+      /* SQL */
+      .assistant-code-content.language-sql .hljs-keyword {
+        color: #d73a49;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      /* JSON */
+      .assistant-code-content.language-json .hljs-attr {
+        color: #005cc5;
+        font-weight: 600;
+      }
+
+      .assistant-code-content.language-json .hljs-string {
+        color: #032f62;
+      }
+
+      /* PHP */
+      .assistant-code-content.language-php .hljs-variable {
+        color: #e36209;
+        font-weight: 500;
+      }
+
+      /* Scrollbar styling for code blocks */
+      .assistant-code-content::-webkit-scrollbar {
+        height: 8px;
+        background-color: #f1f3f4;
+      }
+
+      .assistant-code-content::-webkit-scrollbar-thumb {
+        background-color: #c1c8cd;
+        border-radius: 4px;
+      }
+
+      .assistant-code-content::-webkit-scrollbar-thumb:hover {
+        background-color: #a8b2ba;
+      }
+
+      /* Responsive design for code blocks */
+      @media (max-width: 768px) {
+        .assistant-code-block {
+          margin: 12px -8px;
+          border-radius: 0;
+          border-left: none;
+          border-right: none;
+        }
+
+        .assistant-code-header {
+          padding: 10px 12px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+          min-height: auto;
+        }
+
+        .assistant-code-info {
+          order: 1;
+          width: 100%;
+        }
+
+        .assistant-code-actions {
+          order: 2;
+          width: 100%;
+          justify-content: flex-end;
+        }
+
+        .assistant-code-content {
+          padding: 12px;
+          font-size: 13px;
+        }
+
+        .assistant-copy-code-button .copy-text {
+          display: none;
+        }
+      }
+
+      /* Line numbers (optional enhancement) */
+      .assistant-code-content.show-line-numbers {
+        counter-reset: line;
+      }
+
+      .assistant-code-content.show-line-numbers code {
+        counter-increment: line;
+      }
+
+      .assistant-code-content.show-line-numbers code::before {
+        content: counter(line);
+        color: #8b949e;
+        margin-right: 16px;
+        font-size: 12px;
+        text-align: right;
+        width: 20px;
+        display: inline-block;
+        user-select: none;
+      }
+
+      /* ✅ ENHANCED LANGUAGE-SPECIFIC HEADER COLORS (Optional) */
+      
+      /* Web Technologies */
+      .assistant-code-block[data-language="css"] .assistant-code-header {
+        background: linear-gradient(90deg, #264de4 0%, #2965f1 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="css"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="html"] .assistant-code-header,
+      .assistant-code-block[data-language="htm"] .assistant-code-header {
+        background: linear-gradient(90deg, #e34c26 0%, #f06529 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="html"] .assistant-code-language,
+      .assistant-code-block[data-language="htm"] .assistant-code-language { color: white; }
+
+      /* JavaScript & TypeScript */
+      .assistant-code-block[data-language="javascript"] .assistant-code-header,
+      .assistant-code-block[data-language="js"] .assistant-code-header {
+        background: linear-gradient(90deg, #f7df1e 0%, #f0db4f 100%);
+        color: #323330;
+      }
+      .assistant-code-block[data-language="javascript"] .assistant-code-language,
+      .assistant-code-block[data-language="js"] .assistant-code-language { color: #323330; }
+
+      .assistant-code-block[data-language="typescript"] .assistant-code-header,
+      .assistant-code-block[data-language="ts"] .assistant-code-header {
+        background: linear-gradient(90deg, #3178c6 0%, #4c8ddb 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="typescript"] .assistant-code-language,
+      .assistant-code-block[data-language="ts"] .assistant-code-language { color: white; }
+
+      /* Server-side Languages */
+      .assistant-code-block[data-language="php"] .assistant-code-header {
+        background: linear-gradient(90deg, #777bb4 0%, #8892bf 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="php"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="python"] .assistant-code-header,
+      .assistant-code-block[data-language="py"] .assistant-code-header {
+        background: linear-gradient(90deg, #3776ab 0%, #4b8bbe 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="python"] .assistant-code-language,
+      .assistant-code-block[data-language="py"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="java"] .assistant-code-header {
+        background: linear-gradient(90deg, #ed8b00 0%, #f89820 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="java"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="csharp"] .assistant-code-header,
+      .assistant-code-block[data-language="cs"] .assistant-code-header,
+      .assistant-code-block[data-language="c#"] .assistant-code-header {
+        background: linear-gradient(90deg, #239120 0%, #68bc71 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="csharp"] .assistant-code-language,
+      .assistant-code-block[data-language="cs"] .assistant-code-language,
+      .assistant-code-block[data-language="c#"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="ruby"] .assistant-code-header,
+      .assistant-code-block[data-language="rb"] .assistant-code-header {
+        background: linear-gradient(90deg, #cc342d 0%, #d73502 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="ruby"] .assistant-code-language,
+      .assistant-code-block[data-language="rb"] .assistant-code-language { color: white; }
+
+      /* Database Languages */
+      .assistant-code-block[data-language="sql"] .assistant-code-header,
+      .assistant-code-block[data-language="mysql"] .assistant-code-header,
+      .assistant-code-block[data-language="postgresql"] .assistant-code-header,
+      .assistant-code-block[data-language="sqlite"] .assistant-code-header {
+        background: linear-gradient(90deg, #336791 0%, #4e79a7 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="sql"] .assistant-code-language,
+      .assistant-code-block[data-language="mysql"] .assistant-code-language,
+      .assistant-code-block[data-language="postgresql"] .assistant-code-language,
+      .assistant-code-block[data-language="sqlite"] .assistant-code-language { color: white; }
+
+      /* System Programming */
+      .assistant-code-block[data-language="c"] .assistant-code-header {
+        background: linear-gradient(90deg, #a8b9cc 0%, #283593 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="c"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="cpp"] .assistant-code-header,
+      .assistant-code-block[data-language="c++"] .assistant-code-header {
+        background: linear-gradient(90deg, #00599c 0%, #004482 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="cpp"] .assistant-code-language,
+      .assistant-code-block[data-language="c++"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="rust"] .assistant-code-header,
+      .assistant-code-block[data-language="rs"] .assistant-code-header {
+        background: linear-gradient(90deg, #ce422b 0%, #d73502 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="rust"] .assistant-code-language,
+      .assistant-code-block[data-language="rs"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="go"] .assistant-code-header,
+      .assistant-code-block[data-language="golang"] .assistant-code-header {
+        background: linear-gradient(90deg, #00add8 0%, #00a9d4 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="go"] .assistant-code-language,
+      .assistant-code-block[data-language="golang"] .assistant-code-language { color: white; }
+
+      /* Mobile Development */
+      .assistant-code-block[data-language="swift"] .assistant-code-header {
+        background: linear-gradient(90deg, #fa7343 0%, #ff6b35 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="swift"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="kotlin"] .assistant-code-header,
+      .assistant-code-block[data-language="kt"] .assistant-code-header {
+        background: linear-gradient(90deg, #7f52ff 0%, #9478ff 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="kotlin"] .assistant-code-language,
+      .assistant-code-block[data-language="kt"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="dart"] .assistant-code-header {
+        background: linear-gradient(90deg, #0175c2 0%, #13b9fd 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="dart"] .assistant-code-language { color: white; }
+
+      /* Shell & Config */
+      .assistant-code-block[data-language="bash"] .assistant-code-header,
+      .assistant-code-block[data-language="sh"] .assistant-code-header,
+      .assistant-code-block[data-language="shell"] .assistant-code-header {
+        background: linear-gradient(90deg, #4eaa25 0%, #89e051 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="bash"] .assistant-code-language,
+      .assistant-code-block[data-language="sh"] .assistant-code-language,
+      .assistant-code-block[data-language="shell"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="powershell"] .assistant-code-header,
+      .assistant-code-block[data-language="ps1"] .assistant-code-header {
+        background: linear-gradient(90deg, #012456 0%, #2e5ce6 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="powershell"] .assistant-code-language,
+      .assistant-code-block[data-language="ps1"] .assistant-code-language { color: white; }
+
+      /* Data & Config Files */
+      .assistant-code-block[data-language="json"] .assistant-code-header {
+        background: linear-gradient(90deg, #292929 0%, #484848 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="json"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="xml"] .assistant-code-header {
+        background: linear-gradient(90deg, #ff6600 0%, #ff8533 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="xml"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="yaml"] .assistant-code-header,
+      .assistant-code-block[data-language="yml"] .assistant-code-header {
+        background: linear-gradient(90deg, #cb171e 0%, #dc3545 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="yaml"] .assistant-code-language,
+      .assistant-code-block[data-language="yml"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="toml"] .assistant-code-header {
+        background: linear-gradient(90deg, #9c4221 0%, #bf5029 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="toml"] .assistant-code-language { color: white; }
+
+      /* Frameworks & Tools */
+      .assistant-code-block[data-language="dockerfile"] .assistant-code-header,
+      .assistant-code-block[data-language="docker"] .assistant-code-header {
+        background: linear-gradient(90deg, #2496ed 0%, #4db8ff 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="dockerfile"] .assistant-code-language,
+      .assistant-code-block[data-language="docker"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="nginx"] .assistant-code-header {
+        background: linear-gradient(90deg, #009639 0%, #1ba345 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="nginx"] .assistant-code-language { color: white; }
+
+      .assistant-code-block[data-language="apache"] .assistant-code-header {
+        background: linear-gradient(90deg, #d22128 0%, #e94e77 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="apache"] .assistant-code-language { color: white; }
+
+      /* Default untuk bahasa yang tidak dikenal */
+      .assistant-code-block[data-language="text"] .assistant-code-header,
+      .assistant-code-block[data-language="plain"] .assistant-code-header {
+        background: linear-gradient(90deg, #6c757d 0%, #868e96 100%);
+        color: white;
+      }
+      .assistant-code-block[data-language="text"] .assistant-code-language,
+      .assistant-code-block[data-language="plain"] .assistant-code-language { color: white; }
+
+      /* ✅ EXTENDED Syntax highlighting untuk SEMUA bahasa pemrograman */
+      
+      /* Basic syntax highlighting - berlaku untuk semua bahasa */
+      .assistant-code-content .token.comment,
+      .assistant-code-content .comment {
+        color: #6a737d !important;
+        font-style: italic;
+      }
+
+      .assistant-code-content .token.string,
+      .assistant-code-content .string {
+        color: #032f62 !important;
+      }
+
+      .assistant-code-content .token.number,
+      .assistant-code-content .number {
+        color: #005cc5 !important;
+      }
+
+      .assistant-code-content .token.keyword,
+      .assistant-code-content .keyword {
+        color: #d73a49 !important;
+        font-weight: 600;
+      }
+
+      .assistant-code-content .token.function,
+      .assistant-code-content .function {
+        color: #6f42c1 !important;
+      }
+
+      .assistant-code-content .token.class-name,
+      .assistant-code-content .class-name {
+        color: #6f42c1 !important;
+      }
+
+      .assistant-code-content .token.variable,
+      .assistant-code-content .variable {
+        color: #e36209 !important;
+      }
+
+      .assistant-code-content .token.operator,
+      .assistant-code-content .operator {
+        color: #d73a49 !important;
+      }
+
+      /* CSS Specific */
+      .language-css .token.selector,
+      .language-css .selector {
+        color: #6f42c1 !important;
+        font-weight: 600;
+      }
+
+      .language-css .token.property,
+      .language-css .property {
+        color: #005cc5 !important;
+      }
+
+      .language-css .token.important,
+      .language-css .important {
+        color: #d73a49 !important;
+        font-weight: bold;
+      }
+
+      /* HTML Specific */
+      .language-html .token.tag,
+      .language-html .tag {
+        color: #22863a !important;
+      }
+
+      .language-html .token.attr-name,
+      .language-html .attr-name {
+        color: #6f42c1 !important;
+      }
+
+      .language-html .token.attr-value,
+      .language-html .attr-value {
+        color: #032f62 !important;
+      }
+
+      /* PHP Specific */
+      .language-php .token.php,
+      .language-php .php {
+        color: #8892bf !important;
+      }
+
+      .language-php .token.variable,
+      .language-php .variable {
+        color: #e36209 !important;
+      }
+
+      .language-php .token.function,
+      .language-php .function {
+        color: #6f42c1 !important;
+      }
+
+      /* JavaScript/TypeScript Specific */
+      .language-javascript .token.template-string,
+      .language-js .token.template-string,
+      .language-typescript .token.template-string,
+      .language-ts .token.template-string {
+        color: #032f62 !important;
+      }
+
+      .language-javascript .token.regex,
+      .language-js .token.regex,
+      .language-typescript .token.regex,
+      .language-ts .token.regex {
+        color: #22863a !important;
+      }
+
+      /* Python Specific */
+      .language-python .token.decorator,
+      .language-py .token.decorator {
+        color: #6f42c1 !important;
+      }
+
+      .language-python .token.triple-quoted-string,
+      .language-py .token.triple-quoted-string {
+        color: #032f62 !important;
+        font-style: italic;
+      }
+
+      /* SQL Specific */
+      .language-sql .token.keyword,
+      .language-mysql .token.keyword,
+      .language-postgresql .token.keyword {
+        color: #d73a49 !important;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .language-sql .token.function,
+      .language-mysql .token.function,
+      .language-postgresql .token.function {
+        color: #6f42c1 !important;
+        text-transform: uppercase;
+      }
+
+      /* JSON Specific */
+      .language-json .token.property {
+        color: #005cc5 !important;
+      }
+
+      .language-json .token.string {
+        color: #032f62 !important;
+      }
+
+      .language-json .token.number {
+        color: #005cc5 !important;
+      }
+
+      .language-json .token.boolean {
+        color: #d73a49 !important;
+      }
+
+      .language-json .token.null {
+        color: #6a737d !important;
+      }
+
+      /* Shell/Bash Specific */
+      .language-bash .token.shebang,
+      .language-sh .token.shebang {
+        color: #6a737d !important;
+        font-style: italic;
+      }
+
+      .language-bash .token.environment,
+      .language-sh .token.environment {
+        color: #e36209 !important;
+      }
+
+      /* YAML Specific */
+      .language-yaml .token.key,
+      .language-yml .token.key {
+        color: #005cc5 !important;
+        font-weight: 600;
+      }
+
+      .language-yaml .token.anchor,
+      .language-yml .token.anchor {
+        color: #6f42c1 !important;
+      }
+
+      /* Docker Specific */
+      .language-dockerfile .token.instruction,
+      .language-docker .token.instruction {
+        color: #d73a49 !important;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      /* Advanced pattern matching untuk highlight tanpa library */
+      .assistant-code-content {
+        /* Highlight common patterns */
+      }
+
+      /* PHP variables */
+      .language-php code:not(.token) {
+        background: transparent;
+      }
+
+      /* Auto-highlight PHP variables */
+      .language-php .assistant-code-content:not(.highlighted) {
+        /* Will be processed by JavaScript for better highlighting */
+      }
+
+      /* Enhanced text formatting styles */
+      .assistant-chat-text h1,
+      .assistant-chat-text h2,
+      .assistant-chat-text h3,
+      .assistant-chat-text h4,
+      .assistant-chat-text h5,
+      .assistant-chat-text h6 {
+        margin: 12px 0 8px 0;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      .assistant-chat-text h1 {
+        font-size: 1.5em;
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 4px;
+      }
+
+      .assistant-chat-text h2 {
+        font-size: 1.3em;
+        color: #34495e;
+        border-bottom: 1px solid #bdc3c7;
+        padding-bottom: 2px;
+      }
+
+      .assistant-chat-text h3 {
+        font-size: 1.2em;
+        color: #2c3e50;
+      }
+
+      .assistant-chat-text h4,
+      .assistant-chat-text h5,
+      .assistant-chat-text h6 {
+        font-size: 1.1em;
+        color: #34495e;
+      }
+
+      /* Enhanced list styles */
+      .assistant-chat-text ol,
+      .assistant-chat-text ul {
+        margin: 8px 0;
+        padding-left: 20px;
+      }
+
+      .assistant-chat-text ul.bullet-style li {
+        list-style-type: disc;
+        margin: 4px 0;
+      }
+
+      .assistant-chat-text ul.dash-style li {
+        list-style-type: none;
+        position: relative;
+        margin: 4px 0;
+      }
+
+      .assistant-chat-text ul.dash-style li:before {
+        content: "—";
+        position: absolute;
+        left: -15px;
+        color: #7f8c8d;
+      }
+
+      .assistant-chat-text ol li {
+        margin: 4px 0;
+      }
+
+      /* Blockquote styling */
+      .assistant-chat-text blockquote {
+        margin: 12px 0;
+        padding: 8px 16px;
+        border-left: 4px solid #3498db;
+        background-color: #f8f9fa;
+        font-style: italic;
+        color: #555;
+      }
+
+      /* Link styling */
+      .assistant-chat-text a {
+        color: #3498db;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s;
+      }
+
+      .assistant-chat-text a:hover {
+        color: #2980b9;
+        border-bottom-color: #2980b9;
+      }
+
+      /* Special element styling */
+      .assistant-chat-text .date {
+        background: #e8f4f8;
+        color: #2c3e50;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-weight: 500;
+        font-size: 0.9em;
+      }
+
+      .assistant-chat-text .time {
+        background: #fff3cd;
+        color: #856404;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-weight: 500;
+        font-size: 0.9em;
+      }
+
+      .assistant-chat-text .currency {
+        background: #d4edda;
+        color: #155724;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-weight: 600;
+        font-size: 0.9em;
+      }
+
+      .assistant-chat-text kbd {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 3px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+        color: #495057;
+        display: inline-block;
+        font-size: 0.8em;
+        font-weight: 700;
+        line-height: 1;
+        padding: 2px 4px;
+        white-space: nowrap;
+      }
+
+      .assistant-chat-text del {
+        text-decoration: line-through;
+        color: #6c757d;
+        opacity: 0.7;
+      }
+
+      .assistant-chat-text hr {
+        border: none;
+        border-top: 1px solid #dee2e6;
+        margin: 16px 0;
+      }
+
+      /* Improved paragraph spacing */
+      .assistant-chat-text p {
+        margin: 8px 0;
+        line-height: 1.6;
+      }
+
+      /* Better spacing for consecutive elements */
+      .assistant-chat-text > *:first-child {
+        margin-top: 0;
+      }
+
+      .assistant-chat-text > *:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Mobile responsiveness untuk code blocks */
+      @media (max-width: 768px) {
+        .assistant-code-block {
+          margin: 8px -8px;
+          border-radius: 0;
+        }
+
+        .assistant-code-content {
+          font-size: 12px;
+          padding: 10px;
+        }
+
+        .assistant-code-header {
+          padding: 6px 10px;
+        }
+
+        .assistant-chat-text h1 {
+          font-size: 1.3em;
+        }
+
+        .assistant-chat-text h2 {
+          font-size: 1.2em;
+        }
+
+        .assistant-chat-text blockquote {
+          margin: 8px 0;
+          padding: 6px 12px;
+        }
+      }

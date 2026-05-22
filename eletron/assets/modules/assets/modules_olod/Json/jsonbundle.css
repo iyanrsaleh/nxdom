@@ -1,0 +1,208 @@
+/* JSON Viewer Web Component Styles */
+:host {
+  display: block;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  background-color: #2a2f3a;
+  color: #f8f8f2;
+  padding: 10px;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+json-viewer {
+  display: block;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  background-color: #2a2f3a;
+  color: #f8f8f2;
+  padding: 10px;
+  border-radius: 4px;
+  overflow: auto;
+  width: 100%;
+  --string-color: #586a7b; /* Default string color */
+  --key-color: #02abf7; /* Default key color */
+  --property-color: #02abf7; /* Default property color */
+  --number-color: #d17117; /* Default number color */
+  --preview-color: rgb(187 83 12 / 90%); /* Default preview color */
+}
+
+/* Force key color with higher specificity */
+json-viewer .json-key,
+json-viewer.light .json-key {
+  color: var(--property-color, #02abf7) !important;
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+/* String color menggunakan CSS variable dengan fallback */
+.json-string {
+  color: var(--string-color, #586a7b);
+}
+
+.json-number {
+  color: #d17117;
+}
+
+.json-boolean {
+  color: #4ba7ef;
+}
+
+.json-null {
+  color: #df9cf3;
+  font-style: italic;
+}
+
+.preview {
+  color: var(--preview-color, rgb(187 83 12 / 90%));
+}
+
+.json-object,
+.json-array {
+  margin-left: 20px;
+}
+
+.json-toggle {
+  cursor: pointer;
+  user-select: none;
+  color: #999;
+  margin-right: 5px;
+}
+
+.json-toggle:hover {
+  color: #fff;
+}
+
+.json-bracket {
+  color: #666;
+  font-weight: bold;
+}
+
+.json-comma {
+  color: #666;
+}
+
+/* Expandable sections */
+.json-expandable {
+  cursor: pointer;
+}
+
+.json-expandable:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Light theme variant - Ultra High Contrast */
+json-viewer.light {
+  background-color: #ffffff00;
+  color: #000000; /* Pure black */
+  --string-color: #586a7b; /* Custom string color */
+  --key-color: #02abf7; /* Custom key color */
+  --property-color: #02abf7; /* Custom property color */
+  --number-color: #d17117; /* Custom number color */
+  --preview-color: rgb(187 83 12 / 90%); /* Custom preview color */
+  font-size: 13px; /* Larger font */
+  line-height: 1.7; /* Better spacing */
+  font-weight: 500; /* Bold base font */
+}
+
+json-viewer.light .json-key {
+  font-weight: 800; /* Extra bold */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+  font-size: 15px; /* Larger keys */
+  color: var(--property-color, #02abf7) !important; /* Force key color */
+}
+
+json-viewer.light .json-string {
+  font-weight: 700; /* Very bold */
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+json-viewer.light .json-number {
+  color: #8b0000; /* Dark red - very dark */
+  font-weight: 700; /* Very bold */
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+json-viewer.light .json-boolean {
+  color: #4b0082; /* Indigo - very dark purple */
+  font-weight: 800; /* Extra bold */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+json-viewer.light .json-null {
+  color: #2f4f4f; /* Dark slate gray */
+  font-style: italic;
+  font-weight: 700; /* Very bold */
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+json-viewer.light .json-bracket,
+json-viewer.light .json-comma {
+  color: #000000; /* Pure black */
+  font-weight: 800; /* Extra bold */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Additional improvements for light theme - Ultra High Contrast */
+json-viewer.light .json-toggle {
+  color: #000000; /* Pure black */
+  font-weight: 800; /* Extra bold */
+  font-size: 16px; /* Larger toggle */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+json-viewer.light .json-toggle:hover {
+  color: #000000; /* Pure black on hover */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  transform: scale(1.1); /* Slight scale on hover */
+}
+
+/* Better contrast for expandable indicators */
+json-viewer.light .json-expandable {
+  border-left: 4px solid #000000; /* Black border */
+  padding-left: 12px;
+  background-color: rgba(0, 0, 0, 0.05); /* Darker background */
+  border-radius: 3px; /* Rounded corners */
+}
+
+json-viewer.light .json-expandable:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-left-color: #000000;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure all text elements have maximum contrast */
+json-viewer.light * {
+  text-rendering: optimizeLegibility; /* Better text rendering */
+  -webkit-font-smoothing: antialiased; /* Smoother fonts */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force maximum contrast for all text */
+json-viewer.light .json-key,
+json-viewer.light .json-string,
+json-viewer.light .json-number,
+json-viewer.light .json-boolean,
+json-viewer.light .json-null {
+  letter-spacing: 0.5px; /* Better letter spacing */
+  -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.1); /* Webkit text stroke */
+}
+
+/* Make sure quotes are visible */
+json-viewer.light .json-string::before,
+json-viewer.light .json-string::after {
+  color: #000000 !important;
+  font-weight: 800 !important;
+}
+
+/* Force key color for all themes - Ultimate override */
+json-viewer .json-key,
+json-viewer.light .json-key,
+json-viewer.dark .json-key,
+json-viewer[class*="json-key"] {
+  color: var(--property-color, #02abf7) !important;
+  display: inline-flex !important;
+  align-items: flex-start !important;
+}

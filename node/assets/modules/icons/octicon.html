@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Branch Name - Primer CSS Demo</title>
+
+   <link rel="stylesheet" href="../nexa.css">
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 900px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .icon-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 8px 8px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      cursor: default;
+      min-width: 72px;
+      text-align: center;
+    }
+    .icon-item:hover {
+      border-color: var(--borderColor-default);
+      background-color: var(--bgColor-subtle);
+    }
+    .icon-item span.icon-name {
+      font-size: 10px;
+      color: var(--fgColor-muted);
+      word-break: break-all;
+      max-width: 72px;
+      line-height: 1.3;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    /* Search */
+    #icon-search {
+      margin-bottom: 16px;
+    }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <h1>Octicons — GitHub Icons</h1>
+
+  <input class="form-control" id="icon-search" type="search" placeholder="🔍  Filter icon..." style="max-width:320px;" oninput="filterIcons(this.value)">
+
+  <!-- ==============================
+       SIZES
+  ================================ -->
+  <h2>Icon Sizes</h2>
+  <div class="demo-row" style="align-items:flex-end;">
+    <div style="text-align:center;">
+      <span class="octicon octicon-star-16" style="color:var(--fgColor-default);"></span>
+      <div style="font-size:11px;color:var(--fgColor-muted);margin-top:4px;">16px</div>
+    </div>
+    <div style="text-align:center;">
+      <span class="octicon octicon-star-24" style="color:var(--fgColor-default);"></span>
+      <div style="font-size:11px;color:var(--fgColor-muted);margin-top:4px;">24px</div>
+    </div>
+    <div style="text-align:center;">
+      <span class="octicon octicon-copilot-48" style="color:var(--fgColor-default);"></span>
+      <div style="font-size:11px;color:var(--fgColor-muted);margin-top:4px;">48px</div>
+    </div>
+    <div style="text-align:center;">
+      <span class="octicon octicon-copilot-96" style="color:var(--fgColor-default);"></span>
+      <div style="font-size:11px;color:var(--fgColor-muted);margin-top:4px;">96px</div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       COLORS
+  ================================ -->
+  <h2>Icon Colors</h2>
+  <div class="demo-row">
+    <span class="octicon octicon-check-circle-fill-16" style="color:var(--fgColor-success);" title="success"></span>
+    <span class="octicon octicon-alert-fill-16" style="color:var(--fgColor-attention);" title="attention"></span>
+    <span class="octicon octicon-x-circle-fill-16" style="color:var(--fgColor-danger);" title="danger"></span>
+    <span class="octicon octicon-info-16" style="color:var(--fgColor-accent);" title="accent"></span>
+    <span class="octicon octicon-dot-fill-16" style="color:var(--fgColor-open);" title="open"></span>
+    <span class="octicon octicon-dot-fill-16" style="color:var(--fgColor-closed);" title="closed"></span>
+    <span class="octicon octicon-dot-fill-16" style="color:var(--fgColor-done);" title="done"></span>
+    <span class="octicon octicon-dot-fill-16" style="color:var(--fgColor-sponsors);" title="sponsors"></span>
+    <span class="octicon octicon-dot-fill-16" style="color:var(--fgColor-muted);" title="muted"></span>
+  </div>
+
+  <!-- ==============================
+       ALL ICONS (grid)
+  ================================ -->
+  <h2>Semua Icon (16px)</h2>
+  <div class="icon-grid" id="icon-grid">
+    <div class="icon-item"><span class="octicon octicon-accessibility-16"></span><span class="icon-name">accessibility</span></div>
+    <div class="icon-item"><span class="octicon octicon-agent-16"></span><span class="icon-name">agent</span></div>
+    <div class="icon-item"><span class="octicon octicon-ai-model-16"></span><span class="icon-name">ai-model</span></div>
+    <div class="icon-item"><span class="octicon octicon-alert-16"></span><span class="icon-name">alert</span></div>
+    <div class="icon-item"><span class="octicon octicon-alert-fill-16"></span><span class="icon-name">alert-fill</span></div>
+    <div class="icon-item"><span class="octicon octicon-apps-16"></span><span class="icon-name">apps</span></div>
+    <div class="icon-item"><span class="octicon octicon-archive-16"></span><span class="icon-name">archive</span></div>
+    <div class="icon-item"><span class="octicon octicon-arrow-both-16"></span><span class="icon-name">arrow-both</span></div>
+    <div class="icon-item"><span class="octicon octicon-arrow-down-16"></span><span class="icon-name">arrow-down</span></div>
+    <div class="icon-item"><span class="octicon octicon-arrow-left-16"></span><span class="icon-name">arrow-left</span></div>
+    <div class="icon-item"><span class="octicon octicon-arrow-right-16"></span><span class="icon-name">arrow-right</span></div>
+    <div class="icon-item"><span class="octicon octicon-arrow-up-16"></span><span class="icon-name">arrow-up</span></div>
+    <div class="icon-item"><span class="octicon octicon-arrow-switch-16"></span><span class="icon-name">arrow-switch</span></div>
+    <div class="icon-item"><span class="octicon octicon-beaker-16"></span><span class="icon-name">beaker</span></div>
+    <div class="icon-item"><span class="octicon octicon-bell-16"></span><span class="icon-name">bell</span></div>
+    <div class="icon-item"><span class="octicon octicon-bell-fill-16"></span><span class="icon-name">bell-fill</span></div>
+    <div class="icon-item"><span class="octicon octicon-bell-slash-16"></span><span class="icon-name">bell-slash</span></div>
+    <div class="icon-item"><span class="octicon octicon-blocked-16"></span><span class="icon-name">blocked</span></div>
+    <div class="icon-item"><span class="octicon octicon-bold-16"></span><span class="icon-name">bold</span></div>
+    <div class="icon-item"><span class="octicon octicon-book-16"></span><span class="icon-name">book</span></div>
+    <div class="icon-item"><span class="octicon octicon-bookmark-16"></span><span class="icon-name">bookmark</span></div>
+    <div class="icon-item"><span class="octicon octicon-bookmark-fill-24" style="--octicon-size:16px;"></span><span class="icon-name">bookmark-fill</span></div>
+    <div class="icon-item"><span class="octicon octicon-bookmark-slash-16"></span><span class="icon-name">bookmark-slash</span></div>
+    <div class="icon-item"><span class="octicon octicon-briefcase-16"></span><span class="icon-name">briefcase</span></div>
+    <div class="icon-item"><span class="octicon octicon-broadcast-16"></span><span class="icon-name">broadcast</span></div>
+    <div class="icon-item"><span class="octicon octicon-browser-16"></span><span class="icon-name">browser</span></div>
+    <div class="icon-item"><span class="octicon octicon-bug-16"></span><span class="icon-name">bug</span></div>
+    <div class="icon-item"><span class="octicon octicon-cache-16"></span><span class="icon-name">cache</span></div>
+    <div class="icon-item"><span class="octicon octicon-calendar-16"></span><span class="icon-name">calendar</span></div>
+    <div class="icon-item"><span class="octicon octicon-check-16"></span><span class="icon-name">check</span></div>
+    <div class="icon-item"><span class="octicon octicon-check-circle-16"></span><span class="icon-name">check-circle</span></div>
+    <div class="icon-item"><span class="octicon octicon-check-circle-fill-16"></span><span class="icon-name">check-circle-fill</span></div>
+    <div class="icon-item"><span class="octicon octicon-checkbox-16"></span><span class="icon-name">checkbox</span></div>
+    <div class="icon-item"><span class="octicon octicon-checklist-16"></span><span class="icon-name">checklist</span></div>
+    <div class="icon-item"><span class="octicon octicon-chevron-down-16"></span><span class="icon-name">chevron-down</span></div>
+    <div class="icon-item"><span class="octicon octicon-chevron-left-16"></span><span class="icon-name">chevron-left</span></div>
+    <div class="icon-item"><span class="octicon octicon-chevron-right-16"></span><span class="icon-name">chevron-right</span></div>
+    <div class="icon-item"><span class="octicon octicon-chevron-up-16"></span><span class="icon-name">chevron-up</span></div>
+    <div class="icon-item"><span class="octicon octicon-circle-16"></span><span class="icon-name">circle</span></div>
+    <div class="icon-item"><span class="octicon octicon-circle-slash-16"></span><span class="icon-name">circle-slash</span></div>
+    <div class="icon-item"><span class="octicon octicon-clock-16"></span><span class="icon-name">clock</span></div>
+    <div class="icon-item"><span class="octicon octicon-cloud-16"></span><span class="icon-name">cloud</span></div>
+    <div class="icon-item"><span class="octicon octicon-code-16"></span><span class="icon-name">code</span></div>
+    <div class="icon-item"><span class="octicon octicon-code-review-16"></span><span class="icon-name">code-review</span></div>
+    <div class="icon-item"><span class="octicon octicon-codescan-16"></span><span class="icon-name">codescan</span></div>
+    <div class="icon-item"><span class="octicon octicon-codespaces-16"></span><span class="icon-name">codespaces</span></div>
+    <div class="icon-item"><span class="octicon octicon-columns-16"></span><span class="icon-name">columns</span></div>
+    <div class="icon-item"><span class="octicon octicon-comment-16"></span><span class="icon-name">comment</span></div>
+    <div class="icon-item"><span class="octicon octicon-comment-discussion-16"></span><span class="icon-name">comment-discussion</span></div>
+    <div class="icon-item"><span class="octicon octicon-compose-16"></span><span class="icon-name">compose</span></div>
+    <div class="icon-item"><span class="octicon octicon-container-16"></span><span class="icon-name">container</span></div>
+    <div class="icon-item"><span class="octicon octicon-copilot-16"></span><span class="icon-name">copilot</span></div>
+    <div class="icon-item"><span class="octicon octicon-copy-16"></span><span class="icon-name">copy</span></div>
+    <div class="icon-item"><span class="octicon octicon-cpu-16"></span><span class="icon-name">cpu</span></div>
+    <div class="icon-item"><span class="octicon octicon-credit-card-16"></span><span class="icon-name">credit-card</span></div>
+    <div class="icon-item"><span class="octicon octicon-dash-16"></span><span class="icon-name">dash</span></div>
+    <div class="icon-item"><span class="octicon octicon-database-16"></span><span class="icon-name">database</span></div>
+    <div class="icon-item"><span class="octicon octicon-dependabot-16"></span><span class="icon-name">dependabot</span></div>
+    <div class="icon-item"><span class="octicon octicon-desktop-download-16"></span><span class="icon-name">desktop-download</span></div>
+    <div class="icon-item"><span class="octicon octicon-device-desktop-16"></span><span class="icon-name">device-desktop</span></div>
+    <div class="icon-item"><span class="octicon octicon-device-mobile-16"></span><span class="icon-name">device-mobile</span></div>
+    <div class="icon-item"><span class="octicon octicon-diff-16"></span><span class="icon-name">diff</span></div>
+    <div class="icon-item"><span class="octicon octicon-diff-added-16"></span><span class="icon-name">diff-added</span></div>
+    <div class="icon-item"><span class="octicon octicon-diff-removed-16"></span><span class="icon-name">diff-removed</span></div>
+    <div class="icon-item"><span class="octicon octicon-dot-16"></span><span class="icon-name">dot</span></div>
+    <div class="icon-item"><span class="octicon octicon-dot-fill-16"></span><span class="icon-name">dot-fill</span></div>
+    <div class="icon-item"><span class="octicon octicon-download-16"></span><span class="icon-name">download</span></div>
+    <div class="icon-item"><span class="octicon octicon-duplicate-16"></span><span class="icon-name">duplicate</span></div>
+    <div class="icon-item"><span class="octicon octicon-ellipsis-16"></span><span class="icon-name">ellipsis</span></div>
+    <div class="icon-item"><span class="octicon octicon-exclamation-16"></span><span class="icon-name">exclamation</span></div>
+    <div class="icon-item"><span class="octicon octicon-eye-16"></span><span class="icon-name">eye</span></div>
+    <div class="icon-item"><span class="octicon octicon-eye-closed-16"></span><span class="icon-name">eye-closed</span></div>
+    <div class="icon-item"><span class="octicon octicon-file-16"></span><span class="icon-name">file</span></div>
+    <div class="icon-item"><span class="octicon octicon-file-added-16"></span><span class="icon-name">file-added</span></div>
+    <div class="icon-item"><span class="octicon octicon-file-code-16"></span><span class="icon-name">file-code</span></div>
+    <div class="icon-item"><span class="octicon octicon-file-directory-16"></span><span class="icon-name">file-directory</span></div>
+    <div class="icon-item"><span class="octicon octicon-file-directory-fill-16"></span><span class="icon-name">file-dir-fill</span></div>
+    <div class="icon-item"><span class="octicon octicon-file-media-16"></span><span class="icon-name">file-media</span></div>
+    <div class="icon-item"><span class="octicon octicon-file-zip-16"></span><span class="icon-name">file-zip</span></div>
+    <div class="icon-item"><span class="octicon octicon-filter-16"></span><span class="icon-name">filter</span></div>
+    <div class="icon-item"><span class="octicon octicon-flame-16"></span><span class="icon-name">flame</span></div>
+    <div class="icon-item"><span class="octicon octicon-fold-16"></span><span class="icon-name">fold</span></div>
+    <div class="icon-item"><span class="octicon octicon-gear-16"></span><span class="icon-name">gear</span></div>
+    <div class="icon-item"><span class="octicon octicon-gift-16"></span><span class="icon-name">gift</span></div>
+    <div class="icon-item"><span class="octicon octicon-git-branch-16"></span><span class="icon-name">git-branch</span></div>
+    <div class="icon-item"><span class="octicon octicon-git-commit-16"></span><span class="icon-name">git-commit</span></div>
+    <div class="icon-item"><span class="octicon octicon-git-merge-16"></span><span class="icon-name">git-merge</span></div>
+    <div class="icon-item"><span class="octicon octicon-git-pull-request-16"></span><span class="icon-name">git-pr</span></div>
+    <div class="icon-item"><span class="octicon octicon-git-pull-request-closed-16"></span><span class="icon-name">git-pr-closed</span></div>
+    <div class="icon-item"><span class="octicon octicon-git-pull-request-draft-16"></span><span class="icon-name">git-pr-draft</span></div>
+    <div class="icon-item"><span class="octicon octicon-globe-16"></span><span class="icon-name">globe</span></div>
+    <div class="icon-item"><span class="octicon octicon-grabber-16"></span><span class="icon-name">grabber</span></div>
+    <div class="icon-item"><span class="octicon octicon-graph-16"></span><span class="icon-name">graph</span></div>
+    <div class="icon-item"><span class="octicon octicon-hash-16"></span><span class="icon-name">hash</span></div>
+    <div class="icon-item"><span class="octicon octicon-heart-16"></span><span class="icon-name">heart</span></div>
+    <div class="icon-item"><span class="octicon octicon-heart-fill-16"></span><span class="icon-name">heart-fill</span></div>
+    <div class="icon-item"><span class="octicon octicon-history-16"></span><span class="icon-name">history</span></div>
+    <div class="icon-item"><span class="octicon octicon-home-16"></span><span class="icon-name">home</span></div>
+    <div class="icon-item"><span class="octicon octicon-hourglass-16"></span><span class="icon-name">hourglass</span></div>
+    <div class="icon-item"><span class="octicon octicon-hubot-16"></span><span class="icon-name">hubot</span></div>
+    <div class="icon-item"><span class="octicon octicon-image-16"></span><span class="icon-name">image</span></div>
+    <div class="icon-item"><span class="octicon octicon-inbox-16"></span><span class="icon-name">inbox</span></div>
+    <div class="icon-item"><span class="octicon octicon-info-16"></span><span class="icon-name">info</span></div>
+    <div class="icon-item"><span class="octicon octicon-issue-opened-16"></span><span class="icon-name">issue-opened</span></div>
+    <div class="icon-item"><span class="octicon octicon-issue-closed-16"></span><span class="icon-name">issue-closed</span></div>
+    <div class="icon-item"><span class="octicon octicon-issue-draft-16"></span><span class="icon-name">issue-draft</span></div>
+    <div class="icon-item"><span class="octicon octicon-issue-reopened-16"></span><span class="icon-name">issue-reopened</span></div>
+    <div class="icon-item"><span class="octicon octicon-italic-16"></span><span class="icon-name">italic</span></div>
+    <div class="icon-item"><span class="octicon octicon-key-16"></span><span class="icon-name">key</span></div>
+    <div class="icon-item"><span class="octicon octicon-law-16"></span><span class="icon-name">law</span></div>
+    <div class="icon-item"><span class="octicon octicon-light-bulb-16"></span><span class="icon-name">light-bulb</span></div>
+    <div class="icon-item"><span class="octicon octicon-link-16"></span><span class="icon-name">link</span></div>
+    <div class="icon-item"><span class="octicon octicon-link-external-16"></span><span class="icon-name">link-external</span></div>
+    <div class="icon-item"><span class="octicon octicon-list-ordered-16"></span><span class="icon-name">list-ordered</span></div>
+    <div class="icon-item"><span class="octicon octicon-list-unordered-16"></span><span class="icon-name">list-unordered</span></div>
+    <div class="icon-item"><span class="octicon octicon-location-16"></span><span class="icon-name">location</span></div>
+    <div class="icon-item"><span class="octicon octicon-lock-16"></span><span class="icon-name">lock</span></div>
+    <div class="icon-item"><span class="octicon octicon-logo-github-16"></span><span class="icon-name">logo-github</span></div>
+    <div class="icon-item"><span class="octicon octicon-mail-16"></span><span class="icon-name">mail</span></div>
+    <div class="icon-item"><span class="octicon octicon-mark-github-16"></span><span class="icon-name">mark-github</span></div>
+    <div class="icon-item"><span class="octicon octicon-markdown-16"></span><span class="icon-name">markdown</span></div>
+    <div class="icon-item"><span class="octicon octicon-megaphone-16"></span><span class="icon-name">megaphone</span></div>
+    <div class="icon-item"><span class="octicon octicon-mention-16"></span><span class="icon-name">mention</span></div>
+    <div class="icon-item"><span class="octicon octicon-milestone-16"></span><span class="icon-name">milestone</span></div>
+    <div class="icon-item"><span class="octicon octicon-moon-16"></span><span class="icon-name">moon</span></div>
+    <div class="icon-item"><span class="octicon octicon-mute-16"></span><span class="icon-name">mute</span></div>
+    <div class="icon-item"><span class="octicon octicon-no-entry-16"></span><span class="icon-name">no-entry</span></div>
+    <div class="icon-item"><span class="octicon octicon-note-16"></span><span class="icon-name">note</span></div>
+    <div class="icon-item"><span class="octicon octicon-organization-16"></span><span class="icon-name">organization</span></div>
+    <div class="icon-item"><span class="octicon octicon-package-16"></span><span class="icon-name">package</span></div>
+    <div class="icon-item"><span class="octicon octicon-paintbrush-16"></span><span class="icon-name">paintbrush</span></div>
+    <div class="icon-item"><span class="octicon octicon-paper-airplane-16"></span><span class="icon-name">paper-airplane</span></div>
+    <div class="icon-item"><span class="octicon octicon-paperclip-16"></span><span class="icon-name">paperclip</span></div>
+    <div class="icon-item"><span class="octicon octicon-pencil-16"></span><span class="icon-name">pencil</span></div>
+    <div class="icon-item"><span class="octicon octicon-people-16"></span><span class="icon-name">people</span></div>
+    <div class="icon-item"><span class="octicon octicon-person-16"></span><span class="icon-name">person</span></div>
+    <div class="icon-item"><span class="octicon octicon-person-add-16"></span><span class="icon-name">person-add</span></div>
+    <div class="icon-item"><span class="octicon octicon-pin-16"></span><span class="icon-name">pin</span></div>
+    <div class="icon-item"><span class="octicon octicon-play-16"></span><span class="icon-name">play</span></div>
+    <div class="icon-item"><span class="octicon octicon-plug-16"></span><span class="icon-name">plug</span></div>
+    <div class="icon-item"><span class="octicon octicon-plus-16"></span><span class="icon-name">plus</span></div>
+    <div class="icon-item"><span class="octicon octicon-plus-circle-16"></span><span class="icon-name">plus-circle</span></div>
+    <div class="icon-item"><span class="octicon octicon-project-16"></span><span class="icon-name">project</span></div>
+    <div class="icon-item"><span class="octicon octicon-pulse-16"></span><span class="icon-name">pulse</span></div>
+    <div class="icon-item"><span class="octicon octicon-question-16"></span><span class="icon-name">question</span></div>
+    <div class="icon-item"><span class="octicon octicon-quote-16"></span><span class="icon-name">quote</span></div>
+    <div class="icon-item"><span class="octicon octicon-redo-16"></span><span class="icon-name">redo</span></div>
+    <div class="icon-item"><span class="octicon octicon-reply-16"></span><span class="icon-name">reply</span></div>
+    <div class="icon-item"><span class="octicon octicon-repo-16"></span><span class="icon-name">repo</span></div>
+    <div class="icon-item"><span class="octicon octicon-repo-clone-16"></span><span class="icon-name">repo-clone</span></div>
+    <div class="icon-item"><span class="octicon octicon-repo-forked-16"></span><span class="icon-name">repo-forked</span></div>
+    <div class="icon-item"><span class="octicon octicon-report-16"></span><span class="icon-name">report</span></div>
+    <div class="icon-item"><span class="octicon octicon-rocket-16"></span><span class="icon-name">rocket</span></div>
+    <div class="icon-item"><span class="octicon octicon-rss-16"></span><span class="icon-name">rss</span></div>
+    <div class="icon-item"><span class="octicon octicon-search-16"></span><span class="icon-name">search</span></div>
+    <div class="icon-item"><span class="octicon octicon-server-16"></span><span class="icon-name">server</span></div>
+    <div class="icon-item"><span class="octicon octicon-share-16"></span><span class="icon-name">share</span></div>
+    <div class="icon-item"><span class="octicon octicon-shield-16"></span><span class="icon-name">shield</span></div>
+    <div class="icon-item"><span class="octicon octicon-shield-check-16"></span><span class="icon-name">shield-check</span></div>
+    <div class="icon-item"><span class="octicon octicon-shield-lock-16"></span><span class="icon-name">shield-lock</span></div>
+    <div class="icon-item"><span class="octicon octicon-sign-in-16"></span><span class="icon-name">sign-in</span></div>
+    <div class="icon-item"><span class="octicon octicon-sign-out-16"></span><span class="icon-name">sign-out</span></div>
+    <div class="icon-item"><span class="octicon octicon-sliders-16"></span><span class="icon-name">sliders</span></div>
+    <div class="icon-item"><span class="octicon octicon-smiley-16"></span><span class="icon-name">smiley</span></div>
+    <div class="icon-item"><span class="octicon octicon-sort-asc-16"></span><span class="icon-name">sort-asc</span></div>
+    <div class="icon-item"><span class="octicon octicon-sort-desc-16"></span><span class="icon-name">sort-desc</span></div>
+    <div class="icon-item"><span class="octicon octicon-sparkle-16"></span><span class="icon-name">sparkle</span></div>
+    <div class="icon-item"><span class="octicon octicon-star-16"></span><span class="icon-name">star</span></div>
+    <div class="icon-item"><span class="octicon octicon-star-fill-16"></span><span class="icon-name">star-fill</span></div>
+    <div class="icon-item"><span class="octicon octicon-stop-16"></span><span class="icon-name">stop</span></div>
+    <div class="icon-item"><span class="octicon octicon-stopwatch-16"></span><span class="icon-name">stopwatch</span></div>
+    <div class="icon-item"><span class="octicon octicon-strikethrough-16"></span><span class="icon-name">strikethrough</span></div>
+    <div class="icon-item"><span class="octicon octicon-sun-16"></span><span class="icon-name">sun</span></div>
+    <div class="icon-item"><span class="octicon octicon-sync-16"></span><span class="icon-name">sync</span></div>
+    <div class="icon-item"><span class="octicon octicon-table-16"></span><span class="icon-name">table</span></div>
+    <div class="icon-item"><span class="octicon octicon-tag-16"></span><span class="icon-name">tag</span></div>
+    <div class="icon-item"><span class="octicon octicon-tasklist-16"></span><span class="icon-name">tasklist</span></div>
+    <div class="icon-item"><span class="octicon octicon-telescope-16"></span><span class="icon-name">telescope</span></div>
+    <div class="icon-item"><span class="octicon octicon-terminal-16"></span><span class="icon-name">terminal</span></div>
+    <div class="icon-item"><span class="octicon octicon-three-bars-16"></span><span class="icon-name">three-bars</span></div>
+    <div class="icon-item"><span class="octicon octicon-thumbsdown-16"></span><span class="icon-name">thumbsdown</span></div>
+    <div class="icon-item"><span class="octicon octicon-thumbsup-16"></span><span class="icon-name">thumbsup</span></div>
+    <div class="icon-item"><span class="octicon octicon-tools-16"></span><span class="icon-name">tools</span></div>
+    <div class="icon-item"><span class="octicon octicon-trash-16"></span><span class="icon-name">trash</span></div>
+    <div class="icon-item"><span class="octicon octicon-triangle-down-16"></span><span class="icon-name">triangle-down</span></div>
+    <div class="icon-item"><span class="octicon octicon-triangle-left-16"></span><span class="icon-name">triangle-left</span></div>
+    <div class="icon-item"><span class="octicon octicon-triangle-right-16"></span><span class="icon-name">triangle-right</span></div>
+    <div class="icon-item"><span class="octicon octicon-triangle-up-16"></span><span class="icon-name">triangle-up</span></div>
+    <div class="icon-item"><span class="octicon octicon-trophy-16"></span><span class="icon-name">trophy</span></div>
+    <div class="icon-item"><span class="octicon octicon-typography-16"></span><span class="icon-name">typography</span></div>
+    <div class="icon-item"><span class="octicon octicon-undo-16"></span><span class="icon-name">undo</span></div>
+    <div class="icon-item"><span class="octicon octicon-unfold-16"></span><span class="icon-name">unfold</span></div>
+    <div class="icon-item"><span class="octicon octicon-unlink-16"></span><span class="icon-name">unlink</span></div>
+    <div class="icon-item"><span class="octicon octicon-unlock-16"></span><span class="icon-name">unlock</span></div>
+    <div class="icon-item"><span class="octicon octicon-unmute-16"></span><span class="icon-name">unmute</span></div>
+    <div class="icon-item"><span class="octicon octicon-upload-16"></span><span class="icon-name">upload</span></div>
+    <div class="icon-item"><span class="octicon octicon-verified-16"></span><span class="icon-name">verified</span></div>
+    <div class="icon-item"><span class="octicon octicon-versions-16"></span><span class="icon-name">versions</span></div>
+    <div class="icon-item"><span class="octicon octicon-video-16"></span><span class="icon-name">video</span></div>
+    <div class="icon-item"><span class="octicon octicon-webhook-16"></span><span class="icon-name">webhook</span></div>
+    <div class="icon-item"><span class="octicon octicon-workflow-16"></span><span class="icon-name">workflow</span></div>
+    <div class="icon-item"><span class="octicon octicon-x-16"></span><span class="icon-name">x</span></div>
+    <div class="icon-item"><span class="octicon octicon-x-circle-16"></span><span class="icon-name">x-circle</span></div>
+    <div class="icon-item"><span class="octicon octicon-x-circle-fill-16"></span><span class="icon-name">x-circle-fill</span></div>
+    <div class="icon-item"><span class="octicon octicon-zap-16"></span><span class="icon-name">zap</span></div>
+    <div class="icon-item"><span class="octicon octicon-zoom-in-16"></span><span class="icon-name">zoom-in</span></div>
+    <div class="icon-item"><span class="octicon octicon-zoom-out-16"></span><span class="icon-name">zoom-out</span></div>
+  </div>
+
+  <script>
+    function filterIcons(q) {
+      q = q.toLowerCase();
+      document.querySelectorAll('#icon-grid .icon-item').forEach(item => {
+        const name = item.querySelector('.icon-name').textContent.toLowerCase();
+        item.classList.toggle('hidden', q !== '' && !name.includes(q));
+      });
+    }
+  </script>
+
+</body>
+</html>

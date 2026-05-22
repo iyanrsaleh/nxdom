@@ -1,0 +1,35 @@
+module.exports = {
+  apps: [{
+    name: 'nxdom-node',
+    script: './server.js',
+    
+    // Instances
+    instances: 2,  // Sesuaikan dengan jumlah CPU cores (atau gunakan 'max')
+    exec_mode: 'cluster',
+    
+    // Environment variables
+    env: {
+      NODE_ENV: 'production',
+      PORT: 3000,
+      // Sesuaikan: built-in PHP biasanya :8000; Apache sering :80 → http://localhost
+      PHP_SERVER: 'http://localhost:8000'
+    },
+    
+    // Logs
+    error_file: './logs/pm2-error.log',
+    out_file: './logs/pm2-out.log',
+    log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
+    merge_logs: true,
+    
+    // Restart behavior
+    autorestart: true,
+    watch: false,  // Set true untuk auto-reload saat file berubah (development)
+    max_memory_restart: '500M',
+    min_uptime: '10s',
+    max_restarts: 10,
+    
+    // Advanced
+    listen_timeout: 10000,
+    kill_timeout: 5000
+  }]
+};

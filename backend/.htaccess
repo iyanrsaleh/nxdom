@@ -1,0 +1,87 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHP Upload Limits (Apache mod_php)
+# Untuk PHP-FPM, lihat .user.ini di root
+# ═══════════════════════════════════════════════════════════════════════════════
+<IfModule mod_php.c>
+    php_value upload_max_filesize 512M
+    php_value post_max_size 512M
+    php_value memory_limit 512M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+<IfModule mod_php8.c>
+    php_value upload_max_filesize 512M
+    php_value post_max_size 512M
+    php_value memory_limit 512M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+RewriteCond %{REQUEST_URI} ^/rebit [NC]
+# Nonaktifkan daftar direktori
+Options -Indexes
+
+# Aktifkan penulisan ulang URL
+RewriteEngine On
+
+# Blokir akses langsung ke folder sensitif
+RewriteRule ^(controllers|models|system|vendor)/ - [F,L]
+
+# Izinkan akses ke file JavaScript dan CSS dalam templates directory
+RewriteRule ^templates/.*\.(js|css|png|jpg|jpeg|gif|svg)$ - [L]
+
+# Blokir akses ke file media lainnya dalam templates directory
+RewriteRule ^templates/.*\.(png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)$ - [F,L]
+
+# Blokir akses langsung ke view templates (PHP, HTML files) dalam views
+RewriteRule ^templates/.*\.(php|html|htm|tpl)$ - [F,L]
+
+# Blokir akses ke views directory tanpa file extension (folder browsing)
+RewriteRule ^templates/$ - [F,L]
+
+# Atur direktori dasar untuk aturan penulisan ulang
+
+# Redirect favicon.ico requests ke favicon.png di assets
+RewriteRule ^favicon\.ico$ assets/images/favicon.png [L]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CLEAN URL ROUTES: Route to Controllers (NOT direct file access)
+# IMPORTANT: /drive and /images must go through PHP controllers for resize support
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ── Aset statis: Apache langsung (tanpa index.php / bootstrap Nexa) ─────────────
+
+# /modules/* → assets/modules/* (nexa.css + puluhan @import)
+RewriteCond %{REQUEST_URI} ^/modules/(.+)$ [NC]
+RewriteCond %{DOCUMENT_ROOT}/assets/modules/%1 -f
+RewriteRule ^modules/(.+)$ assets/modules/$1 [L]
+
+# /assets/* → templates/theme/assets/* (dokumentasi theme)
+RewriteCond %{REQUEST_URI} ^/assets/(.+)$ [NC]
+RewriteCond %{DOCUMENT_ROOT}/templates/theme/assets/%1 -f
+RewriteRule ^assets/(.+)$ templates/theme/assets/$1 [L]
+
+# /assets/* → assets/* di root proyek (gambar global, dll.)
+RewriteCond %{REQUEST_URI} ^/assets/(.+)$ [NC]
+RewriteCond %{DOCUMENT_ROOT}/assets/%1 -f
+RewriteRule ^assets/(.+)$ assets/$1 [L]
+
+# Hanya jika file tidak ada di atas: resolusi template aktif via PHP
+RewriteRule ^assets/(.*)$ index.php [QSA,L]
+
+# Jika file atau direktori yang diminta ada (EXCEPT /drive and /images routes)
+# Allow direct access to physical files, but route /drive and /images to controllers
+RewriteCond %{REQUEST_URI} !^/[^/]*/drive/
+RewriteCond %{REQUEST_URI} !^/[^/]*/images/
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Route ALL other requests (including /drive and /images) to index.php
+# This allows DriveController and ImagesController to handle requests with resize support
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+
+#RewriteEngine On
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

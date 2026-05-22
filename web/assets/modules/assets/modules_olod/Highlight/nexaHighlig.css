@@ -1,0 +1,250 @@
+/**
+ * NexaHighlig Styles
+ * Styling untuk syntax highlighting dan UI elements
+ */
+
+/* ============================================
+   CODE BLOCK STYLING
+   ============================================ */
+
+.nexaHighlig-block {
+  background: #1e1e1e;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1rem 0;
+  padding: 0;
+  position: relative;
+  border: 1px solid #333;
+}
+
+.nexaHighlig-block code {
+  display: block;
+  padding: 1rem;
+  font-family: "Menlo", "Monaco", "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #e0e0e0;
+  background: transparent;
+}
+
+/* ============================================
+   LINE NUMBERS
+   ============================================ */
+
+.nexaHighlig-line {
+  display: flex;
+  align-items: center;
+  min-height: 1.5em;
+}
+
+.nexaHighlig-line-num {
+  display: inline-block;
+  width: 50px;
+  text-align: right;
+  padding-right: 1rem;
+  color: #666;
+  user-select: none;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.nexaHighlig-line-code {
+  flex: 1;
+  word-break: break-word;
+}
+
+/* ============================================
+   INLINE CODE
+   ============================================ */
+
+.nexaHighlig-inline {
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: "Menlo", "Monaco", "Courier New", monospace;
+  font-size: 14px;
+  color: #d63384;
+  display: inline-block;
+}
+
+/* Dark mode inline code */
+@media (prefers-color-scheme: dark) {
+  .nexaHighlig-inline {
+    background: #2d2d2d;
+    color: #f92672;
+  }
+}
+
+/* ============================================
+   COPY BUTTON
+   ============================================ */
+
+.nexaHighlig-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #4a5568;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  font-family: inherit;
+}
+
+.nexaHighlig-copy-btn:hover {
+  background: #667489;
+  transform: translateY(-1px);
+}
+
+.nexaHighlig-copy-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   SYNTAX HIGHLIGHT COLORS (Atom One Dark)
+   ============================================ */
+
+/* Comment */
+.hljs-comment {
+  color: #7f8c8d;
+}
+
+/* String */
+.hljs-string {
+  color: #98c379;
+}
+
+/* Number */
+.hljs-number {
+  color: #d19a66;
+}
+
+/* Literal */
+.hljs-literal {
+  color: #56b6c2;
+}
+
+/* Attribute */
+.hljs-attr {
+  color: #e06c75;
+}
+
+/* Keyword */
+.hljs-keyword {
+  color: #c678dd;
+}
+
+/* Function / Method */
+.hljs-function {
+  color: #61afef;
+}
+
+.hljs-title {
+  color: #61afef;
+}
+
+.hljs-title.class_ {
+  color: #e0d783;
+}
+
+/* Built-in */
+.hljs-built_in {
+  color: #e0d783;
+}
+
+/* Property */
+.hljs-property {
+  color: #e06c75;
+}
+
+/* Tag */
+.hljs-tag {
+  color: #e06c75;
+}
+
+.hljs-name {
+  color: #e06c75;
+}
+
+/* ============================================
+   HIGHLIGHTED STATE
+   ============================================ */
+
+.nexaHighlig-highlighted {
+  background: transparent;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+.nexaHighlig-block::-webkit-scrollbar {
+  height: 8px;
+}
+
+.nexaHighlig-block::-webkit-scrollbar-track {
+  background: #1e1e1e;
+  border-radius: 6px;
+}
+
+.nexaHighlig-block::-webkit-scrollbar-thumb {
+  background: #4a5568;
+  border-radius: 6px;
+}
+
+.nexaHighlig-block::-webkit-scrollbar-thumb:hover {
+  background: #667489;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .nexaHighlig-block {
+    margin: 0.5rem 0;
+    border-radius: 4px;
+  }
+
+  .nexaHighlig-block code {
+    padding: 0.75rem;
+    font-size: 13px;
+  }
+
+  .nexaHighlig-copy-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  .nexaHighlig-line-num {
+    width: 40px;
+    font-size: 12px;
+  }
+}
+
+/* ============================================
+   LIGHT THEME (OPTIONAL)
+   ============================================ */
+
+.nexaHighlig-light .nexaHighlig-block {
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
+}
+
+.nexaHighlig-light .nexaHighlig-block code {
+  color: #333;
+}
+
+.nexaHighlig-light .nexaHighlig-line-num {
+  color: #999;
+}
+
+.nexaHighlig-light .nexaHighlig-inline {
+  background: #f0f0f0;
+  color: #c41d7f;
+}

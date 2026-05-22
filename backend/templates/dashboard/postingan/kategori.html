@@ -1,0 +1,85 @@
+<!-- PostinganController::kategori -->
+<div class="postingan-page">
+  <h2 class="page-title-bar"><i class="fas fa-folder"></i> Kategori artikel</h2>
+  <p class="page-subtitle">Kelola tabel <code>news_category</code>. Slug disimpan di kolom <code>news.categori</code> saat menulis artikel. Saat ini: <strong>{category_count}</strong> kategori.</p>
+
+  {if category_flash_ok}
+  <div class="card" style="margin-bottom:1rem;padding:0.75rem 1rem;border-left:4px solid #10b981">Kategori berhasil ditambahkan.</div>
+  {endif}
+
+  {if category_form_error}
+  <div class="card" style="margin-bottom:1rem;padding:0.75rem 1rem;border-left:4px solid #dc3545">{category_form_error}</div>
+  {endif}
+
+  <div class="card" style="margin-bottom:1.25rem">
+    <div class="account-card-header" style="padding:1rem 1rem 0">
+      <i class="fas fa-plus-circle"></i>
+      <h3 style="margin:0;font-size:1.05rem">Tambah kategori</h3>
+    </div>
+    <div class="account-card-body" style="padding:1rem">
+      <form method="post" action="{kategori_url}" class="postingan-form">
+        <input type="hidden" name="_cat_action" value="add">
+        <div class="account-form-group">
+          <label class="account-form-label" for="cat_label">Label <span class="account-required">*</span></label>
+          <input type="text" id="cat_label" name="cat_label" class="account-form-input" value="{cat_label_value}" maxlength="150" placeholder="Contoh: Berita Daerah" required>
+        </div>
+        <div class="account-form-group">
+          <label class="account-form-label" for="cat_slug">Slug</label>
+          <input type="text" id="cat_slug" name="cat_slug" class="account-form-input" value="{cat_slug_value}" maxlength="80" placeholder="Kosongkan = otomatis dari label (a-z, angka, -)">
+          <small class="account-form-help">Nilai ini yang tersimpan di artikel; harus unik.</small>
+        </div>
+        <div class="account-form-group">
+          <label class="account-form-label" for="cat_icon"><i class="fas fa-icons"></i> Icon (Font Awesome)</label>
+          <input type="text" id="cat_icon" name="cat_icon" class="account-form-input" value="{cat_icon_value}" maxlength="80" placeholder="fas fa-newspaper">
+          <small class="account-form-help">Contoh: <code>fas fa-newspaper</code>, <code>far fa-folder</code>. Kosongkan untuk default <code>fas fa-folder</code>.</small>
+        </div>
+        <div class="account-form-group">
+          <label class="account-form-label" for="cat_sort">Urutan</label>
+          <input type="number" id="cat_sort" name="cat_sort" class="account-form-input" value="{cat_sort_value}" step="1">
+        </div>
+        <button type="submit" class="account-btn account-btn-primary"><i class="fas fa-save"></i> Simpan kategori</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="recent-activity">
+      {if category_count > 0}
+      <table>
+        <thead>
+          <tr>
+            <th style="width:3rem"></th>
+            <th>Urutan</th>
+            <th>Label</th>
+            <th>Slug</th>
+            <th style="white-space:nowrap">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- NEXA category -->
+          <tr>
+            <td style="text-align:center;font-size:1.1rem;color:#64748b"><i class="{icon}"></i></td>
+            <td>{sort_order}</td>
+            <td>{label}</td>
+            <td><code>{value}</code></td>
+            <td>
+              {if id}
+              <form method="post" action="{kategori_url}" style="display:inline" onsubmit="return confirm('Hapus kategori ini? Artikel yang memakai slug ini tidak diubah otomatis.');">
+                <input type="hidden" name="_cat_action" value="delete">
+                <input type="hidden" name="cat_id" value="{id}">
+                <button type="submit" class="user-btn-delete" style="border:none;cursor:pointer" title="Hapus"><i class="fas fa-trash"></i></button>
+              </form>
+              {else}
+              <span style="opacity:0.5">—</span>
+              {endif}
+            </td>
+          </tr>
+          <!-- END category -->
+        </tbody>
+      </table>
+      {else}
+      <p style="padding:1rem;color:#666">Belum ada kategori di tabel. Isi form di atas atau jalankan migration <code>CreateNewsCategoryTable</code>.</p>
+      {endif}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+/* Modal backdrop */
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+.modal-backdrop.is-open {
+  display: flex;
+}
+.modal-backdrop .Box--overlay {
+  position: relative;
+  z-index: 1000;
+  border: 1px solid var(--borderColor-default);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.Box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--borderColor-default);
+  background-color: var(--bgColor-subtle, var(--bgColor-default));
+  border-radius: 6px 6px 0 0;
+}
+.Box-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.Box-header-close-button {
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  color: var(--fgColor-muted);
+  line-height: 1;
+  font-size: 16px;
+}
+.Box-header-close-button:hover {
+  background-color: var(--bgColor-neutral-muted, #f3f4f6);
+}
+.Box-body {
+  padding: 20px 24px;
+}
+.Box-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--borderColor-default);
+  background-color: var(--bgColor-subtle, var(--bgColor-default));
+  border-radius: 0 0 6px 6px;
+}

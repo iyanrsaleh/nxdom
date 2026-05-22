@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll — Primer CSS Demo</title>
+  <link rel="stylesheet" href="../nexa.css">
+  <link rel="stylesheet" href="./scroll.css">
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h1 { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
+    .page-desc { color: var(--fgColor-muted); margin: 0 0 32px; font-size: 13px; }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .note { font-size: 12px; color: var(--fgColor-muted); margin: 6px 0 0; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      font-size: 12px;
+      background: var(--bgColor-neutral-muted, #f6f8fa);
+      border: 1px solid var(--borderColor-default, #d0d7de);
+      border-radius: 4px;
+      padding: 1px 5px;
+    }
+    /* Demo box untuk scroll */
+    .scroll-demo {
+      height: 180px;
+      border: 1px solid var(--borderColor-default);
+      border-radius: 6px;
+      background: var(--bgColor-subtle, #f6f8fa);
+      padding: 12px 16px;
+    }
+    .scroll-demo-x {
+      border: 1px solid var(--borderColor-default);
+      border-radius: 6px;
+      background: var(--bgColor-subtle, #f6f8fa);
+      padding: 12px 16px;
+    }
+    /* Konten dummy untuk scroll */
+    .dummy-content p { margin: 0 0 8px; }
+    .dummy-row { display: flex; gap: 8px; }
+    .dummy-row span {
+      display: inline-block;
+      padding: 4px 12px;
+      border: 1px solid var(--borderColor-default);
+      border-radius: 4px;
+      background: var(--bgColor-default);
+      white-space: nowrap;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Scroll</h1>
+  <p class="page-desc">Komponen scroll kustom dengan berbagai style scrollbar — vertikal, horizontal, thin, rounded, auto-hide, dan lainnya.</p>
+
+  <!-- ==============================
+       1. Scroll Vertikal Default
+  ================================ -->
+  <h2>1. .nx-scroll — Vertikal Default</h2>
+  <div class="scroll-demo nx-scroll">
+    <div class="dummy-content">
+      <p>Baris 1 — Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Baris 2 — Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Baris 3 — Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Baris 4 — Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+      <p>Baris 5 — Excepteur sint occaecat cupidatat non proident deserunt mollit.</p>
+      <p>Baris 6 — At vero eos et accusamus et iusto odio dignissimos ducimus.</p>
+      <p>Baris 7 — Nam libero tempore cum soluta nobis eligendi optio cumque nihil.</p>
+      <p>Baris 8 — Temporibus autem quibusdam et aut officiis debitis rerum.</p>
+      <p>Baris 9 — Itaque earum rerum hic tenetur a sapiente delectus ut aut.</p>
+      <p>Baris 10 — Quis autem vel eum iure reprehenderit qui voluptate velit.</p>
+    </div>
+  </div>
+  <p class="note">Scrollbar vertikal dasar dengan track abu-abu dan thumb rounded. Class: <code>.nx-scroll</code></p>
+
+  <!-- ==============================
+       2. Scroll Horizontal
+  ================================ -->
+  <h2>2. .nx-scroll-x — Horizontal</h2>
+  <div class="scroll-demo-x nx-scroll-x">
+    <div class="dummy-row">
+      <span>Item Pertama</span><span>Item Kedua</span><span>Item Ketiga</span>
+      <span>Item Keempat</span><span>Item Kelima</span><span>Item Keenam</span>
+      <span>Item Ketujuh</span><span>Item Kedelapan</span><span>Item Kesembilan</span>
+      <span>Item Kesepuluh</span><span>Item Kesebelas</span><span>Item Keduabelas</span>
+    </div>
+  </div>
+  <p class="note">Scroll horizontal saja — overflow-x auto, overflow-y hidden. Class: <code>.nx-scroll-x</code></p>
+
+  <!-- ==============================
+       3. Rounded Scrollbar
+  ================================ -->
+  <h2>3. .nx-scroll-rounded — Scrollbar Tebal Rounded</h2>
+  <div class="scroll-demo nx-scroll nx-scroll-rounded">
+    <div class="dummy-content">
+      <p>Baris 1 — Scrollbar lebih tebal (12px) dengan padding 3px dari track.</p>
+      <p>Baris 2 — Track berwarna #f0f0f0 dengan border-radius 10px.</p>
+      <p>Baris 3 — Thumb berwarna #666, hover menjadi #555.</p>
+      <p>Baris 4 — Cocok untuk area konten panjang seperti feed atau list.</p>
+      <p>Baris 5 — Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+      <p>Baris 6 — Sed do eiusmod tempor incididunt ut labore et dolore.</p>
+      <p>Baris 7 — Ut enim ad minim veniam quis nostrud exercitation ullamco.</p>
+      <p>Baris 8 — Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+    </div>
+  </div>
+  <p class="note">Scrollbar 12px dengan efek border di sekitar thumb. Class: <code>.nx-scroll-rounded</code></p>
+
+  <!-- ==============================
+       4. Thin Scrollbar
+  ================================ -->
+  <h2>4. .nx-scroll-thin — Scrollbar Tipis (6px)</h2>
+  <div class="scroll-demo nx-scroll nx-scroll-thin">
+    <div class="dummy-content">
+      <p>Baris 1 — Scrollbar tipis 6px, lebih minimalis dan tidak mengganggu konten.</p>
+      <p>Baris 2 — Cocok untuk sidebar, panel, atau komponen yang ruangnya terbatas.</p>
+      <p>Baris 3 — Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Baris 4 — Sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      <p>Baris 5 — Ut enim ad minim veniam, quis nostrud exercitation.</p>
+      <p>Baris 6 — Duis aute irure dolor in reprehenderit in voluptate.</p>
+      <p>Baris 7 — Excepteur sint occaecat cupidatat non proident.</p>
+      <p>Baris 8 — At vero eos et accusamus et iusto odio dignissimos.</p>
+    </div>
+  </div>
+  <p class="note">Lebar scrollbar 6px. Class: <code>.nx-scroll-thin</code> (kombinasi dengan <code>.nx-scroll</code>)</p>
+
+  <!-- ==============================
+       5. Thick Scrollbar
+  ================================ -->
+  <h2>5. .nx-scroll-thick — Scrollbar Tebal (12px)</h2>
+  <div class="scroll-demo nx-scroll nx-scroll-thick">
+    <div class="dummy-content">
+      <p>Baris 1 — Scrollbar lebih tebal 12px, lebih mudah diklik di layar sentuh.</p>
+      <p>Baris 2 — Cocok untuk area konten utama atau aplikasi dengan banyak data.</p>
+      <p>Baris 3 — Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Baris 4 — Sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      <p>Baris 5 — Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Baris 6 — Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+      <p>Baris 7 — Excepteur sint occaecat cupidatat non proident.</p>
+      <p>Baris 8 — At vero eos et accusamus et iusto odio dignissimos.</p>
+    </div>
+  </div>
+  <p class="note">Lebar scrollbar 12px. Class: <code>.nx-scroll-thick</code> (kombinasi dengan <code>.nx-scroll</code>)</p>
+
+  <!-- ==============================
+       6. Hidden Scrollbar
+  ================================ -->
+  <h2>6. .nx-scroll-hidden — Scrollbar Tersembunyi</h2>
+  <div class="scroll-demo nx-scroll-hidden">
+    <div class="dummy-content">
+      <p>Baris 1 — Konten ini bisa di-scroll tetapi scrollbar tidak terlihat.</p>
+      <p>Baris 2 — Cocok untuk carousel, slider, atau UI yang sangat bersih.</p>
+      <p>Baris 3 — Coba scroll area ini — tidak ada scrollbar yang tampil.</p>
+      <p>Baris 4 — Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Baris 5 — Sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      <p>Baris 6 — Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Baris 7 — Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+      <p>Baris 8 — Excepteur sint occaecat cupidatat non proident.</p>
+    </div>
+  </div>
+  <p class="note">Scrollbar disembunyikan di semua browser (webkit, Firefox, IE/Edge). Class: <code>.nx-scroll-hidden</code></p>
+
+  <!-- ==============================
+       7. Auto-hide Scrollbar
+  ================================ -->
+  <h2>7. .nx-scroll-autohide — Auto-hide saat Hover</h2>
+  <div class="scroll-demo nx-scroll-autohide">
+    <div class="dummy-content">
+      <p>Baris 1 — Scrollbar muncul hanya saat mouse hover di atas area ini.</p>
+      <p>Baris 2 — Arahkan mouse ke area ini untuk melihat scrollbar muncul.</p>
+      <p>Baris 3 — Saat mouse pergi, scrollbar kembali tersembunyi.</p>
+      <p>Baris 4 — Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Baris 5 — Sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      <p>Baris 6 — Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Baris 7 — Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+      <p>Baris 8 — Excepteur sint occaecat cupidatat non proident.</p>
+    </div>
+  </div>
+  <p class="note">Scrollbar transparan saat idle, muncul (semi-transparan) saat hover. Class: <code>.nx-scroll-autohide</code></p>
+
+  <!-- ==============================
+       8. Scroll Tabel (fixed header)
+  ================================ -->
+  <h2>8. .nx-scroll-table — Scroll Tabel dengan Header Tetap</h2>
+  <div class="nx-scroll-table">
+    <table class="table" style="width:100%;border-collapse:collapse;">
+      <thead>
+        <tr>
+          <th style="position:sticky;top:0;padding:8px 12px;border-bottom:1px solid var(--borderColor-default);text-align:left;font-size:12px;font-weight:600;background:var(--bgColor-subtle,#f6f8fa);z-index:1;">#</th>
+          <th style="position:sticky;top:0;padding:8px 12px;border-bottom:1px solid var(--borderColor-default);text-align:left;font-size:12px;font-weight:600;background:var(--bgColor-subtle,#f6f8fa);z-index:1;">Nama</th>
+          <th style="position:sticky;top:0;padding:8px 12px;border-bottom:1px solid var(--borderColor-default);text-align:left;font-size:12px;font-weight:600;background:var(--bgColor-subtle,#f6f8fa);z-index:1;">Email</th>
+          <th style="position:sticky;top:0;padding:8px 12px;border-bottom:1px solid var(--borderColor-default);text-align:left;font-size:12px;font-weight:600;background:var(--bgColor-subtle,#f6f8fa);z-index:1;">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">1</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">Alice Johnson</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">alice@example.com</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;"><span class="Label Label--success">Aktif</span></td></tr>
+        <tr><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">2</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">Bob Smith</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">bob@example.com</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;"><span class="Label Label--danger">Nonaktif</span></td></tr>
+        <tr><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">3</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">Carol White</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">carol@example.com</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;"><span class="Label Label--success">Aktif</span></td></tr>
+        <tr><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">4</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">David Brown</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">david@example.com</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;"><span class="Label">Pending</span></td></tr>
+        <tr><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">5</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">Eva Martinez</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">eva@example.com</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;"><span class="Label Label--success">Aktif</span></td></tr>
+        <tr><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">6</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">Frank Lee</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">frank@example.com</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;"><span class="Label Label--danger">Nonaktif</span></td></tr>
+        <tr><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">7</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">Grace Kim</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">grace@example.com</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;"><span class="Label Label--success">Aktif</span></td></tr>
+        <tr><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">8</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">Henry Wilson</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">henry@example.com</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;"><span class="Label">Pending</span></td></tr>
+        <tr><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">9</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">Ivy Chen</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;">ivy@example.com</td><td style="padding:7px 12px;border-bottom:1px solid var(--borderColor-default);font-size:13px;"><span class="Label Label--success">Aktif</span></td></tr>
+        <tr><td style="padding:7px 12px;font-size:13px;">10</td><td style="padding:7px 12px;font-size:13px;">Jack Davis</td><td style="padding:7px 12px;font-size:13px;">jack@example.com</td><td style="padding:7px 12px;font-size:13px;"><span class="Label Label--danger">Nonaktif</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Tabel dengan header sticky dan scroll vertikal terbatas 400px. Class: <code>.nx-scroll-table</code></p>
+
+  <!-- ==============================
+       9. Scroll Smooth
+  ================================ -->
+  <h2>9. .nx-scroll-smooth — Scroll Halus</h2>
+  <div class="scroll-demo nx-scroll-smooth" id="smooth-demo">
+    <div class="dummy-content">
+      <p id="smooth-top">Baris 1 — Posisi atas. Klik tombol di bawah untuk scroll ke bawah.</p>
+      <p>Baris 2 — Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Baris 3 — Sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      <p>Baris 4 — Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Baris 5 — Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+      <p>Baris 6 — Excepteur sint occaecat cupidatat non proident.</p>
+      <p>Baris 7 — At vero eos et accusamus et iusto odio dignissimos.</p>
+      <p id="smooth-bottom">Baris 8 — Posisi bawah. Scroll smooth berhasil!</p>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;margin-top:8px;">
+    <button class="btn btn-sm" onclick="document.getElementById('smooth-demo').scrollTo({top:9999,behavior:'smooth'})">Scroll ke Bawah</button>
+    <button class="btn btn-sm" onclick="document.getElementById('smooth-demo').scrollTo({top:0,behavior:'smooth'})">Scroll ke Atas</button>
+  </div>
+  <p class="note">Gunakan <code>scroll-behavior: smooth</code> untuk animasi scroll. Class: <code>.nx-scroll-smooth</code></p>
+
+  <!-- ==============================
+       10. Scroll Shadow
+  ================================ -->
+  <h2>10. .nx-scroll-shadow — Scroll dengan Shadow</h2>
+  <div class="scroll-demo nx-scroll nx-scroll-shadow">
+    <div class="dummy-content">
+      <p>Baris 1 — Shadow inset atas dan bawah menandakan ada konten yang bisa di-scroll.</p>
+      <p>Baris 2 — Teknik ini menggunakan <code>box-shadow: inset</code> untuk indikasi visual.</p>
+      <p>Baris 3 — Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Baris 4 — Sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      <p>Baris 5 — Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Baris 6 — Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+      <p>Baris 7 — Excepteur sint occaecat cupidatat non proident.</p>
+      <p>Baris 8 — At vero eos et accusamus et iusto odio dignissimos.</p>
+    </div>
+  </div>
+  <p class="note">Shadow inset atas/bawah sebagai visual cue scroll. Class: <code>.nx-scroll-shadow</code></p>
+
+</body>
+</html>

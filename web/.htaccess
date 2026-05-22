@@ -1,0 +1,56 @@
+# --- Penting ---
+# File ini HANYA dipakai Apache (httpd) dengan mod_rewrite + AllowOverride.
+# Server bawaan PHP (php -S ... router.php) TIDAK MEMBACA .htaccess — pakai router.php saja.
+# Untuk .htaccess aktif: jalankan Apache, DocumentRoot ke folder ini, AllowOverride All.
+#
+# Keamanan / App.js & Nexa.js:
+# - Browser WAJIB bisa mengunduh file JS agar bisa dijalankan; "menutup" akses HTTP ke file tersebut
+#   sama dengan memutus aplikasi (script tidak termuat). Yang bisa dilakukan: batasi buka URL
+#   langsung di tab (lihat blok <Files App.js> / <Files Nexa.js> di bawah + logika serupa di router.php).
+# - View-source / DevTools / curl tetap bisa menyalin isi file yang sudah termuat — itu sifat web.
+# - Rahasia (API key sensitif, kredensial) jangan hanya mengandalkan menyembunyikan file; pakai
+#   variabel lingkungan + build, atau endpoint server, + aturan Firebase / backend.
+
+# MIME manifest PWA
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# SPA: refresh /contact/data → layani index.html (bukan 404)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# App.js & Nexa.js: opsional — izinkan jika dimuat sebagai skrip (Sec-Fetch-Dest) atau dari origin lokal (Referer).
+# Jika file JS dapat 403, komentari blok <Files> yang bersangkutan di bawah ini.
+<IfModule mod_setenvif.c>
+  <IfModule mod_authz_core.c>
+    <Files "App.js">
+      SetEnvIf Sec-Fetch-Dest "^script$" _appjs_ok=1
+      SetEnvIf Referer "localhost" _appjs_ok=1
+      SetEnvIf Referer "127\.0\.0\.1" _appjs_ok=1
+      SetEnvIf Referer "devweb" _appjs_ok=1
+      SetEnvIf Referer "\.local" _appjs_ok=1
+      SetEnvIf Host "^devweb$" _appjs_ok=1
+      SetEnvIf Host "\.local$" _appjs_ok=1
+      <RequireAny>
+        Require env _appjs_ok
+      </RequireAny>
+    </Files>
+    <Files "Nexa.js">
+      SetEnvIf Sec-Fetch-Dest "^script$" _nexajs_ok=1
+      SetEnvIf Referer "localhost" _nexajs_ok=1
+      SetEnvIf Referer "127\.0\.0\.1" _nexajs_ok=1
+      SetEnvIf Referer "devweb" _nexajs_ok=1
+      SetEnvIf Referer "\.local" _nexajs_ok=1
+      SetEnvIf Host "^devweb$" _nexajs_ok=1
+      SetEnvIf Host "\.local$" _nexajs_ok=1
+      <RequireAny>
+        Require env _nexajs_ok
+      </RequireAny>
+    </Files>
+  </IfModule>
+</IfModule>

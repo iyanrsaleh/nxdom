@@ -1,0 +1,27 @@
+.TableObject {
+  display: table;
+}
+
+.TableObject-item {
+  display: table-cell;
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.TableObject-item--primary {
+  width: 99%;
+}
+
+/*
+ * .markdown-body img { max-width: 100% } (markdown/index.css) beats .TableObject img
+ * on specificity. Inside table-cell + width:1% that can clamp the image to ~0px.
+ * This selector must include .markdown-body to override.
+ */
+.markdown-body .TableObject img {
+  max-width: none;
+}
+
+.TableObject img {
+  max-width: none;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Icons - Primer CSS Demo</title>
+   <link rel="stylesheet" href="../nexa.css">
+  <style>
+    body { padding:32px; max-width:760px; font-family:var(--baseFontFamily, sans-serif); font-size:14px; background:var(--bgColor-default); color:var(--fgColor-default); }
+    h1 { margin:0 0 8px; }
+    h2 { margin:32px 0 8px; font-size:13px; color:var(--fgColor-muted); text-transform:uppercase; letter-spacing:0.06em; border-bottom:1px solid var(--borderColor-default); padding-bottom:4px; }
+    .icon-preview { display:flex; gap:18px; align-items:center; margin:18px 0; }
+    .icon-preview .icon, .icon-preview .octicon { width:32px; height:32px; }
+    .demo-link { display:inline-block; margin:0 18px 0 0; font-size:13px; color:var(--fgColor-accent); text-decoration:none; background:none; }
+    .demo-link:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <h1>Icons Demo</h1>
+  <p>Demo dua sistem ikon: <b>Octicon</b> dan <b>File Icons</b>. Lihat detail:
+    <a class="demo-link" href="./octicon.html">octicon.html</a>
+    <a class="demo-link" href="./file.html">file.html</a>
+  </p>
+
+  <h2>Octicon Preview</h2>
+  <div class="icon-preview">
+    <span class="octicon octicon-mark-github-16" style="color:#24292f;"></span>
+    <span class="octicon octicon-star-16" style="color:#f1c40f;"></span>
+    <span class="octicon octicon-alert-16" style="color:#e36209;"></span>
+    <span class="octicon octicon-check-16" style="color:#2da44e;"></span>
+    <span class="octicon octicon-x-16" style="color:#cf222e;"></span>
+  </div>
+
+  <h2>File Icon Preview</h2>
+  <div class="icon-preview">
+    <span class="icon icon-html"></span>
+    <span class="icon icon-js"></span>
+    <span class="icon icon-css"></span>
+    <span class="icon icon-ts"></span>
+    <span class="icon icon-md"></span>
+    <span class="icon icon-zip"></span>
+    <span class="icon icon-folder"></span>
+  </div>
+
+</body>
+</html>

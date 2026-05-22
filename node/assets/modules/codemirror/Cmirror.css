@@ -1,0 +1,714 @@
+
+html,
+body {
+  overflow: hidden; /* mencegah scroll di seluruh halaman */
+}
+
+/* CRITICAL: Syntax highlighting untuk SQL mode - HARUS di awal file untuk priority tinggi */
+/* Override default CodeMirror CSS untuk memastikan warna terlihat jelas */
+.cm-s-default {
+  color: #000000 !important; /* Default text color */
+}
+
+.cm-s-default .CodeMirror {
+  color: #000000 !important; /* Default text color */
+}
+
+/* Syntax highlighting untuk SQL mode - Style PERSIS seperti phpMyAdmin */
+/* Keywords (Reserved words): Ungu #990099 seperti phpMyAdmin */
+.cm-s-default .cm-keyword,
+.cm-s-default .CodeMirror .cm-keyword,
+.cm-s-default .CodeMirror pre .cm-keyword,
+.cm-s-default .CodeMirror-lines .cm-keyword,
+.cm-s-default .CodeMirror-line .cm-keyword,
+.cm-s-default .CodeMirror-line span.cm-keyword,
+.cm-s-default span.cm-keyword,
+.cm-s-default pre span.cm-keyword,
+.CodeMirror .cm-keyword,
+.CodeMirror pre .cm-keyword,
+.CodeMirror-lines .cm-keyword,
+.CodeMirror-line .cm-keyword,
+.CodeMirror-line span.cm-keyword,
+span.cm-keyword {
+  color: #990099 !important;
+  font-weight: bold !important;
+}
+
+/* Strings: Hijau #008000 seperti phpMyAdmin */
+.cm-s-default .cm-string,
+.cm-s-default .CodeMirror .cm-string,
+.cm-s-default .CodeMirror pre .cm-string,
+.cm-s-default .CodeMirror-lines .cm-string,
+.cm-s-default .CodeMirror-line .cm-string,
+.cm-s-default .CodeMirror-line span.cm-string,
+.CodeMirror .cm-string,
+.CodeMirror pre .cm-string,
+.CodeMirror-lines .cm-string,
+.CodeMirror-line .cm-string,
+.CodeMirror-line span.cm-string {
+  color: #008000 !important;
+}
+
+/* Numbers: Teal (biru kehijauan) seperti phpMyAdmin */
+.cm-s-default .cm-number,
+.cm-s-default .CodeMirror .cm-number,
+.cm-s-default .CodeMirror pre .cm-number,
+.cm-s-default .CodeMirror-lines .cm-number,
+.cm-s-default .CodeMirror-line .cm-number,
+.cm-s-default .CodeMirror-line span.cm-number,
+.CodeMirror .cm-number,
+.CodeMirror pre .cm-number,
+.CodeMirror-lines .cm-number,
+.CodeMirror-line .cm-number,
+.CodeMirror-line span.cm-number {
+  color: #008080 !important;
+}
+
+.cm-s-default .cm-operator,
+.cm-s-default .CodeMirror .cm-operator,
+.cm-s-default .CodeMirror pre .cm-operator,
+.cm-s-default .CodeMirror-lines .cm-operator,
+.cm-s-default .CodeMirror-line .cm-operator,
+.cm-s-default .CodeMirror-line span.cm-operator,
+.CodeMirror .cm-operator,
+.CodeMirror pre .cm-operator,
+.CodeMirror-lines .cm-operator,
+.CodeMirror-line .cm-operator,
+.CodeMirror-line span.cm-operator {
+  color: #000000 !important;
+}
+
+.cm-s-default .cm-variable,
+.cm-s-default .cm-variable-2,
+.cm-s-default .CodeMirror .cm-variable,
+.cm-s-default .CodeMirror .cm-variable-2,
+.cm-s-default .CodeMirror pre .cm-variable,
+.cm-s-default .CodeMirror pre .cm-variable-2,
+.cm-s-default .CodeMirror-lines .cm-variable,
+.cm-s-default .CodeMirror-lines .cm-variable-2,
+.cm-s-default .CodeMirror-line .cm-variable,
+.cm-s-default .CodeMirror-line .cm-variable-2,
+.cm-s-default .CodeMirror-line span.cm-variable,
+.cm-s-default .CodeMirror-line span.cm-variable-2,
+.CodeMirror .cm-variable,
+.CodeMirror .cm-variable-2,
+.CodeMirror pre .cm-variable,
+.CodeMirror pre .cm-variable-2,
+.CodeMirror-lines .cm-variable,
+.CodeMirror-lines .cm-variable-2,
+.CodeMirror-line .cm-variable,
+.CodeMirror-line .cm-variable-2,
+.CodeMirror-line span.cm-variable,
+.CodeMirror-line span.cm-variable-2 {
+  color: #000000 !important;
+}
+
+/* Comments: Hijau zaitun #808000 seperti phpMyAdmin */
+.cm-s-default .cm-comment,
+.cm-s-default .CodeMirror .cm-comment,
+.cm-s-default .CodeMirror pre .cm-comment,
+.cm-s-default .CodeMirror-lines .cm-comment,
+.cm-s-default .CodeMirror-line .cm-comment,
+.cm-s-default .CodeMirror-line span.cm-comment,
+.CodeMirror .cm-comment,
+.CodeMirror pre .cm-comment,
+.CodeMirror-lines .cm-comment,
+.CodeMirror-line .cm-comment,
+.CodeMirror-line span.cm-comment {
+  color: #808000 !important;
+  font-style: italic !important;
+}
+
+/* Functions: Merah #FF0000 seperti phpMyAdmin */
+.cm-s-default .cm-builtin,
+.cm-s-default .cm-def,
+.cm-s-default .CodeMirror .cm-builtin,
+.cm-s-default .CodeMirror .cm-def,
+.cm-s-default .CodeMirror pre .cm-builtin,
+.cm-s-default .CodeMirror pre .cm-def,
+.cm-s-default .CodeMirror-lines .cm-builtin,
+.cm-s-default .CodeMirror-lines .cm-def,
+.cm-s-default .CodeMirror-line .cm-builtin,
+.cm-s-default .CodeMirror-line .cm-def,
+.cm-s-default .CodeMirror-line span.cm-builtin,
+.cm-s-default .CodeMirror-line span.cm-def,
+.CodeMirror .cm-builtin,
+.CodeMirror .cm-def,
+.CodeMirror pre .cm-builtin,
+.CodeMirror pre .cm-def,
+.CodeMirror-lines .cm-builtin,
+.CodeMirror-lines .cm-def,
+.CodeMirror-line .cm-builtin,
+.CodeMirror-line .cm-def,
+.CodeMirror-line span.cm-builtin,
+.CodeMirror-line span.cm-def {
+  color: #FF0000 !important;
+}
+
+/* Variables: Merah tua #800000 seperti phpMyAdmin */
+.cm-s-default .cm-variable,
+.cm-s-default .cm-variable-2,
+.cm-s-default .CodeMirror .cm-variable,
+.cm-s-default .CodeMirror .cm-variable-2,
+.cm-s-default .CodeMirror pre .cm-variable,
+.cm-s-default .CodeMirror pre .cm-variable-2,
+.cm-s-default .CodeMirror-lines .cm-variable,
+.cm-s-default .CodeMirror-lines .cm-variable-2,
+.cm-s-default .CodeMirror-line .cm-variable,
+.cm-s-default .CodeMirror-line .cm-variable-2,
+.cm-s-default .CodeMirror-line span.cm-variable,
+.cm-s-default .CodeMirror-line span.cm-variable-2,
+.CodeMirror .cm-variable,
+.CodeMirror .cm-variable-2,
+.CodeMirror pre .cm-variable,
+.CodeMirror pre .cm-variable-2,
+.CodeMirror-lines .cm-variable,
+.CodeMirror-lines .cm-variable-2,
+.CodeMirror-line .cm-variable,
+.CodeMirror-line .cm-variable-2,
+.CodeMirror-line span.cm-variable,
+.CodeMirror-line span.cm-variable-2 {
+  color: #800000 !important;
+}
+
+/* Operators: Fuchsia (merah muda) seperti phpMyAdmin */
+.cm-s-default .cm-operator,
+.cm-s-default .cm-punctuation,
+.cm-s-default .CodeMirror .cm-operator,
+.cm-s-default .CodeMirror .cm-punctuation,
+.cm-s-default .CodeMirror pre .cm-operator,
+.cm-s-default .CodeMirror pre .cm-punctuation,
+.cm-s-default .CodeMirror-lines .cm-operator,
+.cm-s-default .CodeMirror-lines .cm-punctuation,
+.cm-s-default .CodeMirror-line .cm-operator,
+.cm-s-default .CodeMirror-line .cm-punctuation,
+.cm-s-default .CodeMirror-line span.cm-operator,
+.cm-s-default .CodeMirror-line span.cm-punctuation,
+.CodeMirror .cm-operator,
+.CodeMirror .cm-punctuation,
+.CodeMirror pre .cm-operator,
+.CodeMirror pre .cm-punctuation,
+.CodeMirror-lines .cm-operator,
+.CodeMirror-lines .cm-punctuation,
+.CodeMirror-line .cm-operator,
+.CodeMirror-line .cm-punctuation,
+.CodeMirror-line span.cm-operator,
+.CodeMirror-line span.cm-punctuation {
+  color: #FF00FF !important;
+}
+
+/* Types: Oranye #FF9900 seperti phpMyAdmin */
+.cm-s-default .cm-type,
+.cm-s-default .cm-property,
+.cm-s-default .CodeMirror .cm-type,
+.cm-s-default .CodeMirror .cm-property,
+.cm-s-default .CodeMirror pre .cm-type,
+.cm-s-default .CodeMirror pre .cm-property,
+.cm-s-default .CodeMirror-lines .cm-type,
+.cm-s-default .CodeMirror-lines .cm-property,
+.cm-s-default .CodeMirror-line .cm-type,
+.cm-s-default .CodeMirror-line .cm-property,
+.cm-s-default .CodeMirror-line span.cm-type,
+.cm-s-default .CodeMirror-line span.cm-property,
+.CodeMirror .cm-type,
+.CodeMirror .cm-property,
+.CodeMirror pre .cm-type,
+.CodeMirror pre .cm-property,
+.CodeMirror-lines .cm-type,
+.CodeMirror-lines .cm-property,
+.CodeMirror-line .cm-type,
+.CodeMirror-line .cm-property,
+.CodeMirror-line span.cm-type,
+.CodeMirror-line span.cm-property {
+  color: #FF9900 !important;
+}
+
+/* CRITICAL: CSS untuk marks yang dibuat dengan markText */
+/* Pastikan marks dengan className cm-keyword mendapatkan styling */
+/* CodeMirror menggunakan struktur khusus untuk marks */
+/* Gunakan selector dengan specificity tinggi */
+.CodeMirror .cm-keyword,
+.CodeMirror span.cm-keyword,
+.CodeMirror-mark .cm-keyword,
+.CodeMirror-mark.cm-keyword,
+.CodeMirror-line .cm-keyword,
+.CodeMirror-line span.cm-keyword,
+.CodeMirror-line .CodeMirror-mark.cm-keyword,
+.CodeMirror-line span.CodeMirror-mark.cm-keyword,
+.cm-keyword,
+span.cm-keyword,
+.CodeMirror-lines .cm-keyword,
+.CodeMirror-lines span.cm-keyword {
+  color: #0000ff !important;
+  font-weight: bold !important;
+}
+
+/* CSS khusus untuk marks - CodeMirror menambahkan class CodeMirror-mark */
+/* Gunakan selector yang lebih spesifik dengan !important */
+.CodeMirror-mark.cm-keyword,
+.CodeMirror .CodeMirror-mark.cm-keyword,
+.CodeMirror-line .CodeMirror-mark.cm-keyword,
+.CodeMirror-line span.CodeMirror-mark.cm-keyword,
+.CodeMirror-lines .CodeMirror-mark.cm-keyword,
+.CodeMirror-lines span.CodeMirror-mark.cm-keyword,
+pre.CodeMirror-line .CodeMirror-mark.cm-keyword,
+pre.CodeMirror-line span.CodeMirror-mark.cm-keyword {
+  color: #0000ff !important;
+  font-weight: bold !important;
+  background: transparent !important;
+}
+
+/* CSS dengan selector paling spesifik untuk memastikan diterapkan */
+.cm-s-default .CodeMirror-mark.cm-keyword,
+.cm-s-default .CodeMirror-line .CodeMirror-mark.cm-keyword,
+.cm-s-default .CodeMirror-line span.CodeMirror-mark.cm-keyword,
+.cm-s-default .CodeMirror-lines .CodeMirror-mark.cm-keyword,
+.cm-s-default .CodeMirror-lines span.CodeMirror-mark.cm-keyword {
+  color: #0000ff !important;
+  font-weight: bold !important;
+  background: transparent !important;
+}
+
+.CodeMirror .cm-string,
+.CodeMirror span.cm-string,
+.CodeMirror-mark .cm-string,
+.CodeMirror-mark.cm-string,
+.CodeMirror-line .cm-string,
+.CodeMirror-line span.cm-string,
+.cm-string {
+  color: #008000 !important;
+}
+
+.CodeMirror .cm-number,
+.CodeMirror span.cm-number,
+.CodeMirror-mark .cm-number,
+.CodeMirror-mark.cm-number,
+.CodeMirror-line .cm-number,
+.CodeMirror-line span.cm-number,
+.cm-number {
+  color: #0000ff !important;
+}
+.NexaCmirror-editorContainer {
+  margin: 0px;
+  /* Sembunyikan secara default sampai semua dependencies selesai di-load */
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.3s ease-in, visibility 0.3s ease-in;
+}
+
+/* Tampilkan setelah semua dependencies selesai di-load */
+.NexaCmirror-editorContainer.NexaCmirror-ready {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Kurangi padding atas-bawah pada header */
+.NexaCmirror-editorContainer .nx-card-header {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+.NexaCmirror-editorContainer .nx-card-header h2,
+.NexaCmirror-editorContainer .nx-card-header h3 {
+  margin: 0;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Mode Icon Styling */
+.NexaCmirror-editorContainer #modeIcon {
+  font-size: 18px;
+  margin-right: 4px;
+}
+
+.NexaCmirror-editorContainer #modeText {
+  font-weight: 600;
+}
+
+.NexaCmirror-editorToolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0;
+  margin-bottom: 0;
+}
+
+.NexaCmirror-btn-save, .NexaCmirror-btn-copy, .NexaCmirror-btn-format {
+  color: #566476;
+  background: transparent;
+  border: none;
+  padding: 8px 4px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.NexaCmirror-btn-save:hover, .NexaCmirror-btn-copy:hover, .NexaCmirror-btn-format:hover {
+  opacity: 0.7;
+}
+
+.NexaCmirror-btn-save:active, .NexaCmirror-btn-copy:active, .NexaCmirror-btn-format:active {
+  opacity: 0.5;
+}
+
+.NexaCmirror-btn-save:disabled, .NexaCmirror-btn-copy:disabled, .NexaCmirror-btn-format:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.NexaCmirror-btn-save .material-symbols-outlined,
+.NexaCmirror-btn-copy .material-symbols-outlined,
+.NexaCmirror-btn-format .material-symbols-outlined {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.NexaCmirror-save-notification, .NexaCmirror-copy-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: none;
+  z-index: 1000;
+}
+
+.NexaCmirror-save-notification {
+  background-color: #4CAF50;
+}
+
+.NexaCmirror-copy-notification {
+  background-color: #2196F3;
+}
+
+.NexaCmirror-save-notification.NexaCmirror-show, .NexaCmirror-copy-notification.NexaCmirror-show {
+  display: block;
+  animation: NexaCmirror-slideIn 0.3s ease-out;
+}
+
+@keyframes NexaCmirror-slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.NexaCmirror-editorContainer .CodeMirror {
+  border: 1px solid #ddd;
+  height: 300px;
+  font-size: 14px; /* Default, bisa di-override dengan fontSize option */
+}
+
+/* Font size akan diterapkan secara dinamis melalui inline style */
+.NexaCmirror-editorContainer .CodeMirror,
+.NexaCmirror-editorContainer .CodeMirror-lines,
+.NexaCmirror-editorContainer .CodeMirror pre {
+  font-size: inherit; /* Gunakan fontSize dari wrapper */
+}
+
+/* Garis pembatas antara nomor baris dan teks - tema default (putih) */
+.NexaCmirror-editorContainer .CodeMirror-gutters {
+  border-right: 1px solid #ddd;
+  background-color: #f7f7f7;
+}
+
+.NexaCmirror-editorContainer .CodeMirror-linenumber {
+  color: #999;
+  padding: 0 8px;
+}
+
+/* Syntax highlighting untuk SQL mode - Style PERSIS seperti phpMyAdmin */
+/* Keywords (Reserved words): Ungu #990099 seperti phpMyAdmin */
+.cm-keyword,
+.NexaCmirror-editorContainer .cm-keyword,
+.NexaCmirror-editorContainer .CodeMirror .cm-keyword,
+.NexaCmirror-editorContainer .CodeMirror pre .cm-keyword,
+.NexaCmirror-editorContainer .CodeMirror-lines .cm-keyword,
+.NexaCmirror-editorContainer .CodeMirror-lines pre .cm-keyword,
+.NexaCmirror-editorContainer .CodeMirror-line .cm-keyword,
+.NexaCmirror-editorContainer .CodeMirror-line span.cm-keyword {
+  color: #990099 !important;
+  font-weight: bold !important;
+}
+
+/* Strings: Hijau #008000 seperti phpMyAdmin */
+.cm-string,
+.NexaCmirror-editorContainer .cm-string,
+.NexaCmirror-editorContainer .CodeMirror .cm-string,
+.NexaCmirror-editorContainer .CodeMirror pre .cm-string,
+.NexaCmirror-editorContainer .CodeMirror-lines .cm-string,
+.NexaCmirror-editorContainer .CodeMirror-lines pre .cm-string,
+.NexaCmirror-editorContainer .CodeMirror-line .cm-string,
+.NexaCmirror-editorContainer .CodeMirror-line span.cm-string {
+  color: #008000 !important;
+}
+
+/* Numbers: Teal (biru kehijauan) seperti phpMyAdmin */
+.cm-number,
+.NexaCmirror-editorContainer .cm-number,
+.NexaCmirror-editorContainer .CodeMirror .cm-number,
+.NexaCmirror-editorContainer .CodeMirror pre .cm-number,
+.NexaCmirror-editorContainer .CodeMirror-lines .cm-number,
+.NexaCmirror-editorContainer .CodeMirror-lines pre .cm-number,
+.NexaCmirror-editorContainer .CodeMirror-line .cm-number,
+.NexaCmirror-editorContainer .CodeMirror-line span.cm-number {
+  color: #008080 !important;
+}
+
+.cm-operator,
+.NexaCmirror-editorContainer .cm-operator,
+.NexaCmirror-editorContainer .CodeMirror .cm-operator,
+.NexaCmirror-editorContainer .CodeMirror pre .cm-operator,
+.NexaCmirror-editorContainer .CodeMirror-lines .cm-operator,
+.NexaCmirror-editorContainer .CodeMirror-lines pre .cm-operator,
+.NexaCmirror-editorContainer .CodeMirror-line .cm-operator,
+.NexaCmirror-editorContainer .CodeMirror-line span.cm-operator {
+  color: #000000 !important;
+}
+
+.cm-variable,
+.cm-variable-2,
+.NexaCmirror-editorContainer .cm-variable,
+.NexaCmirror-editorContainer .cm-variable-2,
+.NexaCmirror-editorContainer .CodeMirror .cm-variable,
+.NexaCmirror-editorContainer .CodeMirror .cm-variable-2,
+.NexaCmirror-editorContainer .CodeMirror pre .cm-variable,
+.NexaCmirror-editorContainer .CodeMirror pre .cm-variable-2,
+.NexaCmirror-editorContainer .CodeMirror-lines .cm-variable,
+.NexaCmirror-editorContainer .CodeMirror-lines .cm-variable-2,
+.NexaCmirror-editorContainer .CodeMirror-lines pre .cm-variable,
+.NexaCmirror-editorContainer .CodeMirror-lines pre .cm-variable-2,
+.NexaCmirror-editorContainer .CodeMirror-line .cm-variable,
+.NexaCmirror-editorContainer .CodeMirror-line .cm-variable-2,
+.NexaCmirror-editorContainer .CodeMirror-line span.cm-variable,
+.NexaCmirror-editorContainer .CodeMirror-line span.cm-variable-2 {
+  color: #000000 !important;
+}
+
+/* Comments: Hijau zaitun #808000 seperti phpMyAdmin */
+.cm-comment,
+.NexaCmirror-editorContainer .cm-comment,
+.NexaCmirror-editorContainer .CodeMirror .cm-comment,
+.NexaCmirror-editorContainer .CodeMirror pre .cm-comment,
+.NexaCmirror-editorContainer .CodeMirror-lines .cm-comment,
+.NexaCmirror-editorContainer .CodeMirror-lines pre .cm-comment,
+.NexaCmirror-editorContainer .CodeMirror-line .cm-comment,
+.NexaCmirror-editorContainer .CodeMirror-line span.cm-comment {
+  color: #808000 !important;
+  font-style: italic !important;
+}
+
+/* Untuk SQL mode khusus dengan tema default - Style PERSIS seperti phpMyAdmin */
+/* Keywords (Reserved words): Ungu #990099 seperti phpMyAdmin */
+.NexaCmirror-editorContainer .cm-s-default .cm-keyword,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror .cm-keyword,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror pre .cm-keyword,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-lines .cm-keyword,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line .cm-keyword,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line span.cm-keyword,
+.NexaCmirror-editorContainer .cm-s-default span.cm-keyword,
+.NexaCmirror-editorContainer .cm-s-default pre span.cm-keyword {
+  color: #990099 !important;
+  font-weight: bold !important;
+}
+
+/* Strings: Hijau #008000 seperti phpMyAdmin */
+.NexaCmirror-editorContainer .cm-s-default .cm-string,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror .cm-string,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror pre .cm-string,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-lines .cm-string,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line .cm-string,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line span.cm-string,
+.NexaCmirror-editorContainer .cm-s-default span.cm-string,
+.NexaCmirror-editorContainer .cm-s-default pre span.cm-string {
+  color: #008000 !important;
+}
+
+/* Numbers: Teal (biru kehijauan) seperti phpMyAdmin */
+.NexaCmirror-editorContainer .cm-s-default .cm-number,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror .cm-number,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror pre .cm-number,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-lines .cm-number,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line .cm-number,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line span.cm-number,
+.NexaCmirror-editorContainer .cm-s-default span.cm-number,
+.NexaCmirror-editorContainer .cm-s-default pre span.cm-number {
+  color: #008080 !important;
+}
+
+/* Comments: Hijau zaitun #808000 seperti phpMyAdmin */
+.NexaCmirror-editorContainer .cm-s-default .cm-comment,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror .cm-comment,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror pre .cm-comment,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-lines .cm-comment,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line .cm-comment,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line span.cm-comment,
+.NexaCmirror-editorContainer .cm-s-default span.cm-comment,
+.NexaCmirror-editorContainer .cm-s-default pre span.cm-comment {
+  color: #808000 !important;
+  font-style: italic !important;
+}
+
+/* Functions: Merah #FF0000 seperti phpMyAdmin */
+.NexaCmirror-editorContainer .cm-s-default .cm-builtin,
+.NexaCmirror-editorContainer .cm-s-default .cm-def,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror .cm-builtin,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror .cm-def,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror pre .cm-builtin,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror pre .cm-def,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-lines .cm-builtin,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-lines .cm-def,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line .cm-builtin,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line .cm-def,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line span.cm-builtin,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line span.cm-def {
+  color: #FF0000 !important;
+}
+
+/* Variables: Merah tua #800000 seperti phpMyAdmin */
+.NexaCmirror-editorContainer .cm-s-default .cm-variable,
+.NexaCmirror-editorContainer .cm-s-default .cm-variable-2,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror .cm-variable,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror .cm-variable-2,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror pre .cm-variable,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror pre .cm-variable-2,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-lines .cm-variable,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-lines .cm-variable-2,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line .cm-variable,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line .cm-variable-2,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line span.cm-variable,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line span.cm-variable-2 {
+  color: #800000 !important;
+}
+
+/* Operators: Fuchsia (merah muda) seperti phpMyAdmin */
+.NexaCmirror-editorContainer .cm-s-default .cm-operator,
+.NexaCmirror-editorContainer .cm-s-default .cm-punctuation,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror .cm-operator,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror .cm-punctuation,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror pre .cm-operator,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror pre .cm-punctuation,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-lines .cm-operator,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-lines .cm-punctuation,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line .cm-operator,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line .cm-punctuation,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line span.cm-operator,
+.NexaCmirror-editorContainer .cm-s-default .CodeMirror-line span.cm-punctuation {
+  color: #FF00FF !important;
+}
+
+/* Styling untuk tema monokai (gelap) */
+.NexaCmirror-editorContainer .cm-s-monokai .CodeMirror {
+  border: 1px solid #555;
+}
+
+.NexaCmirror-editorContainer .cm-s-monokai .CodeMirror-gutters {
+  border-right: 1px solid #555;
+  background-color: #272822;
+}
+
+.NexaCmirror-editorContainer .cm-s-monokai .CodeMirror-linenumber {
+  color: #75715e;
+}
+
+.NexaCmirror-editorContainer #codeEditor {
+  width: 100%;
+  min-height: 300px;
+}
+
+/* Styling untuk autocomplete hint - disesuaikan dengan tema */
+.CodeMirror-hints {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  z-index: 1000;
+}
+
+/* Styling untuk tema default (putih) */
+.CodeMirror-hints {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.CodeMirror-hint {
+  color: #333;
+  padding: 5px 10px;
+}
+
+.CodeMirror-hint-active {
+  background-color: #e6f3ff;
+  color: #0066cc;
+}
+
+/* Styling untuk tema monokai (gelap) - akan override jika tema monokai aktif */
+.cm-s-monokai .CodeMirror-hints {
+  background-color: #272822;
+  border: 1px solid #555;
+  color: #f8f8f2;
+}
+
+.cm-s-monokai .CodeMirror-hint {
+  color: #f8f8f2;
+}
+
+.cm-s-monokai .CodeMirror-hint-active {
+  background-color: #49483e;
+  color: #66d9ef;
+}
+
+/* Loading Spinner */
+.NexaCmirror-editorContainer .nx-card-body {
+  position: relative;
+}
+
+.NexaCmirror-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.NexaCmirror-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #e0e0e0;
+  border-top: 5px solid #566476;
+  border-right: 5px solid #566476;
+  border-radius: 50%;
+  animation: NexaCmirror-spin 0.8s linear infinite;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.NexaCmirror-loading-text {
+  color: #566476;
+  font-size: 15px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes NexaCmirror-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

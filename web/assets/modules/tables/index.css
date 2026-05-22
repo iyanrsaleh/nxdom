@@ -1,0 +1,46 @@
+/* DataTables - Primer CSS Table Demo */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bgColor-default);
+  color: var(--fgColor-default);
+  font-size: 14px;
+}
+.table th, .table td {
+  border: 1px solid var(--borderColor-default);
+  padding: 8px 12px;
+  text-align: left;
+}
+.table th {
+  background: var(--bgColor-muted);
+  font-weight: 600;
+  color: var(--fgColor-accent);
+}
+.table-striped tbody tr:nth-child(even) {
+  background: var(--bgColor-muted);
+}
+.table-hover tbody tr:hover {
+  background: var(--bgColor-accent-muted, #f6f8fa);
+}
+.table-sm th, .table-sm td {
+  padding: 4px 8px;
+  font-size: 13px;
+}
+.table-bordered th, .table-bordered td {
+  border-width: 2px;
+}
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Label baris pengaturan (wizard / forms / modal): ikon Material seukuran & sejajar teks */
+.table td .material-symbols-outlined.form-label-icon {
+  font-size: 0.95em;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.4em;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
+}

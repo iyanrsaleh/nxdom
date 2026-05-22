@@ -1,0 +1,28 @@
+<!-- PostinganController::media -->
+<div class="postingan-page">
+  <h2 class="page-title-bar"><i class="fas fa-image"></i> Media (gambar utama)</h2>
+  <p class="page-subtitle">Artikel yang punya file gambar utama. Total rekaman: {media_count}.</p>
+
+  <div class="card">
+    <div class="recent-activity">
+      {if media_count > 0}
+      <div class="media-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;padding:0.5rem 0">
+        <!-- NEXA media_row -->
+        <figure style="margin:0;border:1px solid rgba(0,0,0,.08);border-radius:8px;overflow:hidden;background:var(--card-bg,#fff)">
+          <a href="{thumb}" target="_blank" rel="noopener noreferrer" style="display:block;aspect-ratio:4/3;background:#f3f4f6">
+            <img src="/{thumb}" alt="" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+          </a>
+          <figcaption style="padding:0.5rem 0.65rem;font-size:0.8rem">
+            <div style="font-weight:600;line-height:1.25;margin-bottom:0.25rem">{title}</div>
+            <div style="opacity:0.75">{categori} · <span class="status status-success">{status}</span></div>
+          </figcaption>
+        </figure>
+        <!-- END media_row -->
+      </div>
+      <div style="margin-top:1rem">{pagination}</div>
+      {else}
+      <p style="padding:1rem;color:#666">Belum ada artikel dengan gambar utama.</p>
+      {endif}
+    </div>
+  </div>
+</div>

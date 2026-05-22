@@ -1,0 +1,151 @@
+.Toast {
+  display: flex;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+  color: var(--fgColor-default, var(--color-fg-default));
+  background-color: var(--bgColor-default, var(--color-canvas-default));
+  border-radius: 6px;
+  border: 1px solid var(--bgColor-accent-emphasis, var(--color-accent-emphasis));
+  overflow: hidden;
+}
+
+@media (min-width: 544px) {
+  .Toast {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
+.Toast-border {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.Toast-content {
+  flex: 1;
+  min-width: 0;
+  padding: var(--base-size-16, 16px);
+}
+
+.Toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--base-size-16, 16px) * 3);
+  flex-shrink: 0;
+  color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
+  background-color: var(--bgColor-accent-emphasis, var(--color-accent-emphasis));
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  /* Hindari teks/unicode di slot ikon dirender sebagai emoji berwarna */
+  font-variant-emoji: text;
+}
+
+/* Octicons (assets/modules/icons/index.css) di dalam toast */
+.Toast-icon > .octicon {
+  flex-shrink: 0;
+}
+.Toast-dismissButton > .octicon {
+  display: block;
+  margin: auto;
+}
+
+.Toast-iconSymbol {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.Toast-dismissButton {
+  max-height: 54px;
+  padding: var(--base-size-16);
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+}
+.Toast-dismissButton:hover {
+  opacity: 0.7;
+}
+.Toast-dismissButton:active {
+  opacity: 0.5;
+}
+
+.Toast--loading {
+  color: var(--fgColor-default, var(--color-fg-default));
+  border-color: var(--borderColor-default, var(--color-border-default));
+  box-shadow: inset 0 0 0 1px var(--borderColor-default, var(--color-border-default)), var(--shadow-floating-legacy, var(--color-overlay-shadow));
+}
+.Toast--loading .Toast-icon {
+  background-color: var(--bgColor-neutral-emphasis, var(--color-neutral-emphasis));
+  color: var(--fgColor-onEmphasis, #fff);
+}
+
+.Toast--error {
+  color: var(--fgColor-default, var(--color-fg-default));
+  border-color: var(--borderColor-danger-muted, var(--color-danger-muted, rgba(209, 36, 47, 0.45)));
+  box-shadow: inset 0 0 0 1px var(--borderColor-default, var(--color-border-default)), var(--shadow-floating-legacy, var(--color-overlay-shadow));
+}
+.Toast--error .Toast-icon {
+  background-color: var(--bgColor-danger-emphasis, var(--color-danger-emphasis));
+  color: var(--fgColor-onEmphasis, #fff);
+}
+
+.Toast--warning {
+  color: var(--fgColor-default, var(--color-fg-default));
+  border-color: var(--borderColor-attention-muted, var(--color-attention-muted, rgba(191, 135, 0, 0.45)));
+  box-shadow: inset 0 0 0 1px var(--borderColor-default, var(--color-border-default)), var(--shadow-floating-legacy, var(--color-overlay-shadow));
+}
+.Toast--warning .Toast-icon {
+  background-color: var(--bgColor-attention-emphasis, var(--color-attention-emphasis));
+  color: var(--fgColor-onEmphasis, #fff);
+}
+
+.Toast--success {
+  color: var(--fgColor-default, var(--color-fg-default));
+  border-color: var(--borderColor-success-muted, var(--color-success-muted, rgba(26, 127, 55, 0.45)));
+  box-shadow: inset 0 0 0 1px var(--borderColor-default, var(--color-border-default)), var(--shadow-floating-legacy, var(--color-overlay-shadow));
+}
+.Toast--success .Toast-icon {
+  background-color: var(--bgColor-success-emphasis, var(--color-success-emphasis));
+  color: var(--fgColor-onEmphasis, #fff);
+}
+
+.Toast--animateIn {
+  animation: Toast--animateIn 0.18s cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+}
+
+@keyframes Toast--animateIn {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+.Toast--animateOut {
+  animation: Toast--animateOut 0.18s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
+}
+
+@keyframes Toast--animateOut {
+  100% {
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+.Toast--spinner {
+  animation: Toast--spinner 1000ms linear infinite;
+}
+
+@keyframes Toast--spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+

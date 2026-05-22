@@ -1,0 +1,179 @@
+<!-- UserController - Daftar User -->
+<div class="user-page">
+  <h2 class="page-title-bar"><i class="fas fa-users"></i> Daftar User</h2>
+  <p class="page-subtitle">Total {user_count} user terdaftar. Klik tombol akses untuk mengatur package.</p>
+
+  <form class="user-search-bar" method="get" action="{page_index}">
+    <input type="search" name="search" value="{search_keyword}" placeholder="Cari nama, email, atau telepon…" class="user-search-input" autocomplete="off">
+    <button type="submit" class="user-search-btn"><i class="fas fa-search"></i> Cari</button>
+    {if search_keyword}
+    <a href="{page_index}" class="user-search-reset">Hapus filter</a>
+    {endif}
+  </form>
+
+  <div class="card">
+    <div class="recent-activity">
+      {if user_count > 0}
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Avatar</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Package</th>
+            <th>Status</th>
+            <th>Telepon</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- NEXA user_row -->
+          <tr>
+            <td>{no}</td>
+            <td>
+              <img src="{avatar|default:/assets/images/default-avatar.png}" alt="{nama}" class="user-avatar-thumb" width="36" height="36" style="border-radius:50%;object-fit:cover">
+            </td>
+            <td>{nama}</td>
+            <td>{email}</td>
+            <td><span class="status status-success">{role}</span></td>
+            <td>{package|default:-}</td>
+            <td>{status}</td>
+            <td>{telepon|default:-}</td>
+            <td>
+              {if can_edit_package}
+              <button type="button" class="user-btn-package" data-user-id="{id}" data-user-nama="{nama}" data-user-package="{package}" title="Set Package">
+                <i class="fas fa-key"></i> Akses
+              </button>
+              {else}
+              <span class="user-no-edit">-</span>
+              {endif}
+            </td>
+          </tr>
+          <!-- END user_row -->
+        </tbody>
+      </table>
+      {if pagination}
+      <div class="user-pagination-wrap">{pagination}</div>
+      {endif}
+      {else}
+      <p style="padding:1rem;color:#666">Belum ada data user.</p>
+      {endif}
+    </div>
+  </div>
+</div>
+
+<!-- Modal Set Package -->
+<div id="packageModal" class="user-modal-overlay">
+  <div class="user-modal">
+    <div class="user-modal-header">
+      <h3><i class="fas fa-key"></i> Set Package Akses</h3>
+      <button type="button" class="user-modal-close" onclick="closePackageModal()">&times;</button>
+    </div>
+    <form id="formPackage" class="user-modal-body">
+      <input type="hidden" name="user_id" id="packageUserId">
+      <p class="user-modal-target"><strong>User:</strong> <span id="packageUserName"></span></p>
+      <p class="user-modal-hint">Pilih akses halaman yang diizinkan (account &amp; home selalu aktif):</p>
+      <div class="user-package-checkboxes">
+        <!-- NEXA pkg_opt -->
+        <label class="user-pkg-label"><input type="checkbox" name="package[]" value="{key}"> {label}</label>
+        <!-- END pkg_opt -->
+      </div>
+      <div class="user-modal-footer">
+        <button type="button" class="account-btn" onclick="closePackageModal()">Batal</button>
+        <button type="submit" class="account-btn account-btn-primary"><i class="fas fa-save"></i> Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+.user-btn-package{background:#0d6efd;color:#fff;border:none;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:12px}.user-btn-package:hover{background:#0b5ed7}
+.user-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;align-items:center;justify-content:center}
+.user-modal-overlay.active{display:flex}
+.user-modal{background:#fff;border-radius:8px;max-width:400px;width:90%;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.user-modal-header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid #eee}
+.user-modal-header h3{margin:0;font-size:1.1rem}
+.user-modal-close{background:none;border:none;font-size:1.5rem;cursor:pointer;color:#666;line-height:1}
+.user-modal-body{padding:1.25rem}
+.user-modal-target{margin:0 0 .75rem;font-size:.95rem}
+.user-modal-hint{margin:0 0 1rem;color:#666;font-size:.9rem}
+.user-package-checkboxes{display:flex;flex-direction:column;gap:.5rem}
+.user-pkg-label{display:flex;align-items:center;gap:.5rem;cursor:pointer}
+.user-modal-footer{display:flex;gap:.5rem;justify-content:flex-end;margin-top:1rem;padding-top:1rem;border-top:1px solid #eee}
+.user-pagination-wrap{margin-top:1rem;padding-top:1rem;border-top:1px solid #eee}
+.user-pagination-wrap .pagination{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;list-style:none;margin:0;padding:0}
+.user-pagination-wrap .page-link{display:inline-block;padding:6px 12px;background:#f1f3f4;color:#202124;text-decoration:none;border-radius:6px;font-size:14px;transition:all .2s}
+.user-pagination-wrap .page-link:hover{background:#e8eaed;color:#0d6efd}
+.user-pagination-wrap .page-link.active{background:#0d6efd;color:#fff;cursor:default}
+.user-search-bar{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:0 0 1rem}
+.user-search-input{flex:1;min-width:200px;max-width:420px;padding:8px 12px;border:1px solid #dee2e6;border-radius:6px;font-size:14px}
+.user-search-btn{background:#0d6efd;color:#fff;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;font-size:14px}
+.user-search-btn:hover{background:#0b5ed7}
+.user-search-reset{font-size:13px;color:#6c757d;margin-left:.25rem}
+.user-search-reset:hover{color:#0d6efd}
+</style>
+
+<script>
+(function() {
+  var updateUrl = '{user_update_url}';
+  var modal = document.getElementById('packageModal');
+  var form = document.getElementById('formPackage');
+
+  window.openPackageModal = function(btn) {
+    var id = btn.getAttribute('data-user-id');
+    var nama = btn.getAttribute('data-user-nama');
+    var pkg = (btn.getAttribute('data-user-package') || '').trim();
+    document.getElementById('packageUserId').value = id;
+    document.getElementById('packageUserName').textContent = nama || '(tidak ada nama)';
+    form.querySelectorAll('input[name="package[]"]').forEach(function(cb) {
+      cb.checked = pkg.split(',').map(function(s){return s.trim()}).indexOf(cb.value) >= 0;
+    });
+    modal.classList.add('active');
+  };
+
+  window.closePackageModal = function() {
+    modal.classList.remove('active');
+  };
+
+  document.querySelectorAll('.user-btn-package').forEach(function(btn) {
+    btn.addEventListener('click', function() { openPackageModal(this); });
+  });
+
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closePackageModal();
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var userId = document.getElementById('packageUserId').value;
+    var checked = Array.from(form.querySelectorAll('input[name="package[]"]:checked')).map(function(c){return c.value});
+    var packageVal = checked.join(',');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var origHtml = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+
+    var fd = new FormData();
+    fd.append('user_id', userId);
+    fd.append('package', packageVal);
+
+    fetch(updateUrl, { method: 'POST', body: fd })
+      .then(function(r) { return r.json(); })
+      .then(function(res) {
+        if (res.success) {
+          closePackageModal();
+          location.reload();
+        } else {
+          alert(res.message || 'Gagal menyimpan');
+        }
+      })
+      .catch(function() { alert('Terjadi kesalahan'); })
+      .finally(function() {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origHtml;
+      });
+  });
+})();
+</script>

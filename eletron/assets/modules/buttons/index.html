@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons - Primer CSS Demo</title>
+  <link rel="stylesheet" href="../nexa.css">
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. btn default -->
+  <h2>1. .btn — Default</h2>
+  <div class="demo-row">
+    <button class="btn" type="button">Button</button>
+    <button class="btn hover" type="button">Hover</button>
+    <button class="btn selected" type="button">Selected</button>
+    <button class="btn" type="button" disabled>Disabled</button>
+    <button class="btn" aria-disabled="true" type="button">aria-disabled</button>
+  </div>
+
+  <!-- 2. btn-primary -->
+  <h2>2. .btn-primary — Primary</h2>
+  <div class="demo-row">
+    <button class="btn btn-primary" type="button">Primary</button>
+    <button class="btn btn-primary" type="button" disabled>Disabled</button>
+    <button class="btn btn-primary selected" type="button">Selected</button>
+  </div>
+
+  <!-- 3. btn-outline -->
+  <h2>3. .btn-outline — Outline</h2>
+  <div class="demo-row">
+    <button class="btn btn-outline" type="button">Outline</button>
+    <button class="btn btn-outline selected" type="button">Selected</button>
+    <button class="btn btn-outline" type="button" disabled>Disabled</button>
+  </div>
+
+  <!-- 4. btn-danger -->
+  <h2>4. .btn-danger — Danger</h2>
+  <div class="demo-row">
+    <button class="btn btn-danger" type="button">Delete</button>
+    <button class="btn btn-danger selected" type="button">Selected</button>
+    <button class="btn btn-danger" type="button" disabled>Disabled</button>
+  </div>
+
+  <!-- 5. btn-link -->
+  <h2>5. .btn-link — Link Button</h2>
+  <div class="demo-row">
+    <button class="btn-link" type="button">Link button</button>
+    <button class="btn-link" type="button" disabled>Disabled link</button>
+  </div>
+
+  <!-- 6. btn-invisible -->
+  <h2>6. .btn-invisible — Invisible Button</h2>
+  <div class="demo-row">
+    <button class="btn btn-invisible" type="button">Invisible</button>
+    <button class="btn btn-invisible selected" type="button">Selected</button>
+    <button class="btn btn-invisible" type="button" disabled>Disabled</button>
+  </div>
+
+  <!-- 7. btn-sm -->
+  <h2>7. .btn-sm — Small Button</h2>
+  <div class="demo-row">
+    <button class="btn btn-sm" type="button">Small</button>
+    <button class="btn btn-primary btn-sm" type="button">Small Primary</button>
+    <button class="btn btn-danger btn-sm" type="button">Small Danger</button>
+  </div>
+
+  <!-- 8. btn-large -->
+  <h2>8. .btn-large — Large Button</h2>
+  <div class="demo-row">
+    <button class="btn btn-large" type="button">Large</button>
+    <button class="btn btn-primary btn-large" type="button">Large Primary</button>
+  </div>
+
+  <!-- 9. btn-block -->
+  <h2>9. .btn-block — Full Width</h2>
+  <button class="btn btn-block" type="button">Block Button</button>
+  <br>
+  <button class="btn btn-primary btn-block" type="button">Block Primary</button>
+
+  <!-- 10. btn dengan Counter -->
+  <h2>10. .btn + .Counter — Button dengan Badge</h2>
+  <div class="demo-row">
+    <button class="btn" type="button">
+      Watch <span class="Counter">12</span>
+    </button>
+    <button class="btn btn-primary" type="button">
+      Stars <span class="Counter">4.2k</span>
+    </button>
+    <button class="btn btn-outline" type="button">
+      Fork <span class="Counter">320</span>
+    </button>
+  </div>
+
+  <!-- 11. btn dengan dropdown-caret -->
+  <h2>11. .btn + .dropdown-caret</h2>
+  <div class="demo-row">
+    <button class="btn" type="button">
+      Actions <span class="dropdown-caret"></span>
+    </button>
+    <button class="btn btn-primary" type="button">
+      New <span class="dropdown-caret"></span>
+    </button>
+  </div>
+
+  <!-- 12. btn-octicon -->
+  <h2>12. .btn-octicon — Icon Button</h2>
+  <div class="demo-row">
+    <button class="btn-octicon" type="button" aria-label="Edit">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm1.414 1.06a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Zm.132 3.617L11.12 4.665 4.5 11.285l-.518 1.81 1.81-.518Z"/>
+      </svg>
+    </button>
+    <button class="btn-octicon btn-octicon-danger" type="button" aria-label="Delete">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M11 1.75V3h2.25a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75ZM4.496 6.675l.66 6.6a.25.25 0 0 0 .249.225h5.19a.25.25 0 0 0 .249-.225l.66-6.6a.75.75 0 0 1 1.492.149l-.66 6.6A1.748 1.748 0 0 1 10.595 15h-5.19a1.75 1.75 0 0 1-1.741-1.575l-.66-6.6a.75.75 0 1 1 1.492-.15Z"/>
+      </svg>
+    </button>
+    <button class="btn-octicon" type="button" disabled aria-label="Disabled">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- 13. close-button -->
+  <h2>13. .close-button — Tombol Tutup</h2>
+  <div class="demo-row">
+    <button class="close-button" type="button" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- 14. BtnGroup -->
+  <h2>14. .BtnGroup — Button Group</h2>
+  <div class="demo-row">
+    <div class="BtnGroup">
+      <button class="btn BtnGroup-item" type="button">Day</button>
+      <button class="btn BtnGroup-item selected" type="button">Week</button>
+      <button class="btn BtnGroup-item" type="button">Month</button>
+    </div>
+  </div>
+
+  <h2>15. .BtnGroup — Primary Group</h2>
+  <div class="demo-row">
+    <div class="BtnGroup">
+      <button class="btn btn-primary BtnGroup-item" type="button">Save</button>
+      <button class="btn btn-primary BtnGroup-item" type="button">
+        <span class="dropdown-caret"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 16. BtnGroup + BtnGroup -->
+  <h2>16. .BtnGroup + .BtnGroup — Dua Group Bersebelahan</h2>
+  <div class="demo-row">
+    <div class="BtnGroup">
+      <button class="btn BtnGroup-item" type="button">Prev</button>
+      <button class="btn BtnGroup-item" type="button">Next</button>
+    </div>
+    <div class="BtnGroup">
+      <button class="btn BtnGroup-item" type="button">A</button>
+      <button class="btn BtnGroup-item" type="button">B</button>
+    </div>
+  </div>
+
+  <!-- 17. btn + octicon kiri -->
+  <h2>17. .btn + Octicon — Icon Kiri</h2>
+  <div class="demo-row">
+    <button class="btn" type="button">
+      <span class="octicon octicon-plus-16"></span>
+      New Repository
+    </button>
+    <button class="btn btn-primary" type="button">
+      <span class="octicon octicon-git-pull-request-16"></span>
+      Create Pull Request
+    </button>
+    <button class="btn btn-danger" type="button">
+      <span class="octicon octicon-trash-16"></span>
+      Delete
+    </button>
+    <button class="btn btn-outline" type="button">
+      <span class="octicon octicon-download-16"></span>
+      Download ZIP
+    </button>
+  </div>
+
+  <!-- 18. btn + octicon kanan -->
+  <h2>18. .btn + Octicon — Icon Kanan</h2>
+  <div class="demo-row">
+    <button class="btn" type="button">
+      Actions
+      <span class="octicon octicon-chevron-down-16"></span>
+    </button>
+    <button class="btn btn-primary" type="button">
+      Merge
+      <span class="octicon octicon-git-merge-16"></span>
+    </button>
+    <button class="btn btn-invisible" type="button">
+      More
+      <span class="octicon octicon-ellipsis-16"></span>
+    </button>
+  </div>
+
+  <!-- 19. btn-sm + octicon -->
+  <h2>19. .btn-sm + Octicon — Small dengan Icon</h2>
+  <div class="demo-row">
+    <button class="btn btn-sm" type="button">
+      <span class="octicon octicon-pencil-16"></span>
+      Edit
+    </button>
+    <button class="btn btn-primary btn-sm" type="button">
+      <span class="octicon octicon-check-16"></span>
+      Approve
+    </button>
+    <button class="btn btn-danger btn-sm" type="button">
+      <span class="octicon octicon-x-16"></span>
+      Close
+    </button>
+    <button class="btn btn-sm" type="button">
+      <span class="octicon octicon-sync-16"></span>
+      Refresh
+    </button>
+  </div>
+
+  <!-- 20. btn-octicon with .octicon class -->
+  <h2>20. .btn-octicon — Hanya Icon</h2>
+  <div class="demo-row">
+    <button class="btn-octicon" type="button" aria-label="Star">
+      <span class="octicon octicon-star-16"></span>
+    </button>
+    <button class="btn-octicon" type="button" aria-label="Bookmark">
+      <span class="octicon octicon-bookmark-16"></span>
+    </button>
+    <button class="btn-octicon" type="button" aria-label="Copy">
+      <span class="octicon octicon-copy-16"></span>
+    </button>
+    <button class="btn-octicon" type="button" aria-label="Share">
+      <span class="octicon octicon-share-16"></span>
+    </button>
+    <button class="btn-octicon btn-octicon-danger" type="button" aria-label="Delete">
+      <span class="octicon octicon-trash-16"></span>
+    </button>
+  </div>
+
+  <!-- 21. BtnGroup + icon -->
+  <h2>21. .BtnGroup + Octicon</h2>
+  <div class="demo-row">
+    <div class="BtnGroup">
+      <button class="btn BtnGroup-item" type="button">
+        <span class="octicon octicon-eye-16"></span>
+        Watch
+      </button>
+      <button class="btn BtnGroup-item" type="button">
+        <span class="Counter">3</span>
+      </button>
+    </div>
+    <div class="BtnGroup">
+      <button class="btn BtnGroup-item" type="button">
+        <span class="octicon octicon-repo-forked-16"></span>
+        Fork
+      </button>
+      <button class="btn BtnGroup-item" type="button">
+        <span class="Counter">42</span>
+      </button>
+    </div>
+    <div class="BtnGroup">
+      <button class="btn BtnGroup-item selected" type="button">
+        <span class="octicon octicon-star-16"></span>
+        Star
+      </button>
+      <button class="btn BtnGroup-item" type="button">
+        <span class="Counter">1.2k</span>
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>

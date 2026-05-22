@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link demo — Halaman A</title>
+  <link rel="stylesheet" href="../nexa.css">
+  <style>
+    .nx-demo-section { margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid #d0d7de; }
+    .nx-demo-section:last-of-type { border-bottom: 0; }
+    .nx-demo-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+    .nx-demo-nav a { font-size: 14px; }
+    .nx-demo-log {
+      margin-top: 12px; padding: 12px; background: #f6f8fa; border: 1px solid #d0d7de;
+      border-radius: 8px; font-size: 12px; min-height: 3.5em; white-space: pre-wrap;
+    }
+    .demo-content {
+      padding: 16px; background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+    }
+    #nx-skip-links a { color: #8250df; }
+  </style>
+</head>
+<body style="padding:24px;font-family:system-ui,sans-serif;max-width:720px;line-height:1.5;">
+  <h1 style="margin:0 0 8px;font-size:1.25rem;">NX.Link — demo lokal</h1>
+  <p style="margin:0 0 24px;color:#57606a;font-size:13px;">
+  Contoh kecil selaras <a href="./README.md"><code>README.md</code></a> dan <code>NexaLink.js</code>.
+  Jalankan lewat server HTTP (bukan <code>file://</code>).
+  </p>
+
+  <!-- 1. NexaLink: pushState + log -->
+  <section class="nx-demo-section" aria-labelledby="demo-nexalink-title">
+    <h2 id="demo-nexalink-title" style="margin:0 0 8px;font-size:1rem;">1. <code>NexaLink</code> — intercept &amp; <code>pushState</code></h2>
+    <p style="margin:0 0 12px;font-size:13px;color:#57606a;">
+      Hanya memperbarui URL + event <code>link:navigate</code>. Tanpa <code>load()</code>.
+    </p>
+    <div id="link-demo" class="nx-demo-nav">
+      <a href="#bagian-bawah">Hash (native scroll)</a>
+      <a href="./index.html">Same-origin (pushState)</a>
+      <a href="https://example.com/" target="_blank" rel="noopener">Eksternal (tab baru)</a>
+    </div>
+    <pre id="link-log" class="nx-demo-log" aria-live="polite"></pre>
+  </section>
+
+  <!-- 2. NexaLinkUI / NX.Link: load() -->
+  <section class="nx-demo-section" aria-labelledby="demo-nxlink-title">
+    <h2 id="demo-nxlink-title" style="margin:0 0 8px;font-size:1rem;">2. <code>NX.Link</code> (<code>NexaLinkUI</code>) — fetch &amp; swap</h2>
+    <p style="margin:0 0 12px;font-size:13px;color:#57606a;">
+      Klik menu di bawah; area konten diganti dari HTML halaman lain (same-origin).
+    </p>
+    <div id="link-demo-ui">
+      <nav class="nx-demo-nav" aria-label="Navigasi demo SPA">
+        <a href="./index.html">Halaman A</a>
+        <a href="./page-b.html">Halaman B</a>
+        <a href="./index.html#bagian-bawah">Hash di halaman ini</a>
+      </nav>
+      <article class="demo-content">
+        <h2 style="margin:0 0 8px;font-size:1.1rem;">Halaman A</h2>
+        <p style="margin:0;color:#57606a;font-size:14px;">
+          Konten awal. Pilih <strong>Halaman B</strong> untuk melihat <code>load()</code> mengganti blok ini.
+        </p>
+      </article>
+    </div>
+    <pre id="link-ui-log" class="nx-demo-log" aria-live="polite"></pre>
+  </section>
+
+  <!-- 3. onSkip -->
+  <section class="nx-demo-section" aria-labelledby="demo-onskip-title">
+    <h2 id="demo-onskip-title" style="margin:0 0 8px;font-size:1rem;">3. <code>onSkip</code> — full reload</h2>
+    <nav id="nx-skip-links" class="nx-demo-nav">
+      <a href="./README.md">Buka README (reload penuh)</a>
+    </nav>
+  </section>
+
+  <p id="bagian-bawah" style="margin-top:8px;font-size:12px;color:#57606a;">
+    Anchor uji hash — bagian bawah halaman.
+  </p>
+
+  <script type="module">
+    import { NexaLink, NexaLinkUI, onSkip } from "./NexaLink.js";
+
+    const logEl = document.getElementById("link-log");
+    const uiLogEl = document.getElementById("link-ui-log");
+
+    function appendLog(el, msg) {
+      el.textContent = (el.textContent || "") + msg;
+    }
+
+    // —— 1. NexaLink ——
+    const basic = new NexaLink("a", "#link-demo");
+    basic.attach({
+      onNavigate(detail) {
+        appendLog(
+          logEl,
+          `[NexaLink ${new Date().toLocaleTimeString()}] ${detail.href} — "${detail.text}"\n`,
+        );
+      },
+    });
+
+    window.addEventListener("link:navigate", () => {
+      appendLog(
+        logEl,
+        `  → link:navigate  URL sekarang: ${location.pathname}${location.search}${location.hash}\n`,
+      );
+    });
+
+    // —— 2. NexaLinkUI (= NX.Link) ——
+    const link = new NexaLinkUI({
+      loadContentSelectors: [".demo-content"],
+      enablePopstate: true,
+      spinner: {
+        enabled: true,
+        centerScreen: false,
+        target: ".demo-content",
+        type: "inline",
+        size: "small",
+        color: "#0969da",
+        message: "Memuat…",
+      },
+    });
+
+    link
+      .onClick((info) => {
+        if (!info.href) return;
+        appendLog(
+          uiLogEl,
+          `[NX.Link ${new Date().toLocaleTimeString()}] klik ${info.href}\n`,
+        );
+        if (info.href.startsWith("#")) return;
+        link
+          .load(info.href)
+          .then(() => {
+            appendLog(uiLogEl, `  → load() selesai, title: ${document.title}\n`);
+          })
+          .catch((err) => {
+            appendLog(uiLogEl, `  → error: ${err.message}\n`);
+          });
+      })
+      .onDefault("#link-demo-ui");
+
+    window.addEventListener("nexa:link", (e) => {
+      console.log("nexa:link", e.detail);
+    });
+
+    // —— 3. onSkip ——
+    onSkip("#nx-skip-links", "a");
+  </script>
+</body>
+</html>

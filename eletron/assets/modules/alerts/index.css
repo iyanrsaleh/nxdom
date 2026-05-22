@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Alerts / Flash — Primer CSS style
+   ========================================================================== */
+
+/* ---- Base ---- */
+.flash {
+  position: relative;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--fgColor-default);
+  background-color: var(--bgColor-accent-muted, #ddf4ff);
+  border: 1px solid var(--borderColor-accent-muted, #54aeff66);
+  border-radius: 6px;
+}
+
+/* ---- Variants ---- */
+.flash-warn {
+  background-color: var(--bgColor-attention-muted, #fff8c5);
+  border-color: var(--borderColor-attention-muted, #d4a72c66);
+  color: var(--fgColor-default);
+}
+
+.flash-error {
+  background-color: var(--bgColor-danger-muted, #ffebe9);
+  border-color: var(--borderColor-danger-muted, #ff818266);
+  color: var(--fgColor-default);
+}
+
+.flash-success {
+  background-color: var(--bgColor-success-muted, #dafbe1);
+  border-color: var(--borderColor-success-muted, #4ac26b66);
+  color: var(--fgColor-default);
+}
+
+/* ---- Full width (no border-radius) ---- */
+.flash-full {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  margin-bottom: 0;
+}
+
+/* ---- Dismiss button ---- */
+.flash-dismiss {
+  float: right;
+  padding: 0;
+  margin-left: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fgColor-muted);
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.7;
+}
+.flash-dismiss:hover {
+  opacity: 1;
+  color: var(--fgColor-default);
+}
+
+/* ---- Action link inside flash ---- */
+.flash a {
+  font-weight: 600;
+  color: inherit;
+  text-decoration: underline;
+}
+.flash a:hover {
+  text-decoration: none;
+}
+
+/* ---- Icon support ---- */
+.flash-with-icon {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 16px;
+}
+.flash-with-icon .flash-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--fgColor-accent, #0969da);
+}
+.flash-warn.flash-with-icon .flash-icon {
+  color: var(--fgColor-attention, #9a6700);
+}
+.flash-error.flash-with-icon .flash-icon {
+  color: var(--fgColor-danger, #cf222e);
+}
+.flash-success.flash-with-icon .flash-icon {
+  color: var(--fgColor-success, #1a7f37);
+}
+.flash-with-icon .flash-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---- Title inside flash ---- */
+.flash-title {
+  font-weight: 600;
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+/* ---- Actions inside flash ---- */
+.flash-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* ---- Banner / Announcement variant ---- */
+.flash-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 0;
+}

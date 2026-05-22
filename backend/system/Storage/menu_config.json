@@ -1,0 +1,29 @@
+{
+    "type": "Standard",
+    "menuData": [
+        {
+            "class": "beranda",
+            "label": "Beranda",
+            "handler": "home",
+            "children": []
+        },
+        {
+            "class": "Content",
+            "label": "Content",
+            "handler": "blog",
+            "children": false
+        },
+        {
+            "class": "login",
+            "label": "login",
+            "handler": "signin",
+            "children": false
+        }
+    ],
+    "brandConfig": {
+        "href": "home",
+        "logo": "/assets/images/favicon.png",
+        "alt": "NexaUI",
+        "text": "NexaUi"
+    }
+}

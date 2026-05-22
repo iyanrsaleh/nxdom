@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alerts / Flash — Primer CSS Demo</title>
+  <link rel="stylesheet" href="../nexa.css">
+  <link rel="stylesheet" href="./index.css">
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h1 { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
+    .page-desc { color: var(--fgColor-muted); margin: 0 0 32px; font-size: 13px; }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .note { font-size: 12px; color: var(--fgColor-muted); margin: 6px 0 0; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      font-size: 12px;
+      background: var(--bgColor-neutral-muted, #f6f8fa);
+      border: 1px solid var(--borderColor-default, #d0d7de);
+      border-radius: 4px;
+      padding: 1px 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Alerts / Flash</h1>
+  <p class="page-desc">Komponen flash alert dengan tema Primer CSS — info, warning, error, success, dismissible, icon, dan banner.</p>
+
+  <!-- ==============================
+       1. Variants
+  ================================ -->
+  <h2>1. Variants</h2>
+  <div class="flash">
+    Ini adalah pesan <strong>informasi</strong> — default flash (biru).
+  </div>
+  <div class="flash flash-warn">
+    Ini adalah pesan <strong>peringatan</strong> — harap perhatikan sebelum melanjutkan.
+  </div>
+  <div class="flash flash-error">
+    Ini adalah pesan <strong>kesalahan</strong> — tindakan tidak dapat diselesaikan.
+  </div>
+  <div class="flash flash-success">
+    Ini adalah pesan <strong>berhasil</strong> — perubahan telah disimpan.
+  </div>
+  <p class="note">Class: <code>.flash</code>, <code>.flash-warn</code>, <code>.flash-error</code>, <code>.flash-success</code></p>
+
+  <!-- ==============================
+       2. Dismissible
+  ================================ -->
+  <h2>2. Dismissible — Bisa Ditutup</h2>
+  <div class="flash" id="dismiss-info">
+    <button class="flash-dismiss" onclick="document.getElementById('dismiss-info').remove()" aria-label="Tutup">✕</button>
+    Pembaruan tersedia. <a href="#">Pelajari lebih lanjut</a> tentang fitur baru.
+  </div>
+  <div class="flash flash-warn" id="dismiss-warn">
+    <button class="flash-dismiss" onclick="document.getElementById('dismiss-warn').remove()" aria-label="Tutup">✕</button>
+    Sesi Anda akan berakhir dalam 5 menit. Simpan pekerjaan Anda sekarang.
+  </div>
+  <div class="flash flash-error" id="dismiss-error">
+    <button class="flash-dismiss" onclick="document.getElementById('dismiss-error').remove()" aria-label="Tutup">✕</button>
+    Gagal menghubungi server. Periksa koneksi internet Anda.
+  </div>
+  <div class="flash flash-success" id="dismiss-success">
+    <button class="flash-dismiss" onclick="document.getElementById('dismiss-success').remove()" aria-label="Tutup">✕</button>
+    Profil berhasil diperbarui!
+  </div>
+  <p class="note">Tambahkan <code>.flash-dismiss</code> button di dalam <code>.flash</code>.</p>
+
+  <!-- ==============================
+       3. Dengan Icon
+  ================================ -->
+  <h2>3. Dengan Icon</h2>
+  <div class="flash flash-with-icon">
+    <span class="flash-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm6.5-.25A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75zM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+    </span>
+    <div class="flash-content">Pembaruan tersedia untuk repositori Anda. <a href="#">Lihat changelog</a></div>
+  </div>
+  <div class="flash flash-warn flash-with-icon">
+    <span class="flash-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8.22 1.754a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047zM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-.25-5.25a.75.75 0 0 0-1.5 0v2.5a.75.75 0 0 0 1.5 0v-2.5z"/></svg>
+    </span>
+    <div class="flash-content">Akses ke fitur ini akan berakhir pada 1 Mei 2026. <a href="#">Upgrade sekarang</a></div>
+  </div>
+  <div class="flash flash-error flash-with-icon">
+    <span class="flash-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2.343 13.657A8 8 0 1 1 13.657 2.343 8 8 0 0 1 2.343 13.657zM6.03 4.97a.75.75 0 0 0-1.06 1.06L6.94 8 4.97 9.97a.75.75 0 1 0 1.06 1.06L8 9.06l1.97 1.97a.75.75 0 1 0 1.06-1.06L9.06 8l1.97-1.97a.75.75 0 1 0-1.06-1.06L8 6.94 6.03 4.97z"/></svg>
+    </span>
+    <div class="flash-content">Autentikasi gagal. Token Anda tidak valid atau sudah kadaluarsa.</div>
+  </div>
+  <div class="flash flash-success flash-with-icon">
+    <span class="flash-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>
+    </span>
+    <div class="flash-content">Deploy berhasil. Versi <strong>v2.4.1</strong> sudah live di production.</div>
+  </div>
+  <p class="note">Gunakan <code>.flash-with-icon</code> + <code>.flash-icon</code> + <code>.flash-content</code>.</p>
+
+  <!-- ==============================
+       4. Dengan Judul
+  ================================ -->
+  <h2>4. Dengan Judul</h2>
+  <div class="flash flash-with-icon">
+    <span class="flash-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm6.5-.25A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75zM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+    </span>
+    <div class="flash-content">
+      <p class="flash-title">Pembaruan Tersedia</p>
+      Versi terbaru dari framework ini sudah tersedia. Lakukan pembaruan untuk mendapatkan fitur baru dan perbaikan keamanan.
+    </div>
+  </div>
+  <div class="flash flash-error flash-with-icon" id="dismiss-titled">
+    <span class="flash-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2.343 13.657A8 8 0 1 1 13.657 2.343 8 8 0 0 1 2.343 13.657zM6.03 4.97a.75.75 0 0 0-1.06 1.06L6.94 8 4.97 9.97a.75.75 0 1 0 1.06 1.06L8 9.06l1.97 1.97a.75.75 0 1 0 1.06-1.06L9.06 8l1.97-1.97a.75.75 0 1 0-1.06-1.06L8 6.94 6.03 4.97z"/></svg>
+    </span>
+    <div class="flash-content">
+      <p class="flash-title">Terjadi Kesalahan</p>
+      Permintaan Anda tidak dapat diproses karena data tidak lengkap. Periksa kembali semua field yang wajib diisi.
+    </div>
+    <button class="flash-dismiss" onclick="document.getElementById('dismiss-titled').remove()" aria-label="Tutup">✕</button>
+  </div>
+  <p class="note">Tambahkan <code>&lt;p class="flash-title"&gt;</code> di dalam <code>.flash-content</code>.</p>
+
+  <!-- ==============================
+       5. Dengan Tombol Aksi
+  ================================ -->
+  <h2>5. Dengan Tombol Aksi</h2>
+  <div class="flash flash-with-icon">
+    <span class="flash-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm6.5-.25A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75zM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+    </span>
+    <div class="flash-content">
+      <p class="flash-title">Konfirmasi Email</p>
+      Silakan konfirmasi alamat email Anda untuk mengaktifkan semua fitur akun.
+      <div class="flash-actions">
+        <button class="btn btn-sm btn-primary">Kirim Ulang Email</button>
+        <button class="btn btn-sm">Nanti Saja</button>
+      </div>
+    </div>
+  </div>
+  <div class="flash flash-warn flash-with-icon">
+    <span class="flash-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8.22 1.754a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047zM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-.25-5.25a.75.75 0 0 0-1.5 0v2.5a.75.75 0 0 0 1.5 0v-2.5z"/></svg>
+    </span>
+    <div class="flash-content">
+      Repositori ini belum memiliki lisensi. Tambahkan lisensi agar orang lain dapat menggunakan kode Anda.
+      <div class="flash-actions">
+        <button class="btn btn-sm">Tambah Lisensi</button>
+      </div>
+    </div>
+  </div>
+  <p class="note">Gunakan <code>.flash-actions</code> di dalam <code>.flash-content</code>.</p>
+
+  <!-- ==============================
+       6. Full Width
+  ================================ -->
+  <h2>6. Full Width (tanpa border-radius)</h2>
+  <div style="margin: 0 -32px;">
+    <div class="flash flash-full">
+      Anda sedang melihat versi lama halaman ini. <a href="#">Muat ulang</a> untuk melihat versi terbaru.
+    </div>
+    <div class="flash flash-warn flash-full" style="margin-top:4px;">
+      Mode pemeliharaan dijadwalkan pada 20 April 2026 pukul 02.00 WIB.
+    </div>
+    <div class="flash flash-success flash-full" style="margin-top:4px;">
+      Sistem beroperasi normal. Semua layanan berjalan dengan baik.
+    </div>
+  </div>
+  <p class="note" style="margin-top:12px;">Class: <code>.flash-full</code> — border-radius 0, cocok untuk notifikasi di bagian atas halaman.</p>
+
+  <!-- ==============================
+       7. Banner / Announcement
+  ================================ -->
+  <h2>7. Banner / Pengumuman</h2>
+  <div style="margin: 0 -32px;">
+    <div class="flash flash-banner">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" style="color:var(--fgColor-accent,#0969da);flex-shrink:0"><path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm6.5-.25A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75zM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+      NexaUI Framework v3.0 sudah dirilis! <a href="#" style="margin-left:4px;">Baca catatan rilis →</a>
+    </div>
+    <div class="flash flash-warn flash-banner" style="margin-top:4px;">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" style="color:var(--fgColor-attention,#9a6700);flex-shrink:0"><path d="M8.22 1.754a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047zM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-.25-5.25a.75.75 0 0 0-1.5 0v2.5a.75.75 0 0 0 1.5 0v-2.5z"/></svg>
+      Pemeliharaan dijadwalkan 20 April 2026, 02.00–04.00 WIB. Layanan mungkin tidak tersedia sementara.
+    </div>
+  </div>
+  <p class="note" style="margin-top:12px;">Class: <code>.flash-banner</code> — teks terpusat, cocok sebagai notifikasi global di atas halaman.</p>
+
+  <!-- ==============================
+       8. Demo Interaktif
+  ================================ -->
+  <h2>8. Demo Interaktif — Tampilkan Alert</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+    <button class="btn btn-sm" onclick="showFlash('info')">Info</button>
+    <button class="btn btn-sm" onclick="showFlash('warn')" style="background:var(--bgColor-attention-muted);border-color:var(--borderColor-attention-muted)">Warning</button>
+    <button class="btn btn-sm btn-danger" onclick="showFlash('error')">Error</button>
+    <button class="btn btn-sm" onclick="showFlash('success')" style="background:var(--bgColor-success-muted);border-color:var(--borderColor-success-muted)">Success</button>
+  </div>
+  <div id="flash-demo-container"></div>
+  <p class="note">Klik tombol untuk menampilkan alert secara dinamis via JavaScript.</p>
+
+  <script>
+    var flashMessages = {
+      info:    { cls: '',              text: 'Ini adalah pesan informasi yang ditampilkan secara dinamis.' },
+      warn:    { cls: 'flash-warn',   text: 'Perhatian! Ada sesuatu yang perlu Anda ketahui.' },
+      error:   { cls: 'flash-error',  text: 'Terjadi kesalahan. Silakan coba lagi beberapa saat.' },
+      success: { cls: 'flash-success',text: 'Tindakan berhasil diselesaikan!' }
+    };
+    function showFlash(type) {
+      var m = flashMessages[type];
+      var id = 'dynamic-flash-' + Date.now();
+      var el = document.createElement('div');
+      el.className = 'flash ' + m.cls;
+      el.id = id;
+      el.innerHTML = '<button class="flash-dismiss" onclick="document.getElementById(\'' + id + '\').remove()" aria-label="Tutup">✕</button>' + m.text;
+      var container = document.getElementById('flash-demo-container');
+      container.insertBefore(el, container.firstChild);
+    }
+  </script>
+
+</body>
+</html>

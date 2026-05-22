@@ -1,0 +1,65 @@
+
+<div class="nx-card NexaCmirror-editorContainer" style="opacity: 0; visibility: hidden;">
+  <div class="nx-card-header">
+    <h3 class="bold" id="titleEditor">
+      <i class="fas fa-code" id="modeIcon"></i>
+      <span id="modeText">Nexa Mirror</span>
+    </h3>
+    <div class="NexaCmirror-editorToolbar">
+      <button id="btnFormat" class="NexaCmirror-btn-format" title="Format Code (Ctrl+Shift+F)">
+        <span class="material-symbols-outlined">code</span>
+      </button>
+      <button id="btnCopy" class="NexaCmirror-btn-copy" title="Copy">
+        <span class="material-symbols-outlined">content_copy</span>
+      </button>
+      <button id="btnSave" class="NexaCmirror-btn-save" title="Save">
+        <span class="material-symbols-outlined">save</span>
+      </button>
+    </div>
+  </div>
+  <div class="nx-card-body nx-scroll" style="padding: 0px;height: 600px;">  
+  <div>
+    <textarea id="codeEditor"><!DOCTYPE html>
+<div class="nx-col-3" style="border: 1px dashed rgb(222, 226, 230); min-height: 60px; display: flex; align-items: center; justify-content: center; background-color: rgba(13, 110, 253, 0.05);"><span style="color: rgb(108, 117, 125); font-size: 14px; opacity: 0.8;">Column 1</span></div>
+</textarea>
+  </div>
+  </div>
+  <div class="nx-card-footer">
+   <h3 class="bold">Nexa Mirror</h3>
+  </div>
+</div>
+    <script type="module">
+    
+      // Load dependencies CodeMirror secara dinamis menggunakan NexaStylesheet dan NexaScript
+      // Semua CSS dan JS dari CDN akan di-load otomatis
+      await NXUI.Codemirror.loadDependencies();
+      
+      // Inisialisasi CodeMirror dengan konfigurasi sederhana
+      // Semua setup (theme, autocomplete, save, copy) sudah di-handle otomatis di dalam class
+      const editor = new NXUI.Codemirror('codeEditor', {
+        mode: 'htmlmixed', // Mode: 'htmlmixed', 'javascript', 'css', 'sql', 'json', dll
+        height: '100%',
+        save: 'btnSave',   // ID tombol save (akan di-setup otomatis)
+        copy: 'btnCopy',   // ID tombol copy (akan di-setup otomatis)
+        format:true,   // merapikan kode otomatis
+        notification:false,
+        fontSize:"17px",
+        status:true, // true = aktif editor tampil tombol save dan  copy false = hide tombol save dan copy
+        onSave: function(Code) {  
+          console.log(Code);
+        },
+        onCopy: function(Code) {
+          console.log(Code);
+        },
+        // Semua konfigurasi lain (theme, lineNumbers, dll) sudah di-set default di class
+      });
+      
+      // Export ke global scope jika diperlukan
+      window.editor = editor;
+      
+      // Contoh penggunaan:
+      // editor.setMode('htmlmixed');  // Ubah mode ke HTML
+      // editor.setMode('javascript'); // Ubah mode ke JavaScript
+      // editor.setTheme('monokai');   // Ubah tema ke gelap
+      // editor.setTheme('default');   // Ubah tema ke putih
+    </script>

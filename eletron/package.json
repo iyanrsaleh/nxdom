@@ -1,0 +1,107 @@
+{
+  "name": "nxpublic",
+  "version": "1.0.6",
+  "description": "",
+  "private": true,
+  "main": "electron.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electronmon .",
+    "server": "node index.js",
+    "stop": "kill-port 4115",
+    "clean": "node electron/clean-dist.js",
+    "prebuild": "node electron/kill-nexa-packaged.js",
+    "build": "electron-builder",
+    "build:fresh": "node electron/build-fresh.js",
+    "pack": "electron-builder --dir"
+  },
+  "keywords": [
+    "electron",
+    "express",
+    "desktop"
+  ],
+  "author": "",
+  "license": "MIT",
+  "electronmon": {
+    "patterns": [
+      "!dist",
+      "!dist/**",
+      "!storage/**",
+      "!**/*.sqlite",
+      "!**/*.sqlite3",
+      "!**/*.db",
+      "!**/*.sqlite-journal",
+      "!**/*.sqlite-wal",
+      "!**/*.sqlite-shm",
+      "!**/*.db-journal",
+      "!**/*.db-wal",
+      "!**/*.db-shm"
+    ]
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.17",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "firebase": "^9.23.0",
+    "http-proxy-middleware": "^3.0.5",
+    "multer": "^2.1.1",
+    "nodemailer": "^8.0.5",
+    "sqlite3": "^6.0.1",
+    "ws": "^8.20.0"
+  },
+  "devDependencies": {
+    "chokidar": "^3.6.0",
+    "cross-env": "^7.0.3",
+    "electron": "^29.4.6",
+    "electron-builder": "^24.6.4",
+    "electronmon": "^2.0.4",
+    "kill-port": "^2.0.1"
+  },
+  "build": {
+    "appId": "com.electron.nxpublic",
+    "productName": "nxpublic",
+    "npmRebuild": false,
+    "asar": true,
+    "compression": "maximum",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!scripts/**",
+      "!electron/build/**",
+      "!electron/clean-dist.js",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      "!.editorconfig",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+      "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}",
+      "!**/{appveyor.yml,.travis.yml,circle.yml}",
+      "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}",
+      "!page/**/*.md",
+      "!**/*.md"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "assets/images/favicon.ico"
+    },
+    "nsis": {
+      "include": "electron/build/installer.nsh",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "nxpublic",
+      "artifactName": "nxpublic-setup-${version}.${ext}",
+      "perMachine": false,
+      "allowElevation": true
+    }
+  }
+}

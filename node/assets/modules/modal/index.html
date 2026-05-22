@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal — Primer CSS Demo</title>
+  <link rel="stylesheet" href="../nexa.css">
+ 
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h1 { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
+    .page-desc { color: var(--fgColor-muted); margin: 0 0 32px; font-size: 13px; }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .note {
+      font-size: 12px;
+      color: var(--fgColor-muted);
+      margin: 6px 0 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      font-size: 12px;
+      background: var(--bgColor-neutral-muted, #f6f8fa);
+      border: 1px solid var(--borderColor-default, #d0d7de);
+      border-radius: 4px;
+      padding: 1px 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Modal</h1>
+  <p class="page-desc">Komponen modal dengan tema Primer CSS — berbagai ukuran, state, dan konten.</p>
+
+  <!-- ==============================
+       1. Default (448px)
+  ================================ -->
+  <h2>1. Modal — Default (448px)</h2>
+  <div class="demo-row">
+    <button class="btn btn-primary" onclick="openModal('m1')">Buka Modal</button>
+  </div>
+  <p class="note">Modal standar ukuran 448px dengan header, body, dan footer.</p>
+
+  <div class="modal-backdrop" id="m1" onclick="if(event.target===this)closeModal('m1')">
+    <div class="Box Box--overlay" role="dialog" aria-modal="true" aria-labelledby="m1-title" style="width:448px;max-width:calc(100vw - 32px)">
+      <div class="Box-header">
+        <h3 id="m1-title">Konfirmasi Tindakan</h3>
+        <button class="Box-header-close-button" aria-label="Tutup" onclick="closeModal('m1')">✕</button>
+      </div>
+      <div class="Box-body">
+        <p style="margin:0;">Apakah Anda yakin ingin melanjutkan? Tindakan ini tidak dapat dibatalkan.</p>
+      </div>
+      <div class="Box-footer">
+        <button class="btn" onclick="closeModal('m1')">Batal</button>
+        <button class="btn btn-primary">Lanjutkan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       2. Narrow (320px)
+  ================================ -->
+  <h2>2. Modal — Narrow (320px)</h2>
+  <div class="demo-row">
+    <button class="btn btn-danger" onclick="openModal('m2')">Hapus Item</button>
+  </div>
+  <p class="note">Modal sempit cocok untuk konfirmasi singkat seperti hapus data.</p>
+
+  <div class="modal-backdrop" id="m2" onclick="if(event.target===this)closeModal('m2')">
+    <div class="Box Box--overlay Box-overlay--narrow" role="dialog" aria-modal="true" aria-labelledby="m2-title" style="width:320px;max-width:calc(100vw - 32px)">
+      <div class="Box-header">
+        <h3 id="m2-title">Hapus Item</h3>
+        <button class="Box-header-close-button" aria-label="Tutup" onclick="closeModal('m2')">✕</button>
+      </div>
+      <div class="Box-body">
+        <p style="margin:0;">Yakin ingin menghapus <strong>file.txt</strong>? Tindakan ini tidak dapat diurungkan.</p>
+      </div>
+      <div class="Box-footer">
+        <button class="btn btn-sm" onclick="closeModal('m2')">Batal</button>
+        <button class="btn btn-sm btn-danger">Hapus</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       3. Wide (640px) dengan Form
+  ================================ -->
+  <h2>3. Modal — Wide (640px) dengan Form</h2>
+  <div class="demo-row">
+    <button class="btn" onclick="openModal('m3')">Edit Profil</button>
+  </div>
+  <p class="note">Modal lebar cocok untuk form dengan banyak field.</p>
+
+  <div class="modal-backdrop" id="m3" onclick="if(event.target===this)closeModal('m3')">
+    <div class="Box Box--overlay" role="dialog" aria-modal="true" aria-labelledby="m3-title" style="width:640px;max-width:calc(100vw - 32px)">
+      <div class="Box-header">
+        <h3 id="m3-title">Edit Profil</h3>
+        <button class="Box-header-close-button" aria-label="Tutup" onclick="closeModal('m3')">✕</button>
+      </div>
+      <div class="Box-body">
+        <div class="form-group">
+          <dl>
+            <dt class="form-group-header"><label for="m3-name">Nama Lengkap</label></dt>
+            <dd class="form-group-body"><input id="m3-name" class="form-control input-block" type="text" placeholder="Masukkan nama lengkap"></dd>
+          </dl>
+        </div>
+        <div class="form-group">
+          <dl>
+            <dt class="form-group-header"><label for="m3-email">Email</label></dt>
+            <dd class="form-group-body"><input id="m3-email" class="form-control input-block" type="email" placeholder="email@contoh.com"></dd>
+          </dl>
+        </div>
+        <div class="form-group">
+          <dl>
+            <dt class="form-group-header"><label for="m3-bio">Bio</label></dt>
+            <dd class="form-group-body">
+              <textarea id="m3-bio" class="form-control input-block" rows="3" placeholder="Ceritakan tentang diri Anda..."></textarea>
+              <p class="note">Maksimal 160 karakter.</p>
+            </dd>
+          </dl>
+        </div>
+        <div class="form-group" style="margin-bottom:0">
+          <dl>
+            <dt class="form-group-header"><label for="m3-role">Role</label></dt>
+            <dd class="form-group-body">
+              <select id="m3-role" class="form-select">
+                <option>Developer</option>
+                <option>Designer</option>
+                <option>Manager</option>
+              </select>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <div class="Box-footer">
+        <button class="btn" onclick="closeModal('m3')">Batal</button>
+        <button class="btn btn-primary">Simpan Perubahan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       4. Modal Scrollable (konten panjang)
+  ================================ -->
+  <h2>4. Modal — Scrollable Body</h2>
+  <div class="demo-row">
+    <button class="btn" onclick="openModal('m4')">Lihat Syarat &amp; Ketentuan</button>
+  </div>
+  <p class="note">Body modal bisa di-scroll saat konten melebihi tinggi viewport.</p>
+
+  <div class="modal-backdrop" id="m4" onclick="if(event.target===this)closeModal('m4')">
+    <div class="Box Box--overlay" role="dialog" aria-modal="true" aria-labelledby="m4-title" style="width:480px;max-width:calc(100vw - 32px)">
+      <div class="Box-header">
+        <h3 id="m4-title">Syarat &amp; Ketentuan</h3>
+        <button class="Box-header-close-button" aria-label="Tutup" onclick="closeModal('m4')">✕</button>
+      </div>
+      <div class="Box-body" style="max-height:300px;overflow-y:auto;">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.</p>
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
+        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+      </div>
+      <div class="Box-footer">
+        <button class="btn" onclick="closeModal('m4')">Tolak</button>
+        <button class="btn btn-primary" onclick="closeModal('m4')">Setuju</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       5. Modal Danger (konfirmasi hapus dengan input)
+  ================================ -->
+  <h2>5. Modal — Danger dengan Konfirmasi Input</h2>
+  <div class="demo-row">
+    <button class="btn btn-danger" onclick="openModal('m5')">Hapus Repository</button>
+  </div>
+  <p class="note">Pengguna harus mengetik teks konfirmasi sebelum aksi destruktif diizinkan.</p>
+
+  <div class="modal-backdrop" id="m5" onclick="if(event.target===this)closeModal('m5')">
+    <div class="Box Box--overlay" role="dialog" aria-modal="true" aria-labelledby="m5-title" style="width:448px;max-width:calc(100vw - 32px)">
+      <div class="Box-header">
+        <h3 id="m5-title" style="color:var(--fgColor-danger,#cf222e)">Hapus Repository</h3>
+        <button class="Box-header-close-button" aria-label="Tutup" onclick="closeModal('m5')">✕</button>
+      </div>
+      <div class="Box-body">
+        <p style="margin:0 0 12px;">Tindakan ini akan menghapus <strong>my-project</strong> secara permanen beserta semua branch, commit, dan data terkait.</p>
+        <div class="form-group" style="margin-bottom:0">
+          <dl>
+            <dt class="form-group-header"><label for="m5-confirm">Ketik <strong>my-project</strong> untuk konfirmasi</label></dt>
+            <dd class="form-group-body">
+              <input id="m5-confirm" class="form-control input-block" type="text" placeholder="my-project"
+                oninput="document.getElementById('m5-delete-btn').disabled = this.value !== 'my-project'">
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <div class="Box-footer">
+        <button class="btn" onclick="closeModal('m5')">Batal</button>
+        <button id="m5-delete-btn" class="btn btn-danger" disabled>Hapus Repository</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       6. Modal tanpa Footer
+  ================================ -->
+  <h2>6. Modal — Tanpa Footer</h2>
+  <div class="demo-row">
+    <button class="btn" onclick="openModal('m6')">Lihat Detail</button>
+  </div>
+  <p class="note">Modal hanya dengan header dan body — cocok untuk preview atau info.</p>
+
+  <div class="modal-backdrop" id="m6" onclick="if(event.target===this)closeModal('m6')">
+    <div class="Box Box--overlay" role="dialog" aria-modal="true" aria-labelledby="m6-title" style="width:400px;max-width:calc(100vw - 32px)">
+      <div class="Box-header">
+        <h3 id="m6-title">Detail Commit</h3>
+        <button class="Box-header-close-button" aria-label="Tutup" onclick="closeModal('m6')">✕</button>
+      </div>
+      <div class="Box-body">
+        <p style="margin:0 0 8px;"><strong>Hash:</strong> <code>a3f8c12</code></p>
+        <p style="margin:0 0 8px;"><strong>Author:</strong> octocat</p>
+        <p style="margin:0 0 8px;"><strong>Date:</strong> 19 April 2026</p>
+        <p style="margin:0;"><strong>Message:</strong> fix: resolve null pointer in auth middleware</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       7. Modal tanpa Header
+  ================================ -->
+  <h2>7. Modal — Tanpa Header</h2>
+  <div class="demo-row">
+    <button class="btn" onclick="openModal('m7')">Buka Notifikasi</button>
+  </div>
+  <p class="note">Modal minimalis tanpa header — cocok untuk toast/notifikasi modal.</p>
+
+  <div class="modal-backdrop" id="m7" onclick="if(event.target===this)closeModal('m7')">
+    <div class="Box Box--overlay" role="dialog" aria-modal="true" style="width:380px;max-width:calc(100vw - 32px)">
+      <div class="Box-body" style="text-align:center;padding:32px 24px;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--fgColor-success,#1a7f37)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h3 style="margin:0 0 8px;font-size:16px;">Berhasil Disimpan!</h3>
+        <p style="margin:0 0 20px;color:var(--fgColor-muted);">Perubahan Anda telah berhasil disimpan ke server.</p>
+        <button class="btn btn-primary" onclick="closeModal('m7')">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       8. Modal dengan Tabs
+  ================================ -->
+  <h2>8. Modal — dengan Tabs</h2>
+  <div class="demo-row">
+    <button class="btn" onclick="openModal('m8')">Pengaturan Akun</button>
+  </div>
+  <p class="note">Modal dengan navigasi tab di dalam body.</p>
+
+  <div class="modal-backdrop" id="m8" onclick="if(event.target===this)closeModal('m8')">
+    <div class="Box Box--overlay" role="dialog" aria-modal="true" aria-labelledby="m8-title" style="width:520px;max-width:calc(100vw - 32px)">
+      <div class="Box-header">
+        <h3 id="m8-title">Pengaturan Akun</h3>
+        <button class="Box-header-close-button" aria-label="Tutup" onclick="closeModal('m8')">✕</button>
+      </div>
+      <div class="Box-body" style="padding:0">
+        <div style="display:flex;border-bottom:1px solid var(--borderColor-default);padding:0 24px;gap:0">
+          <button class="modal-tab active" onclick="switchTab(this,'m8','profile')" style="padding:10px 16px;background:none;border:none;border-bottom:2px solid var(--fgColor-accent,#0969da);font-weight:600;font-size:13px;cursor:pointer;color:var(--fgColor-accent,#0969da)">Profil</button>
+          <button class="modal-tab" onclick="switchTab(this,'m8','security')" style="padding:10px 16px;background:none;border:none;border-bottom:2px solid transparent;font-size:13px;cursor:pointer;color:var(--fgColor-muted)">Keamanan</button>
+          <button class="modal-tab" onclick="switchTab(this,'m8','notif')" style="padding:10px 16px;background:none;border:none;border-bottom:2px solid transparent;font-size:13px;cursor:pointer;color:var(--fgColor-muted)">Notifikasi</button>
+        </div>
+        <div id="m8-panel-profile" style="padding:20px 24px">
+          <div class="form-group" style="margin-bottom:12px">
+            <dl><dt class="form-group-header"><label>Nama</label></dt><dd class="form-group-body"><input class="form-control input-block" type="text" placeholder="Nama lengkap"></dd></dl>
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <dl><dt class="form-group-header"><label>Email</label></dt><dd class="form-group-body"><input class="form-control input-block" type="email" placeholder="email@contoh.com"></dd></dl>
+          </div>
+        </div>
+        <div id="m8-panel-security" style="padding:20px 24px;display:none">
+          <div class="form-group" style="margin-bottom:12px">
+            <dl><dt class="form-group-header"><label>Password Lama</label></dt><dd class="form-group-body"><input class="form-control input-block" type="password" placeholder="Password saat ini"></dd></dl>
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <dl><dt class="form-group-header"><label>Password Baru</label></dt><dd class="form-group-body"><input class="form-control input-block" type="password" placeholder="Password baru"></dd></dl>
+          </div>
+        </div>
+        <div id="m8-panel-notif" style="padding:20px 24px;display:none">
+          <div class="form-checkbox"><label><input type="checkbox" checked> Email notifikasi</label></div>
+          <div class="form-checkbox"><label><input type="checkbox"> Notifikasi push</label></div>
+          <div class="form-checkbox"><label><input type="checkbox" checked> Ringkasan mingguan</label></div>
+        </div>
+      </div>
+      <div class="Box-footer">
+        <button class="btn" onclick="closeModal('m8')">Batal</button>
+        <button class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.add('is-open');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('is-open');
+    }
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-backdrop.is-open').forEach(function(m) {
+          m.classList.remove('is-open');
+        });
+      }
+    });
+    // Tab switcher for modal 8
+    function switchTab(btn, modalId, panel) {
+      var tabs = btn.parentElement.querySelectorAll('.modal-tab');
+      tabs.forEach(function(t) {
+        t.style.borderBottomColor = 'transparent';
+        t.style.fontWeight = 'normal';
+        t.style.color = 'var(--fgColor-muted)';
+      });
+      btn.style.borderBottomColor = 'var(--fgColor-accent, #0969da)';
+      btn.style.fontWeight = '600';
+      btn.style.color = 'var(--fgColor-accent, #0969da)';
+
+      var panels = ['profile','security','notif'];
+      panels.forEach(function(p) {
+        var el = document.getElementById(modalId + '-panel-' + p);
+        if (el) el.style.display = p === panel ? 'block' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>

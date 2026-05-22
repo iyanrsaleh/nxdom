@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid - Primer CSS Demo</title>
+
+    <link rel="stylesheet" href="../nexa.css">
+
+  <style>
+    body {
+      padding: 32px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    /* Visual helpers */
+    .col-demo {
+      background-color: var(--bgColor-accent-muted, #ddf4ff);
+      border: 1px solid var(--borderColor-accent-muted, #54aeff66);
+      border-radius: 4px;
+      padding: 8px 6px;
+      font-size: 12px;
+      color: var(--fgColor-accent, #0969da);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .col-demo-alt {
+      background-color: var(--bgColor-success-muted, #dafbe1);
+      border: 1px solid var(--borderColor-success-muted, #2da44e66);
+      border-radius: 4px;
+      padding: 8px 6px;
+      font-size: 12px;
+      color: var(--fgColor-success, #1a7f37);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .row { margin-bottom: 4px; }
+    .container-demo {
+      background-color: var(--bgColor-attention-muted, #fff8c5);
+      border: 1px dashed var(--borderColor-attention-muted, #d4a72c66);
+      border-radius: 4px;
+      padding: 16px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: var(--fgColor-attention, #9a6700);
+    }
+    code {
+      font-family: ui-monospace, monospace;
+      font-size: 12px;
+      background: var(--bgColor-muted);
+      border: 1px solid var(--borderColor-default);
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: var(--fgColor-default);
+    }
+    .note {
+      font-size: 12px;
+      color: var(--fgColor-muted);
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Grid System — Primer CSS</h1>
+  <p class="note">12-kolom float grid. Wajib pakai <code>clearfix</code> sebagai wrapper row.</p>
+
+  <!-- ========================
+       1. Container widths
+  ======================== -->
+  <h2>1. Container — Lebar Maksimum</h2>
+  <div class="container-sm container-demo">
+    <strong>.container-sm</strong> — max-width: 544px
+  </div>
+  <div class="container-md container-demo">
+    <strong>.container-md</strong> — max-width: 768px
+  </div>
+  <div class="container-lg container-demo">
+    <strong>.container-lg</strong> — max-width: 1012px
+  </div>
+  <div class="container-xl container-demo">
+    <strong>.container-xl</strong> — max-width: 1280px
+  </div>
+
+  <!-- ========================
+       2. Basic col-* (float)
+  ======================== -->
+  <h2>2. .col-* — Kolom Dasar (float)</h2>
+  <p class="note">Gunakan <code>clearfix</code> sebagai wrapper agar float bersih.</p>
+
+  <div class="clearfix row">
+    <div class="col-12"><div class="col-demo">.col-12 (100%)</div></div>
+  </div>
+  <div class="clearfix row">
+    <div class="col-6"><div class="col-demo">.col-6</div></div>
+    <div class="col-6"><div class="col-demo-alt">.col-6</div></div>
+  </div>
+  <div class="clearfix row">
+    <div class="col-4"><div class="col-demo">.col-4</div></div>
+    <div class="col-4"><div class="col-demo-alt">.col-4</div></div>
+    <div class="col-4"><div class="col-demo">.col-4</div></div>
+  </div>
+  <div class="clearfix row">
+    <div class="col-3"><div class="col-demo">.col-3</div></div>
+    <div class="col-3"><div class="col-demo-alt">.col-3</div></div>
+    <div class="col-3"><div class="col-demo">.col-3</div></div>
+    <div class="col-3"><div class="col-demo-alt">.col-3</div></div>
+  </div>
+  <div class="clearfix row">
+    <div class="col-2"><div class="col-demo">.col-2</div></div>
+    <div class="col-2"><div class="col-demo-alt">.col-2</div></div>
+    <div class="col-2"><div class="col-demo">.col-2</div></div>
+    <div class="col-2"><div class="col-demo-alt">.col-2</div></div>
+    <div class="col-2"><div class="col-demo">.col-2</div></div>
+    <div class="col-2"><div class="col-demo-alt">.col-2</div></div>
+  </div>
+  <div class="clearfix row">
+    <div class="col-1"><div class="col-demo">1</div></div>
+    <div class="col-1"><div class="col-demo-alt">1</div></div>
+    <div class="col-1"><div class="col-demo">1</div></div>
+    <div class="col-1"><div class="col-demo-alt">1</div></div>
+    <div class="col-1"><div class="col-demo">1</div></div>
+    <div class="col-1"><div class="col-demo-alt">1</div></div>
+    <div class="col-1"><div class="col-demo">1</div></div>
+    <div class="col-1"><div class="col-demo-alt">1</div></div>
+    <div class="col-1"><div class="col-demo">1</div></div>
+    <div class="col-1"><div class="col-demo-alt">1</div></div>
+    <div class="col-1"><div class="col-demo">1</div></div>
+    <div class="col-1"><div class="col-demo-alt">1</div></div>
+  </div>
+
+  <!-- ========================
+       3. Mixed col-*
+  ======================== -->
+  <h2>3. .col-* — Layout Campuran</h2>
+  <div class="clearfix row">
+    <div class="col-8"><div class="col-demo">.col-8 (konten utama)</div></div>
+    <div class="col-4"><div class="col-demo-alt">.col-4 (sidebar)</div></div>
+  </div>
+  <div class="clearfix row">
+    <div class="col-3"><div class="col-demo">.col-3</div></div>
+    <div class="col-9"><div class="col-demo-alt">.col-9</div></div>
+  </div>
+  <div class="clearfix row">
+    <div class="col-2"><div class="col-demo">.col-2</div></div>
+    <div class="col-7"><div class="col-demo-alt">.col-7</div></div>
+    <div class="col-3"><div class="col-demo">.col-3</div></div>
+  </div>
+  <div class="clearfix row">
+    <div class="col-5"><div class="col-demo">.col-5</div></div>
+    <div class="col-5"><div class="col-demo-alt">.col-5</div></div>
+    <div class="col-2"><div class="col-demo">.col-2</div></div>
+  </div>
+
+  <!-- ========================
+       4. Gutter
+  ======================== -->
+  <h2>4. .gutter — Jarak Antar Kolom</h2>
+  <p class="note"><code>.gutter</code> = 16px &nbsp;|&nbsp; <code>.gutter-condensed</code> = 8px &nbsp;|&nbsp; <code>.gutter-spacious</code> = 24px</p>
+
+  <div class="clearfix row gutter">
+    <div class="col-4"><div class="col-demo">.col-4 + .gutter</div></div>
+    <div class="col-4"><div class="col-demo-alt">.col-4 + .gutter</div></div>
+    <div class="col-4"><div class="col-demo">.col-4 + .gutter</div></div>
+  </div>
+  <div class="clearfix row gutter-condensed">
+    <div class="col-4"><div class="col-demo">.col-4 + .gutter-condensed</div></div>
+    <div class="col-4"><div class="col-demo-alt">.col-4 + .gutter-condensed</div></div>
+    <div class="col-4"><div class="col-demo">.col-4 + .gutter-condensed</div></div>
+  </div>
+  <div class="clearfix row gutter-spacious">
+    <div class="col-4"><div class="col-demo">.col-4 + .gutter-spacious</div></div>
+    <div class="col-4"><div class="col-demo-alt">.col-4 + .gutter-spacious</div></div>
+    <div class="col-4"><div class="col-demo">.col-4 + .gutter-spacious</div></div>
+  </div>
+
+  <!-- ========================
+       5. Offset
+  ======================== -->
+  <h2>5. .offset-* — Geser Kolom</h2>
+  <div class="clearfix row">
+    <div class="col-4 offset-4"><div class="col-demo">.col-4 .offset-4 (tengah)</div></div>
+  </div>
+  <div class="clearfix row">
+    <div class="col-6 offset-3"><div class="col-demo">.col-6 .offset-3</div></div>
+  </div>
+  <div class="clearfix row">
+    <div class="col-3"><div class="col-demo">.col-3</div></div>
+    <div class="col-3 offset-6"><div class="col-demo-alt">.col-3 .offset-6</div></div>
+  </div>
+  <div class="clearfix row">
+    <div class="col-2 offset-1"><div class="col-demo">.col-2 .offset-1</div></div>
+    <div class="col-2 offset-1"><div class="col-demo-alt">.col-2 .offset-1</div></div>
+    <div class="col-2 offset-1"><div class="col-demo">.col-2 .offset-1</div></div>
+  </div>
+
+  <!-- ========================
+       6. Responsive col-md-*
+  ======================== -->
+  <h2>6. .col-md-* — Kolom Responsif (≥768px)</h2>
+  <p class="note">Di layar kecil (&lt;768px), kolom akan penuh 100%. Di layar ≥768px, lebar sesuai class.</p>
+  <div class="clearfix row gutter">
+    <div class="col-12 col-md-6"><div class="col-demo">col-12 / col-md-6</div></div>
+    <div class="col-12 col-md-6"><div class="col-demo-alt">col-12 / col-md-6</div></div>
+  </div>
+  <div class="clearfix row gutter">
+    <div class="col-12 col-md-4"><div class="col-demo">col-12 / col-md-4</div></div>
+    <div class="col-12 col-md-4"><div class="col-demo-alt">col-12 / col-md-4</div></div>
+    <div class="col-12 col-md-4"><div class="col-demo">col-12 / col-md-4</div></div>
+  </div>
+  <div class="clearfix row gutter">
+    <div class="col-12 col-md-8"><div class="col-demo">col-12 / col-md-8 (main)</div></div>
+    <div class="col-12 col-md-4"><div class="col-demo-alt">col-12 / col-md-4 (aside)</div></div>
+  </div>
+
+  <!-- ========================
+       7. All breakpoints
+  ======================== -->
+  <h2>7. Semua Breakpoint Responsif</h2>
+  <p class="note">
+    <code>col-sm-*</code> ≥544px &nbsp;|&nbsp;
+    <code>col-md-*</code> ≥768px &nbsp;|&nbsp;
+    <code>col-lg-*</code> ≥1012px &nbsp;|&nbsp;
+    <code>col-xl-*</code> ≥1280px
+  </p>
+  <div class="clearfix row gutter">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="col-demo">sm-6 / md-4 / lg-3</div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="col-demo-alt">sm-6 / md-4 / lg-3</div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="col-demo">sm-6 / md-4 / lg-3</div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-12 col-lg-3">
+      <div class="col-demo-alt">sm-6 / md-12 / lg-3</div>
+    </div>
+  </div>
+
+  <!-- ========================
+       8. Real layout example
+  ======================== -->
+  <h2>8. Contoh Layout — GitHub Repository Page</h2>
+  <div class="container-lg">
+    <div class="clearfix gutter">
+      <div class="col-12 col-md-8">
+        <div class="Box mb-3">
+          <div class="Box-header">
+            <h3 class="Box-title">Konten Utama (col-md-8)</h3>
+          </div>
+          <div class="Box-body">
+            <p class="color-fg-muted">File browser, README, code view, dll.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="Box">
+          <div class="Box-header">
+            <h3 class="Box-title">Sidebar (col-md-4)</h3>
+          </div>
+          <div class="Box-body">
+            <p class="color-fg-muted">About, topics, releases, packages.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

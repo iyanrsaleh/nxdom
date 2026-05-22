@@ -1,0 +1,345 @@
+.nx-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.nx-menu li {
+  margin: 0;
+  position: relative;
+}
+
+.nx-menu a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nx-menu a:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+/* Vertical Menu */
+.nx-menu.vertical {
+  flex-direction: column;
+  width: max-content;
+}
+
+.nx-menu.vertical a {
+  padding: 0.75rem 1.5rem;
+}
+
+/* Dropdown Menu */
+.nx-menu .dropdown {
+  position: relative;
+}
+
+.nx-menu .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 200px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.nx-menu .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nx-menu .dropdown-content a {
+  padding: 0.75rem 1rem;
+  display: block;
+}
+
+/* Menu dengan Ikon */
+.nx-menu .icon {
+  width: 1.2em;
+  height: 1.2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Menu dengan Badge */
+.nx-menu .badge {
+  background: #ff4757;
+  color: white;
+  padding: 0.2em 0.6em;
+  border-radius: 10px;
+  font-size: 0.75em;
+  margin-left: 0.5em;
+}
+
+/* Menu dengan Divider */
+.nx-menu .divider {
+  border-bottom: 1px solid #eee;
+  margin: 0.5rem 0;
+}
+
+/* Menu dengan Status */
+.nx-menu .active {
+  background-color: #007bff;
+  color: white;
+}
+
+.nx-menu .disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Responsive Menu */
+@media (max-width: 768px) {
+  .nx-menu.responsive {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .nx-menu.responsive .dropdown-content {
+    position: static;
+    box-shadow: none;
+    padding-left: 1rem;
+  }
+}
+
+/* Preview Box Styling */
+.preview-box {
+  padding: 2rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Menu dengan Ikon */
+.nx-menu .material-icons {
+  font-size: 20px;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+/* Menu dengan Submenu */
+.nx-menu .has-submenu {
+  position: relative;
+}
+
+.nx-menu .has-submenu > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nx-menu .submenu-icon {
+  font-size: 18px;
+  margin-left: 4px;
+}
+
+.nx-menu .submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background: white;
+  min-width: 200px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  z-index: 1000;
+  list-style: none;
+  padding: 0.5rem 0;
+}
+
+/* First level submenu */
+.nx-menu > li > .submenu {
+  left: 0;
+  top: 100%;
+}
+
+.nx-menu .has-submenu:hover > .submenu {
+  display: block;
+}
+
+.nx-menu .submenu a {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Responsive submenu */
+@media (max-width: 768px) {
+  .nx-menu.responsive .submenu {
+    position: static;
+    box-shadow: none;
+    padding-left: 1.5rem;
+    background: transparent;
+  }
+  
+  .nx-menu.responsive .has-submenu > a {
+    flex-wrap: wrap;
+  }
+}
+
+/* Menu Horizontal */
+.nx-menu.horizontal {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nx-menu.horizontal > li {
+  flex: 0 1 auto;
+}
+
+/* Mega Menu */
+.nx-menu .mega-menu {
+  position: static;
+}
+
+.nx-menu .mega-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.nx-menu .mega-menu:hover .mega-content {
+  display: block;
+}
+
+.mega-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.mega-column h5 {
+  margin: 0 0 1rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+.mega-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mega-column ul li {
+  margin: 0.5rem 0;
+}
+
+.mega-promo {
+  text-align: center;
+}
+
+.mega-promo img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Menu dengan Pencarian */
+.nx-menu .search-box {
+  position: relative;
+  margin: 0 1rem;
+}
+
+.nx-menu .search-input {
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  width: 200px;
+}
+
+.nx-menu .search-icon {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+/* Menu dengan Filter */
+.nx-menu .filter-group {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.nx-menu .filter-item {
+  padding: 0.25rem 0.75rem;
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nx-menu .filter-item.active {
+  background: #007bff;
+  color: white;
+}
+
+/* Menu dengan Tema */
+.nx-menu.theme-dark {
+  background: #333;
+}
+
+.nx-menu.theme-dark a {
+  color: white;
+}
+
+.nx-menu.theme-dark a:hover {
+  background: #444;
+}
+
+/* Menu dengan Animasi */
+.nx-menu.animated a {
+  position: relative;
+  overflow: hidden;
+}
+
+.nx-menu.animated a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #007bff;
+  transition: all 0.3s ease;
+}
+
+.nx-menu.animated a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Menu dengan Gambar */
+.nx-menu .menu-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  object-fit: cover;
+}

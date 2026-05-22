@@ -1,0 +1,97 @@
+<!-- Distro Upload — hanya templates/dashboard/ -->
+<div class="theme-page">
+  <h2 class="page-title-bar"><i class="fas fa-box-open"></i> Upload Paket Distro (ZIP)</h2>
+  <p class="page-subtitle">Distro dashboard Nexa — unggah ZIP (.html, .css, .js) hanya ke folder <strong>templates/dashboard/</strong>.</p>
+
+  <div id="distro-alert-container"></div>
+
+  <div class="card theme-upload-card">
+    <div class="theme-card-header">
+      <i class="fas fa-upload"></i>
+      <h3>Upload ke Dashboard</h3>
+    </div>
+    <div class="theme-card-body">
+      <p class="theme-upload-help">Maksimal {max_zip_mb}MB. Layout tetap <strong>dashboard</strong>.</p>
+      <form id="formDistroZip" class="theme-form">
+        <input type="hidden" name="layout" value="dashboard">
+        <div class="account-form-group">
+          <label class="account-form-label"><i class="fas fa-file-archive"></i> File ZIP</label>
+          <input type="file" name="file" class="account-form-input theme-file-input" accept=".zip" required>
+        </div>
+        <div class="account-form-actions">
+          <button type="submit" class="account-btn account-btn-primary">
+            <i class="fas fa-file-archive"></i> Upload &amp; Ekstrak ZIP
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var username = (window.location.pathname.split('/').filter(Boolean))[0] || '';
+  var uploadZipUrl = username ? ('/' + username + '/distro/uploadZip') : '';
+
+  function showDistroAlert(msg, type) {
+    var c = document.getElementById('distro-alert-container');
+    var cls = type === 'success' ? 'theme-alert theme-alert-success' : type === 'error' ? 'theme-alert theme-alert-error' : 'theme-alert theme-alert-info';
+    c.innerHTML = '<div class="' + cls + '"><i class="fas fa-' + (type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle') + '"></i> ' + msg + '</div>';
+    setTimeout(function() { c.innerHTML = ''; }, 5000);
+  }
+
+  document.getElementById('formDistroZip').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn = form.querySelector('button[type="submit"]');
+    var orig = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengunggah...';
+
+    var fd = new FormData();
+    fd.append('layout', form.layout.value);
+    fd.append('file', form.file.files[0]);
+
+    if (!uploadZipUrl) {
+      showDistroAlert('URL upload tidak tersedia. Refresh halaman.', 'error');
+      btn.disabled = false;
+      btn.innerHTML = orig;
+      return;
+    }
+
+    fetch(uploadZipUrl, {
+      method: 'POST',
+      body: fd,
+      credentials: 'same-origin',
+      headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    })
+    .then(function(r) {
+      return r.text().then(function(text) {
+        if (!r.ok) {
+          var err = 'Request gagal: ' + r.status;
+          if (text && text.length < 200) err += ' - ' + text.substring(0, 100);
+          throw new Error(err);
+        }
+        return text;
+      });
+    })
+    .then(function(text) {
+      var res;
+      try { res = JSON.parse(text); } catch (_) {
+        throw new Error('Response tidak valid (bukan JSON). Pastikan URL benar.');
+      }
+      var msg = res.message || (res.success ? 'Berhasil' : 'Gagal');
+      if (res.extracted_count !== undefined) msg += ' (' + res.extracted_count + ' file)';
+      showDistroAlert(msg, res.success ? 'success' : 'error');
+      if (res.success) form.reset();
+    })
+    .catch(function(err) {
+      showDistroAlert(err.message || 'Terjadi kesalahan', 'error');
+    })
+    .finally(function() {
+      btn.disabled = false;
+      btn.innerHTML = orig;
+    });
+  });
+})();
+</script>

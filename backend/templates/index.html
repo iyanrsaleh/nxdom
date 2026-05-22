@@ -1,0 +1,205 @@
+            <section class="nx-hero">
+                <div class="nx-hero-bg"></div>
+                <div class="nx-hero-content">
+                    <div class="nx-hero-left">
+                        <div class="nx-hero-pills">
+                            <span>PHP 8+</span>
+                            <span>MVC</span>
+                            <span>REST API</span>
+                            <span>MIT</span>
+                        </div>
+                        <h1 class="nx-hero-title">
+                            <span class="nx-hero-title-line">Bangun lebih cepat dengan</span>
+                            <span class="nx-hero-title-brand">{app_name}</span>
+                        </h1>
+                        <p class="nx-hero-desc">Framework PHP modern dengan NexaDom Template Engine, Frontend Routing dinamis, dan REST API siap pakai. Pemisahan jelas antara Frontend dan Backend. Ringan, cepat, produksi-ready.</p>
+                        <div class="nx-hero-actions">
+                            <a href="/docs/getting-started" class="nx-hero-btn nx-hero-btn-primary">Mulai Sekarang →</a>
+                            <a href="/docs" class="nx-hero-btn nx-hero-btn-outline">Dokumentasi</a>
+                            <!-- <a href="/docs/getting-started" class="nx-hero-btn nx-hero-btn-download">
+                                <span class="material-icons">download</span>
+                                Download
+                            </a> -->
+                        </div>
+                    </div>
+                    <div class="nx-hero-right">
+                        <div class="nx-hero-code">
+                            <div class="nx-hero-code-header">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <pre><code><span class="c">// routes/web.php</span>
+$router->add(<span class="s">'/'</span>, <span class="s">'FrontendController@index'</span>);
+$router->add(<span class="s">'/api/{params}'</span>, <span class="s">'ApiController@index'</span>);
+
+<span class="c">// That's it.</span></code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="nx-hero-meta">
+                    <!-- <span><code>templates/theme/</code></span>
+                    <span class="nx-hero-meta-dot">·</span>
+                    <span><code>FrontendController</code></span>
+                    <span class="nx-hero-meta-dot">·</span>
+                    <span><code>/docs</code> <code>/docs/&#123;topic&#125;</code></span> -->
+                </div>
+            </section>
+
+            <section class="nx-easy-section">
+                <h2 class="nx-easy-title">Kenapa NexaUI Mudah?</h2>
+                <p class="nx-easy-desc">Ringkas, intuitif, tanpa boilerplate berlebihan.</p>
+                <div class="nx-easy-grid">
+                    <div class="nx-easy-item">
+                        <span class="nx-easy-icon material-icons">route</span>
+                        <h4>Routing Minimal</h4>
+                        <p><code>$router->add(&#39;/&#39;, &#39;FrontendController@index&#39;)</code> — satu baris, selesai. Frontend routing otomatis untuk <code>/product</code>, <code>/mall</code> tanpa daftar manual.</p>
+                    </div>
+                    <div class="nx-easy-item">
+                        <span class="nx-easy-icon material-icons">mediation</span>
+                        <h4>Controller 3 Langkah</h4>
+                        <p><code>assignVars()</code> → <code>divert()</code> → <code>render()</code>. Tanpa konfigurasi kompleks, langsung ke template.</p>
+                    </div>
+                    <div class="nx-easy-item">
+                        <span class="nx-easy-icon material-icons">storage</span>
+                        <h4>Database Tanpa Model</h4>
+                        <p><code>$this->Storage(&#39;users&#39;)->get()</code>. CRUD, join, paginate — tanpa definisi model jika tak diperlukan.</p>
+                    </div>
+                    <div class="nx-easy-item">
+                        <span class="nx-easy-icon material-icons">code</span>
+                        <h4>Template Sederhana</h4>
+                        <p><code>&#123;variable&#125;</code>, <code>&#123;price|rp&#125;</code>, <code>&#123;if&#125;</code> — syntax jelas, filter built-in.</p>
+                    </div>
+                    <div class="nx-easy-item">
+                        <span class="nx-easy-icon material-icons">link</span>
+                        <h4>Reuse Tanpa DI</h4>
+                        <p><code>refParams()</code>, <code>useModels()</code>, <code>useParams()</code> — panggil controller/model lain tanpa dependency injection.</p>
+                    </div>
+                    <div class="nx-easy-item">
+                        <span class="nx-easy-icon material-icons">devices</span>
+                        <h4>Multi-Device &amp; API</h4>
+                        <p><code>divert()</code> pilih layout theme/mobile/tablet. REST API via <code>routes/api.php</code> — siap pakai.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="nx-view-html-section">
+                <h2 class="nx-view-html-title">View Hanya HTML</h2>
+                <p class="nx-view-html-tagline">Pemisahan jelas antara Frontend dan Backend — poin menarik NexaUI.</p>
+                <div class="nx-view-html-content">
+                    <div class="nx-view-html-side">
+                        <span class="nx-view-html-icon material-icons">vertical_split</span>
+                        <h3>Desainer ↔ Developer</h3>
+                        <p>Kode tampilan ditulis murni di file <code>.html</code>. Tidak ada PHP di template — hanya variable <code>&#123;var&#125;</code>, block, dan filter.</p>
+                        <p>Desainer UI fokus di struktur HTML &amp; CSS. Developer backend fokus di Controller &amp; Model. Kolaborasi bersih tanpa tabrakan.</p>
+                    </div>
+                    <div class="nx-view-html-code">
+                        <div class="nx-view-html-code-header">templates/theme/product/index.html</div>
+                        <pre><code>&lt;div class="product-list"&gt;
+&lt;!-- NEXA row --&gt;
+    &lt;div class="item"&gt;
+        &lt;h3&gt;&#123;title&#125;&lt;/h3&gt;
+        &lt;p&gt;&#123;price|rp&#125;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;!-- END row --&gt;
+&lt;/div&gt;</code></pre>
+                        <p class="nx-view-html-note">Murni HTML + placeholder. Data di-inject dari Controller via <code>assignVars()</code> &amp; <code>nexaBlock()</code>.</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="nx-docs-section">
+                <h2 class="nx-section-title">Dokumentasi</h2>
+                <p class="nx-section-desc">12 topik referensi untuk memulai dan menguasai NexaUI.</p>
+                <div class="nx-cards">
+                    <a href="/docs/getting-started" class="nx-card">
+                        <span class="nx-card-icon material-icons">rocket_launch</span>
+                        <h3>Getting Started</h3>
+                        <p>Introduction, Installation, Quick Start</p>
+                    </a>
+                    <a href="/docs/tutorial" class="nx-card">
+                        <span class="nx-card-icon material-icons">menu_book</span>
+                        <h3>Tutorial</h3>
+                        <p>Routing, Controllers, Models, Views</p>
+                    </a>
+                    <a href="/docs/general-topics" class="nx-card">
+                        <span class="nx-card-icon material-icons">tune</span>
+                        <h3>General Topics</h3>
+                        <p>App Flow, Config, URLs, Errors</p>
+                    </a>
+                    <a href="/docs/libraries" class="nx-card">
+                        <span class="nx-card-icon material-icons">library_books</span>
+                        <h3>Libraries</h3>
+                        <p>Nexa, NexaRouter, NexaModel, NexaLite</p>
+                    </a>
+                    <a href="/docs/helpers" class="nx-card">
+                        <span class="nx-card-icon material-icons">build</span>
+                        <h3>Helpers</h3>
+                        <p>NexaRequest, NexaSession, NexaAgent</p>
+                    </a>
+                    <a href="/docs/database" class="nx-card">
+                        <span class="nx-card-icon material-icons">storage</span>
+                        <h3>Database</h3>
+                        <p>NexaModel, NexaLite, NexaIndexDB</p>
+                    </a>
+                    <a href="/docs/template-engine" class="nx-card">
+                        <span class="nx-card-icon material-icons">code</span>
+                        <h3>NexaDom</h3>
+                        <p>Variable, Block, Filter, Nexautility</p>
+                    </a>
+                    <a href="/docs/components" class="nx-card">
+                        <span class="nx-card-icon material-icons">extension</span>
+                        <h3>Components</h3>
+                        <p>NexaUI, NexaModal, NexaForm</p>
+                    </a>
+                    <a href="/docs/advanced" class="nx-card">
+                        <span class="nx-card-icon material-icons">auto_awesome</span>
+                        <h3>Advanced</h3>
+                        <p>refParams, useModels, useParams, Events, Middleware</p>
+                    </a>
+                    <a href="/docs/api" class="nx-card">
+                        <span class="nx-card-icon material-icons">api</span>
+                        <h3>API Reference</h3>
+                        <p>REST API, routes/api.php</p>
+                    </a>
+                    <a href="/docs/dashboard" class="nx-card">
+                        <span class="nx-card-icon material-icons">dashboard</span>
+                        <h3>Dashboard</h3>
+                        <p>Layout, AdminController, Session routing</p>
+                    </a>
+                    <a href="/docs/appendices" class="nx-card">
+                        <span class="nx-card-icon material-icons">description</span>
+                        <h3>Appendices</h3>
+                        <p>Class Reference, File Structure</p>
+                    </a>
+                </div>
+            </section>
+
+            <section class="nx-structure-section">
+                <h2 class="nx-structure-title">Terhubung ke Berbagai Platform</h2>
+                <p class="nx-structure-desc">NexaUI Framework dapat diintegrasikan dengan versi desktop, web, dan mobile.</p>
+                <div class="nx-structure-block">
+                    <div class="nx-structure-item">
+                        <img class="nx-structure-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/electron/electron-original.svg" alt="Electron" width="48" height="48">
+                        <div class="nx-structure-content">
+                            <h4>Desktop (Electron)</h4>
+                            <p>Aplikasi desktop cross-platform menggunakan NexaJS. Backend NexaUI + REST API.</p>
+                        </div>
+                    </div>
+                    <span class="nx-structure-divider" aria-hidden="true"></span>
+                    <div class="nx-structure-item">
+                        <img class="nx-structure-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="NexaJS" width="48" height="48">
+                        <div class="nx-structure-content">
+                            <h4>NexaJS</h4>
+                            <p>Data management &amp; integrasi frontend JavaScript. Kirim data dari Controller ke JS via NexaJs.</p>
+                        </div>
+                    </div>
+                    <span class="nx-structure-divider" aria-hidden="true"></span>
+                    <div class="nx-structure-item">
+                        <img class="nx-structure-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React Native" width="48" height="48">
+                        <div class="nx-structure-content">
+                            <h4>Mobile App (React Native)</h4>
+                            <p>Aplikasi mobile iOS &amp; Android menggunakan NexaJS. Consume REST API dari NexaUI backend.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>

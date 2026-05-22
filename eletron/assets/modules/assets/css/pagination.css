@@ -1,0 +1,267 @@
+/* Simple Clean Pagination Styles */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0px 0;
+    list-style: none;
+    gap: 4px;
+    font-family: "Montserrat", Arial, sans-serif;
+  }
+
+  .pagination .page-item {
+    list-style: none;
+  }
+
+  .pagination .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 6px 12px;
+    color: #666;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: normal;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+  }
+
+  .pagination .page-item:first-child .page-link {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  .pagination .page-item:last-child .page-link {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  .pagination .page-item + .page-item .page-link {
+    border-left: none;
+  }
+
+  .pagination .page-link.active {
+    background-color: #DC2626;
+    border-color: #DC2626;
+    color: white;
+    font-weight: 500;
+  }
+
+  .pagination .page-item.disabled .page-link {
+    color: #ccc;
+    background-color: #f8f9fa;
+    border-color: #ddd;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .pagination .page-link:hover:not(.disabled) {
+    background-color: #f8f9fa;
+    border-color: #bbb;
+    color: #333;
+  }
+
+  .pagination .page-item.active .page-link:hover {
+    background-color: #B91C1C;
+    border-color: #B91C1C;
+    color: white;
+  }
+
+  .pagination .page-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+  }
+
+  /* First/Last/Prev/Next button styles */
+  .pagination .page-link[data-nav="first"],
+  .pagination .page-link[data-nav="last"],
+  .pagination .page-link[data-nav="prev"],
+  .pagination .page-link[data-nav="next"] {
+    font-weight: 500;
+    padding: 6px 16px;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .pagination {
+      gap: 2px;
+      margin: 16px 0;
+    }
+
+    .pagination .page-link {
+      min-width: 28px;
+      height: 28px;
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+
+    .pagination .page-link[data-nav="first"],
+    .pagination .page-link[data-nav="last"],
+    .pagination .page-link[data-nav="prev"],
+    .pagination .page-link[data-nav="next"] {
+      padding: 4px 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Hide First/Last on very small screens */
+    .pagination .page-item[data-nav="first"],
+    .pagination .page-item[data-nav="last"] {
+      display: none;
+    }
+
+    /* Show only a few page numbers */
+    .pagination .page-item:not(.active):not([data-nav]):nth-child(n + 6) {
+      display: none;
+    }
+  }
+
+  /* Page info styling */
+  .page-info {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin: 12px 0;
+    padding: 8px 16px;
+  }
+
+  /* Small Pagination Styles */
+  .pagination-sm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0px 0;
+    list-style: none;
+    gap: 2px;
+    font-family: "Montserrat", Arial, sans-serif;
+  }
+
+  .pagination-sm .page-item {
+    list-style: none;
+  }
+
+  .pagination-sm .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 4px 8px;
+    color: #666;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: normal;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+  }
+
+  .pagination-sm .page-item:first-child .page-link {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
+  .pagination-sm .page-item:last-child .page-link {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  .pagination-sm .page-item + .page-item .page-link {
+    border-left: none;
+  }
+
+  .pagination-sm .page-link.active {
+    background-color:#1730B4;
+    border-color: #1730B4;
+    color: white;
+    font-weight: 500;
+  }
+
+  .pagination-sm .page-item.disabled .page-link {
+    color: #ccc;
+    background-color: #f8f9fa;
+    border-color: #ddd;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .pagination-sm .page-link:hover:not(.disabled) {
+    background-color: #f8f9fa;
+    border-color: #bbb;
+    color: #333;
+  }
+
+  .pagination-sm .page-item.active .page-link:hover {
+    background-color: #B91C1C;
+    border-color: #B91C1C;
+    color: white;
+  }
+
+  .pagination-sm .page-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.2);
+  }
+
+  /* First/Last/Prev/Next button styles for small */
+  .pagination-sm .page-link[data-nav="first"],
+  .pagination-sm .page-link[data-nav="last"],
+  .pagination-sm .page-link[data-nav="prev"],
+  .pagination-sm .page-link[data-nav="next"] {
+    font-weight: 500;
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+
+  /* Mobile responsive for small pagination */
+  @media (max-width: 768px) {
+    .pagination-sm {
+      gap: 1px;
+      margin: 12px 0;
+    }
+
+    .pagination-sm .page-link {
+      min-width: 22px;
+      height: 22px;
+      padding: 3px 6px;
+      font-size: 10px;
+    }
+
+    .pagination-sm .page-link[data-nav="first"],
+    .pagination-sm .page-link[data-nav="last"],
+    .pagination-sm .page-link[data-nav="prev"],
+    .pagination-sm .page-link[data-nav="next"] {
+      padding: 3px 8px;
+      font-size: 9px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Hide First/Last on very small screens for small pagination */
+    .pagination-sm .page-item[data-nav="first"],
+    .pagination-sm .page-item[data-nav="last"] {
+      display: none;
+    }
+
+    /* Show only a few page numbers for small pagination */
+    .pagination-sm .page-item:not(.active):not([data-nav]):nth-child(n + 5) {
+      display: none;
+    }
+  }
+
+  /* Small page info styling */
+  .page-info-sm {
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    margin: 8px 0;
+    padding: 6px 12px;
+  }

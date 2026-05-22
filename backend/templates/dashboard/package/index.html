@@ -1,0 +1,106 @@
+<!-- PackageController - Daftar Package -->
+<div class="package-page">
+  <h2 class="page-title-bar"><i class="fas fa-key"></i> Kelola Package Akses</h2>
+  <p class="page-subtitle">Daftar modul akses yang dapat diberikan ke user. Tambah package baru tanpa perlu mengubah kode.</p>
+
+  <div class="card">
+    <div class="recent-activity">
+      <div style="margin-bottom:1rem">
+        <button type="button" class="user-btn-package" id="btnAddPackage"><i class="fas fa-plus"></i> Tambah Package</button>
+      </div>
+      {if package_count > 0}
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Key</th>
+            <th>Label</th>
+            <th>Icon</th>
+            <th>Status</th>
+            <th>Sort</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- NEXA package_row -->
+          <tr>
+            <td>{no}</td>
+            <td><code>{key}</code></td>
+            <td>{label}</td>
+            <td><i class="{icon}"></i> {icon}</td>
+            <td><span class="pkg-dev-badge pkg-dev-{development}">{development_label}</span></td>
+            <td>{sort_order}</td>
+            <td>
+              <button type="button" class="user-btn-edit pkg-edit" data-id="{id}" data-key="{key}" data-label="{label}" data-icon="{icon}" data-development="{development}"><i class="fas fa-edit"></i></button>
+              <button type="button" class="user-btn-delete pkg-delete" data-id="{id}" data-key="{key}"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+          <!-- END package_row -->
+        </tbody>
+      </table>
+      {else}
+      <p style="padding:1rem;color:#666">Belum ada package. Jalankan migration untuk menambah default.</p>
+      {endif}
+    </div>
+  </div>
+</div>
+
+<!-- Modal Add/Edit Package -->
+<div id="packageFormModal" class="user-modal-overlay">
+  <div class="user-modal">
+    <div class="user-modal-header">
+      <h3 id="packageFormTitle"><i class="fas fa-key"></i> Tambah Package</h3>
+      <button type="button" class="user-modal-close" onclick="closePackageForm()" aria-label="Tutup"><i class="fas fa-times"></i></button>
+    </div>
+    <form id="formPackageItem" class="user-modal-body">
+      <input type="hidden" name="id" id="pkgFormId">
+      <div class="account-form-group">
+        <label class="account-form-label">Key (slug)</label>
+        <input type="text" name="key" id="pkgFormKey" class="account-form-input" placeholder="contoh: report" pattern="[a-z0-9_]+" required>
+        <small class="account-form-help">Huruf kecil, angka, underscore. Dipakai di URL dan user.package</small>
+      </div>
+      <div class="account-form-group">
+        <label class="account-form-label">Label</label>
+        <input type="text" name="label" id="pkgFormLabel" class="account-form-input" placeholder="Laporan" required>
+      </div>
+      <div class="account-form-group">
+        <label class="account-form-label">Icon (Font Awesome)</label>
+        <input type="text" name="icon" id="pkgFormIcon" class="account-form-input" placeholder="fas fa-file-alt" value="fas fa-circle">
+      </div>
+      <div class="account-form-group">
+        <label class="account-form-label" for="pkgFormDevelopment">Status</label>
+        <select name="development" id="pkgFormDevelopment" class="account-form-input" required>
+          <option value="2">Public (produksi)</option>
+          <option value="1">System (pengembangan)</option>
+          <option value="3">Hidden (tidak di menu)</option>
+        </select>
+        <small class="account-form-help">Hidden: tidak tampil di menu sidebar, Kelola User, dan halaman Development — tetap ada di tabel ini.</small>
+      </div>
+      <div class="user-modal-footer">
+        <button type="button" class="account-btn" onclick="closePackageForm()">Batal</button>
+        <button type="submit" class="account-btn account-btn-primary"><i class="fas fa-save"></i> Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+.user-btn-edit{background:#ffc107;color:#000;border:none;padding:6px 10px;border-radius:6px;cursor:pointer;margin-right:4px}
+.user-btn-delete{background:#dc3545;color:#fff;border:none;padding:6px 10px;border-radius:6px;cursor:pointer}
+.user-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;align-items:center;justify-content:center}
+.user-modal-overlay.active{display:flex}
+.user-modal{background:#fff;border-radius:8px;max-width:400px;width:90%;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.user-modal-header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid #eee}
+.user-modal-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:#f1f3f4;border:none;border-radius:50%;cursor:pointer;color:#5f6368;font-size:1rem;transition:all .2s}
+.user-modal-close:hover{background:#e8eaed;color:#202124}
+.user-modal-close:active{transform:scale(.95)}
+.user-modal-body{padding:1.25rem}
+.user-modal-footer{display:flex;gap:.5rem;justify-content:flex-end;margin-top:1rem;padding-top:1rem;border-top:1px solid #eee}
+.user-btn-package{background:#0d6efd;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+.pkg-dev-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.85rem;font-weight:600}
+.pkg-dev-1{background:#e7f1ff;color:#0d47a1}
+.pkg-dev-2{background:#e8f5e9;color:#1b5e20}
+.pkg-dev-3{background:#f3e5f5;color:#6a1b9a}
+</style>
+
+<script src="/assets/js/package.js"></script>

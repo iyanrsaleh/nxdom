@@ -1,0 +1,71 @@
+<!-- PostinganController::statistik -->
+<div class="postingan-page">
+  <h2 class="page-title-bar"><i class="fas fa-chart-line"></i> Statistik postingan</h2>
+  <p class="page-subtitle">Ringkasan dari tabel berita. Filter URL <code>?categori=slug</code> memengaruhi angka kartu di atas (sama seperti daftar artikel).</p>
+
+  <div class="grid-cards">
+    <div class="card">
+      <div class="card-icon" style="color:#3b82f6"><i class="fas fa-newspaper"></i></div>
+      <div class="card-title">Total artikel</div>
+      <div class="card-value">{total_posts}</div>
+      <div class="card-change">{posts_growth}</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="color:#10b981"><i class="fas fa-check-circle"></i></div>
+      <div class="card-title">Terbit</div>
+      <div class="card-value">{published_posts}</div>
+      <div class="card-change">{published_growth}</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="color:#f59e0b"><i class="fas fa-file-pen"></i></div>
+      <div class="card-title">Draft</div>
+      <div class="card-value">{draft_posts}</div>
+      <div class="card-change">{draft_growth}</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="color:#8b5cf6"><i class="fas fa-eye"></i></div>
+      <div class="card-title">Total dilihat</div>
+      <div class="card-value">{total_views}</div>
+      <div class="card-change">{views_growth}</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.25rem">
+    <h3 style="margin:0 0 0.75rem;font-size:1.05rem"><i class="fas fa-table"></i> Berdasarkan kategori</h3>
+    <p class="page-subtitle" style="margin:0 0 1rem">Jumlah artikel per nilai <code>news.categori</code>. Klik &quot;Filter daftar&quot; untuk membuka daftar artikel dengan filter slug tersebut.</p>
+    {if stat_cat_count > 0}
+    <div class="recent-activity">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:3rem"></th>
+            <th>Kategori</th>
+            <th>Slug</th>
+            <th>Total</th>
+            <th>Terbit</th>
+            <th>Draft</th>
+            <th>Dilihat</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- NEXA stat_by_cat -->
+          <tr>
+            <td style="text-align:center;font-size:1.15rem;color:#64748b"><i class="{cat_icon}"></i></td>
+            <td>{cat_label}</td>
+            <td><code>{cat_slug}</code></td>
+            <td>{st_total}</td>
+            <td>{st_publish}</td>
+            <td>{st_draft}</td>
+            <td>{st_views}</td>
+            <td style="white-space:nowrap"><a href="{filter_url}" class="user-search-reset" style="text-decoration:none">Daftar artikel</a></td>
+          </tr>
+          <!-- END stat_by_cat -->
+        </tbody>
+      </table>
+    </div>
+    {else}
+    <p style="padding:0.5rem 0;color:#666">Belum ada data agregat (pastikan tabel <code>news</code> ada dan ada kolom <code>categori</code>, <code>status</code>, <code>dilihat</code>).</p>
+    {endif}
+  </div>
+</div>

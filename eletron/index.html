@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <!-- CSP + __NEXA_ENDPOINT__ disuntik server (index.js) di sini sebelum skrip lain — jangan pindah ke bawah -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Base root: tanpa subfolder deploy; href absolut (/contact/data) tetap ke origin -->
+    <base href="/">
+    <title>App</title>
+    <!-- TTS Bahasa Indonesia saat sistem/Electron tidak punya voice id-ID (NexaVoice fallback) -->
+    <link rel="stylesheet" href="/assets/css/style.css"> 
+  </head>
+  <body>
+    <!-- Navigation Menu -->
+    <!-- Main Content Container -->
+    <div id="main">
+      <div class="main-splash">
+        <img
+          class="main-splash__icon"
+          src="/assets/images/logo.png"
+        />
+      </div>
+    </div>
+    <!-- Konten route dimuat di sini; base URL API di App.js (url → NEXA.url) -->
+
+    <script type="module" src="/App.js"></script>
+  </body>
+</html>

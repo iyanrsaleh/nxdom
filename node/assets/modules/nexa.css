@@ -1,0 +1,102 @@
+
+/* ============================================================
+   Primer CSS - All Components Index
+   D:\www\proyek\css-main\src\index.css
+   ============================================================ */
+/* Primitives (tokens & variables) */
+@import url("./primitives/size.css");
+@import url("./primitives/light.css");
+@import url("./primitives/tokens-border.css");
+@import url("./primitives/tokens-light.css");
+@import url("./primitives/tokens-size-base.css");
+@import url("./primitives/tokens-size-functional.css");
+@import url("./primitives/tokens-typography.css");
+@import url("./primitives/index.css");
+/* Core */
+@import url("./base/index.css");
+@import url("./core/index.css");
+@import url("./support/index.css");
+
+/* Color */
+@import url("./color/index.css");
+
+/* Components */
+@import url("./autocomplete/index.css");
+@import url("./avatars/index.css");
+@import url("./box/index.css");
+@import url("./branch/index.css");
+@import url("./buttons/index.css");
+@import url("./forms/index.css");
+/*@import url("./forms/form.css");*/
+@import url("./wizard/index.css");
+@import url("./grid/index.css");
+@import url("./header/index.css");
+@import url("./labels/index.css");
+@import url("./layout/index.css");
+@import url("./loaders/index.css");
+@import url("./markdown/index.css");
+@import url("./marketing/index.css");
+@import url("./navigation/index.css");
+@import url("./pagination/pagination.css");
+@import url("./pagination/index.css");
+@import url("./product/index.css");
+@import url("./select/index.css");
+@import url("./select2/index.css");
+@import url("./table/index.css");
+@import url("./toasts/index.css");
+@import url("./tooltips/index.css");
+@import url("./utilities/index.css");
+@import url("./dimensi/index.css");
+@import url("./scroll/index.css");
+
+/*tables*/
+@import url("./tables/index.css");
+@import url("./tables/table.css");
+
+/* Icons */
+@import url("./icons/index.css");
+@import url("./icons/file.css");
+@import url("./icons/material-icons/material-icons.css");
+@import url("./icons/awesome/css/all.min.css");
+/* modal */
+@import url("./modal/index.css");
+@import url("./modal/modal.css");
+/*cards*/
+@import url("./cards/index.css");
+@import url("./check/index.css");
+@import url("./Highlight/index.css");
+@import url("./notifikasi/index.css");
+@import url("./Json/jsonbundle.css");
+@import url("./tags/index.css");
+@import url("./editor/index.css");
+@import url("./prism/index.css");
+@import url("./tree/index.css");
+@import url("./Mode/index.css");
+@import url("./wizard/index.css");
+@import url("./docs-layout/index.css");
+
+/*@import url("./grid/grid.css")*/
+.bold{
+   font-weight: bold;
+}
+/* @import url("./grid/grid.css");
+@import url("./assets/css/dimensi.css");
+
+@import url("./assets/css/pagination.css");
+@import url("./Form/form.css");
+@import url("./assets/css/button.css");
+@import url("./assets/css/select2.min.css");
+@import url("./modal/modal.css");
+@import url("./assets/css/btngroup.css");
+@import url("./assets/css/cards.css");
+@import url("./assets/css/icons.css");
+@import url("./assets/css/dropdown.css");
+@import url("./assets/css/scroll.css");
+@import url("./assets/fonts/material-icons/material-icons.css");
+@import url("./assets/fonts/awesome/css/all.min.css");
+@import url("./Notifikasi/notifikasi.css");
+@import url("./assets/css/markdown.css");
+@import url("./assets/css/mediaobject.css");
+@import url("./assets/css/file.css");
+
+@import url("./Sidebar/NexaSidebar.css");*/

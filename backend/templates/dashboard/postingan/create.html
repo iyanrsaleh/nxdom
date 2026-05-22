@@ -1,0 +1,91 @@
+<!-- PostinganController::create -->
+<div class="postingan-page">
+  <div class="postingan-page-head" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem">
+    <h2 class="page-title-bar" style="margin:0"><i class="fas fa-plus-circle"></i> Artikel baru</h2>
+    <a href="{page_index}" class="user-search-reset" style="text-decoration:none"><i class="fas fa-arrow-left"></i> Kembali ke daftar</a>
+  </div>
+
+  {if info_message}
+  <div class="card" style="margin-bottom:1rem;padding:0.75rem 1rem;border-left:4px solid #f59e0b">{info_message}</div>
+  {endif}
+
+  <div class="card">
+    <form class="postingan-form account-card-body" method="post" action="{current_url}" enctype="multipart/form-data" accept-charset="UTF-8">
+      <div class="account-form-group">
+        <label class="account-form-label" for="pf_title"><i class="fas fa-heading"></i> Judul <span class="account-required">*</span></label>
+        <input type="text" id="pf_title" name="title" class="account-form-input" value="{title_value}" maxlength="500" required>
+        {if errors_title}<small class="account-form-help" style="color:#dc3545">{errors_title}</small>{endif}
+      </div>
+
+      <div class="account-form-group">
+        <label class="account-form-label" for="pf_deskripsi"><i class="fas fa-align-left"></i> Deskripsi singkat <span class="account-required">*</span></label>
+        <textarea id="pf_deskripsi" name="deskripsi" class="account-form-input" rows="3" required>{deskripsi_value}</textarea>
+        {if errors_deskripsi}<small class="account-form-help" style="color:#dc3545">{errors_deskripsi}</small>{endif}
+      </div>
+
+      <div class="account-form-group">
+        <label class="account-form-label" for="pf_detail"><i class="fas fa-file-lines"></i> Isi artikel <span class="account-required">*</span></label>
+        <textarea id="pf_detail" name="detail" class="account-form-input" rows="12" required>{detail_value}</textarea>
+        {if errors_detail}<small class="account-form-help" style="color:#dc3545">{errors_detail}</small>{endif}
+      </div>
+
+      <div class="account-form-group">
+        <label class="account-form-label" for="pf_keywords"><i class="fas fa-tags"></i> Keywords <span class="account-required">*</span></label>
+        <input type="text" id="pf_keywords" name="keywords" class="account-form-input" value="{keywords_value}" placeholder="kata1, kata2">
+        {if errors_keywords}<small class="account-form-help" style="color:#dc3545">{errors_keywords}</small>{endif}
+      </div>
+
+      <div class="account-form-group">
+        <label class="account-form-label" for="pf_categori"><i class="fas fa-folder"></i> Kategori <span class="account-required">*</span></label>
+        <select id="pf_categori" name="categori" class="account-form-input" data-init="{categori_value}" required>
+          <option value="">— Pilih —</option>
+          <!-- NEXA category -->
+          <option value="{value}">{label}</option>
+          <!-- END category -->
+        </select>
+        {if errors_categori}<small class="account-form-help" style="color:#dc3545">{errors_categori}</small>{endif}
+      </div>
+
+      <div class="account-form-group">
+        <label class="account-form-label" for="pf_status"><i class="fas fa-toggle-on"></i> Status <span class="account-required">*</span></label>
+        <select id="pf_status" name="status" class="account-form-input" data-init="{status_value|default:draft}" required>
+          <option value="draft">Draft</option>
+          <option value="publish">Terbit</option>
+        </select>
+        {if errors_status}<small class="account-form-help" style="color:#dc3545">{errors_status}</small>{endif}
+      </div>
+
+      <div class="account-form-group">
+        <label class="account-form-label" for="pf_pubdate"><i class="fas fa-calendar"></i> Tanggal publikasi <span class="account-required">*</span></label>
+        <input type="text" id="pf_pubdate" name="pubdate" class="account-form-input" value="{pubdate_value}" placeholder="YYYY-MM-DD HH:MM:SS">
+        {if errors_pubdate}<small class="account-form-help" style="color:#dc3545">{errors_pubdate}</small>{endif}
+      </div>
+
+      <div class="account-form-group">
+        <label class="account-form-label" for="pf_images"><i class="fas fa-image"></i> Gambar / lampiran</label>
+        <input type="file" id="pf_images" name="images" class="account-form-input" accept=".jpg,.jpeg,.png,.gif,.pdf,.docx,.xlsx,image/*">
+        <div style="margin-top:0.35rem">{images_info}</div>
+        {if errors_images}<small class="account-form-help" style="color:#dc3545">{errors_images}</small>{endif}
+      </div>
+
+      <div class="account-form-actions">
+        <button type="submit" class="account-btn account-btn-primary"><i class="fas fa-save"></i> Simpan</button>
+        <a href="{page_index}" class="account-btn" style="text-decoration:none;margin-left:0.5rem">Batal</a>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+(function () {
+  function apply(sel) {
+    if (!sel || !sel.dataset.init) return;
+    var v = String(sel.dataset.init).trim();
+    if (!v) return;
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === v) { sel.selectedIndex = i; return; }
+    }
+  }
+  apply(document.getElementById('pf_categori'));
+  apply(document.getElementById('pf_status'));
+})();
+</script>

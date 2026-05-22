@@ -1,0 +1,211 @@
+ /* NX Tags Input Drop Zone Styling */
+  .nx-drop-zone {
+    position: relative;
+    transition: all 0.3s ease;
+    border: 2px dashed transparent;
+  }
+
+  .nx-drop-zone.nx-drag-over {
+    border-color: #007bff;
+    background-color: rgba(0, 123, 255, 0.05);
+  }
+
+  .nx-drop-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #6c757d;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .nx-drop-zone.nx-drag-over .nx-drop-hint {
+    opacity: 1;
+  }
+
+  .nx-drop-zone.nx-drag-over .nx-tags-input {
+    opacity: 0.3;
+  }
+
+  /* NX Tags Enhanced Styling for Draggability */
+  .nx-tag {
+    background: #e9ecef;
+    color: #495057;
+    padding: 6px 10px;
+    margin:1px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    border: 1px solid #dee2e6;
+    cursor: move;
+    user-select: none;
+    transition: all 0.2s ease;
+  }
+
+  /* NX Read-only tags in Access Package */
+  .nx-tag-readonly {
+    background: #f8f9fa !important;
+    color: #6c757d !important;
+    border: 1px solid #dee2e6 !important;
+  }
+
+  .nx-tag-readonly:hover {
+    background: #e9ecef !important;
+    color: #495057 !important;
+    border-color: #007bff !important;
+  }
+
+  .nx-tag-readonly .nx-drag-handle {
+    color: #007bff !important;
+  }
+  .nx-tag:hover {
+    background: #dee2e6;
+    border-color: #007bff;
+  }
+
+  .nx-tag.nx-dragging {
+    opacity: 0.6;
+    z-index: 1000;
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+
+  .nx-drag-handle {
+    color: #6c757d;
+    font-size: 10px;
+    cursor: grab;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .nx-drag-handle:hover {
+    opacity: 1;
+    color: #007bff;
+  }
+
+  .nx-tag:active .nx-drag-handle {
+    cursor: grabbing;
+  }
+
+  .nx-remove-tag {
+    color: #6c757d;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.2s ease;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nx-remove-tag:hover {
+    color: #dc3545;
+    background: rgba(220, 53, 69, 0.1);
+  }
+
+  /* NX Drop Feedback */
+  .nx-drop-feedback {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    z-index: 1000;
+    animation: nx-fadeIn 0.2s ease, nx-fadeOut 0.2s ease 1.8s forwards;
+  }
+
+  .nx-drop-feedback.nx-success {
+    background: #28a745;
+    color: white;
+  }
+
+  .nx-drop-feedback.nx-warning {
+    background: #ffc107;
+    color: #212529;
+  }
+
+  @keyframes nx-fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes nx-fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  /* NX Tags Input Container Styling */
+  .nx-tags-input-container {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 5px;
+    padding-right: 10px;
+    min-height: 45px;
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .nx-tags-input-container:focus-within {
+    border-color: #80bdff;
+    outline: 0;
+  }
+
+  .nx-tags-readonly {
+    background: #f8f9fa !important;
+    border-color: #e9ecef !important;
+  }
+
+  .nx-tags-readonly:focus-within {
+    border-color: #e9ecef !important;
+    box-shadow: none !important;
+  }
+
+  .nx-tags-input-field {
+    border: none;
+    outline: none;
+    flex: 1;
+    min-width: 150px;
+    padding: 8px 0;
+    background: transparent;
+    font-size: 14px;
+    color: #495057;
+  }
+
+  .nx-tags-input-field::placeholder {
+    color: #6c757d;
+    font-style: italic;
+  }
+

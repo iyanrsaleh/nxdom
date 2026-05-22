@@ -1,0 +1,135 @@
+<!-- Account Settings - Dashboard Style -->
+<div class="account-page">
+  <h2 class="page-title-bar"><i class="fas fa-user-cog"></i> Pengaturan Akun</h2>
+  <p class="page-subtitle">Kelola informasi profil dan keamanan akun Anda</p>
+
+  <!-- Profile Card -->
+  <div class="card account-profile-card">
+    <div class="account-profile-header">
+      <div class="account-avatar-wrap">
+        <img src="{user_avatar|default:/assets/images/default-avatar.png}" alt="Avatar" id="avatarPreview">
+        <button type="button" class="account-avatar-edit" onclick="document.getElementById('avatarInput').click()">
+          <i class="fas fa-camera"></i>
+        </button>
+        <input type="file" id="avatarInput" accept="image/jpeg,image/jpg,image/png" style="display:none" onchange="handleAvatarChange(event)">
+      </div>
+      <div class="account-profile-info">
+        <h3 class="account-profile-name">{user_real_name}</h3>
+        <span class="account-profile-role">{role|default:Mahasiswa}</span>
+        <p class="account-profile-username">@{username}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Grid -->
+  <div class="account-settings-grid">
+    
+    <!-- Informasi Pribadi -->
+    <div class="card account-settings-card">
+      <div class="account-card-header">
+        <i class="fas fa-id-card"></i>
+        <h3>Informasi Pribadi</h3>
+      </div>
+      <div class="account-card-body">
+        <form id="formPersonalInfo">
+          <div class="account-form-group">
+            <label class="account-form-label">
+              <i class="fas fa-envelope"></i> Email
+              <span class="account-badge-readonly">Tidak dapat diubah</span>
+            </label>
+            <input type="email" class="account-form-input readonly" value="{user_email}" readonly disabled>
+            <small class="account-form-help">Email tidak dapat diubah untuk keamanan akun</small>
+          </div>
+          <div class="account-form-group">
+            <label class="account-form-label"><i class="fas fa-user"></i> Nama Lengkap <span class="account-required">*</span></label>
+            <input type="text" name="nama" class="account-form-input" value="{user_real_name}" placeholder="Masukkan nama lengkap" minlength="3" required>
+            <small class="account-form-help">Nama lengkap sesuai KTP/identitas resmi</small>
+          </div>
+          <div class="account-form-group">
+            <label class="account-form-label"><i class="fas fa-address-card"></i> NIK <span class="account-required">*</span></label>
+            <input type="text" name="nik" class="account-form-input" value="{nik}" placeholder="16 digit NIK" pattern="[0-9]{16}" maxlength="16" required>
+            <small class="account-form-help">16 digit NIK sesuai KTP</small>
+          </div>
+          <div class="account-form-group">
+            <label class="account-form-label"><i class="fas fa-phone"></i> Nomor Telepon <span class="account-required">*</span></label>
+            <input type="tel" name="telepon" class="account-form-input" value="{telepon}" placeholder="08xxxxxxxxxx" pattern="[0-9]{10,15}" required>
+            <small class="account-form-help">Nomor telepon aktif untuk dihubungi</small>
+          </div>
+          <div class="account-form-actions">
+            <button type="submit" class="account-btn account-btn-primary">
+              <i class="fas fa-save"></i> Simpan Perubahan
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Ubah Password -->
+    <div class="card account-settings-card">
+      <div class="account-card-header">
+        <i class="fas fa-lock"></i>
+        <h3>Ubah Password</h3>
+      </div>
+      <div class="account-card-body">
+        <div class="account-info-box">
+          <i class="fas fa-info-circle"></i>
+          <p><strong>Pendaftaran dengan Google:</strong> Jika Anda mendaftar menggunakan akun Google, Anda tidak perlu mengubah password. Login tetap dilakukan melalui akun Google Anda.</p>
+        </div>
+        <form id="formPassword">
+          <div class="account-form-group">
+            <label class="account-form-label"><i class="fas fa-lock-open"></i> Password Lama <span class="account-optional">(kosongkan jika daftar via Google)</span></label>
+            <div class="account-input-wrap">
+              <input type="password" name="current_password" id="currentPassword" class="account-form-input" placeholder="Kosongkan jika daftar via Google" autocomplete="off">
+              <button type="button" class="account-toggle-pw" onclick="togglePassword('currentPassword')">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="account-form-group">
+            <label class="account-form-label"><i class="fas fa-key"></i> Password Baru <span class="account-optional">(opsional)</span></label>
+            <div class="account-input-wrap">
+              <input type="password" name="new_password" id="newPassword" class="account-form-input" placeholder="Masukkan password baru" minlength="6">
+              <button type="button" class="account-toggle-pw" onclick="togglePassword('newPassword')">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+            <small class="account-form-help">Minimal 6 karakter</small>
+          </div>
+          <div class="account-form-group">
+            <label class="account-form-label"><i class="fas fa-check-circle"></i> Konfirmasi Password Baru <span class="account-optional">(opsional)</span></label>
+            <div class="account-input-wrap">
+              <input type="password" name="confirm_password" id="confirmPassword" class="account-form-input" placeholder="Ulangi password baru" minlength="6">
+              <button type="button" class="account-toggle-pw" onclick="togglePassword('confirmPassword')">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="account-form-actions">
+            <button type="submit" class="account-btn account-btn-primary">
+              <i class="fas fa-lock"></i> Ubah Password
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="account-modal-overlay" id="modalOverlay">
+  <div class="account-modal">
+    <div class="account-modal-header">
+      <span class="account-modal-icon" id="modalIcon"><i class="fas fa-info-circle"></i></span>
+      <h3 class="account-modal-title" id="modalTitle">Informasi</h3>
+    </div>
+    <div class="account-modal-body">
+      <p class="account-modal-message" id="modalMessage"></p>
+    </div>
+    <div class="account-modal-footer">
+      <button type="button" class="account-btn account-btn-primary" id="modalBtnOk" onclick="closeModal()">OK</button>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/account.js"></script>

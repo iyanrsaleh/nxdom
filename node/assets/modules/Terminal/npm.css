@@ -1,0 +1,231 @@
+.nexa-npm-progress {
+  color: #fff !important;
+  font-size: 14px !important;
+  width:  100% !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  height: auto !important;
+  min-height: 50px !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  overflow: visible !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+.nexa-npm-loader-container {
+  width: auto !important;
+  min-width: auto !important;
+  max-width: none !important;
+  overflow: visible !important;
+  position: relative !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  margin-left: 10px !important;
+  margin-right: 2px !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  word-break: normal !important;
+}
+
+#nexa-npm-loader-points {
+  white-space: nowrap !important;
+  display: inline-block !important;
+  position: relative !important;
+  z-index: 10 !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#nexa-npm-loader {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+  width: 0px;
+  height: 20px;
+  background: #fff;
+  z-index: 0;
+  -webkit-animation: nexa-npm-width 50s steps(1, end) infinite;
+          animation: nexa-npm-width 50s steps(1, end) infinite;
+}
+
+@-webkit-keyframes nexa-npm-width {
+  0% {
+    width: 0%;
+  }
+  5% {
+    width: 15%;
+  }
+  9% {
+    width: 20%;
+  }
+  10% {
+    width: 23%;
+  }
+  15% {
+    width: 27%;
+  }
+  19% {
+    width: 30%;
+  }
+  25% {
+    width: 35%;
+  }
+  31% {
+    width: 40%;
+  }
+  32% {
+    width: 45%;
+  }
+  36% {
+    width: 49%;
+  }
+  39% {
+    width: 57%;
+  }
+  45% {
+    width: 62%;
+  }
+  50% {
+    width: 69%;
+  }
+  54% {
+    width: 73%;
+  }
+  60% {
+    width: 78%;
+  }
+  63% {
+    width: 81%;
+  }
+  90% {
+    width: 88%;
+  }
+}
+
+@keyframes nexa-npm-width {
+  0% {
+    width: 0%;
+  }
+  5% {
+    width: 15%;
+  }
+  9% {
+    width: 20%;
+  }
+  10% {
+    width: 23%;
+  }
+  15% {
+    width: 27%;
+  }
+  19% {
+    width: 30%;
+  }
+  25% {
+    width: 35%;
+  }
+  31% {
+    width: 40%;
+  }
+  32% {
+    width: 45%;
+  }
+  36% {
+    width: 49%;
+  }
+  39% {
+    width: 57%;
+  }
+  45% {
+    width: 62%;
+  }
+  50% {
+    width: 69%;
+  }
+  54% {
+    width: 73%;
+  }
+  60% {
+    width: 78%;
+  }
+  63% {
+    width: 81%;
+  }
+  90% {
+    width: 88%;
+  }
+}
+
+#nexa-npm-spinner {
+  margin-left: 2px !important;
+  margin-right: 2px !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  width: 10px !important;
+  display: inline-block !important;
+  word-break: normal !important;
+  white-space: nowrap !important;
+}
+
+#nexa-npm-verb {
+  width: auto !important;
+  margin-left: 2px !important;
+  margin-right: 2px !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  display: inline-block !important;
+  word-break: normal !important;
+  white-space: nowrap !important;
+}
+
+#nexa-npm-mapToRegistry {
+  color: purple !important;
+  margin-right: 2px !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  display: inline-block !important;
+  word-break: normal !important;
+  white-space: nowrap !important;
+}
+
+#nexa-npm-uri {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  display: inline-block !important;
+  word-break: normal !important;
+  white-space: nowrap !important;
+}
+
+.nexa-npm-progress > span:not(#nexa-npm-spinner):not(#nexa-npm-verb):not(#nexa-npm-mapToRegistry):not(#nexa-npm-uri) {
+  margin-right: 2px !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  display: inline-block !important;
+  word-break: normal !important;
+  white-space: nowrap !important;
+}
+
+/* Override terminal command-entry styles for NexaNpm */
+.command-entry .nexa-npm-progress,
+.command-line .command-entry .nexa-npm-progress {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  overflow: visible !important;
+}
+
+.command-entry .nexa-npm-progress *,
+.command-line .command-entry .nexa-npm-progress * {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  white-space: nowrap !important;
+}

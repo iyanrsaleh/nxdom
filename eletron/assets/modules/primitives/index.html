@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexa Primer CSS Demo</title>
+
+  <link rel="stylesheet" href="../nexa.css">
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Primitives Tokens Demo</h1>
+
+  <h2>Base Sizes</h2>
+  <div class="demo-row" style="align-items:flex-end;gap:4px;">
+    <div style="width:var(--base-size-4);height:var(--base-size-4);background:#0969da;" title="4px"></div>
+    <div style="width:var(--base-size-8);height:var(--base-size-8);background:#0969da;" title="8px"></div>
+    <div style="width:var(--base-size-12);height:var(--base-size-12);background:#0969da;" title="12px"></div>
+    <div style="width:var(--base-size-16);height:var(--base-size-16);background:#0969da;" title="16px"></div>
+    <div style="width:var(--base-size-24);height:var(--base-size-24);background:#0969da;" title="24px"></div>
+    <div style="width:var(--base-size-32);height:var(--base-size-32);background:#0969da;" title="32px"></div>
+    <div style="width:var(--base-size-40);height:var(--base-size-40);background:#0969da;" title="40px"></div>
+    <div style="width:var(--base-size-48);height:var(--base-size-48);background:#0969da;" title="48px"></div>
+    <div style="width:var(--base-size-64);height:var(--base-size-64);background:#0969da;" title="64px"></div>
+    <div style="width:var(--base-size-80);height:var(--base-size-80);background:#0969da;" title="80px"></div>
+  </div>
+  <div class="demo-row" style="gap:8px;font-size:11px;color:var(--fgColor-muted);">
+    <span>4</span><span>8</span><span>12</span><span>16</span><span>24</span><span>32</span><span>40</span><span>48</span><span>64</span><span>80</span>
+  </div>
+
+  <h2>Typography — Text Sizes</h2>
+  <div class="demo-row" style="flex-direction:column;align-items:flex-start;gap:4px;">
+    <span style="font-size:var(--base-text-size-xs);">xs (12px) — Caption text</span>
+    <span style="font-size:var(--base-text-size-sm);">sm (14px) — Default body text</span>
+    <span style="font-size:var(--base-text-size-md);">md (16px) — Large body / small title</span>
+    <span style="font-size:var(--base-text-size-lg);">lg (20px) — Medium title</span>
+    <span style="font-size:var(--base-text-size-xl);">xl (32px) — Page heading</span>
+    <span style="font-size:var(--base-text-size-2xl);">2xl (40px) — Hero display</span>
+  </div>
+
+  <h2>Typography — Font Weights</h2>
+  <div class="demo-row" style="gap:16px;">
+    <span style="font-weight:var(--base-text-weight-light);">Light (300)</span>
+    <span style="font-weight:var(--base-text-weight-normal);">Normal (400)</span>
+    <span style="font-weight:var(--base-text-weight-medium);">Medium (500)</span>
+    <span style="font-weight:var(--base-text-weight-semibold);">Semibold (600)</span>
+  </div>
+
+  <h2>Typography — Line Heights</h2>
+  <div class="demo-row" style="gap:24px;align-items:flex-start;">
+    <div style="max-width:160px;line-height:var(--base-text-lineHeight-tight);background:#f6f8fa;padding:8px;">tight (1.25) — Compact label text example</div>
+    <div style="max-width:160px;line-height:var(--base-text-lineHeight-normal);background:#f6f8fa;padding:8px;">normal (1.5) — Default body text example</div>
+    <div style="max-width:160px;line-height:var(--base-text-lineHeight-relaxed);background:#f6f8fa;padding:8px;">relaxed (1.625) — Readable content example</div>
+    <div style="max-width:160px;line-height:var(--base-text-lineHeight-loose);background:#f6f8fa;padding:8px;">loose (1.75) — Maximum readable example</div>
+  </div>
+
+  <h2>Border Widths</h2>
+  <div class="demo-row" style="gap:16px;align-items:center;">
+    <div style="width:80px;height:40px;border:var(--borderWidth-thin) solid #0969da;display:flex;align-items:center;justify-content:center;">thin</div>
+    <div style="width:80px;height:40px;border:var(--borderWidth-thick) solid #0969da;display:flex;align-items:center;justify-content:center;">thick</div>
+    <div style="width:80px;height:40px;border:var(--borderWidth-thicker) solid #0969da;display:flex;align-items:center;justify-content:center;">thicker</div>
+  </div>
+
+  <h2>Breakpoints</h2>
+  <div class="demo-row" style="flex-direction:column;align-items:flex-start;gap:4px;font-family:monospace;font-size:13px;">
+    <span>xsmall: <strong>--breakpoint-xsmall</strong> = 20rem (320px)</span>
+    <span>small: <strong>--breakpoint-small</strong> = 34rem (544px)</span>
+    <span>medium: <strong>--breakpoint-medium</strong> = 48rem (768px)</span>
+    <span>large: <strong>--breakpoint-large</strong> = 63.25rem (1012px)</span>
+    <span>xlarge: <strong>--breakpoint-xlarge</strong> = 80rem (1280px)</span>
+    <span>xxlarge: <strong>--breakpoint-xxlarge</strong> = 87.5rem (1400px)</span>
+  </div>
+
+  <h2>Control Sizes</h2>
+  <div class="demo-row" style="align-items:center;gap:12px;">
+    <div style="height:var(--control-xsmall-size);padding:0 var(--control-xsmall-paddingInline-normal);background:#0969da;color:#fff;display:flex;align-items:center;border-radius:6px;font-size:12px;">xsmall</div>
+    <div style="height:var(--control-small-size);padding:0 var(--control-small-paddingInline-normal);background:#0969da;color:#fff;display:flex;align-items:center;border-radius:6px;font-size:13px;">small</div>
+    <div style="height:var(--control-medium-size);padding:0 var(--control-medium-paddingInline-normal);background:#0969da;color:#fff;display:flex;align-items:center;border-radius:6px;font-size:14px;">medium</div>
+    <div style="height:var(--control-large-size);padding:0 var(--control-large-paddingInline-normal);background:#0969da;color:#fff;display:flex;align-items:center;border-radius:6px;font-size:16px;">large</div>
+    <div style="height:var(--control-xlarge-size);padding:0 var(--control-xlarge-paddingInline-normal);background:#0969da;color:#fff;display:flex;align-items:center;border-radius:6px;font-size:18px;">xlarge</div>
+  </div>
+
+</body>
+</html>

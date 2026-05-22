@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Branch Name - Primer CSS Demo</title>
+  <link rel="stylesheet" href="../nexa.css">
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. .branch-name — span biasa -->
+  <h2>1. .branch-name — Teks Statis</h2>
+  <p>Merge pull request dari <span class="branch-name">feature/login-page</span> ke <span class="branch-name">main</span></p>
+
+  <!-- 2. a.branch-name — link (biru, klikable) -->
+  <h2>2. a.branch-name — Link</h2>
+  <p>Branch aktif: <a class="branch-name" href="#">feat/user-dashboard</a></p>
+  <p>Dibandingkan dengan: <a class="branch-name" href="#">main</a></p>
+
+  <!-- 3. .branch-name + .octicon -->
+  <h2>3. .branch-name + .octicon — dengan Ikon</h2>
+  <p>
+    <span class="branch-name">
+      <svg class="octicon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path d="M9.5 3.25a2.25 2.25 0 1 1 3 2.122V6A2.5 2.5 0 0 1 10 8.5H6a1 1 0 0 0-1 1v1.128a2.251 2.251 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.5 0v1.836A2.493 2.493 0 0 1 6 7h4a1 1 0 0 0 1-1v-.628A2.25 2.25 0 0 1 9.5 3.25Z"/>
+      </svg>
+      fix/auth-token
+    </span>
+  </p>
+  <p>
+    <a class="branch-name" href="#">
+      <svg class="octicon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path d="M9.5 3.25a2.25 2.25 0 1 1 3 2.122V6A2.5 2.5 0 0 1 10 8.5H6a1 1 0 0 0-1 1v1.128a2.251 2.251 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.5 0v1.836A2.493 2.493 0 0 1 6 7h4a1 1 0 0 0 1-1v-.628A2.25 2.25 0 0 1 9.5 3.25Z"/>
+      </svg>
+      release/v2.1.0
+    </a>
+  </p>
+
+  <!-- 4. Contoh kontekstual dalam kalimat -->
+  <h2>4. Konteks Penggunaan</h2>
+  <p>
+    Comparing <a class="branch-name" href="#">main</a>
+    &larr;
+    <a class="branch-name" href="#">feat/redesign-header</a>
+  </p>
+  <p>
+    <strong>Base:</strong> <span class="branch-name">develop</span> &nbsp;
+    <strong>Compare:</strong> <span class="branch-name">hotfix/null-pointer</span>
+  </p>
+  <p>
+    Deploy dari branch <span class="branch-name">release/v3.0.0-rc1</span> berhasil.
+  </p>
+
+</body>
+</html>

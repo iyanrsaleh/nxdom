@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexa Primer CSS Demo</title>
+
+  <link rel="stylesheet" href="../nexa.css">
+
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 860px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    .demo-section {
+      margin: 40px 0 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .demo-block {
+      margin-bottom: 16px;
+    }
+    /* tooltip host butuh position:relative agar tooltip tampil */
+    .tooltip-host { display: inline-block; }
+  </style>
+</head>
+<body>
+
+  <h1 style="margin:0 0 4px;">Core</h1>
+  <p style="color:var(--fgColor-muted); font-size:13px; margin:0 0 8px;">Kumpulan semua komponen inti Primer CSS: typography, buttons, forms, navigation, grid, pagination, dan tooltip.</p>
+
+  <!-- ============================================================
+       1. TYPOGRAPHY
+  ============================================================ -->
+  <h2 class="demo-section">1. Typography</h2>
+
+  <h1>Heading 1 — The quick brown fox</h1>
+  <h2 style="text-transform:none; letter-spacing:0; font-size:24px; color:var(--fgColor-default); border:0; padding:0; margin:8px 0;">Heading 2 — The quick brown fox</h2>
+  <h3>Heading 3 — The quick brown fox</h3>
+  <h4>Heading 4 — The quick brown fox</h4>
+  <h5>Heading 5 — The quick brown fox</h5>
+  <h6>Heading 6 — The quick brown fox</h6>
+
+  <p>Paragraf biasa dengan <strong>teks tebal</strong>, <em>teks miring</em>, <a href="#">tautan anchor</a>, <small>teks kecil</small>, teks dengan <mark>highlight</mark>, <del>strikethrough</del>, <ins>inserted</ins>, sub<sub>script</sub>, super<sup>script</sup>.</p>
+
+  <blockquote>
+    <p>Ini adalah blockquote. Digunakan untuk mengutip teks dari sumber lain atau memberikan penekanan pada kalimat tertentu.</p>
+  </blockquote>
+
+  <p>Contoh <code>inline code</code> dalam paragraf. Gunakan backtick untuk membungkus kode pendek.</p>
+
+  <pre><code>// Contoh code block
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+console.log(greet('World'));</code></pre>
+
+  <ul>
+    <li>Item list pertama</li>
+    <li>Item list kedua dengan <a href="#">tautan</a></li>
+    <li>Item list ketiga
+      <ul>
+        <li>Sub-item satu</li>
+        <li>Sub-item dua</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ol>
+    <li>Ordered item satu</li>
+    <li>Ordered item dua</li>
+    <li>Ordered item tiga</li>
+  </ol>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nama</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Budi Santoso</td>
+        <td>budi@example.com</td>
+        <td>Admin</td>
+        <td>Active</td>
+      </tr>
+      <tr>
+        <td>Siti Rahayu</td>
+        <td>siti@example.com</td>
+        <td>Editor</td>
+        <td>Active</td>
+      </tr>
+      <tr>
+        <td>Eko Prasetyo</td>
+        <td>eko@example.com</td>
+        <td>Viewer</td>
+        <td>Inactive</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================================
+       2. RULE (DIVIDER)
+  ============================================================ -->
+  <h2 class="demo-section">2. Rule — .rule</h2>
+  <div class="demo-block">
+    <p>Teks sebelum rule.</p>
+    <span class="rule"></span>
+    <p>Teks setelah rule.</p>
+  </div>
+
+  <!-- ============================================================
+       3. BUTTONS
+  ============================================================ -->
+  <h2 class="demo-section">3. Buttons</h2>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:0 0 8px;">Default .btn</p>
+  <div class="demo-row">
+    <button class="btn" type="button">Button</button>
+    <button class="btn hover" type="button">Hover</button>
+    <button class="btn selected" type="button">Selected</button>
+    <button class="btn" type="button" disabled>Disabled</button>
+    <button class="btn" aria-disabled="true" type="button">aria-disabled</button>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:0 0 8px;">.btn-primary</p>
+  <div class="demo-row">
+    <button class="btn btn-primary" type="button">Primary</button>
+    <button class="btn btn-primary selected" type="button">Selected</button>
+    <button class="btn btn-primary" type="button" disabled>Disabled</button>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:0 0 8px;">.btn-outline</p>
+  <div class="demo-row">
+    <button class="btn btn-outline" type="button">Outline</button>
+    <button class="btn btn-outline selected" type="button">Selected</button>
+    <button class="btn btn-outline" type="button" disabled>Disabled</button>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:0 0 8px;">.btn-danger</p>
+  <div class="demo-row">
+    <button class="btn btn-danger" type="button">Danger</button>
+    <button class="btn btn-danger selected" type="button">Selected</button>
+    <button class="btn btn-danger" type="button" disabled>Disabled</button>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:0 0 8px;">.btn-link · .btn-invisible</p>
+  <div class="demo-row">
+    <button class="btn btn-link" type="button">Link button</button>
+    <button class="btn btn-link" type="button" disabled>Disabled link</button>
+    <button class="btn btn-invisible" type="button">Invisible</button>
+    <button class="btn btn-invisible selected" type="button">Selected</button>
+    <button class="btn btn-invisible" type="button" disabled>Disabled</button>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:0 0 8px;">Sizes: .btn-sm · default · .btn-large · .btn-block</p>
+  <div class="demo-row">
+    <button class="btn btn-sm" type="button">Small</button>
+    <button class="btn" type="button">Default</button>
+    <button class="btn btn-large" type="button">Large</button>
+  </div>
+  <div class="demo-block">
+    <button class="btn btn-block" type="button">Block — full width</button>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:0 0 8px;">.BtnGroup</p>
+  <div class="demo-row">
+    <div class="BtnGroup">
+      <button class="btn BtnGroup-item selected" type="button">Day</button>
+      <button class="btn BtnGroup-item" type="button">Week</button>
+      <button class="btn BtnGroup-item" type="button">Month</button>
+      <button class="btn BtnGroup-item" type="button">Year</button>
+    </div>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:0 0 8px;">.btn-with-count · .social-count</p>
+  <div class="demo-row">
+    <div class="btn-with-count">
+      <button class="btn" type="button">★ Star</button>
+      <a class="social-count" href="#">1,234</a>
+    </div>
+    <div class="btn-with-count">
+      <button class="btn btn-primary" type="button">Fork</button>
+      <a class="social-count" href="#">567</a>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       4. FORMS
+  ============================================================ -->
+  <h2 class="demo-section">4. Forms</h2>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:0 0 8px;">.form-control variants</p>
+  <div class="demo-block" style="display:flex; flex-direction:column; gap:8px; max-width:400px;">
+    <input class="form-control" type="text" placeholder="Default input">
+    <input class="form-control input-sm" type="text" placeholder=".input-sm — small input">
+    <input class="form-control input-lg" type="text" placeholder=".input-lg — large input">
+    <input class="form-control input-block" type="text" placeholder=".input-block — full width">
+    <input class="form-control input-contrast" type="text" placeholder=".input-contrast">
+    <input class="form-control input-monospace" type="text" placeholder=".input-monospace — monospace font" value="mono-text-123">
+    <input class="form-control" type="text" placeholder="Disabled" disabled>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.form-select</p>
+  <div class="demo-row">
+    <select class="form-select">
+      <option>Option satu</option>
+      <option>Option dua</option>
+      <option>Option tiga</option>
+    </select>
+    <select class="form-select select-sm">
+      <option>Small select</option>
+      <option>Option dua</option>
+    </select>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.form-group — normal · successed · warn · errored · loading · required</p>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; max-width:700px;">
+    <!-- Normal -->
+    <dl class="form-group">
+      <dt class="form-group-header"><label>Username</label></dt>
+      <dd class="form-group-body">
+        <input class="form-control" type="text" placeholder="Enter username">
+        <p class="note">Nama pengguna harus unik.</p>
+      </dd>
+    </dl>
+    <!-- Required -->
+    <dl class="form-group required">
+      <dt class="form-group-header"><label>Email</label></dt>
+      <dd class="form-group-body">
+        <input class="form-control" type="email" placeholder="email@example.com">
+      </dd>
+    </dl>
+    <!-- Successed -->
+    <dl class="form-group successed">
+      <dt class="form-group-header"><label>Password</label></dt>
+      <dd class="form-group-body">
+        <input class="form-control" type="password" value="hunter2">
+        <p class="success">Password kuat!</p>
+        <p class="warning" hidden></p>
+        <p class="error" hidden></p>
+      </dd>
+    </dl>
+    <!-- Warn -->
+    <dl class="form-group warn">
+      <dt class="form-group-header"><label>URL</label></dt>
+      <dd class="form-group-body">
+        <input class="form-control" type="text" value="http://example">
+        <p class="success" hidden></p>
+        <p class="warning">URL mungkin tidak valid.</p>
+        <p class="error" hidden></p>
+      </dd>
+    </dl>
+    <!-- Errored -->
+    <dl class="form-group errored">
+      <dt class="form-group-header"><label>Phone</label></dt>
+      <dd class="form-group-body">
+        <input class="form-control" type="text" value="abc">
+        <p class="success" hidden></p>
+        <p class="warning" hidden></p>
+        <p class="error">Format nomor telepon tidak valid.</p>
+      </dd>
+    </dl>
+    <!-- Loading -->
+    <dl class="form-group loading">
+      <dt class="form-group-header"><label>Checking...</label></dt>
+      <dd class="form-group-body">
+        <input class="form-control" type="text" value="eko123">
+        <span class="indicator"></span>
+      </dd>
+    </dl>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.form-checkbox</p>
+  <div class="demo-block">
+    <div class="form-checkbox">
+      <label><input type="checkbox" checked> Aktifkan notifikasi email</label>
+      <p class="note">Anda akan menerima email saat ada aktivitas baru.</p>
+    </div>
+    <div class="form-checkbox">
+      <label><input type="checkbox"> Simpan sesi login</label>
+    </div>
+    <div class="form-checkbox">
+      <label><input type="checkbox" disabled> Opsi yang dinonaktifkan</label>
+    </div>
+    <div class="form-checkbox">
+      <label><input type="radio" name="role" checked> Admin</label>
+    </div>
+    <div class="form-checkbox">
+      <label><input type="radio" name="role"> Editor</label>
+    </div>
+    <div class="form-checkbox">
+      <label><input type="radio" name="role"> Viewer</label>
+    </div>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.radio-group · .radio-label · .radio-input</p>
+  <div class="demo-row">
+    <div class="radio-group">
+      <input class="radio-input" type="radio" name="plan" id="plan-free" checked>
+      <label class="radio-label" for="plan-free">Free</label>
+      <input class="radio-input" type="radio" name="plan" id="plan-pro">
+      <label class="radio-label" for="plan-pro">Pro</label>
+      <input class="radio-input" type="radio" name="plan" id="plan-enterprise">
+      <label class="radio-label" for="plan-enterprise">Enterprise</label>
+    </div>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.input-group · .input-group-button</p>
+  <div class="demo-block" style="max-width:400px; display:flex; flex-direction:column; gap:8px;">
+    <div class="input-group">
+      <input class="form-control" type="text" placeholder="Cari sesuatu...">
+      <div class="input-group-button">
+        <button class="btn" type="button">Cari</button>
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="input-group-button">
+        <button class="btn" type="button">https://</button>
+      </div>
+      <input class="form-control" type="text" placeholder="domain.com/path">
+    </div>
+    <div class="input-group">
+      <input class="form-control" type="text" placeholder="username">
+      <div class="input-group-button">
+        <button class="btn btn-primary" type="button">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.hfields — horizontal form</p>
+  <div class="hfields">
+    <dl class="form-group">
+      <dt class="form-group-header"><label>Nama Lengkap</label></dt>
+      <dd class="form-group-body">
+        <input class="form-control" type="text" placeholder="Nama lengkap">
+      </dd>
+    </dl>
+    <dl class="form-group">
+      <dt class="form-group-header"><label>Status</label></dt>
+      <dd class="form-group-body">
+        <select class="form-select">
+          <option>Active</option>
+          <option>Inactive</option>
+        </select>
+      </dd>
+    </dl>
+    <div class="form-actions">
+      <button class="btn btn-primary" type="button">Simpan</button>
+      <button class="btn" type="button">Batal</button>
+    </div>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.form-warning</p>
+  <div class="form-warning demo-block" style="max-width:500px;">
+    <p>⚠ Perhatian: Mengubah pengaturan ini dapat mempengaruhi semua pengguna. <a href="#">Pelajari lebih lanjut</a>.</p>
+  </div>
+
+  <!-- ============================================================
+       5. NAVIGATION
+  ============================================================ -->
+  <h2 class="demo-section">5. Navigation</h2>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:0 0 8px;">.filter-list</p>
+  <div class="demo-row" style="align-items:flex-start;">
+    <nav style="width:200px;">
+      <ul class="filter-list">
+        <a class="filter-item selected" href="#" aria-current="page">
+          Semua repositori
+          <span class="count">42</span>
+        </a>
+        <a class="filter-item" href="#">Public <span class="count">38</span></a>
+        <a class="filter-item" href="#">Private <span class="count">4</span></a>
+        <a class="filter-item" href="#">Forked <span class="count">12</span></a>
+        <a class="filter-item" href="#">Archived <span class="count">2</span></a>
+      </ul>
+    </nav>
+    <nav style="width:200px;">
+      <ul class="filter-list small">
+        <a class="filter-item" href="#">Small item 1</a>
+        <a class="filter-item selected" href="#" aria-current="page">Small item 2</a>
+        <a class="filter-item" href="#">Small item 3</a>
+      </ul>
+    </nav>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.SideNav</p>
+  <div class="demo-row" style="align-items:flex-start;">
+    <nav style="width:220px; border:1px solid var(--borderColor-default); border-radius:6px; overflow:hidden;">
+      <a class="SideNav-item" href="#" aria-current="page">
+        <svg class="SideNav-icon octicon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9z"/></svg>
+        Repositories
+      </a>
+      <a class="SideNav-item" href="#">
+        <svg class="SideNav-icon octicon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0z"/></svg>
+        Issues
+      </a>
+      <a class="SideNav-item" href="#">
+        <svg class="SideNav-icon octicon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25z"/></svg>
+        Pull requests
+      </a>
+      <div class="SideNav-item" aria-disabled="true" style="opacity:0.6;">
+        Discussions
+        <span class="SideNav-icon" style="margin-left:auto; font-size:10px; background:var(--bgColor-accent-muted); color:var(--fgColor-accent); padding:2px 6px; border-radius:2em;">Beta</span>
+      </div>
+    </nav>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.subnav</p>
+  <div class="subnav demo-block">
+    <a class="subnav-item selected" href="#" aria-current="page">Code</a>
+    <a class="subnav-item" href="#">Issues <span style="padding:0 5px; font-size:11px; background:var(--bgColor-neutral-muted); border-radius:2em;">8</span></a>
+    <a class="subnav-item" href="#">Pull requests <span style="padding:0 5px; font-size:11px; background:var(--bgColor-neutral-muted); border-radius:2em;">3</span></a>
+    <a class="subnav-item" href="#">Actions</a>
+    <a class="subnav-item" href="#">Projects</a>
+    <a class="subnav-item" href="#">Wiki</a>
+    <a class="subnav-item" href="#">Settings</a>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.subnav-bordered</p>
+  <div class="subnav subnav-bordered demo-block">
+    <a class="subnav-item selected" href="#" aria-current="page">Overview</a>
+    <a class="subnav-item" href="#">Repositories</a>
+    <a class="subnav-item" href="#">Projects</a>
+    <a class="subnav-item" href="#">Packages</a>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.subnav dengan search — .subnav-search</p>
+  <div class="subnav demo-block">
+    <a class="subnav-item selected" href="#">All</a>
+    <a class="subnav-item" href="#">Public</a>
+    <a class="subnav-item" href="#">Private</a>
+    <div class="subnav-search">
+      <input class="form-control subnav-search-input" type="search" placeholder="Find a repository…">
+    </div>
+  </div>
+
+  <!-- ============================================================
+       6. PAGINATION
+  ============================================================ -->
+  <h2 class="demo-section">6. Pagination</h2>
+
+  <div class="paginate-container">
+    <div class="pagination">
+      <span class="previous_page disabled">← Previous</span>
+      <em aria-current="page">1</em>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <span class="gap">…</span>
+      <a href="#">9</a>
+      <a href="#">10</a>
+      <a class="next_page" href="#">Next →</a>
+    </div>
+  </div>
+
+  <div class="paginate-container" style="margin-top:12px;">
+    <div class="pagination">
+      <a class="previous_page" href="#">← Previous</a>
+      <a href="#">1</a>
+      <a href="#">2</a>
+      <em aria-current="page">3</em>
+      <a href="#">4</a>
+      <a href="#">5</a>
+      <span class="gap">…</span>
+      <a href="#">12</a>
+      <a class="next_page" href="#">Next →</a>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       7. TOOLTIPS
+  ============================================================ -->
+  <h2 class="demo-section">7. Tooltips — .tooltipped</h2>
+
+  <div class="demo-row" style="padding:24px 0; flex-wrap:wrap; gap:12px;">
+    <button class="btn tooltipped tooltipped-n tooltip-host" aria-label="Tooltip di atas (north)" type="button">North ↑</button>
+    <button class="btn tooltipped tooltipped-ne tooltip-host" aria-label="Tooltip north-east" type="button">NE ↗</button>
+    <button class="btn tooltipped tooltipped-nw tooltip-host" aria-label="Tooltip north-west" type="button">NW ↖</button>
+    <button class="btn tooltipped tooltipped-s tooltip-host" aria-label="Tooltip di bawah (south)" type="button">South ↓</button>
+    <button class="btn tooltipped tooltipped-se tooltip-host" aria-label="Tooltip south-east" type="button">SE ↘</button>
+    <button class="btn tooltipped tooltipped-sw tooltip-host" aria-label="Tooltip south-west" type="button">SW ↙</button>
+    <button class="btn tooltipped tooltipped-e tooltip-host" aria-label="Tooltip di kanan (east)" type="button">East →</button>
+    <button class="btn tooltipped tooltipped-w tooltip-host" aria-label="Tooltip di kiri (west)" type="button">West ←</button>
+    <button class="btn tooltipped tooltipped-multiline tooltipped-n tooltip-host" aria-label="Ini adalah tooltip dengan teks yang cukup panjang sehingga membutuhkan beberapa baris untuk ditampilkan." type="button">Multiline</button>
+    <button class="btn tooltipped tooltipped-no-delay tooltipped-n tooltip-host" aria-label="Muncul tanpa delay!" type="button">No Delay</button>
+  </div>
+
+  <!-- ============================================================
+       8. TABLE OBJECT
+  ============================================================ -->
+  <h2 class="demo-section">8. TableObject</h2>
+  <div class="TableObject">
+    <div class="TableObject-item">
+      <strong>Kiri (TableObject-item)</strong><br>
+      <span style="color:var(--fgColor-muted); font-size:12px;">Kolom ini mengambil lebar sesuai konten.</span>
+    </div>
+    <div class="TableObject-item TableObject-item--primary">
+      <strong>Primary (TableObject-item--primary)</strong><br>
+      <span style="color:var(--fgColor-muted); font-size:12px;">Kolom ini mengambil sisa ruang yang tersedia (flex: auto).</span>
+    </div>
+    <div class="TableObject-item">
+      <button class="btn btn-primary btn-sm" type="button">Aksi</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       9. GRID (dari core)
+  ============================================================ -->
+  <h2 class="demo-section">9. Grid — .container-* · .col-* · .gutter-*</h2>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:0 0 8px;">.gutter (default 16px)</p>
+  <div class="gutter demo-block" style="clearfix: both; overflow:hidden;">
+    <div class="col-4" style="float:left; box-sizing:border-box; background:var(--bgColor-accent-muted); padding:10px; border-radius:4px; text-align:center; font-size:12px;">col-4</div>
+    <div class="col-4" style="float:left; box-sizing:border-box; background:var(--bgColor-success-muted); padding:10px; border-radius:4px; text-align:center; font-size:12px;">col-4</div>
+    <div class="col-4" style="float:left; box-sizing:border-box; background:var(--bgColor-attention-muted); padding:10px; border-radius:4px; text-align:center; font-size:12px;">col-4</div>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.gutter-condensed (8px)</p>
+  <div class="gutter-condensed demo-block" style="overflow:hidden;">
+    <div class="col-3" style="float:left; box-sizing:border-box; background:var(--bgColor-accent-muted); padding:10px; border-radius:4px; text-align:center; font-size:12px;">col-3</div>
+    <div class="col-3" style="float:left; box-sizing:border-box; background:var(--bgColor-success-muted); padding:10px; border-radius:4px; text-align:center; font-size:12px;">col-3</div>
+    <div class="col-3" style="float:left; box-sizing:border-box; background:var(--bgColor-attention-muted); padding:10px; border-radius:4px; text-align:center; font-size:12px;">col-3</div>
+    <div class="col-3" style="float:left; box-sizing:border-box; background:var(--bgColor-danger-muted); padding:10px; border-radius:4px; text-align:center; font-size:12px;">col-3</div>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.gutter-spacious (24px)</p>
+  <div class="gutter-spacious demo-block" style="overflow:hidden;">
+    <div class="col-6" style="float:left; box-sizing:border-box; background:var(--bgColor-done-muted); padding:10px; border-radius:4px; text-align:center; font-size:12px;">col-6</div>
+    <div class="col-6" style="float:left; box-sizing:border-box; background:var(--bgColor-sponsors-muted); padding:10px; border-radius:4px; text-align:center; font-size:12px;">col-6</div>
+  </div>
+
+  <p style="font-size:12px; color:var(--fgColor-muted); margin:12px 0 8px;">.container-sm/md/lg/xl</p>
+  <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
+    <div class="container-sm" style="background:var(--bgColor-muted); border:1px solid var(--borderColor-default); border-radius:4px; padding:8px; text-align:center;">.container-sm (544px)</div>
+    <div class="container-md" style="background:var(--bgColor-muted); border:1px solid var(--borderColor-default); border-radius:4px; padding:8px; text-align:center;">.container-md (768px)</div>
+    <div class="container-lg" style="background:var(--bgColor-muted); border:1px solid var(--borderColor-default); border-radius:4px; padding:8px; text-align:center;">.container-lg (1012px)</div>
+    <div class="container-xl" style="background:var(--bgColor-muted); border:1px solid var(--borderColor-default); border-radius:4px; padding:8px; text-align:center;">.container-xl (1280px)</div>
+  </div>
+
+  <!-- ============================================================
+       10. STACK
+  ============================================================ -->
+  <h2 class="demo-section">10. Stack</h2>
+  <div class="Stack" style="border:1px solid var(--borderColor-default); border-radius:6px; overflow:hidden;">
+    <div class="Stack-item" style="padding:12px 16px;">
+      <strong>Stack item 1</strong> — konten pertama
+    </div>
+    <div class="Stack-divider"></div>
+    <div class="Stack-item" style="padding:12px 16px;">
+      <strong>Stack item 2</strong> — konten kedua
+    </div>
+    <div class="Stack-divider"></div>
+    <div class="Stack-item" style="padding:12px 16px;">
+      <strong>Stack item 3</strong> — konten ketiga
+    </div>
+  </div>
+
+  <!-- ============================================================
+       11. HIDDEN TEXT EXPANDER
+  ============================================================ -->
+  <h2 class="demo-section">11. Hidden Text Expander — .hidden-text-expander</h2>
+  <div class="demo-block">
+    <p>Teks pendahuluan commit message.</p>
+    <span class="hidden-text-expander">
+      <button class="ellipsis-expander" type="button">···</button>
+    </span>
+    <p>Inline expander: Ini <span class="hidden-text-expander inline"><button class="ellipsis-expander" type="button">···</button></span> teks tersembunyi.</p>
+  </div>
+
+  <!-- ============================================================
+       12. CLOSE BUTTON / BTN-OCTICON
+  ============================================================ -->
+  <h2 class="demo-section">12. close-button · btn-octicon</h2>
+  <div class="demo-row">
+    <button class="close-button" type="button" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"/></svg>
+    </button>
+    <button class="btn-octicon" type="button" aria-label="Edit">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 000-.354l-1.086-1.086zM11.189 6.25L9.75 4.81l-6.286 6.287a.25.25 0 00-.064.108l-.558 1.953 1.953-.558a.25.25 0 00.108-.064l6.286-6.286z"/></svg>
+    </button>
+    <button class="btn-octicon btn-octicon-danger" type="button" aria-label="Delete">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M11 1.75V3h2.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75zM4.496 6.675a.75.75 0 10-1.492.15l.66 6.6A1.75 1.75 0 005.405 15h5.19c.9 0 1.652-.681 1.741-1.576l.66-6.6a.75.75 0 10-1.492-.149l-.66 6.6a.25.25 0 01-.249.225H5.405a.25.25 0 01-.249-.225l-.66-6.6z"/></svg>
+    </button>
+    <button class="btn-octicon" type="button" aria-label="Copy" disabled>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"/><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"/></svg>
+    </button>
+  </div>
+
+</body>
+</html>

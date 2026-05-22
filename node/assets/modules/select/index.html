@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexa Primer CSS Demo</title>
+
+  <link rel="stylesheet" href="../nexa.css">
+
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    /* Trigger wrapper — menu muncul di bawah trigger */
+    .menu-container {
+      position: relative;
+      display: inline-block;
+    }
+    .SelectMenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 99;
+      display: none;
+      padding: 0;
+    }
+    .SelectMenu.is-open {
+      display: block;
+    }
+    .SelectMenu::before { display: none; }
+    .SelectMenu-item[aria-checked=true] .SelectMenu-icon--check {
+      visibility: visible;
+      transform: scale(1);
+      transition: transform 0.12s cubic-bezier(0.5, 0.1, 1, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SelectMenu Demo</h1>
+
+  <!-- ==============================
+       1. Basic SelectMenu
+  ================================ -->
+  <h2>1. Basic SelectMenu</h2>
+  <div class="menu-container">
+    <button class="btn" id="btn1" onclick="toggleMenu('menu1','btn1')">
+      Pilih Label ▾
+    </button>
+    <div class="SelectMenu" id="menu1" role="listbox">
+      <div class="SelectMenu-modal">
+        <header class="SelectMenu-header">
+          <span class="SelectMenu-title">Label</span>
+          <button class="SelectMenu-closeButton" onclick="closeMenu('menu1')">✕</button>
+        </header>
+        <div class="SelectMenu-list">
+          <button class="SelectMenu-item" role="option" aria-checked="false" onclick="toggleItem(this)">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            <span style="width:12px;height:12px;border-radius:50%;background:#d73a49;display:inline-block;margin-right:8px;flex-shrink:0;"></span>
+            bug
+          </button>
+          <button class="SelectMenu-item" role="option" aria-checked="true" onclick="toggleItem(this)">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            <span style="width:12px;height:12px;border-radius:50%;background:#0075ca;display:inline-block;margin-right:8px;flex-shrink:0;"></span>
+            documentation
+          </button>
+          <button class="SelectMenu-item" role="option" aria-checked="false" onclick="toggleItem(this)">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            <span style="width:12px;height:12px;border-radius:50%;background:#cfd3d7;display:inline-block;margin-right:8px;flex-shrink:0;"></span>
+            duplicate
+          </button>
+          <button class="SelectMenu-item" role="option" aria-checked="false" onclick="toggleItem(this)">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            <span style="width:12px;height:12px;border-radius:50%;background:#e4e669;display:inline-block;margin-right:8px;flex-shrink:0;"></span>
+            enhancement
+          </button>
+          <button class="SelectMenu-item" role="option" aria-checked="false" onclick="toggleItem(this)">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            <span style="width:12px;height:12px;border-radius:50%;background:#7057ff;display:inline-block;margin-right:8px;flex-shrink:0;"></span>
+            help wanted
+          </button>
+        </div>
+        <footer class="SelectMenu-footer">Pilih satu atau lebih label</footer>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       2. SelectMenu with Filter
+  ================================ -->
+  <h2>2. SelectMenu dengan Filter</h2>
+  <div class="menu-container">
+    <button class="btn" id="btn2" onclick="toggleMenu('menu2','btn2')">
+      Assign Reviewer ▾
+    </button>
+    <div class="SelectMenu SelectMenu--hasFilter" id="menu2" role="listbox">
+      <div class="SelectMenu-modal">
+        <header class="SelectMenu-header">
+          <span class="SelectMenu-title">Reviewer</span>
+          <button class="SelectMenu-closeButton" onclick="closeMenu('menu2')">✕</button>
+        </header>
+        <div class="SelectMenu-filter">
+          <input class="SelectMenu-input form-control" type="search" placeholder="Filter users..." oninput="filterItems(this,'list2')">
+        </div>
+        <div class="SelectMenu-list" id="list2">
+          <button class="SelectMenu-item" role="option" aria-checked="false" onclick="toggleItem(this)" data-name="octocat">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            <img src="https://avatars.githubusercontent.com/u/583231?v=4" width="20" height="20" style="border-radius:50%;margin-right:8px;flex-shrink:0;" alt="">
+            octocat
+          </button>
+          <button class="SelectMenu-item" role="option" aria-checked="true" onclick="toggleItem(this)" data-name="monalisa">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            <img src="https://avatars.githubusercontent.com/u/1?v=4" width="20" height="20" style="border-radius:50%;margin-right:8px;flex-shrink:0;" alt="">
+            monalisa
+          </button>
+          <button class="SelectMenu-item" role="option" aria-checked="false" onclick="toggleItem(this)" data-name="github">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            <img src="https://avatars.githubusercontent.com/u/9919?v=4" width="20" height="20" style="border-radius:50%;margin-right:8px;flex-shrink:0;" alt="">
+            github
+          </button>
+          <button class="SelectMenu-item" role="option" aria-checked="false" onclick="toggleItem(this)" data-name="hubot">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            <img src="https://avatars.githubusercontent.com/u/3?v=4" width="20" height="20" style="border-radius:50%;margin-right:8px;flex-shrink:0;" alt="">
+            hubot
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       3. SelectMenu dengan Tabs
+  ================================ -->
+  <h2>3. SelectMenu dengan Tabs</h2>
+  <div class="menu-container">
+    <button class="btn" id="btn3" onclick="toggleMenu('menu3','btn3')">
+      Milestone ▾
+    </button>
+    <div class="SelectMenu" id="menu3" role="listbox">
+      <div class="SelectMenu-modal">
+        <header class="SelectMenu-header">
+          <span class="SelectMenu-title">Milestone</span>
+          <button class="SelectMenu-closeButton" onclick="closeMenu('menu3')">✕</button>
+        </header>
+        <div class="SelectMenu-tabs" role="tablist">
+          <button class="SelectMenu-tab" role="tab" aria-selected="true" onclick="switchTab(this,'tab-open')">Open</button>
+          <button class="SelectMenu-tab" role="tab" aria-selected="false" onclick="switchTab(this,'tab-closed')">Closed</button>
+        </div>
+        <div class="SelectMenu-list" id="tab-open">
+          <button class="SelectMenu-item" role="option" aria-checked="true" onclick="toggleItem(this)">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            v1.0 — Release stabil pertama
+          </button>
+          <button class="SelectMenu-item" role="option" aria-checked="false" onclick="toggleItem(this)">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            v2.0 — Fitur baru
+          </button>
+        </div>
+        <div class="SelectMenu-list" id="tab-closed" style="display:none">
+          <div class="SelectMenu-blankslate">
+            <p style="color:var(--fgColor-muted);margin:0;">Tidak ada milestone yang ditutup.</p>
+          </div>
+        </div>
+        <div class="SelectMenu-divider">Milestone lama</div>
+        <footer class="SelectMenu-footer">Kelola milestone di halaman pengaturan</footer>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       4. SelectMenu dengan Divider & Message
+  ================================ -->
+  <h2>4. SelectMenu dengan Divider</h2>
+  <div class="menu-container">
+    <button class="btn" id="btn4" onclick="toggleMenu('menu4','btn4')">
+      Pilih Branch ▾
+    </button>
+    <div class="SelectMenu" id="menu4" role="listbox">
+      <div class="SelectMenu-modal">
+        <header class="SelectMenu-header">
+          <span class="SelectMenu-title">Switch branch</span>
+          <button class="SelectMenu-closeButton" onclick="closeMenu('menu4')">✕</button>
+        </header>
+        <div class="SelectMenu-list SelectMenu-list--borderless">
+          <div class="SelectMenu-message">Branch aktif: <strong>main</strong></div>
+          <div class="SelectMenu-divider">Default</div>
+          <button class="SelectMenu-item" role="option" aria-checked="true" onclick="toggleItem(this)">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            main
+          </button>
+          <div class="SelectMenu-divider">Recent branches</div>
+          <button class="SelectMenu-item" role="option" aria-checked="false" onclick="toggleItem(this)">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            feature/auth
+          </button>
+          <button class="SelectMenu-item" role="option" aria-checked="false" onclick="toggleItem(this)">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            fix/typo-readme
+          </button>
+          <button class="SelectMenu-item" role="option" aria-checked="false" onclick="toggleItem(this)">
+            <svg class="SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            refactor/cleanup
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu(menuId, btnId) {
+      const menu = document.getElementById(menuId);
+      const isOpen = menu.classList.contains('is-open');
+      // tutup semua menu
+      document.querySelectorAll('.SelectMenu').forEach(m => m.classList.remove('is-open'));
+      if (!isOpen) menu.classList.add('is-open');
+    }
+    function closeMenu(menuId) {
+      document.getElementById(menuId).classList.remove('is-open');
+    }
+    function toggleItem(btn) {
+      const checked = btn.getAttribute('aria-checked') === 'true';
+      btn.setAttribute('aria-checked', String(!checked));
+    }
+    function filterItems(input, listId) {
+      const q = input.value.toLowerCase();
+      document.getElementById(listId).querySelectorAll('.SelectMenu-item').forEach(item => {
+        const name = item.getAttribute('data-name') || item.textContent.trim().toLowerCase();
+        item.style.display = name.includes(q) ? '' : 'none';
+      });
+    }
+    function switchTab(tabBtn, showListId) {
+      const tabs = tabBtn.closest('.SelectMenu-tabs').querySelectorAll('.SelectMenu-tab');
+      tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+      tabBtn.setAttribute('aria-selected', 'true');
+      // sembunyikan semua list tab dalam modal ini
+      tabBtn.closest('.SelectMenu-modal').querySelectorAll('.SelectMenu-list[id]').forEach(l => l.style.display = 'none');
+      document.getElementById(showListId).style.display = '';
+    }
+    // tutup menu saat klik di luar
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.menu-container')) {
+        document.querySelectorAll('.SelectMenu').forEach(m => m.classList.remove('is-open'));
+      }
+    });
+  </script>
+
+</body>
+</html>

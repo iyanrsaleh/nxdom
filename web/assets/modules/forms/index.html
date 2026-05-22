@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms - Primer CSS Demo</title>
+
+
+
+  <!-- 6. Form styles -->
+  <link rel="stylesheet" href="../nexa.css">
+  <link rel="stylesheet" href="../modal/modal.css">
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 720px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    dl { margin: 0; }
+    .demo-section { margin-bottom: 8px; }
+
+    /* File upload area */
+    .file-upload-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 24px 16px;
+      border: 2px dashed var(--borderColor-default, #d0d7de);
+      border-radius: 6px;
+      background-color: var(--bgColor-subtle, #f6f8fa);
+      color: var(--fgColor-muted, #57606a);
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.15s, background-color 0.15s;
+      box-sizing: border-box;
+    }
+    .file-upload-area:hover {
+      border-color: var(--fgColor-accent, #0969da);
+      background-color: var(--bgColor-accent-muted, #ddf4ff);
+    }
+    .file-upload-area.is-dragover {
+      border-color: var(--fgColor-accent, #0969da);
+      background-color: var(--bgColor-accent-muted, #ddf4ff);
+    }
+    .file-upload-area.has-file {
+      border-style: solid;
+      border-color: var(--fgColor-success, #1a7f37);
+      background-color: var(--bgColor-success-muted, #dafbe1);
+    }
+    .file-upload-area--disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .file-upload-icon {
+      color: var(--fgColor-muted, #57606a);
+      line-height: 1;
+    }
+    .file-upload-text {
+      font-size: 13px;
+      color: var(--fgColor-default, #24292f);
+    }
+    .file-upload-hint {
+      font-size: 12px;
+      color: var(--fgColor-muted, #57606a);
+    }
+
+    /* Grid variant — tinggi tetap agar kartu sejajar */
+    .file-upload-area--grid {
+      min-height: 140px;
+      justify-content: center;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .file-upload-area--wide {
+      min-height: 90px;
+      flex-direction: row;
+      gap: 12px;
+      justify-content: flex-start;
+      padding: 18px 24px;
+      text-align: left;
+    }
+    .file-upload-area--wide .file-upload-text,
+    .file-upload-area--wide .file-upload-hint {
+      text-align: left;
+    }
+    .file-upload-area--wide .file-upload-icon {
+      flex-shrink: 0;
+    }
+    .file-upload-area--wide .file-upload-text,
+    .file-upload-area--wide .file-upload-hint {
+      display: block;
+    }
+    .file-upload-area--wide > span:not(.file-upload-icon) {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==============================
+       1. form-control (input text)
+  ================================ -->
+  <h2>1. .form-control — Input Text</h2>
+  <input class="form-control" type="text" placeholder="Default input">
+
+  <h2>2. .form-control — Textarea</h2>
+  <textarea class="form-control" rows="3" placeholder="Default textarea"></textarea>
+
+  <h2>3. .form-select — Select</h2>
+  <select class="form-select">
+    <option>Pilih opsi</option>
+    <option>Opsi 1</option>
+    <option>Opsi 2</option>
+  </select>
+
+  <h2>4. .select-sm — Select Kecil</h2>
+  <select class="form-select select-sm">
+    <option>Pilih opsi</option>
+    <option>Opsi 1</option>
+  </select>
+
+  <h2>5. .form-select[multiple] — Select Multiple</h2>
+  <select class="form-select" multiple>
+    <option>Opsi A</option>
+    <option>Opsi B</option>
+    <option>Opsi C</option>
+  </select>
+
+  <!-- ==============================
+       Input Modifiers
+  ================================ -->
+  <h2>6. .input-contrast</h2>
+  <input class="form-control input-contrast" type="text" placeholder="Input contrast">
+
+  <h2>7. .input-sm — Input Kecil</h2>
+  <input class="form-control input-sm" type="text" placeholder="Input kecil">
+
+  <h2>8. .input-lg — Input Besar</h2>
+  <input class="form-control input-lg" type="text" placeholder="Input besar">
+
+  <h2>9. .input-block — Input Full Width</h2>
+  <input class="form-control input-block" type="text" placeholder="Input block full width">
+
+  <h2>10. .input-monospace — Input Monospace</h2>
+  <input class="form-control input-monospace" type="text" value="const x = 42;">
+
+  <h2>11. .form-control[disabled] — Input Disabled</h2>
+  <input class="form-control" type="text" value="Input disabled" disabled>
+
+  <!-- ==============================
+       form-group
+  ================================ -->
+  <h2>12. .form-group — Form Group Default</h2>
+  <div class="form-group">
+    <dl>
+      <dt class="form-group-header"><label for="fg1">Username</label></dt>
+      <dd class="form-group-body">
+        <input id="fg1" class="form-control" type="text" placeholder="Masukkan username">
+        <p class="note">Nama pengguna minimal 3 karakter.</p>
+      </dd>
+    </dl>
+  </div>
+
+  <h2>13. .form-group.required — Field Wajib</h2>
+  <div class="form-group required">
+    <dl>
+      <dt class="form-group-header"><label for="fg2">Email</label></dt>
+      <dd class="form-group-body">
+        <input id="fg2" class="form-control" type="email" placeholder="email@contoh.com">
+      </dd>
+    </dl>
+  </div>
+
+  <h2>14. .form-group.flattened — Layout Datar</h2>
+  <div class="form-group flattened">
+    <dl>
+      <dt class="form-group-header"><label for="fg3">Nama</label></dt>
+      <dd class="form-group-body">
+        <input id="fg3" class="form-control short" type="text" placeholder="Nama lengkap">
+      </dd>
+    </dl>
+  </div>
+
+  <h2>15. .form-group.errored — State Error</h2>
+  <div class="form-group errored">
+    <dl>
+      <dt class="form-group-header"><label for="fg4">Password</label></dt>
+      <dd class="form-group-body">
+        <input id="fg4" class="form-control" type="password" value="abc">
+        <div class="error">Password minimal 8 karakter.</div>
+      </dd>
+    </dl>
+  </div>
+
+  <h2>16. .form-group.warn — State Peringatan</h2>
+  <div class="form-group warn">
+    <dl>
+      <dt class="form-group-header"><label for="fg5">Username</label></dt>
+      <dd class="form-group-body">
+        <input id="fg5" class="form-control" type="text" value="user123">
+        <div class="warning">Username mungkin sudah digunakan.</div>
+      </dd>
+    </dl>
+  </div>
+
+  <h2>17. .form-group.successful — State Berhasil</h2>
+  <div class="form-group successful">
+    <dl>
+      <dt class="form-group-header"><label for="fg6">Email</label></dt>
+      <dd class="form-group-body">
+        <input id="fg6" class="form-control" type="email" value="ok@example.com">
+        <span class="success">Email tersedia!</span>
+      </dd>
+    </dl>
+  </div>
+
+  <h2>18. .form-group.loading — State Loading</h2>
+  <div class="form-group loading">
+    <dl>
+      <dt class="form-group-header"><label for="fg7">Cek Domain</label></dt>
+      <dd class="form-group-body">
+        <input id="fg7" class="form-control" type="text" value="nexaui">
+        <span class="indicator">Mengecek…</span>
+      </dd>
+    </dl>
+  </div>
+
+  <h2>19. .form-group — Textarea</h2>
+  <div class="form-group">
+    <dl>
+      <dt class="form-group-header"><label for="fg8">Deskripsi</label></dt>
+      <dd class="form-group-body">
+        <textarea id="fg8" class="form-control" placeholder="Tulis deskripsi..."></textarea>
+      </dd>
+    </dl>
+  </div>
+
+  <!-- ==============================
+       form-checkbox
+  ================================ -->
+  <h2>20. .form-checkbox — Checkbox</h2>
+  <div class="form-checkbox">
+    <label>
+      <input type="checkbox"> Saya setuju dengan syarat & ketentuan
+      <span class="note">Baca terlebih dahulu sebelum menyetujui.</span>
+    </label>
+  </div>
+
+  <h2>21. .form-checkbox — Radio</h2>
+  <div class="form-checkbox">
+    <label><input type="radio" name="gender" value="L"> Laki-laki</label>
+  </div>
+  <div class="form-checkbox">
+    <label><input type="radio" name="gender" value="P"> Perempuan</label>
+  </div>
+
+  <h2>22. .form-checkbox — Checkbox dengan Highlight</h2>
+  <div class="form-checkbox">
+    <label>
+      <input type="checkbox">
+      Aktifkan fitur <em class="highlight">Beta</em>
+    </label>
+  </div>
+
+  <h2>23. .form-checkbox-details — Detail Toggle</h2>
+  <div class="form-checkbox">
+    <label>
+      <input class="form-checkbox-details-trigger" type="checkbox"> Tampilkan detail
+    </label>
+    <div class="form-checkbox-details">
+      <p class="note">Konten tambahan yang tampil saat checkbox dicentang.</p>
+    </div>
+  </div>
+
+  <!-- ==============================
+       input-group
+  ================================ -->
+  <h2>24. .input-group — Input + Button</h2>
+  <div class="input-group">
+    <input class="form-control" type="text" placeholder="Cari sesuatu...">
+    <div class="input-group-button">
+      <button class="btn" type="button">Cari</button>
+    </div>
+  </div>
+
+  <h2>25. .input-group.inline — Input Group Inline</h2>
+  <div class="input-group inline">
+    <div class="input-group-button">
+      <button class="btn" type="button">@</button>
+    </div>
+    <input class="form-control" type="text" placeholder="nama pengguna">
+  </div>
+
+  <!-- ==============================
+       hfields
+  ================================ -->
+  <h2>26. .hfields — Horizontal Fields</h2>
+  <div class="hfields">
+    <div class="form-group">
+      <dl>
+        <dt class="form-group-header"><label>Kota</label></dt>
+        <dd class="form-group-body">
+          <select class="form-select">
+            <option>Jakarta</option>
+            <option>Surabaya</option>
+          </select>
+        </dd>
+      </dl>
+    </div>
+    <div class="form-group">
+      <dl>
+        <dt class="form-group-header"><label>Tahun</label></dt>
+        <dd class="form-group-body">
+          <select class="form-select">
+            <option>2024</option>
+            <option>2025</option>
+            <option>2026</option>
+          </select>
+        </dd>
+      </dl>
+    </div>
+  </div>
+
+  <!-- ==============================
+       radio-group
+  ================================ -->
+  <h2>27. .radio-group — Radio Button Group</h2>
+  <div class="radio-group">
+    <input class="radio-input" id="r1" type="radio" name="plan" value="free">
+    <label class="radio-label" for="r1">Gratis</label>
+    <input class="radio-input" id="r2" type="radio" name="plan" value="pro">
+    <label class="radio-label" for="r2">Pro</label>
+    <input class="radio-input" id="r3" type="radio" name="plan" value="enterprise" disabled>
+    <label class="radio-label" for="r3">Enterprise</label>
+  </div>
+
+  <!-- ==============================
+       form-warning
+  ================================ -->
+  <h2>28. .form-warning — Kotak Peringatan</h2>
+  <div class="form-warning">
+    <p>Perhatian! Perubahan ini tidak dapat dibatalkan. Pastikan data sudah benar sebelum menyimpan.</p>
+  </div>
+
+  <!-- ==============================
+       form-actions
+  ================================ -->
+  <h2>29. .form-actions — Tombol Aksi Form</h2>
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">Simpan</button>
+    <button class="btn" type="reset">Batal</button>
+  </div>
+
+  <!-- ==============================
+       note
+  ================================ -->
+  <h2>30. .note — Catatan / Helper Text</h2>
+  <p class="note">Ini adalah teks catatan yang membantu pengguna mengisi formulir dengan benar.</p>
+
+  <!-- ==============================
+       fieldset disabled
+  ================================ -->
+  <h2>31. fieldset[disabled] — Semua Input Disabled</h2>
+  <fieldset disabled>
+    <div class="form-group">
+      <dl>
+        <dt class="form-group-header"><label>Input Disabled via Fieldset</label></dt>
+        <dd class="form-group-body">
+          <input class="form-control" type="text" value="Tidak bisa diedit">
+          <select class="form-select">
+            <option>Pilihan disabled</option>
+          </select>
+        </dd>
+      </dl>
+    </div>
+  </fieldset>
+
+  <!-- ==============================
+       MODAL — GitHub style
+  ================================ -->
+  <h2>32. Modal — Default (448px)</h2>
+  <button class="btn btn-primary" onclick="document.getElementById('modal-default').classList.add('is-open')">
+    Buka Modal
+  </button>
+
+  <!-- Modal Default -->
+  <div class="modal-backdrop" id="modal-default" onclick="if(event.target===this)this.classList.remove('is-open')">
+    <div class="Box Box--overlay" role="dialog" aria-modal="true" aria-labelledby="modal-default-title">
+      <div class="Box-header">
+        <h3 id="modal-default-title">Konfirmasi Tindakan</h3>
+        <button class="Box-header-close-button" aria-label="Close" onclick="document.getElementById('modal-default').classList.remove('is-open')">✕</button>
+      </div>
+      <div class="Box-body">
+        <p style="margin:0 0 12px;">Apakah Anda yakin ingin melanjutkan? Tindakan ini tidak dapat dibatalkan.</p>
+        <div class="form-group" style="margin-bottom:0;">
+          <dl>
+            <dt class="form-group-header"><label for="modal-input">Ketik konfirmasi</label></dt>
+            <dd class="form-group-body">
+              <input id="modal-input" class="form-control input-block" type="text" placeholder="Ketik 'lanjutkan' untuk konfirmasi">
+              <p class="note">Pastikan Anda membaca syarat sebelum melanjutkan.</p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <div class="Box-footer">
+        <button class="btn" onclick="document.getElementById('modal-default').classList.remove('is-open')">Batal</button>
+        <button class="btn btn-danger">Lanjutkan</button>
+      </div>
+    </div>
+  </div>
+
+  <h2>33. Modal — Narrow (320px)</h2>
+  <button class="btn" onclick="document.getElementById('modal-narrow').classList.add('is-open')">
+    Buka Modal Narrow
+  </button>
+
+  <!-- Modal Narrow -->
+  <div class="modal-backdrop" id="modal-narrow" onclick="if(event.target===this)this.classList.remove('is-open')">
+    <div class="Box Box--overlay Box-overlay--narrow" role="dialog" aria-modal="true" aria-labelledby="modal-narrow-title">
+      <div class="Box-header">
+        <h3 id="modal-narrow-title">Hapus Item</h3>
+        <button class="Box-header-close-button" aria-label="Close" onclick="document.getElementById('modal-narrow').classList.remove('is-open')">✕</button>
+      </div>
+      <div class="Box-body">
+        <p style="margin:0;">Yakin ingin menghapus <strong>file.txt</strong>?</p>
+      </div>
+      <div class="Box-footer">
+        <button class="btn btn-sm" onclick="document.getElementById('modal-narrow').classList.remove('is-open')">Batal</button>
+        <button class="btn btn-sm btn-danger">Hapus</button>
+      </div>
+    </div>
+  </div>
+
+  <h2>34. Modal — Wide (640px) dengan Form</h2>
+  <button class="btn" onclick="document.getElementById('modal-wide').classList.add('is-open')">
+    Buka Modal Wide
+  </button>
+
+  <!-- Modal Wide -->
+  <div class="modal-backdrop" id="modal-wide" onclick="if(event.target===this)this.classList.remove('is-open')">
+    <div class="Box Box--overlay Box-overlay--wide" role="dialog" aria-modal="true" aria-labelledby="modal-wide-title">
+      <div class="Box-header">
+        <h3 id="modal-wide-title">Edit Profil</h3>
+        <button class="Box-header-close-button" aria-label="Close" onclick="document.getElementById('modal-wide').classList.remove('is-open')">✕</button>
+      </div>
+      <div class="Box-body">
+        <div class="form-group">
+          <dl>
+            <dt class="form-group-header"><label for="mw-name">Nama Lengkap</label></dt>
+            <dd class="form-group-body">
+              <input id="mw-name" class="form-control input-block" type="text" placeholder="Masukkan nama lengkap">
+            </dd>
+          </dl>
+        </div>
+        <div class="form-group">
+          <dl>
+            <dt class="form-group-header"><label for="mw-email">Email</label></dt>
+            <dd class="form-group-body">
+              <input id="mw-email" class="form-control input-block" type="email" placeholder="email@contoh.com">
+            </dd>
+          </dl>
+        </div>
+        <div class="form-group">
+          <dl>
+            <dt class="form-group-header"><label for="mw-bio">Bio</label></dt>
+            <dd class="form-group-body">
+              <textarea id="mw-bio" class="form-control input-block" rows="3" placeholder="Ceritakan tentang diri Anda..."></textarea>
+              <p class="note">Maksimal 160 karakter.</p>
+            </dd>
+          </dl>
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <dl>
+            <dt class="form-group-header"><label for="mw-role">Role</label></dt>
+            <dd class="form-group-body">
+              <select id="mw-role" class="form-select">
+                <option>Developer</option>
+                <option>Designer</option>
+                <option>Manager</option>
+              </select>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <div class="Box-footer">
+        <button class="btn" onclick="document.getElementById('modal-wide').classList.remove('is-open')">Batal</button>
+        <button class="btn btn-primary">Simpan Perubahan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       INPUT DENGAN ICON
+  ================================ -->
+  <h2>35. Input + Icon Kanan (.input-group)</h2>
+  <div class="input-group">
+    <input class="form-control" type="text" placeholder="Cari repository...">
+    <div class="input-group-button">
+      <button class="btn" type="button" aria-label="Search">
+        <span class="octicon octicon-search-16"></span>
+      </button>
+    </div>
+  </div>
+
+  <h2>36. Input + Icon Kiri (.input-group.inline)</h2>
+  <div class="input-group inline">
+    <div class="input-group-button">
+      <button class="btn" type="button" aria-label="Link">
+        <span class="octicon octicon-link-16"></span>
+      </button>
+    </div>
+    <input class="form-control" type="url" placeholder="https://example.com">
+  </div>
+
+  <h2>37. Input + Icon Kiri &amp; Kanan</h2>
+  <div class="input-group">
+    <div class="input-group-button">
+      <button class="btn" type="button" aria-label="User">
+        <span class="octicon octicon-person-16"></span>
+      </button>
+    </div>
+    <input class="form-control" type="text" placeholder="Username">
+    <div class="input-group-button">
+      <button class="btn btn-primary" type="button">Check</button>
+    </div>
+  </div>
+
+  <h2>38. Input + Icon — Variasi Ukuran</h2>
+  <div style="display:flex;flex-direction:column;gap:8px;">
+    <div class="input-group">
+      <input class="form-control input-sm" type="text" placeholder="Input kecil + icon">
+      <div class="input-group-button">
+        <button class="btn btn-sm" type="button"><span class="octicon octicon-search-16"></span></button>
+      </div>
+    </div>
+    <div class="input-group">
+      <input class="form-control" type="text" placeholder="Input normal + icon">
+      <div class="input-group-button">
+        <button class="btn" type="button"><span class="octicon octicon-search-16"></span></button>
+      </div>
+    </div>
+    <div class="input-group">
+      <input class="form-control input-lg" type="text" placeholder="Input besar + icon">
+      <div class="input-group-button">
+        <button class="btn btn-lg" type="button"><span class="octicon octicon-search-16"></span></button>
+      </div>
+    </div>
+  </div>
+
+  <h2>39. Input + Multi-Icon Button</h2>
+  <div class="input-group">
+    <input class="form-control" type="text" placeholder="Nama branch...">
+    <div class="input-group-button">
+      <button class="btn" type="button">
+        <span class="octicon octicon-git-branch-16"></span>
+        Branch
+      </button>
+    </div>
+    <div class="input-group-button">
+      <button class="btn" type="button" aria-label="Settings">
+        <span class="octicon octicon-gear-16"></span>
+      </button>
+    </div>
+  </div>
+
+  <h2>40. Input + Icon — Danger &amp; Success</h2>
+  <div style="display:flex;flex-direction:column;gap:8px;">
+    <div class="input-group">
+      <input class="form-control" type="text" placeholder="Input danger">
+      <div class="input-group-button">
+        <button class="btn btn-danger" type="button"><span class="octicon octicon-trash-16"></span></button>
+      </div>
+    </div>
+    <div class="input-group">
+      <input class="form-control" type="text" value="input-ok@example.com">
+      <div class="input-group-button">
+        <button class="btn btn-primary" type="button"><span class="octicon octicon-check-16"></span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       GRID FORM LAYOUTS
+  ================================ -->
+  <h2>Grid Form — 2 Kolom (col-6 + col-6)</h2>
+  <form class="nx-row">
+    <dl class="form-group col-12 col-md-6">
+      <dt class="form-group-header"><label for="gf-fname">First Name</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gf-fname" type="text" placeholder="John"></dd>
+    </dl>
+    <dl class="form-group col-12 col-md-6">
+      <dt class="form-group-header"><label for="gf-lname">Last Name</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gf-lname" type="text" placeholder="Doe"></dd>
+    </dl>
+    <dl class="form-group col-12 col-md-8">
+      <dt class="form-group-header"><label for="gf-email">Email</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gf-email" type="email" placeholder="john@example.com"></dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gf-phone">Phone</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gf-phone" type="tel" placeholder="+62..."></dd>
+    </dl>
+    <dl class="form-group col-12">
+      <dt class="form-group-header"><label for="gf-address">Address</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gf-address" type="text" placeholder="Jl. Sudirman No.1"></dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gf-city">City</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gf-city" type="text" placeholder="Jakarta"></dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gf-province">Province</label></dt>
+      <dd class="form-group-body">
+        <select class="form-select" id="gf-province">
+          <option value="">— Pilih —</option>
+          <option>DKI Jakarta</option>
+          <option>Jawa Barat</option>
+          <option>Jawa Tengah</option>
+          <option>Jawa Timur</option>
+        </select>
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gf-zip">ZIP Code</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gf-zip" type="text" placeholder="10110"></dd>
+    </dl>
+    <div class="col-12 form-actions">
+      <button class="btn btn-primary" type="submit">Simpan</button>
+      <button class="btn" type="reset">Reset</button>
+    </div>
+  </form>
+
+  <h2>Grid Form — Account Settings (col-3 label + col-9 input)</h2>
+  <form>
+    <div class="clearfix gutter-condensed" style="align-items:center;margin-bottom:12px;">
+      <div class="col-12 col-md-3" style="padding-top:4px;">
+        <label for="gs-username" class="text-bold">Username</label>
+      </div>
+      <div class="col-12 col-md-9">
+        <input class="form-control" id="gs-username" type="text" value="octocat">
+      </div>
+    </div>
+    <div class="clearfix gutter-condensed" style="align-items:center;margin-bottom:12px;">
+      <div class="col-12 col-md-3" style="padding-top:4px;">
+        <label for="gs-email2" class="text-bold">Email</label>
+      </div>
+      <div class="col-12 col-md-9">
+        <input class="form-control" id="gs-email2" type="email" value="octocat@github.com">
+      </div>
+    </div>
+    <div class="clearfix gutter-condensed" style="align-items:flex-start;margin-bottom:12px;">
+      <div class="col-12 col-md-3" style="padding-top:6px;">
+        <label for="gs-bio" class="text-bold">Bio</label>
+      </div>
+      <div class="col-12 col-md-9">
+        <textarea class="form-control" id="gs-bio" rows="3" placeholder="Tell us a little about yourself"></textarea>
+        <p class="note">You can @mention other users and organizations.</p>
+      </div>
+    </div>
+    <div class="clearfix gutter-condensed" style="align-items:center;margin-bottom:12px;">
+      <div class="col-12 col-md-3" style="padding-top:4px;">
+        <label for="gs-url" class="text-bold">Website</label>
+      </div>
+      <div class="col-12 col-md-9">
+        <input class="form-control" id="gs-url" type="url" placeholder="https://example.com">
+      </div>
+    </div>
+    <div class="clearfix gutter-condensed">
+      <div class="col-12 col-md-9 offset-md-3">
+        <button class="btn btn-primary" type="submit">Update Profile</button>
+      </div>
+    </div>
+  </form>
+
+  <h2>Grid Form — Payment (complex layout)</h2>
+  <form class="nx-row">
+    <dl class="form-group col-12">
+      <dt class="form-group-header"><label for="gp-card">Card Number</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gp-card" type="text" placeholder="1234 5678 9012 3456"></dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gp-exp">Expiry</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gp-exp" type="text" placeholder="MM / YY"></dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gp-cvv">CVV</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gp-cvv" type="text" placeholder="123"></dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gp-zip2">ZIP</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gp-zip2" type="text" placeholder="10110"></dd>
+    </dl>
+    <dl class="form-group col-12 col-md-6">
+      <dt class="form-group-header"><label for="gp-fname">First Name on Card</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gp-fname" type="text" placeholder="John"></dd>
+    </dl>
+    <dl class="form-group col-12 col-md-6">
+      <dt class="form-group-header"><label for="gp-lname">Last Name on Card</label></dt>
+      <dd class="form-group-body"><input class="form-control" id="gp-lname" type="text" placeholder="Doe"></dd>
+    </dl>
+    <div class="col-12 form-actions">
+      <button class="btn btn-primary" type="submit">Pay Now</button>
+      <button class="btn" type="button">Cancel</button>
+    </div>
+  </form>
+
+  <!-- ==============================
+       INPUT COLOR
+  ================================ -->
+  <h2>41. input[type="color"] — Color Picker</h2>
+  <div class="form-group">
+    <dl>
+      <dt class="form-group-header"><label for="color1">Pilih Warna</label></dt>
+      <dd class="form-group-body">
+        <input id="color1" class="form-control" type="color" value="#0969da">
+        <p class="note">Klik untuk membuka color picker.</p>
+      </dd>
+    </dl>
+  </div>
+
+  <h2>42. input[type="color"] — Berbagai Variasi</h2>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <label class="text-bold d-block mb-1">Warna Default</label>
+      <input class="form-control" type="color" value="#0969da">
+    </div>
+    <div>
+      <label class="text-bold d-block mb-1">Warna Disabled</label>
+      <input class="form-control" type="color" value="#6e7781" disabled>
+    </div>
+    <div>
+      <label class="text-bold d-block mb-1">Color + Label Inline</label>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <input id="color-inline" class="form-control" type="color" value="#1a7f37" style="width:40px;height:32px;padding:2px;cursor:pointer;">
+        <label for="color-inline" class="note" style="margin:0;">Pilih warna tema</label>
+      </div>
+    </div>
+  </div>
+
+  <h2>43. input[type="color"] — Dalam Form Group Grid</h2>
+  <form class="nx-row">
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gc-primary">Warna Primer</label></dt>
+      <dd class="form-group-body">
+        <input id="gc-primary" class="form-control" type="color" value="#0969da">
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gc-secondary">Warna Sekunder</label></dt>
+      <dd class="form-group-body">
+        <input id="gc-secondary" class="form-control" type="color" value="#6e7781">
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gc-accent">Warna Aksen</label></dt>
+      <dd class="form-group-body">
+        <input id="gc-accent" class="form-control" type="color" value="#1a7f37">
+      </dd>
+    </dl>
+    <div class="col-12 form-actions">
+      <button class="btn btn-primary" type="submit">Terapkan Warna</button>
+      <button class="btn" type="reset">Reset</button>
+    </div>
+  </form>
+
+  <!-- ==============================
+       INPUT FILE
+  ================================ -->
+  <h2>44. input[type="file"] — File Upload Default</h2>
+  <div class="form-group">
+    <dl>
+      <dt class="form-group-header"><label for="file1">Upload File</label></dt>
+      <dd class="form-group-body">
+        <label for="file1-input" class="file-upload-area" id="file1-drop">
+          <input id="file1-input" type="file" style="display:none" onchange="fileUploadUpdate(this,'file1-label','file1-drop')">
+          <span class="file-upload-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </span>
+          <span class="file-upload-text">
+            <strong>Klik untuk memilih file</strong> atau seret &amp; lepas di sini
+          </span>
+          <span class="file-upload-hint" id="file1-label">Semua tipe file didukung</span>
+        </label>
+        <p class="note">Pilih satu file dari perangkat Anda.</p>
+      </dd>
+    </dl>
+  </div>
+
+  <h2>45. input[type="file"] — Berbagai Variasi</h2>
+  <div style="display:flex;flex-direction:column;gap:16px;">
+
+    <!-- Upload Gambar -->
+    <div class="form-group" style="margin-bottom:0;">
+      <dl>
+        <dt class="form-group-header"><label>Upload Gambar</label></dt>
+        <dd class="form-group-body">
+          <label for="file-image" class="file-upload-area file-upload-area--image" id="file-image-drop">
+            <input id="file-image" type="file" accept="image/*" style="display:none" onchange="fileUploadUpdate(this,'file-image-label','file-image-drop')">
+            <span class="file-upload-icon" style="color:var(--fgColor-accent,#0969da);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </span>
+            <span class="file-upload-text"><strong>Upload Gambar</strong></span>
+            <span class="file-upload-hint" id="file-image-label">JPG, PNG, GIF, WEBP</span>
+          </label>
+        </dd>
+      </dl>
+    </div>
+
+    <!-- Upload Multiple File -->
+    <div class="form-group" style="margin-bottom:0;">
+      <dl>
+        <dt class="form-group-header"><label>Upload Multiple File</label></dt>
+        <dd class="form-group-body">
+          <label for="file-multi" class="file-upload-area file-upload-area--multi" id="file-multi-drop">
+            <input id="file-multi" type="file" multiple style="display:none" onchange="fileUploadUpdate(this,'file-multi-label','file-multi-drop')">
+            <span class="file-upload-icon" style="color:var(--fgColor-success,#1a7f37);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+            </span>
+            <span class="file-upload-text"><strong>Upload Multiple File</strong></span>
+            <span class="file-upload-hint" id="file-multi-label">Pilih lebih dari satu file sekaligus</span>
+          </label>
+        </dd>
+      </dl>
+    </div>
+
+    <!-- Upload Disabled -->
+    <div class="form-group" style="margin-bottom:0;">
+      <dl>
+        <dt class="form-group-header"><label>Upload Disabled</label></dt>
+        <dd class="form-group-body">
+          <label class="file-upload-area file-upload-area--disabled">
+            <input type="file" disabled style="display:none">
+            <span class="file-upload-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+            </span>
+            <span class="file-upload-text"><strong>Upload tidak tersedia</strong></span>
+            <span class="file-upload-hint">Input ini sedang dinonaktifkan</span>
+          </label>
+        </dd>
+      </dl>
+    </div>
+  </div>
+
+  <h2>46. input[type="file"] — Dalam Form Group Grid</h2>
+  <form class="nx-row">
+
+    <!-- Foto Profil -->
+    <div class="col-12 col-md-6">
+      <label class="file-upload-area file-upload-area--grid" for="gf-avatar-input" id="gf-avatar-drop">
+        <input id="gf-avatar-input" type="file" accept="image/*" style="display:none"
+          onchange="fileUploadUpdate(this,'gf-avatar-label','gf-avatar-drop')">
+        <span class="file-upload-icon" style="color:var(--fgColor-accent,#0969da);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </span>
+        <span class="file-upload-text"><strong>Foto Profil</strong></span>
+        <span class="file-upload-hint" id="gf-avatar-label">JPG, PNG — Maks. 2MB</span>
+      </label>
+    </div>
+
+    <!-- CV / Resume -->
+    <div class="col-12 col-md-6">
+      <label class="file-upload-area file-upload-area--grid" for="gf-resume-input" id="gf-resume-drop">
+        <input id="gf-resume-input" type="file" accept=".pdf,.doc,.docx" style="display:none"
+          onchange="fileUploadUpdate(this,'gf-resume-label','gf-resume-drop')">
+        <span class="file-upload-icon" style="color:var(--fgColor-done,#8250df);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </span>
+        <span class="file-upload-text"><strong>CV / Resume</strong></span>
+        <span class="file-upload-hint" id="gf-resume-label">PDF, DOC, DOCX</span>
+      </label>
+    </div>
+
+    <!-- Lampiran Multiple -->
+    <div class="col-12">
+      <label class="file-upload-area file-upload-area--grid file-upload-area--wide" for="gf-attach-input" id="gf-attach-drop">
+        <input id="gf-attach-input" type="file" multiple style="display:none"
+          onchange="fileUploadUpdate(this,'gf-attach-label','gf-attach-drop')">
+        <span class="file-upload-icon" style="color:var(--fgColor-success,#1a7f37);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+        </span>
+        <span class="file-upload-text"><strong>Lampiran</strong> — Seret &amp; lepas atau klik untuk memilih</span>
+        <span class="file-upload-hint" id="gf-attach-label">Pilih satu atau lebih file sebagai lampiran</span>
+      </label>
+    </div>
+
+    <div class="col-12 form-actions">
+      <button class="btn btn-primary" type="submit">Upload</button>
+      <button class="btn" type="reset">Batal</button>
+    </div>
+  </form>
+
+  <!-- ==============================
+       GRID FORM + ICON
+  ================================ -->
+  <h2>Grid Form — Input dengan Icon</h2>
+  <form class="nx-row">
+    <dl class="form-group col-12">
+      <dt class="form-group-header"><label for="gi-search">Cari Repository</label></dt>
+      <dd class="form-group-body">
+        <div class="input-group">
+          <input class="form-control" id="gi-search" type="text" placeholder="Cari repository...">
+          <div class="input-group-button">
+            <button class="btn" type="button" aria-label="Search"><span class="octicon octicon-search-16"></span></button>
+          </div>
+        </div>
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-6">
+      <dt class="form-group-header"><label for="gi-user">Username</label></dt>
+      <dd class="form-group-body">
+        <div class="input-group inline">
+          <div class="input-group-button">
+            <button class="btn" type="button" aria-label="User"><span class="octicon octicon-person-16"></span></button>
+          </div>
+          <input class="form-control" id="gi-user" type="text" placeholder="octocat">
+        </div>
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-6">
+      <dt class="form-group-header"><label for="gi-email">Email</label></dt>
+      <dd class="form-group-body">
+        <div class="input-group inline">
+          <div class="input-group-button">
+            <button class="btn" type="button" aria-label="Email"><span class="octicon octicon-mail-16"></span></button>
+          </div>
+          <input class="form-control" id="gi-email" type="email" placeholder="user@example.com">
+        </div>
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-8">
+      <dt class="form-group-header"><label for="gi-url">Website</label></dt>
+      <dd class="form-group-body">
+        <div class="input-group inline">
+          <div class="input-group-button">
+            <button class="btn" type="button" aria-label="Link"><span class="octicon octicon-link-16"></span></button>
+          </div>
+          <input class="form-control" id="gi-url" type="url" placeholder="https://example.com">
+        </div>
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gi-branch">Branch</label></dt>
+      <dd class="form-group-body">
+        <div class="input-group inline">
+          <div class="input-group-button">
+            <button class="btn" type="button" aria-label="Branch"><span class="octicon octicon-git-branch-16"></span></button>
+          </div>
+          <input class="form-control" id="gi-branch" type="text" placeholder="main">
+        </div>
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gi-token">Token</label></dt>
+      <dd class="form-group-body">
+        <div class="input-group">
+          <input class="form-control" id="gi-token" type="password" placeholder="ghp_xxxx">
+          <div class="input-group-button">
+            <button class="btn" type="button" aria-label="Copy"><span class="octicon octicon-copy-16"></span></button>
+          </div>
+        </div>
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gi-tag">Tag</label></dt>
+      <dd class="form-group-body">
+        <div class="input-group inline">
+          <div class="input-group-button">
+            <button class="btn" type="button" aria-label="Tag"><span class="octicon octicon-tag-16"></span></button>
+          </div>
+          <input class="form-control" id="gi-tag" type="text" placeholder="v1.0.0">
+        </div>
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="gi-delete">Hapus Item</label></dt>
+      <dd class="form-group-body">
+        <div class="input-group">
+          <input class="form-control" id="gi-delete" type="text" placeholder="nama-repo">
+          <div class="input-group-button">
+            <button class="btn btn-danger" type="button" aria-label="Delete"><span class="octicon octicon-trash-16"></span></button>
+          </div>
+        </div>
+      </dd>
+    </dl>
+    <div class="col-12 form-actions">
+      <button class="btn btn-primary" type="submit">Simpan</button>
+      <button class="btn" type="reset">Reset</button>
+    </div>
+  </form>
+</html>
+
+  <script>
+    function fileUploadUpdate(input, labelId, dropId) {
+      var label = document.getElementById(labelId);
+      var drop = document.getElementById(dropId);
+      if (!label || !drop) return;
+      if (input.files && input.files.length > 0) {
+        var names = Array.from(input.files).map(function(f){ return f.name; }).join(', ');
+        label.textContent = names;
+        drop.classList.add('has-file');
+      } else {
+        drop.classList.remove('has-file');
+      }
+    }
+
+    // Drag & drop support
+    document.querySelectorAll('.file-upload-area').forEach(function(area) {
+      area.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        area.classList.add('is-dragover');
+      });
+      area.addEventListener('dragleave', function() {
+        area.classList.remove('is-dragover');
+      });
+      area.addEventListener('drop', function(e) {
+        e.preventDefault();
+        area.classList.remove('is-dragover');
+        var input = area.querySelector('input[type=file]');
+        if (input && !input.disabled) {
+          input.files = e.dataTransfer.files;
+          input.dispatchEvent(new Event('change'));
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+/* Alert Dasar */
+.nx-alert {
+  position: relative;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+}
+
+/* Alert Small */
+.nx-alert-sm {
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  border-radius: 0.25rem;
+}
+
+.nx-alert-primary {
+  color: #084298;
+  background-color: #cfe2ff;
+  border-color: #b6d4fe;
+}
+
+.nx-alert-success {
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+}
+
+.nx-alert-warning {
+  color: #664d03;
+  background-color: #fff3cd;
+  border-color: #ffecb5;
+}
+
+.nx-alert-danger {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+}
+
+.nx-alert-info {
+  color: #055160;
+  background-color: #cff4fc;
+  border-color: #b6effb;
+}
+
+/* Alert dengan Judul */
+.nx-alert-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.nx-alert-sm .nx-alert-title {
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+/* Alert yang Dapat Ditutup */
+.nx-alert-dismissible {
+  padding-right: 3rem;
+}
+
+.nx-alert-sm.nx-alert-dismissible {
+  padding-right: 2rem;
+}
+
+.nx-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  background: transparent;
+  border: 0;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.nx-alert-sm .nx-close {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+}
+
+/* Alert dengan Ikon */
+.nx-alert-icon {
+  padding-left: 2.5rem;
+}
+
+.nx-alert-sm.nx-alert-icon {
+  padding-left: 2rem;
+}
+
+.nx-alert-icon i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nx-alert-sm.nx-alert-icon i {
+  left: 0.75rem;
+  font-size: 0.875rem;
+}
+
+/* Alert dengan Link */
+.nx-alert a {
+  font-weight: 600;
+  color: inherit;
+ 
+}
+
+/* Alert dengan Tombol Aksi */
+.nx-alert-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nx-alert-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Alert dengan List */
+.nx-alert-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.5rem;
+}
+
+/* Alert dengan Progress */
+.nx-alert-progress {
+  padding-bottom: 2.5rem;
+  border-width: 2px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.nx-alert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.nx-alert-title i {
+  margin-right: 0.5rem;
+  opacity: 0.8;
+}
+
+
+
+/* Alert Dark Mode */
+.nx-dark {
+  color: #fff;
+}
+
+.nx-dark.nx-alert-primary {
+  background-color: #084298;
+  border-color: #0a58ca;
+}
+
+.nx-dark.nx-alert-success {
+  background-color: #0f5132;
+  border-color: #146c43;
+}
+
+.nx-dark.nx-alert-warning {
+  background-color: #664d03;
+  border-color: #997404;
+}
+
+.nx-dark.nx-alert-danger {
+  background-color: #842029;
+  border-color: #b02a37;
+}
+
+.nx-dark.nx-alert-info {
+  background-color: #055160;
+  border-color: #087990;
+}
+
+/* Alert dengan Prioritas */
+.nx-priority-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.1);
+  margin-right: 0.75rem;
+}
+
+.nx-priority-high .nx-priority-indicator {
+  background: #dc3545;
+  color: white;
+}
+
+.nx-priority-medium .nx-priority-indicator {
+  background: #ffc107;
+  color: #000;
+}
+
+.nx-priority-low .nx-priority-indicator {
+  background: #0dcaf0;
+  color: #000;
+}
+
+/* Alert dengan Timer */
+.nx-alert-timer {
+  overflow: hidden;
+}
+
+.nx-timer-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: currentColor;
+  opacity: 0.5;
+  animation: timer-countdown 5s linear forwards;
+}
+
+@keyframes timer-countdown {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nx-alert-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .nx-alert-buttons {
+    margin-top: 1rem;
+  }
+}
+
+/* Alert dengan Progress */
+.nx-alert-progress {
+  padding-bottom: 2.5rem;
+}
+
+.nx-alert-progress .nx-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  border-radius: 0 0 0.375rem 0.375rem;
+}
+
+.nx-alert-progress .nx-progress-bar {
+  height: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 0.5rem;
+}
+
+.nx-alert-progress .nx-progress-striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+.nx-alert-progress .nx-progress-animated {
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+.nx-alert-progress .nx-progress-icon {
+  margin-right: 0.5rem;
+}

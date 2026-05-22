@@ -1,0 +1,485 @@
+/* Simple nx-dropdown Styles */
+.nx-dropdown {
+  position: relative;
+  display: inline-block;
+  margin: 5px;
+}
+
+.nx-dropdown-btn {
+  cursor: pointer;
+}
+
+/* Support for Feather Icons */
+.nx-dropdown-content i[data-feather] {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+  margin-right: 8px;
+  color: #6c757d;
+  vertical-align: middle;
+}
+
+.nx-dropdown-btn .material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+.nx-dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 8rem;
+  max-width: 20rem;
+  width: max-content;
+  padding: 0.25rem 0;
+  margin: 0;
+  z-index: 10000;
+  font-size: 0.875rem;
+  color: #001737;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.175);
+}
+
+.nx-dropdown-content svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+  margin-right: 8px;
+  color: #6c757d;
+  vertical-align: middle;
+}
+
+.nx-dropdown.active .nx-dropdown-content {
+  display: block;
+}
+
+/* Ensure dropdown appears correctly in table cells */
+.action-cell .nx-dropdown-content {
+  white-space: nowrap;
+}
+
+.nx-dropdown-content a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  clear: both;
+  font-weight: 400;
+  color: #1c273c;
+  font-size: 12px;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.nx-dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.nx-dropdown-content a:hover {
+  background-color: #f8f9fa;
+}
+
+.nx-dropdown-content a:hover svg {
+  color: #495057;
+}
+
+/* Submenu Styles */
+.nx-dropdown-submenu {
+  position: relative;
+}
+
+/* Debug: Visual indicator for submenu hover */
+.nx-dropdown-submenu:hover {
+  background-color: #f8f9fa;
+}
+
+.nx-dropdown-submenu-toggle {
+  position: relative;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  clear: both;
+  font-weight: 400;
+  color: #1c273c;
+  font-size: 12px;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.nx-dropdown-submenu-toggle i[data-feather]:not(.nx-submenu-arrow),
+.nx-dropdown-submenu-toggle svg:not(.nx-submenu-arrow) {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+  margin-right: 8px;
+  margin-left: 0;
+  color: #6c757d;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* Container untuk icon dan text agar arrow bisa di pojok */
+.nx-dropdown-submenu-toggle .nx-submenu-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.nx-submenu-arrow {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  transition: transform 0.2s ease;
+  width: 16px !important;
+  height: 16px !important;
+  stroke-width: 2;
+  color: #6c757d;
+  flex-shrink: 0;
+}
+
+.nx-dropdown-submenu-content {
+  display: none;
+  position: absolute;
+  left: calc(100% - 2px);
+  top: -2px;
+  min-width: 160px;
+  max-width: 300px;
+  width: max-content;
+  padding: 0.25rem 0;
+  margin: 0;
+  z-index: 10001;
+  font-size: 0.875rem;
+  color: #001737;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.175);
+}
+
+/* Apply hover for submenus */
+.nx-dropdown-submenu:hover .nx-dropdown-submenu-content {
+  display: block;
+}
+
+.nx-dropdown-submenu-content:hover {
+  display: block;
+}
+
+.nx-dropdown-submenu:hover .nx-submenu-arrow {
+  transform: rotate(90deg);
+}
+
+.nx-dropdown-submenu:hover .nx-dropdown-submenu-toggle {
+  background-color: #f8f9fa;
+}
+
+.nx-dropdown-submenu:hover
+  .nx-dropdown-submenu-toggle
+  i[data-feather]:not(.nx-submenu-arrow),
+.nx-dropdown-submenu:hover
+  .nx-dropdown-submenu-toggle
+  svg:not(.nx-submenu-arrow) {
+  color: #495057;
+}
+
+/* Active submenu toggle styles */
+.nx-dropdown-submenu-toggle.active {
+  background-color: #e9ecef;
+}
+
+.nx-dropdown-submenu-toggle.active .nx-submenu-arrow {
+  transform: rotate(90deg);
+}
+
+.nx-dropdown-submenu-toggle.active i[data-feather]:not(.nx-submenu-arrow),
+.nx-dropdown-submenu-toggle.active svg:not(.nx-submenu-arrow) {
+  color: #495057;
+}
+
+.nx-dropdown-submenu-content a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  clear: both;
+  font-weight: 400;
+  color: #1c273c;
+  font-size: 12px;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.nx-dropdown-submenu-content a i[data-feather],
+.nx-dropdown-submenu-content a svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+  margin-right: 8px;
+  margin-left: 0;
+  color: #6c757d;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.nx-dropdown-submenu-content a:hover {
+  background-color: #f8f9fa;
+}
+
+.nx-dropdown-submenu-content a:hover i[data-feather],
+.nx-dropdown-submenu-content a:hover svg {
+  color: #495057;
+}
+
+/* Adjust submenu position if it would go off-screen */
+.nx-dropdown-submenu-content.nx-submenu-left {
+  left: -100%;
+  right: 100%;
+}
+
+/* Ensure submenu stays visible during hover transition */
+.nx-dropdown-submenu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -2px;
+  width: 2px;
+  height: 100%;
+  background: transparent;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+
+/* Dropdown positioned above button */
+.nx-dropdown-content.nx-dropdown-above {
+  box-shadow: 0 -0.25rem 0.5rem rgba(0, 0, 0, 0.175);
+  transform-origin: bottom center;
+}
+
+/* Dropdown positioned below button (default) */
+.nx-dropdown-content.nx-dropdown-below {
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.175);
+  transform-origin: top center;
+}
+
+/* Animation for dropdown positioning */
+.nx-dropdown-content {
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+}
+
+.nx-dropdown.active .nx-dropdown-content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Mobile devices (320px to 768px) */
+@media (max-width: 768px) {
+  .nx-dropdown-content {
+    min-width: 10rem;
+    max-width: calc(100vw - 2rem);
+    font-size: 0.8rem;
+  }
+
+  .nx-dropdown-content a {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .nx-dropdown-submenu-content {
+    min-width: 140px;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .nx-dropdown-submenu-content a {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablet devices (768px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nx-dropdown-content {
+    min-width: 9rem;
+    max-width: 18rem;
+    font-size: 0.85rem;
+  }
+
+  .nx-dropdown-content a {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .nx-dropdown-submenu-content {
+    min-width: 150px;
+    max-width: 280px;
+  }
+}
+
+/* Desktop devices (1025px to 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .nx-dropdown-content {
+    min-width: 8rem;
+    max-width: 20rem;
+    font-size: 0.875rem;
+  }
+
+  .nx-dropdown-content a {
+    padding: 0.5rem 0.75rem;
+    font-size: 12px;
+  }
+
+  .nx-dropdown-submenu-content {
+    min-width: 160px;
+    max-width: 300px;
+  }
+}
+
+/* Large desktop devices (1441px and up) */
+@media (min-width: 1441px) {
+  .nx-dropdown-content {
+    min-width: 10rem;
+    max-width: 25rem;
+    font-size: 0.9rem;
+  }
+
+  .nx-dropdown-content a {
+    padding: 0.6rem 1rem;
+    font-size: 13px;
+  }
+
+  .nx-dropdown-submenu-content {
+    min-width: 180px;
+    max-width: 350px;
+  }
+
+  .nx-dropdown-submenu-content a {
+    padding: 0.6rem 1rem;
+    font-size: 13px;
+  }
+}
+
+/* Ultra-wide monitors (1920px and up) */
+@media (min-width: 1920px) {
+  .nx-dropdown-content {
+    min-width: 12rem;
+    max-width: 30rem;
+    font-size: 1rem;
+  }
+
+  .nx-dropdown-content a {
+    padding: 0.7rem 1.2rem;
+    font-size: 14px;
+  }
+
+  .nx-dropdown-submenu-content {
+    min-width: 200px;
+    max-width: 400px;
+  }
+
+  .nx-dropdown-submenu-content a {
+    padding: 0.7rem 1.2rem;
+    font-size: 14px;
+  }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .nx-dropdown-content {
+    border-width: 0.5px;
+  }
+
+  .nx-dropdown-submenu-content {
+    border-width: 0.5px;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .nx-dropdown-content {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .nx-dropdown-submenu-content {
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+}
+
+/* Touch devices - larger touch targets */
+@media (hover: none) and (pointer: coarse) {
+  .nx-dropdown-content a {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nx-dropdown-submenu-toggle {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+  }
+
+  .nx-dropdown-submenu-content a {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+  }
+}
+
+/* Special handling for dropdowns in scroll containers */
+.nx-scroll .nx-dropdown-content,
+.nx-scroll-autohide .nx-dropdown-content,
+.table-responsive .nx-dropdown-content {
+  /* These will be positioned by JavaScript when needed */
+  z-index: 10000;
+}
+
+/* Ensure dropdown content is visible in overflow containers */
+.nx-dropdown-content {
+  /* Ensure dropdown is not clipped by overflow hidden */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* For fixed positioned dropdowns in scroll containers */
+.nx-dropdown-content[style*="position: fixed"] {
+  /* Ensure fixed dropdowns are always visible */
+  z-index: 10000 !important;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+}

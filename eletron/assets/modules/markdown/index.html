@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Branch Name - Primer CSS Demo</title>
+
+  <link rel="stylesheet" href="../primitives/size.css">
+  <link rel="stylesheet" href="../primitives/light.css">
+  <link rel="stylesheet" href="../core/index.css">
+  <link rel="stylesheet" href="./index.css">
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Markdown Body Demo</h1>
+
+  <div class="markdown-body" style="margin-bottom:32px;">
+    <h1>Judul Utama</h1>
+    <h2>Subjudul</h2>
+    <p>Ini adalah paragraf <a href="#">dengan tautan</a> dan <strong>teks tebal</strong> serta <em>teks miring</em>.</p>
+    <blockquote>Ini adalah kutipan markdown.</blockquote>
+    <ul>
+      <li>Item satu</li>
+      <li>Item dua</li>
+      <li>Item tiga</li>
+    </ul>
+    <ol>
+      <li>Langkah pertama</li>
+      <li>Langkah kedua</li>
+      <li>Langkah ketiga</li>
+    </ol>
+    <pre><code>function hello() {
+  return "Hello, world!";
+}
+</code></pre>
+    <hr>
+    <p><code>Inline code</code> dan <abbr title="HyperText Markup Language">HTML</abbr></p>
+  </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexa Primer CSS Demo</title>
+
+  <link rel="stylesheet" href="../nexa.css">
+
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 900px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+      transition: background-color 0.2s, color 0.2s;
+    }
+    h1 { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    p.subtitle { color: var(--fgColor-muted); margin: 0 0 24px; font-size: 13px; }
+
+    /* Theme Switcher */
+    .theme-switcher {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 16px;
+      background: var(--bgColor-muted);
+      border: 1px solid var(--borderColor-default);
+      border-radius: 6px;
+      margin-bottom: 32px;
+    }
+    .theme-switcher label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      width: 100%;
+      margin-bottom: 4px;
+    }
+    .theme-btn {
+      padding: 4px 10px;
+      font-size: 12px;
+      font-family: inherit;
+      border: 1px solid var(--borderColor-default);
+      border-radius: 6px;
+      background: var(--bgColor-default);
+      color: var(--fgColor-default);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .theme-btn:hover { background: var(--bgColor-muted); }
+    .theme-btn.active {
+      background: var(--bgColor-accent-emphasis);
+      color: var(--fgColor-onEmphasis);
+      border-color: var(--bgColor-accent-emphasis);
+    }
+    .theme-group { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+    .theme-group-label {
+      font-size: 11px;
+      color: var(--fgColor-muted);
+      font-weight: 600;
+      margin-right: 2px;
+    }
+
+    /* Color Swatches */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .swatch {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--borderColor-default);
+    }
+    .swatch-color {
+      height: 56px;
+      width: 100%;
+    }
+    .swatch-info {
+      padding: 6px 8px;
+      background: var(--bgColor-default);
+    }
+    .swatch-name {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--fgColor-default);
+      word-break: break-all;
+    }
+    .swatch-var {
+      font-size: 10px;
+      color: var(--fgColor-muted);
+      font-family: ui-monospace, monospace;
+      word-break: break-all;
+    }
+
+    /* Text color demos */
+    .fg-demo { display: flex; flex-direction: column; gap: 4px; }
+    .fg-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--borderColor-default);
+      background: var(--bgColor-default);
+    }
+    .fg-item .sample { font-size: 16px; font-weight: 600; min-width: 28px; }
+    .fg-item .meta { font-size: 11px; font-family: ui-monospace, monospace; color: var(--fgColor-muted); }
+
+    /* Border demos */
+    .border-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+    }
+    .border-item {
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    .border-item .b-name { font-weight: 600; margin-bottom: 2px; }
+    .border-item .b-var { font-family: ui-monospace, monospace; font-size: 10px; color: var(--fgColor-muted); }
+
+    /* Live UI Preview */
+    .preview-card {
+      padding: 20px;
+      border: 1px solid var(--borderColor-default);
+      border-radius: 6px;
+      background: var(--bgColor-default);
+      margin-bottom: 16px;
+    }
+    .label-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 7px;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 18px;
+      border-radius: 2em;
+      border: 1px solid transparent;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Color Modes</h1>
+  <p class="subtitle">Primer CSS mendukung 9 tema warna: 4 light variants dan 5 dark variants. Gunakan atribut <code>data-color-mode</code>, <code>data-light-theme</code>, dan <code>data-dark-theme</code> pada <code>&lt;html&gt;</code>.</p>
+
+  <!-- Theme Switcher -->
+  <div class="theme-switcher" id="themeSwitcher">
+    <label>Pilih Tema:</label>
+    <div class="theme-group">
+      <span class="theme-group-label">☀ Light →</span>
+      <button class="theme-btn active" data-mode="light" data-light="light">Light</button>
+      <button class="theme-btn" data-mode="light" data-light="light_colorblind">Colorblind</button>
+      <button class="theme-btn" data-mode="light" data-light="light_high_contrast">High Contrast</button>
+      <button class="theme-btn" data-mode="light" data-light="light_tritanopia">Tritanopia</button>
+    </div>
+    <div class="theme-group" style="margin-top:4px;">
+      <span class="theme-group-label">🌙 Dark →</span>
+      <button class="theme-btn" data-mode="dark" data-dark="dark">Dark</button>
+      <button class="theme-btn" data-mode="dark" data-dark="dark_dimmed">Dimmed</button>
+      <button class="theme-btn" data-mode="dark" data-dark="dark_high_contrast">High Contrast</button>
+      <button class="theme-btn" data-mode="dark" data-dark="dark_colorblind">Colorblind</button>
+      <button class="theme-btn" data-mode="dark" data-dark="dark_tritanopia">Tritanopia</button>
+    </div>
+    <div class="theme-group" style="margin-top:4px;">
+      <span class="theme-group-label">⚙ Auto →</span>
+      <button class="theme-btn" data-mode="auto" data-light="light" data-dark="dark">Auto (System)</button>
+    </div>
+  </div>
+
+  <!-- 1. Background Colors -->
+  <h2>1. Background Colors — <code>--bgColor-*</code></h2>
+
+  <h2 style="font-size:10px; border:0; padding:0; margin:0 0 8px; text-transform:none; letter-spacing:0;">Semantic backgrounds</h2>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-default);"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Default</div>
+        <div class="swatch-var">--bgColor-default</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-muted);"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Muted</div>
+        <div class="swatch-var">--bgColor-muted</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-emphasis);"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Emphasis</div>
+        <div class="swatch-var">--bgColor-emphasis</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-inverse);"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Inverse</div>
+        <div class="swatch-var">--bgColor-inverse</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-disabled);"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Disabled</div>
+        <div class="swatch-var">--bgColor-disabled</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-transparent); background-image: repeating-conic-gradient(#ccc 0% 25%, #fff 0% 50%); background-size: 14px 14px;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Transparent</div>
+        <div class="swatch-var">--bgColor-transparent</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="font-size:10px; border:0; padding:0; margin:12px 0 8px; text-transform:none; letter-spacing:0;">Accent</h2>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-accent-emphasis);"></div>
+      <div class="swatch-info"><div class="swatch-name">Accent Emphasis</div><div class="swatch-var">--bgColor-accent-emphasis</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-accent-muted);"></div>
+      <div class="swatch-info"><div class="swatch-name">Accent Muted</div><div class="swatch-var">--bgColor-accent-muted</div></div>
+    </div>
+  </div>
+
+  <h2 style="font-size:10px; border:0; padding:0; margin:12px 0 8px; text-transform:none; letter-spacing:0;">Success · Danger · Attention · Done · Severe · Sponsors</h2>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-success-emphasis);"></div>
+      <div class="swatch-info"><div class="swatch-name">Success Emphasis</div><div class="swatch-var">--bgColor-success-emphasis</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-success-muted);"></div>
+      <div class="swatch-info"><div class="swatch-name">Success Muted</div><div class="swatch-var">--bgColor-success-muted</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-danger-emphasis);"></div>
+      <div class="swatch-info"><div class="swatch-name">Danger Emphasis</div><div class="swatch-var">--bgColor-danger-emphasis</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-danger-muted);"></div>
+      <div class="swatch-info"><div class="swatch-name">Danger Muted</div><div class="swatch-var">--bgColor-danger-muted</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-attention-emphasis);"></div>
+      <div class="swatch-info"><div class="swatch-name">Attention Emphasis</div><div class="swatch-var">--bgColor-attention-emphasis</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-attention-muted);"></div>
+      <div class="swatch-info"><div class="swatch-name">Attention Muted</div><div class="swatch-var">--bgColor-attention-muted</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-done-emphasis);"></div>
+      <div class="swatch-info"><div class="swatch-name">Done Emphasis</div><div class="swatch-var">--bgColor-done-emphasis</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-done-muted);"></div>
+      <div class="swatch-info"><div class="swatch-name">Done Muted</div><div class="swatch-var">--bgColor-done-muted</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-severe-emphasis);"></div>
+      <div class="swatch-info"><div class="swatch-name">Severe Emphasis</div><div class="swatch-var">--bgColor-severe-emphasis</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-severe-muted);"></div>
+      <div class="swatch-info"><div class="swatch-name">Severe Muted</div><div class="swatch-var">--bgColor-severe-muted</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-sponsors-emphasis);"></div>
+      <div class="swatch-info"><div class="swatch-name">Sponsors Emphasis</div><div class="swatch-var">--bgColor-sponsors-emphasis</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-sponsors-muted);"></div>
+      <div class="swatch-info"><div class="swatch-name">Sponsors Muted</div><div class="swatch-var">--bgColor-sponsors-muted</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-neutral-emphasis);"></div>
+      <div class="swatch-info"><div class="swatch-name">Neutral Emphasis</div><div class="swatch-var">--bgColor-neutral-emphasis</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-neutral-muted);"></div>
+      <div class="swatch-info"><div class="swatch-name">Neutral Muted</div><div class="swatch-var">--bgColor-neutral-muted</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: var(--bgColor-open-emphasis);"></div>
+      <div class="swatch-info"><div class="swatch-name">Open Emphasis</div><div class="swatch-var">--bgColor-open-emphasis</div></div>
+    </div>
+  </div>
+
+  <!-- 2. Foreground / Text Colors -->
+  <h2>2. Foreground Colors — <code>--fgColor-*</code></h2>
+  <div class="fg-demo">
+    <div class="fg-item"><span class="sample" style="color:var(--fgColor-default);">Aa</span><span class="meta">--fgColor-default — teks utama</span></div>
+    <div class="fg-item"><span class="sample" style="color:var(--fgColor-muted);">Aa</span><span class="meta">--fgColor-muted — teks sekunder</span></div>
+    <div class="fg-item"><span class="sample" style="color:var(--fgColor-accent);">Aa</span><span class="meta">--fgColor-accent — link / aksi utama</span></div>
+    <div class="fg-item"><span class="sample" style="color:var(--fgColor-success);">Aa</span><span class="meta">--fgColor-success — pesan berhasil</span></div>
+    <div class="fg-item"><span class="sample" style="color:var(--fgColor-danger);">Aa</span><span class="meta">--fgColor-danger — error / destruktif</span></div>
+    <div class="fg-item"><span class="sample" style="color:var(--fgColor-attention);">Aa</span><span class="meta">--fgColor-attention — peringatan</span></div>
+    <div class="fg-item"><span class="sample" style="color:var(--fgColor-done);">Aa</span><span class="meta">--fgColor-done — selesai / closed</span></div>
+    <div class="fg-item"><span class="sample" style="color:var(--fgColor-severe);">Aa</span><span class="meta">--fgColor-severe — kritikal / high priority</span></div>
+    <div class="fg-item"><span class="sample" style="color:var(--fgColor-sponsors);">Aa</span><span class="meta">--fgColor-sponsors — GitHub Sponsors</span></div>
+    <div class="fg-item" style="background:var(--bgColor-emphasis);"><span class="sample" style="color:var(--fgColor-onEmphasis);">Aa</span><span class="meta" style="color:var(--fgColor-onEmphasis);">--fgColor-onEmphasis — teks di atas emphasis bg</span></div>
+    <div class="fg-item" style="background:var(--bgColor-inverse);"><span class="sample" style="color:var(--fgColor-onEmphasis);">Aa</span><span class="meta" style="color:var(--fgColor-onEmphasis);">--fgColor-onEmphasis di atas bgColor-inverse</span></div>
+  </div>
+
+  <!-- 3. Border Colors -->
+  <h2>3. Border Colors — <code>--borderColor-*</code></h2>
+  <div class="border-grid">
+    <div class="border-item" style="border: 2px solid var(--borderColor-default);">
+      <div class="b-name">Default</div><div class="b-var">--borderColor-default</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-emphasis);">
+      <div class="b-name">Emphasis</div><div class="b-var">--borderColor-emphasis</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-muted);">
+      <div class="b-name">Muted</div><div class="b-var">--borderColor-muted</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-accent-emphasis);">
+      <div class="b-name">Accent Emphasis</div><div class="b-var">--borderColor-accent-emphasis</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-accent-muted);">
+      <div class="b-name">Accent Muted</div><div class="b-var">--borderColor-accent-muted</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-success-emphasis);">
+      <div class="b-name">Success Emphasis</div><div class="b-var">--borderColor-success-emphasis</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-success-muted);">
+      <div class="b-name">Success Muted</div><div class="b-var">--borderColor-success-muted</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-danger-emphasis);">
+      <div class="b-name">Danger Emphasis</div><div class="b-var">--borderColor-danger-emphasis</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-danger-muted);">
+      <div class="b-name">Danger Muted</div><div class="b-var">--borderColor-danger-muted</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-attention-emphasis);">
+      <div class="b-name">Attention Emphasis</div><div class="b-var">--borderColor-attention-emphasis</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-attention-muted);">
+      <div class="b-name">Attention Muted</div><div class="b-var">--borderColor-attention-muted</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-done-emphasis);">
+      <div class="b-name">Done Emphasis</div><div class="b-var">--borderColor-done-emphasis</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-done-muted);">
+      <div class="b-name">Done Muted</div><div class="b-var">--borderColor-done-muted</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-severe-emphasis);">
+      <div class="b-name">Severe Emphasis</div><div class="b-var">--borderColor-severe-emphasis</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-severe-muted);">
+      <div class="b-name">Severe Muted</div><div class="b-var">--borderColor-severe-muted</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-neutral-emphasis);">
+      <div class="b-name">Neutral Emphasis</div><div class="b-var">--borderColor-neutral-emphasis</div>
+    </div>
+    <div class="border-item" style="border: 2px solid var(--borderColor-sponsors-emphasis);">
+      <div class="b-name">Sponsors Emphasis</div><div class="b-var">--borderColor-sponsors-emphasis</div>
+    </div>
+    <div class="border-item" style="border: 2px dashed var(--borderColor-disabled);">
+      <div class="b-name">Disabled</div><div class="b-var">--borderColor-disabled</div>
+    </div>
+  </div>
+
+  <!-- 4. Live UI Preview -->
+  <h2>4. Live UI Preview — berubah sesuai tema aktif</h2>
+
+  <div class="preview-card">
+    <strong style="display:block; margin-bottom:10px; color:var(--fgColor-default);">Status Labels</strong>
+    <div style="display:flex; flex-wrap:wrap; gap:6px;">
+      <span class="label-badge" style="background:var(--bgColor-open-emphasis); color:var(--fgColor-onEmphasis);">● Open</span>
+      <span class="label-badge" style="background:var(--bgColor-done-emphasis); color:var(--fgColor-onEmphasis);">● Merged</span>
+      <span class="label-badge" style="background:var(--bgColor-neutral-emphasis); color:var(--fgColor-onEmphasis);">● Closed</span>
+      <span class="label-badge" style="background:var(--bgColor-accent-muted); color:var(--fgColor-accent); border-color:var(--borderColor-accent-muted);">accent</span>
+      <span class="label-badge" style="background:var(--bgColor-success-muted); color:var(--fgColor-success); border-color:var(--borderColor-success-muted);">success</span>
+      <span class="label-badge" style="background:var(--bgColor-danger-muted); color:var(--fgColor-danger); border-color:var(--borderColor-danger-muted);">danger</span>
+      <span class="label-badge" style="background:var(--bgColor-attention-muted); color:var(--fgColor-attention); border-color:var(--borderColor-attention-muted);">warning</span>
+      <span class="label-badge" style="background:var(--bgColor-done-muted); color:var(--fgColor-done); border-color:var(--borderColor-done-muted);">done</span>
+      <span class="label-badge" style="background:var(--bgColor-severe-muted); color:var(--fgColor-severe); border-color:var(--borderColor-severe-muted);">severe</span>
+      <span class="label-badge" style="background:var(--bgColor-sponsors-muted); color:var(--fgColor-sponsors); border-color:var(--borderColor-sponsors-muted);">sponsors</span>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <strong style="display:block; margin-bottom:10px; color:var(--fgColor-default);">Alert Banners</strong>
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <div style="padding:10px 14px; border-radius:6px; border-left:4px solid var(--borderColor-accent-emphasis); background:var(--bgColor-accent-muted); color:var(--fgColor-accent);">
+        <strong>Info:</strong> Ini adalah pesan informasi menggunakan accent color.
+      </div>
+      <div style="padding:10px 14px; border-radius:6px; border-left:4px solid var(--borderColor-success-emphasis); background:var(--bgColor-success-muted); color:var(--fgColor-success);">
+        <strong>Success:</strong> Operasi berhasil diselesaikan.
+      </div>
+      <div style="padding:10px 14px; border-radius:6px; border-left:4px solid var(--borderColor-attention-emphasis); background:var(--bgColor-attention-muted); color:var(--fgColor-attention);">
+        <strong>Warning:</strong> Perhatian, ada sesuatu yang perlu diperhatikan.
+      </div>
+      <div style="padding:10px 14px; border-radius:6px; border-left:4px solid var(--borderColor-danger-emphasis); background:var(--bgColor-danger-muted); color:var(--fgColor-danger);">
+        <strong>Danger:</strong> Terjadi kesalahan yang perlu segera diperbaiki.
+      </div>
+      <div style="padding:10px 14px; border-radius:6px; border-left:4px solid var(--borderColor-severe-emphasis); background:var(--bgColor-severe-muted); color:var(--fgColor-severe);">
+        <strong>Severe:</strong> Peringatan tingkat tinggi yang bersifat kritis.
+      </div>
+      <div style="padding:10px 14px; border-radius:6px; border-left:4px solid var(--borderColor-done-emphasis); background:var(--bgColor-done-muted); color:var(--fgColor-done);">
+        <strong>Done:</strong> Item ini sudah selesai / di-merge.
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <strong style="display:block; margin-bottom:10px; color:var(--fgColor-default);">Card dengan layering</strong>
+    <div style="background:var(--bgColor-muted); border:1px solid var(--borderColor-default); border-radius:6px; padding:16px;">
+      <div style="color:var(--fgColor-muted); font-size:12px; margin-bottom:8px;">Muted background</div>
+      <div style="background:var(--bgColor-default); border:1px solid var(--borderColor-default); border-radius:6px; padding:12px;">
+        <span style="color:var(--fgColor-default); font-weight:600;">Default background</span>
+        <p style="color:var(--fgColor-muted); margin:4px 0 0; font-size:12px;">Teks muted sebagai deskripsi sekunder dengan warna sesuai tema aktif.</p>
+      </div>
+      <div style="margin-top:10px; display:flex; gap:8px; align-items:center;">
+        <a href="#" style="color:var(--fgColor-accent); text-decoration:none; font-size:12px;">Link accent →</a>
+        <span style="color:var(--fgColor-success); font-size:12px;">✓ Success text</span>
+        <span style="color:var(--fgColor-danger); font-size:12px;">✗ Danger text</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Usage Reference -->
+  <h2>5. Cara Penggunaan</h2>
+  <div style="background:var(--bgColor-muted); border:1px solid var(--borderColor-default); border-radius:6px; padding:16px; font-family:ui-monospace,monospace; font-size:12px; color:var(--fgColor-default); line-height:1.8;">
+    <div style="color:var(--fgColor-muted);">&lt;!-- Set tema di elemen root --&gt;</div>
+    <div>&lt;html <span style="color:var(--fgColor-accent);">data-color-mode</span>="light" <span style="color:var(--fgColor-accent);">data-light-theme</span>="light"&gt;</div>
+    <div>&lt;html <span style="color:var(--fgColor-accent);">data-color-mode</span>="dark"  <span style="color:var(--fgColor-accent);">data-dark-theme</span>="dark_dimmed"&gt;</div>
+    <div>&lt;html <span style="color:var(--fgColor-accent);">data-color-mode</span>="auto"  <span style="color:var(--fgColor-accent);">data-light-theme</span>="light" <span style="color:var(--fgColor-accent);">data-dark-theme</span>="dark"&gt;</div>
+    <br>
+    <div style="color:var(--fgColor-muted);">/* Gunakan CSS variables di stylesheet */</div>
+    <div><span style="color:var(--fgColor-done);">.my-element</span> {</div>
+    <div>&nbsp;&nbsp;background: <span style="color:var(--fgColor-success);">var(--bgColor-accent-muted)</span>;</div>
+    <div>&nbsp;&nbsp;color: <span style="color:var(--fgColor-success);">var(--fgColor-accent)</span>;</div>
+    <div>&nbsp;&nbsp;border: 1px solid <span style="color:var(--fgColor-success);">var(--borderColor-accent-emphasis)</span>;</div>
+    <div>}</div>
+  </div>
+
+  <!-- 6. Semua 9 tema side-by-side mini preview -->
+  <h2>6. Mini Preview — Semua 9 Tema</h2>
+  <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap:8px;">
+
+    <div data-color-mode="light" data-light-theme="light" style="border:1px solid #d1d9e0; border-radius:6px; overflow:hidden; font-size:11px;">
+      <div style="background:var(--bgColor-emphasis); color:var(--fgColor-onEmphasis); padding:6px 10px; font-weight:600;">Light</div>
+      <div style="background:var(--bgColor-default); padding:8px 10px; color:var(--fgColor-default);">
+        Default<br><span style="color:var(--fgColor-muted);">Muted text</span><br>
+        <span style="color:var(--fgColor-accent);">Accent link</span>
+      </div>
+    </div>
+
+    <div data-color-mode="light" data-light-theme="light_colorblind" style="border:1px solid #d1d9e0; border-radius:6px; overflow:hidden; font-size:11px;">
+      <div style="background:var(--bgColor-emphasis); color:var(--fgColor-onEmphasis); padding:6px 10px; font-weight:600;">Light Colorblind</div>
+      <div style="background:var(--bgColor-default); padding:8px 10px; color:var(--fgColor-default);">
+        Default<br><span style="color:var(--fgColor-muted);">Muted text</span><br>
+        <span style="color:var(--fgColor-accent);">Accent link</span>
+      </div>
+    </div>
+
+    <div data-color-mode="light" data-light-theme="light_high_contrast" style="border:1px solid #d1d9e0; border-radius:6px; overflow:hidden; font-size:11px;">
+      <div style="background:var(--bgColor-emphasis); color:var(--fgColor-onEmphasis); padding:6px 10px; font-weight:600;">Light HC</div>
+      <div style="background:var(--bgColor-default); padding:8px 10px; color:var(--fgColor-default);">
+        Default<br><span style="color:var(--fgColor-muted);">Muted text</span><br>
+        <span style="color:var(--fgColor-accent);">Accent link</span>
+      </div>
+    </div>
+
+    <div data-color-mode="light" data-light-theme="light_tritanopia" style="border:1px solid #d1d9e0; border-radius:6px; overflow:hidden; font-size:11px;">
+      <div style="background:var(--bgColor-emphasis); color:var(--fgColor-onEmphasis); padding:6px 10px; font-weight:600;">Light Tritanopia</div>
+      <div style="background:var(--bgColor-default); padding:8px 10px; color:var(--fgColor-default);">
+        Default<br><span style="color:var(--fgColor-muted);">Muted text</span><br>
+        <span style="color:var(--fgColor-accent);">Accent link</span>
+      </div>
+    </div>
+
+    <div data-color-mode="dark" data-dark-theme="dark" style="border:1px solid #30363d; border-radius:6px; overflow:hidden; font-size:11px;">
+      <div style="background:var(--bgColor-emphasis); color:var(--fgColor-onEmphasis); padding:6px 10px; font-weight:600;">Dark</div>
+      <div style="background:var(--bgColor-default); padding:8px 10px; color:var(--fgColor-default);">
+        Default<br><span style="color:var(--fgColor-muted);">Muted text</span><br>
+        <span style="color:var(--fgColor-accent);">Accent link</span>
+      </div>
+    </div>
+
+    <div data-color-mode="dark" data-dark-theme="dark_dimmed" style="border:1px solid #30363d; border-radius:6px; overflow:hidden; font-size:11px;">
+      <div style="background:var(--bgColor-emphasis); color:var(--fgColor-onEmphasis); padding:6px 10px; font-weight:600;">Dark Dimmed</div>
+      <div style="background:var(--bgColor-default); padding:8px 10px; color:var(--fgColor-default);">
+        Default<br><span style="color:var(--fgColor-muted);">Muted text</span><br>
+        <span style="color:var(--fgColor-accent);">Accent link</span>
+      </div>
+    </div>
+
+    <div data-color-mode="dark" data-dark-theme="dark_high_contrast" style="border:1px solid #30363d; border-radius:6px; overflow:hidden; font-size:11px;">
+      <div style="background:var(--bgColor-emphasis); color:var(--fgColor-onEmphasis); padding:6px 10px; font-weight:600;">Dark HC</div>
+      <div style="background:var(--bgColor-default); padding:8px 10px; color:var(--fgColor-default);">
+        Default<br><span style="color:var(--fgColor-muted);">Muted text</span><br>
+        <span style="color:var(--fgColor-accent);">Accent link</span>
+      </div>
+    </div>
+
+    <div data-color-mode="dark" data-dark-theme="dark_colorblind" style="border:1px solid #30363d; border-radius:6px; overflow:hidden; font-size:11px;">
+      <div style="background:var(--bgColor-emphasis); color:var(--fgColor-onEmphasis); padding:6px 10px; font-weight:600;">Dark Colorblind</div>
+      <div style="background:var(--bgColor-default); padding:8px 10px; color:var(--fgColor-default);">
+        Default<br><span style="color:var(--fgColor-muted);">Muted text</span><br>
+        <span style="color:var(--fgColor-accent);">Accent link</span>
+      </div>
+    </div>
+
+    <div data-color-mode="dark" data-dark-theme="dark_tritanopia" style="border:1px solid #30363d; border-radius:6px; overflow:hidden; font-size:11px;">
+      <div style="background:var(--bgColor-emphasis); color:var(--fgColor-onEmphasis); padding:6px 10px; font-weight:600;">Dark Tritanopia</div>
+      <div style="background:var(--bgColor-default); padding:8px 10px; color:var(--fgColor-default);">
+        Default<br><span style="color:var(--fgColor-muted);">Muted text</span><br>
+        <span style="color:var(--fgColor-accent);">Accent link</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const html = document.documentElement;
+    const buttons = document.querySelectorAll('.theme-btn');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mode = btn.dataset.mode;
+        const light = btn.dataset.light;
+        const dark = btn.dataset.dark;
+
+        html.setAttribute('data-color-mode', mode);
+        if (light) html.setAttribute('data-light-theme', light);
+        if (dark) html.setAttribute('data-dark-theme', dark);
+
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

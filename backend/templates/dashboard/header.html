@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/assets/font/css/all.min.css"/>
+  <link rel="stylesheet" href="/assets/css/style.css?v=sidebar5">
+  <script src="/assets/js/app.js"></script>
+</head>
+<body class="{darkmode}">
+
+<div class="container {sidebarCollapsed} no-transition" id="mainContainer">
+
+  <!-- Overlay untuk tutup sidebar di mobile -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <button class="menu-toggle-btn" id="menuToggleBtn" onclick="toggleSidebarCollapsed()" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <span class="sidebar-header-brand">Nexa</span>
+    </div>
+    <div class="sidebar-menu">
+        <a href="/home" class="active"><i class="fas fa-gauge"></i><span class="menu-label"> Dashboard</span></a>
+     
+      <a href="/postingan"><i class="fas fa-newspaper"></i><span class="menu-label"> Artikel</span></a>
+      <a href="/postingan/kategori"><i class="fas fa-folder"></i><span class="menu-label"> Kategori</span></a>
+      <a href="/postingan/statistik"><i class="fas fa-chart-line"></i><span class="menu-label"> Statistik</span></a>
+      <a href="/postingan/media"><i class="fas fa-image"></i><span class="menu-label"> Media</span></a> 
+     <!-- NEXA menu_packages -->
+     {if has_access}
+      <a href="{url}"><i class="{icon}"></i><span class="menu-label"> {label}</span></a>
+     {endif}
+     <!-- END menu_packages -->
+      <a href="{account}"><i class="fas fa-cog"></i><span class="menu-label"> Pengaturan</span></a>
+      <a href="{logout}" style="color: #dc3545;"><i class="fas fa-right-from-bracket"></i><span class="menu-label"> Keluar</span></a>
+    </div>
+  </aside>
+
+  <!-- Header + Content -->
+  <header class="header">
+    <div class="header-left">
+      <form class="header-search-form" action="{search}" method="get">
+        <i class="fas fa-search header-search-icon"></i>
+        <input type="search" name="q" class="header-search-input" placeholder="Cari..." value="{search_keyword}" aria-label="Cari">
+      </form>
+    </div>
+    <div class="header-right">
+      <div class="header-actions">
+        <a href="{home}" class="header-icon-btn" aria-label="Beranda">
+          <i class="fas fa-home"></i>
+        </a>
+        <a href="#" class="header-icon-btn" id="notifBtn" aria-label="Notifikasi">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </a>
+        <button type="button" class="header-icon-btn theme-toggle" id="themeToggle" aria-label="Mode gelap">
+          <i class="fas fa-moon"></i>
+          <i class="fas fa-sun"></i>
+        </button>
+      </div>
+      <div class="user-area">
+        <div class="user-info">
+          <strong style="text-align: right">{user_first_name}</strong>
+          <small  style="text-align: right">{role}</small>
+        </div>
+        <img src="{avatarUID}" alt="profile">
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">

@@ -1,0 +1,66 @@
+/*
+  NexaUI Tag Styles - Inspired by GitHub Primer
+  Place in: assets/modules/tags.css or similar
+*/
+
+.nx-tag {
+  display: inline-flex;
+  align-items: center;
+  background: #f6f8fa;
+  color: #24292f;
+  border: 1px solid #d0d7de;
+  border-radius: 2em;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 0.15em 0.75em 0.15em 0.75em;
+  margin: 0 0.25em 0.25em 0;
+  cursor: default;
+  transition: background 0.15s, border 0.15s;
+  user-select: none;
+  white-space: nowrap;
+}
+.nx-tag.nx-tag-active {
+  background: #ddf4ff;
+  color: #0969da;
+  border-color: #0969da;
+}
+.nx-tag .nx-tag-remove {
+  margin-left: 0.5em;
+  color: #57606a;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.15s;
+}
+.nx-tag .nx-tag-remove:hover {
+  color: #cf222e;
+}
+.nx-tag .nx-tag-icon {
+  margin-right: 0.4em;
+  font-size: 1.1em;
+  vertical-align: middle;
+}
+
+/* Tag input styling */
+.nx-tag-input {
+  display: inline-block;
+  min-width: 120px;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  background: transparent;
+  padding: 0.15em 0.5em;
+  margin: 0.1em 0;
+}
+
+/* Tag group container */
+.nx-tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em;
+  margin-bottom: 0.5em;
+}

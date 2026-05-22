@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Icons - Primer CSS Demo</title>
+
+    <link rel="stylesheet" href="../nexa.css">
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 960px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+
+    /* Icon grid */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 4px;
+      border-radius: 6px;
+      cursor: default;
+      transition: background 0.12s;
+    }
+    .icon-item:hover {
+      background: var(--bgColor-muted);
+    }
+    .icon-item .icon {
+      width: 28px;
+      height: 28px;
+    }
+    .icon-item .icon-label {
+      font-size: 10px;
+      color: var(--fgColor-muted);
+      text-align: center;
+      word-break: break-all;
+      line-height: 1.3;
+    }
+    .icon-item .icon-class {
+      font-size: 9px;
+      color: var(--fgColor-accent);
+      font-family: ui-monospace, monospace;
+      text-align: center;
+    }
+
+    /* File tree demo */
+    .file-tree {
+      background: var(--bgColor-muted);
+      border: 1px solid var(--borderColor-default);
+      border-radius: 6px;
+      padding: 12px 16px;
+      font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    .tree-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 1px 0;
+      border-radius: 4px;
+      padding: 2px 4px;
+      cursor: default;
+    }
+    .tree-row:hover { background: var(--bgColor-default); }
+    .tree-indent { padding-left: 22px; }
+    .tree-indent-2 { padding-left: 44px; }
+    .tree-row .icon { width: 16px; height: 16px; }
+    .tree-name { color: var(--fgColor-default); }
+    .tree-name.folder { font-weight: 600; color: var(--fgColor-accent); }
+
+    /* Size demos */
+    .size-demo {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .size-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--fgColor-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <h1 style="margin:0 0 4px;">File Icons</h1>
+  <p style="color:var(--fgColor-muted); font-size:13px; margin:0 0 8px;">Ikon tipe file menggunakan class <code>.icon .icon-{ext}</code>. Berdasarkan CSS mask technique dengan SVG sebagai background.</p>
+
+  <!-- ============================================================
+       1. WEB
+  ============================================================ -->
+  <h2>1. Web Technologies</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-html"></span><span class="icon-label">HTML</span><span class="icon-class">.icon-html</span></div>
+    <div class="icon-item"><span class="icon icon-css"></span><span class="icon-label">CSS</span><span class="icon-class">.icon-css</span></div>
+    <div class="icon-item"><span class="icon icon-scss"></span><span class="icon-label">SCSS</span><span class="icon-class">.icon-scss</span></div>
+    <div class="icon-item"><span class="icon icon-sass"></span><span class="icon-label">SASS</span><span class="icon-class">.icon-sass</span></div>
+    <div class="icon-item"><span class="icon icon-less"></span><span class="icon-label">LESS</span><span class="icon-class">.icon-less</span></div>
+    <div class="icon-item"><span class="icon icon-js"></span><span class="icon-label">JavaScript</span><span class="icon-class">.icon-js</span></div>
+    <div class="icon-item"><span class="icon icon-mjs"></span><span class="icon-label">ESModule</span><span class="icon-class">.icon-mjs</span></div>
+    <div class="icon-item"><span class="icon icon-cjs"></span><span class="icon-label">CommonJS</span><span class="icon-class">.icon-cjs</span></div>
+    <div class="icon-item"><span class="icon icon-jsx"></span><span class="icon-label">JSX</span><span class="icon-class">.icon-jsx</span></div>
+    <div class="icon-item"><span class="icon icon-ts"></span><span class="icon-label">TypeScript</span><span class="icon-class">.icon-ts</span></div>
+    <div class="icon-item"><span class="icon icon-tsx"></span><span class="icon-label">TSX</span><span class="icon-class">.icon-tsx</span></div>
+    <div class="icon-item"><span class="icon icon-vue"></span><span class="icon-label">Vue</span><span class="icon-class">.icon-vue</span></div>
+    <div class="icon-item"><span class="icon icon-svelte"></span><span class="icon-label">Svelte</span><span class="icon-class">.icon-svelte</span></div>
+    <div class="icon-item"><span class="icon icon-astro"></span><span class="icon-label">Astro</span><span class="icon-class">.icon-astro</span></div>
+  </div>
+
+  <!-- ============================================================
+       2. BACKEND / LANGUAGES
+  ============================================================ -->
+  <h2>2. Backend / Languages</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-php"></span><span class="icon-label">PHP</span><span class="icon-class">.icon-php</span></div>
+    <div class="icon-item"><span class="icon icon-py"></span><span class="icon-label">Python</span><span class="icon-class">.icon-py</span></div>
+    <div class="icon-item"><span class="icon icon-rb"></span><span class="icon-label">Ruby</span><span class="icon-class">.icon-rb</span></div>
+    <div class="icon-item"><span class="icon icon-java"></span><span class="icon-label">Java</span><span class="icon-class">.icon-java</span></div>
+    <div class="icon-item"><span class="icon icon-kt"></span><span class="icon-label">Kotlin</span><span class="icon-class">.icon-kt</span></div>
+    <div class="icon-item"><span class="icon icon-swift"></span><span class="icon-label">Swift</span><span class="icon-class">.icon-swift</span></div>
+    <div class="icon-item"><span class="icon icon-go"></span><span class="icon-label">Go</span><span class="icon-class">.icon-go</span></div>
+    <div class="icon-item"><span class="icon icon-rs"></span><span class="icon-label">Rust</span><span class="icon-class">.icon-rs</span></div>
+    <div class="icon-item"><span class="icon icon-c"></span><span class="icon-label">C</span><span class="icon-class">.icon-c</span></div>
+    <div class="icon-item"><span class="icon icon-cpp"></span><span class="icon-label">C++</span><span class="icon-class">.icon-cpp</span></div>
+    <div class="icon-item"><span class="icon icon-h"></span><span class="icon-label">Header .h</span><span class="icon-class">.icon-h</span></div>
+    <div class="icon-item"><span class="icon icon-hpp"></span><span class="icon-label">Header .hpp</span><span class="icon-class">.icon-hpp</span></div>
+    <div class="icon-item"><span class="icon icon-cs"></span><span class="icon-label">C#</span><span class="icon-class">.icon-cs</span></div>
+    <div class="icon-item"><span class="icon icon-dart"></span><span class="icon-label">Dart</span><span class="icon-class">.icon-dart</span></div>
+    <div class="icon-item"><span class="icon icon-lua"></span><span class="icon-label">Lua</span><span class="icon-class">.icon-lua</span></div>
+    <div class="icon-item"><span class="icon icon-r"></span><span class="icon-label">R</span><span class="icon-class">.icon-r</span></div>
+    <div class="icon-item"><span class="icon icon-scala"></span><span class="icon-label">Scala</span><span class="icon-class">.icon-scala</span></div>
+    <div class="icon-item"><span class="icon icon-clj"></span><span class="icon-label">Clojure</span><span class="icon-class">.icon-clj</span></div>
+    <div class="icon-item"><span class="icon icon-ex"></span><span class="icon-label">Elixir</span><span class="icon-class">.icon-ex</span></div>
+    <div class="icon-item"><span class="icon icon-erl"></span><span class="icon-label">Erlang</span><span class="icon-class">.icon-erl</span></div>
+    <div class="icon-item"><span class="icon icon-hs"></span><span class="icon-label">Haskell</span><span class="icon-class">.icon-hs</span></div>
+    <div class="icon-item"><span class="icon icon-pl"></span><span class="icon-label">Perl</span><span class="icon-class">.icon-pl</span></div>
+    <div class="icon-item"><span class="icon icon-nim"></span><span class="icon-label">Nim</span><span class="icon-class">.icon-nim</span></div>
+    <div class="icon-item"><span class="icon icon-zig"></span><span class="icon-label">Zig</span><span class="icon-class">.icon-zig</span></div>
+    <div class="icon-item"><span class="icon icon-d"></span><span class="icon-label">D</span><span class="icon-class">.icon-d</span></div>
+    <div class="icon-item"><span class="icon icon-elm"></span><span class="icon-label">Elm</span><span class="icon-class">.icon-elm</span></div>
+    <div class="icon-item"><span class="icon icon-fs"></span><span class="icon-label">F#</span><span class="icon-class">.icon-fs</span></div>
+    <div class="icon-item"><span class="icon icon-ml"></span><span class="icon-label">OCaml</span><span class="icon-class">.icon-ml</span></div>
+    <div class="icon-item"><span class="icon icon-v"></span><span class="icon-label">V</span><span class="icon-class">.icon-v</span></div>
+    <div class="icon-item"><span class="icon icon-asm"></span><span class="icon-label">Assembly</span><span class="icon-class">.icon-asm</span></div>
+    <div class="icon-item"><span class="icon icon-wasm"></span><span class="icon-label">WASM</span><span class="icon-class">.icon-wasm</span></div>
+  </div>
+
+  <!-- ============================================================
+       3. DATA / CONFIG
+  ============================================================ -->
+  <h2>3. Data &amp; Config</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-json"></span><span class="icon-label">JSON</span><span class="icon-class">.icon-json</span></div>
+    <div class="icon-item"><span class="icon icon-jsonc"></span><span class="icon-label">JSONC</span><span class="icon-class">.icon-jsonc</span></div>
+    <div class="icon-item"><span class="icon icon-xml"></span><span class="icon-label">XML</span><span class="icon-class">.icon-xml</span></div>
+    <div class="icon-item"><span class="icon icon-yaml"></span><span class="icon-label">YAML</span><span class="icon-class">.icon-yaml</span></div>
+    <div class="icon-item"><span class="icon icon-yml"></span><span class="icon-label">YML</span><span class="icon-class">.icon-yml</span></div>
+    <div class="icon-item"><span class="icon icon-toml"></span><span class="icon-label">TOML</span><span class="icon-class">.icon-toml</span></div>
+    <div class="icon-item"><span class="icon icon-ini"></span><span class="icon-label">INI</span><span class="icon-class">.icon-ini</span></div>
+    <div class="icon-item"><span class="icon icon-env"></span><span class="icon-label">.env</span><span class="icon-class">.icon-env</span></div>
+    <div class="icon-item"><span class="icon icon-sql"></span><span class="icon-label">SQL</span><span class="icon-class">.icon-sql</span></div>
+    <div class="icon-item"><span class="icon icon-graphql"></span><span class="icon-label">GraphQL</span><span class="icon-class">.icon-graphql</span></div>
+    <div class="icon-item"><span class="icon icon-gql"></span><span class="icon-label">GQL</span><span class="icon-class">.icon-gql</span></div>
+    <div class="icon-item"><span class="icon icon-proto"></span><span class="icon-label">Proto</span><span class="icon-class">.icon-proto</span></div>
+    <div class="icon-item"><span class="icon icon-csv"></span><span class="icon-label">CSV</span><span class="icon-class">.icon-csv</span></div>
+  </div>
+
+  <!-- ============================================================
+       4. SHELL / TERMINAL
+  ============================================================ -->
+  <h2>4. Shell &amp; Terminal</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-sh"></span><span class="icon-label">Shell</span><span class="icon-class">.icon-sh</span></div>
+    <div class="icon-item"><span class="icon icon-bash"></span><span class="icon-label">Bash</span><span class="icon-class">.icon-bash</span></div>
+    <div class="icon-item"><span class="icon icon-zsh"></span><span class="icon-label">Zsh</span><span class="icon-class">.icon-zsh</span></div>
+    <div class="icon-item"><span class="icon icon-fish"></span><span class="icon-label">Fish</span><span class="icon-class">.icon-fish</span></div>
+    <div class="icon-item"><span class="icon icon-bat"></span><span class="icon-label">Bat</span><span class="icon-class">.icon-bat</span></div>
+    <div class="icon-item"><span class="icon icon-cmd"></span><span class="icon-label">CMD</span><span class="icon-class">.icon-cmd</span></div>
+    <div class="icon-item"><span class="icon icon-ps1"></span><span class="icon-label">PowerShell</span><span class="icon-class">.icon-ps1</span></div>
+  </div>
+
+  <!-- ============================================================
+       5. MARKUP / DOCUMENT
+  ============================================================ -->
+  <h2>5. Markup &amp; Documents</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-md"></span><span class="icon-label">Markdown</span><span class="icon-class">.icon-md</span></div>
+    <div class="icon-item"><span class="icon icon-mdx"></span><span class="icon-label">MDX</span><span class="icon-class">.icon-mdx</span></div>
+    <div class="icon-item"><span class="icon icon-txt"></span><span class="icon-label">Text</span><span class="icon-class">.icon-txt</span></div>
+    <div class="icon-item"><span class="icon icon-rtf"></span><span class="icon-label">RTF</span><span class="icon-class">.icon-rtf</span></div>
+    <div class="icon-item"><span class="icon icon-pdf"></span><span class="icon-label">PDF</span><span class="icon-class">.icon-pdf</span></div>
+    <div class="icon-item"><span class="icon icon-doc"></span><span class="icon-label">Word</span><span class="icon-class">.icon-doc</span></div>
+    <div class="icon-item"><span class="icon icon-docx"></span><span class="icon-label">DOCX</span><span class="icon-class">.icon-docx</span></div>
+    <div class="icon-item"><span class="icon icon-xls"></span><span class="icon-label">Excel</span><span class="icon-class">.icon-xls</span></div>
+    <div class="icon-item"><span class="icon icon-xlsx"></span><span class="icon-label">XLSX</span><span class="icon-class">.icon-xlsx</span></div>
+    <div class="icon-item"><span class="icon icon-ppt"></span><span class="icon-label">PowerPoint</span><span class="icon-class">.icon-ppt</span></div>
+    <div class="icon-item"><span class="icon icon-pptx"></span><span class="icon-label">PPTX</span><span class="icon-class">.icon-pptx</span></div>
+    <div class="icon-item"><span class="icon icon-tex"></span><span class="icon-label">TeX</span><span class="icon-class">.icon-tex</span></div>
+    <div class="icon-item"><span class="icon icon-latex"></span><span class="icon-label">LaTeX</span><span class="icon-class">.icon-latex</span></div>
+  </div>
+
+  <!-- ============================================================
+       6. IMAGE
+  ============================================================ -->
+  <h2>6. Images</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-jpg"></span><span class="icon-label">JPG</span><span class="icon-class">.icon-jpg</span></div>
+    <div class="icon-item"><span class="icon icon-jpeg"></span><span class="icon-label">JPEG</span><span class="icon-class">.icon-jpeg</span></div>
+    <div class="icon-item"><span class="icon icon-png"></span><span class="icon-label">PNG</span><span class="icon-class">.icon-png</span></div>
+    <div class="icon-item"><span class="icon icon-gif"></span><span class="icon-label">GIF</span><span class="icon-class">.icon-gif</span></div>
+    <div class="icon-item"><span class="icon icon-webp"></span><span class="icon-label">WEBP</span><span class="icon-class">.icon-webp</span></div>
+    <div class="icon-item"><span class="icon icon-bmp"></span><span class="icon-label">BMP</span><span class="icon-class">.icon-bmp</span></div>
+    <div class="icon-item"><span class="icon icon-tiff"></span><span class="icon-label">TIFF</span><span class="icon-class">.icon-tiff</span></div>
+    <div class="icon-item"><span class="icon icon-ico"></span><span class="icon-label">ICO</span><span class="icon-class">.icon-ico</span></div>
+    <div class="icon-item"><span class="icon icon-svg"></span><span class="icon-label">SVG</span><span class="icon-class">.icon-svg</span></div>
+  </div>
+
+  <!-- ============================================================
+       7. ARCHIVE
+  ============================================================ -->
+  <h2>7. Archives</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-zip"></span><span class="icon-label">ZIP</span><span class="icon-class">.icon-zip</span></div>
+    <div class="icon-item"><span class="icon icon-rar"></span><span class="icon-label">RAR</span><span class="icon-class">.icon-rar</span></div>
+    <div class="icon-item"><span class="icon icon-tar"></span><span class="icon-label">TAR</span><span class="icon-class">.icon-tar</span></div>
+    <div class="icon-item"><span class="icon icon-gz"></span><span class="icon-label">GZ</span><span class="icon-class">.icon-gz</span></div>
+    <div class="icon-item"><span class="icon icon-7z"></span><span class="icon-label">7Z</span><span class="icon-class">.icon-7z</span></div>
+    <div class="icon-item"><span class="icon icon-bz2"></span><span class="icon-label">BZ2</span><span class="icon-class">.icon-bz2</span></div>
+    <div class="icon-item"><span class="icon icon-xz"></span><span class="icon-label">XZ</span><span class="icon-class">.icon-xz</span></div>
+  </div>
+
+  <!-- ============================================================
+       8. AUDIO / VIDEO
+  ============================================================ -->
+  <h2>8. Audio &amp; Video</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-mp4"></span><span class="icon-label">MP4</span><span class="icon-class">.icon-mp4</span></div>
+    <div class="icon-item"><span class="icon icon-avi"></span><span class="icon-label">AVI</span><span class="icon-class">.icon-avi</span></div>
+    <div class="icon-item"><span class="icon icon-mkv"></span><span class="icon-label">MKV</span><span class="icon-class">.icon-mkv</span></div>
+    <div class="icon-item"><span class="icon icon-mov"></span><span class="icon-label">MOV</span><span class="icon-class">.icon-mov</span></div>
+    <div class="icon-item"><span class="icon icon-webm"></span><span class="icon-label">WEBM</span><span class="icon-class">.icon-webm</span></div>
+    <div class="icon-item"><span class="icon icon-mp3"></span><span class="icon-label">MP3</span><span class="icon-class">.icon-mp3</span></div>
+    <div class="icon-item"><span class="icon icon-wav"></span><span class="icon-label">WAV</span><span class="icon-class">.icon-wav</span></div>
+    <div class="icon-item"><span class="icon icon-ogg"></span><span class="icon-label">OGG</span><span class="icon-class">.icon-ogg</span></div>
+    <div class="icon-item"><span class="icon icon-flac"></span><span class="icon-label">FLAC</span><span class="icon-class">.icon-flac</span></div>
+    <div class="icon-item"><span class="icon icon-aac"></span><span class="icon-label">AAC</span><span class="icon-class">.icon-aac</span></div>
+  </div>
+
+  <!-- ============================================================
+       9. FONT
+  ============================================================ -->
+  <h2>9. Fonts</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-ttf"></span><span class="icon-label">TTF</span><span class="icon-class">.icon-ttf</span></div>
+    <div class="icon-item"><span class="icon icon-otf"></span><span class="icon-label">OTF</span><span class="icon-class">.icon-otf</span></div>
+    <div class="icon-item"><span class="icon icon-woff"></span><span class="icon-label">WOFF</span><span class="icon-class">.icon-woff</span></div>
+    <div class="icon-item"><span class="icon icon-woff2"></span><span class="icon-label">WOFF2</span><span class="icon-class">.icon-woff2</span></div>
+    <div class="icon-item"><span class="icon icon-eot"></span><span class="icon-label">EOT</span><span class="icon-class">.icon-eot</span></div>
+  </div>
+
+  <!-- ============================================================
+       10. DEVOPS / CONFIG
+  ============================================================ -->
+  <h2>10. DevOps &amp; Config</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-dockerfile"></span><span class="icon-label">Dockerfile</span><span class="icon-class">.icon-dockerfile</span></div>
+    <div class="icon-item"><span class="icon icon-dockerignore"></span><span class="icon-label">.dockerignore</span><span class="icon-class">.icon-dockerignore</span></div>
+    <div class="icon-item"><span class="icon icon-makefile"></span><span class="icon-label">Makefile</span><span class="icon-class">.icon-makefile</span></div>
+    <div class="icon-item"><span class="icon icon-cmake"></span><span class="icon-label">CMake</span><span class="icon-class">.icon-cmake</span></div>
+    <div class="icon-item"><span class="icon icon-gradle"></span><span class="icon-label">Gradle</span><span class="icon-class">.icon-gradle</span></div>
+    <div class="icon-item"><span class="icon icon-nginx"></span><span class="icon-label">NGINX</span><span class="icon-class">.icon-nginx</span></div>
+    <div class="icon-item"><span class="icon icon-htaccess"></span><span class="icon-label">.htaccess</span><span class="icon-class">.icon-htaccess</span></div>
+    <div class="icon-item"><span class="icon icon-terraform"></span><span class="icon-label">Terraform</span><span class="icon-class">.icon-terraform</span></div>
+    <div class="icon-item"><span class="icon icon-tf"></span><span class="icon-label">.tf</span><span class="icon-class">.icon-tf</span></div>
+  </div>
+
+  <!-- ============================================================
+       11. TOOLING / SPECIAL
+  ============================================================ -->
+  <h2>11. Tooling &amp; Special</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-gitignore"></span><span class="icon-label">.gitignore</span><span class="icon-class">.icon-gitignore</span></div>
+    <div class="icon-item"><span class="icon icon-gitattributes"></span><span class="icon-label">.gitattributes</span><span class="icon-class">.icon-gitattributes</span></div>
+    <div class="icon-item"><span class="icon icon-npmignore"></span><span class="icon-label">.npmignore</span><span class="icon-class">.icon-npmignore</span></div>
+    <div class="icon-item"><span class="icon icon-eslintrc"></span><span class="icon-label">ESLint</span><span class="icon-class">.icon-eslintrc</span></div>
+    <div class="icon-item"><span class="icon icon-prettierrc"></span><span class="icon-label">Prettier</span><span class="icon-class">.icon-prettierrc</span></div>
+    <div class="icon-item"><span class="icon icon-editorconfig"></span><span class="icon-label">.editorconfig</span><span class="icon-class">.icon-editorconfig</span></div>
+    <div class="icon-item"><span class="icon icon-tsconfig"></span><span class="icon-label">tsconfig</span><span class="icon-class">.icon-tsconfig</span></div>
+    <div class="icon-item"><span class="icon icon-package"></span><span class="icon-label">package.json</span><span class="icon-class">.icon-package</span></div>
+    <div class="icon-item"><span class="icon icon-lock"></span><span class="icon-label">lock</span><span class="icon-class">.icon-lock</span></div>
+    <div class="icon-item"><span class="icon icon-license"></span><span class="icon-label">LICENSE</span><span class="icon-class">.icon-license</span></div>
+    <div class="icon-item"><span class="icon icon-log"></span><span class="icon-label">Log</span><span class="icon-class">.icon-log</span></div>
+    <div class="icon-item"><span class="icon icon-exe"></span><span class="icon-label">EXE</span><span class="icon-class">.icon-exe</span></div>
+    <div class="icon-item"><span class="icon icon-dll"></span><span class="icon-label">DLL</span><span class="icon-class">.icon-dll</span></div>
+    <div class="icon-item"><span class="icon icon-jar"></span><span class="icon-label">JAR</span><span class="icon-class">.icon-jar</span></div>
+    <div class="icon-item"><span class="icon icon-key"></span><span class="icon-label">Key</span><span class="icon-class">.icon-key</span></div>
+    <div class="icon-item"><span class="icon icon-pem"></span><span class="icon-label">PEM</span><span class="icon-class">.icon-pem</span></div>
+    <div class="icon-item"><span class="icon icon-cert"></span><span class="icon-label">Cert</span><span class="icon-class">.icon-cert</span></div>
+    <div class="icon-item"><span class="icon icon-crt"></span><span class="icon-label">CRT</span><span class="icon-class">.icon-crt</span></div>
+    <div class="icon-item"><span class="icon icon-default"></span><span class="icon-label">Default</span><span class="icon-class">.icon-default</span></div>
+    <div class="icon-item"><span class="icon icon-link"></span><span class="icon-label">Link/URL</span><span class="icon-class">.icon-link</span></div>
+    <div class="icon-item"><span class="icon icon-edit"></span><span class="icon-label">Edit</span><span class="icon-class">.icon-edit</span></div>
+    <div class="icon-item"><span class="icon icon-delete"></span><span class="icon-label">Delete</span><span class="icon-class">.icon-delete</span></div>
+  </div>
+
+  <!-- ============================================================
+       12. FRAMEWORKS
+  ============================================================ -->
+  <h2>12. Frameworks &amp; Tools</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-angular"></span><span class="icon-label">Angular</span><span class="icon-class">.icon-angular</span></div>
+    <div class="icon-item"><span class="icon icon-nest"></span><span class="icon-label">NestJS</span><span class="icon-class">.icon-nest</span></div>
+    <div class="icon-item"><span class="icon icon-next"></span><span class="icon-label">Next.js</span><span class="icon-class">.icon-next</span></div>
+    <div class="icon-item"><span class="icon icon-nuxt"></span><span class="icon-label">Nuxt</span><span class="icon-class">.icon-nuxt</span></div>
+    <div class="icon-item"><span class="icon icon-prisma"></span><span class="icon-label">Prisma</span><span class="icon-class">.icon-prisma</span></div>
+    <div class="icon-item"><span class="icon icon-storybook"></span><span class="icon-label">Storybook</span><span class="icon-class">.icon-storybook</span></div>
+    <div class="icon-item"><span class="icon icon-jest"></span><span class="icon-label">Jest</span><span class="icon-class">.icon-jest</span></div>
+    <div class="icon-item"><span class="icon icon-vitest"></span><span class="icon-label">Vitest</span><span class="icon-label">.icon-vitest</span></div>
+    <div class="icon-item"><span class="icon icon-webpack"></span><span class="icon-label">Webpack</span><span class="icon-class">.icon-webpack</span></div>
+    <div class="icon-item"><span class="icon icon-vite"></span><span class="icon-label">Vite</span><span class="icon-class">.icon-vite</span></div>
+    <div class="icon-item"><span class="icon icon-rollup"></span><span class="icon-label">Rollup</span><span class="icon-class">.icon-rollup</span></div>
+    <div class="icon-item"><span class="icon icon-firebase"></span><span class="icon-label">Firebase</span><span class="icon-class">.icon-firebase</span></div>
+  </div>
+
+  <!-- ============================================================
+       13. FOLDER ICONS
+  ============================================================ -->
+  <h2>13. Folder Icons</h2>
+  <div class="icon-grid">
+    <div class="icon-item"><span class="icon icon-folder"></span><span class="icon-label">Folder</span><span class="icon-class">.icon-folder</span></div>
+    <div class="icon-item"><span class="icon icon-folder-open"></span><span class="icon-label">Folder Open</span><span class="icon-class">.icon-folder-open</span></div>
+    <div class="icon-item"><span class="icon icon-folder-src"></span><span class="icon-label">src</span><span class="icon-class">.icon-folder-src</span></div>
+    <div class="icon-item"><span class="icon icon-folder-src-open"></span><span class="icon-label">src open</span><span class="icon-class">.icon-folder-src-open</span></div>
+    <div class="icon-item"><span class="icon icon-folder-dist"></span><span class="icon-label">dist</span><span class="icon-class">.icon-folder-dist</span></div>
+    <div class="icon-item"><span class="icon icon-folder-dist-open"></span><span class="icon-label">dist open</span><span class="icon-class">.icon-folder-dist-open</span></div>
+    <div class="icon-item"><span class="icon icon-folder-node"></span><span class="icon-label">node_modules</span><span class="icon-class">.icon-folder-node</span></div>
+    <div class="icon-item"><span class="icon icon-folder-node-open"></span><span class="icon-label">node open</span><span class="icon-class">.icon-folder-node-open</span></div>
+    <div class="icon-item"><span class="icon icon-folder-assets"></span><span class="icon-label">assets</span><span class="icon-class">.icon-folder-assets</span></div>
+    <div class="icon-item"><span class="icon icon-folder-images"></span><span class="icon-label">images</span><span class="icon-class">.icon-folder-images</span></div>
+    <div class="icon-item"><span class="icon icon-folder-css"></span><span class="icon-label">css</span><span class="icon-class">.icon-folder-css</span></div>
+    <div class="icon-item"><span class="icon icon-folder-js"></span><span class="icon-label">js</span><span class="icon-class">.icon-folder-js</span></div>
+    <div class="icon-item"><span class="icon icon-folder-components"></span><span class="icon-label">components</span><span class="icon-class">.icon-folder-components</span></div>
+    <div class="icon-item"><span class="icon icon-folder-config"></span><span class="icon-label">config</span><span class="icon-class">.icon-folder-config</span></div>
+    <div class="icon-item"><span class="icon icon-folder-public"></span><span class="icon-label">public</span><span class="icon-class">.icon-folder-public</span></div>
+    <div class="icon-item"><span class="icon icon-folder-test"></span><span class="icon-label">test</span><span class="icon-class">.icon-folder-test</span></div>
+    <div class="icon-item"><span class="icon icon-folder-docs"></span><span class="icon-label">docs</span><span class="icon-class">.icon-folder-docs</span></div>
+    <div class="icon-item"><span class="icon icon-folder-lib"></span><span class="icon-label">lib</span><span class="icon-class">.icon-folder-lib</span></div>
+    <div class="icon-item"><span class="icon icon-folder-api"></span><span class="icon-label">api</span><span class="icon-class">.icon-folder-api</span></div>
+    <div class="icon-item"><span class="icon icon-folder-database"></span><span class="icon-label">database</span><span class="icon-class">.icon-folder-database</span></div>
+    <div class="icon-item"><span class="icon icon-folder-views"></span><span class="icon-label">views</span><span class="icon-class">.icon-folder-views</span></div>
+    <div class="icon-item"><span class="icon icon-folder-routes"></span><span class="icon-label">routes</span><span class="icon-class">.icon-folder-routes</span></div>
+    <div class="icon-item"><span class="icon icon-folder-controller"></span><span class="icon-label">controllers</span><span class="icon-class">.icon-folder-controller</span></div>
+    <div class="icon-item"><span class="icon icon-folder-template"></span><span class="icon-label">templates</span><span class="icon-class">.icon-folder-template</span></div>
+    <div class="icon-item"><span class="icon icon-folder-hooks"></span><span class="icon-label">hooks</span><span class="icon-class">.icon-folder-hooks</span></div>
+    <div class="icon-item"><span class="icon icon-folder-middleware"></span><span class="icon-label">middleware</span><span class="icon-class">.icon-folder-middleware</span></div>
+    <div class="icon-item"><span class="icon icon-folder-utils"></span><span class="icon-label">utils</span><span class="icon-class">.icon-folder-utils</span></div>
+    <div class="icon-item"><span class="icon icon-folder-scripts"></span><span class="icon-label">scripts</span><span class="icon-class">.icon-folder-scripts</span></div>
+    <div class="icon-item"><span class="icon icon-folder-docker"></span><span class="icon-label">docker</span><span class="icon-class">.icon-folder-docker</span></div>
+    <div class="icon-item"><span class="icon icon-folder-git"></span><span class="icon-label">.git</span><span class="icon-class">.icon-folder-git</span></div>
+    <div class="icon-item"><span class="icon icon-folder-github"></span><span class="icon-label">.github</span><span class="icon-class">.icon-folder-github</span></div>
+    <div class="icon-item"><span class="icon icon-folder-vendor"></span><span class="icon-label">vendor</span><span class="icon-class">.icon-folder-vendor</span></div>
+    <div class="icon-item"><span class="icon icon-folder-migrations"></span><span class="icon-label">migrations</span><span class="icon-class">.icon-folder-migrations</span></div>
+    <div class="icon-item"><span class="icon icon-folder-fonts"></span><span class="icon-label">fonts</span><span class="icon-class">.icon-folder-fonts</span></div>
+    <div class="icon-item"><span class="icon icon-folder-upload"></span><span class="icon-label">uploads</span><span class="icon-class">.icon-folder-upload</span></div>
+    <div class="icon-item"><span class="icon icon-folder-download"></span><span class="icon-label">downloads</span><span class="icon-class">.icon-folder-download</span></div>
+    <div class="icon-item"><span class="icon icon-folder-log"></span><span class="icon-label">logs</span><span class="icon-class">.icon-folder-log</span></div>
+    <div class="icon-item"><span class="icon icon-folder-temp"></span><span class="icon-label">temp</span><span class="icon-class">.icon-folder-temp</span></div>
+    <div class="icon-item"><span class="icon icon-folder-trash"></span><span class="icon-label">trash</span><span class="icon-class">.icon-folder-trash</span></div>
+    <div class="icon-item"><span class="icon icon-folder-private"></span><span class="icon-label">private</span><span class="icon-class">.icon-folder-private</span></div>
+  </div>
+
+  <!-- ============================================================
+       14. LIVE FILE TREE DEMO
+  ============================================================ -->
+  <h2>14. Live File Tree Demo</h2>
+  <div class="file-tree">
+
+    <div class="tree-row">
+      <span class="icon icon-folder-open" style="width:16px;height:16px;"></span>
+      <span class="tree-name folder">my-project</span>
+    </div>
+
+    <div class="tree-row tree-indent">
+      <span class="icon icon-folder-src-open" style="width:16px;height:16px;"></span>
+      <span class="tree-name folder">src</span>
+    </div>
+    <div class="tree-row tree-indent-2">
+      <span class="icon icon-folder-components" style="width:16px;height:16px;"></span>
+      <span class="tree-name folder">components</span>
+    </div>
+    <div class="tree-row tree-indent-2">
+      <span class="icon icon-tsx"></span>
+      <span class="tree-name">App.tsx</span>
+    </div>
+    <div class="tree-row tree-indent-2">
+      <span class="icon icon-ts"></span>
+      <span class="tree-name">main.ts</span>
+    </div>
+    <div class="tree-row tree-indent-2">
+      <span class="icon icon-scss"></span>
+      <span class="tree-name">index.scss</span>
+    </div>
+
+    <div class="tree-row tree-indent">
+      <span class="icon icon-folder-public" style="width:16px;height:16px;"></span>
+      <span class="tree-name folder">public</span>
+    </div>
+    <div class="tree-row tree-indent-2">
+      <span class="icon icon-html"></span>
+      <span class="tree-name">index.html</span>
+    </div>
+    <div class="tree-row tree-indent-2">
+      <span class="icon icon-ico"></span>
+      <span class="tree-name">favicon.ico</span>
+    </div>
+
+    <div class="tree-row tree-indent">
+      <span class="icon icon-folder-test" style="width:16px;height:16px;"></span>
+      <span class="tree-name folder">tests</span>
+    </div>
+    <div class="tree-row tree-indent-2">
+      <span class="icon icon-ts"></span>
+      <span class="tree-name">app.test.ts</span>
+    </div>
+
+    <div class="tree-row tree-indent">
+      <span class="icon icon-folder-node" style="width:16px;height:16px;"></span>
+      <span class="tree-name folder">node_modules</span>
+    </div>
+
+    <div class="tree-row tree-indent">
+      <span class="icon icon-package"></span>
+      <span class="tree-name">package.json</span>
+    </div>
+    <div class="tree-row tree-indent">
+      <span class="icon icon-lock"></span>
+      <span class="tree-name">package-lock.json</span>
+    </div>
+    <div class="tree-row tree-indent">
+      <span class="icon icon-tsconfig"></span>
+      <span class="tree-name">tsconfig.json</span>
+    </div>
+    <div class="tree-row tree-indent">
+      <span class="icon icon-vite"></span>
+      <span class="tree-name">vite.config.ts</span>
+    </div>
+    <div class="tree-row tree-indent">
+      <span class="icon icon-eslintrc"></span>
+      <span class="tree-name">.eslintrc.json</span>
+    </div>
+    <div class="tree-row tree-indent">
+      <span class="icon icon-prettierrc"></span>
+      <span class="tree-name">.prettierrc</span>
+    </div>
+    <div class="tree-row tree-indent">
+      <span class="icon icon-gitignore"></span>
+      <span class="tree-name">.gitignore</span>
+    </div>
+    <div class="tree-row tree-indent">
+      <span class="icon icon-env"></span>
+      <span class="tree-name">.env</span>
+    </div>
+    <div class="tree-row tree-indent">
+      <span class="icon icon-md"></span>
+      <span class="tree-name">README.md</span>
+    </div>
+    <div class="tree-row tree-indent">
+      <span class="icon icon-license"></span>
+      <span class="tree-name">LICENSE</span>
+    </div>
+    <div class="tree-row tree-indent">
+      <span class="icon icon-dockerfile"></span>
+      <span class="tree-name">Dockerfile</span>
+    </div>
+    <div class="tree-row tree-indent">
+      <span class="icon icon-yaml"></span>
+      <span class="tree-name">docker-compose.yml</span>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+# Log lokal; catatan pribadi
+system/log/
+system/bin/ensure-readme-utf8.ps1
+catatan.md
+.editorconfig
+.gitattributes
+.vscode/
+# Upload per tahun: jangan commit isi folder tahun 2026 (drive, avatar/2026, dll.)
+assets/**/2026/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.env
+ecosystem.config.js
+# Port terakhir dari nxdom start (agar nxdom node sinkron); lokal per mesin
+.nxdom-php-port
+.nexa-php-port

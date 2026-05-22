@@ -1,0 +1,416 @@
+/* Icon sizing - mendukung class di container atau langsung di icon */
+
+/* Extra Small - 12px */
+.nx-icon-xs > svg,
+.nx-icon-xs > .material-symbols-outlined,
+.nx-icon-xs > .material-icons,
+.nx-icon-xs > i[data-feather],
+.nx-icon-xs > i,
+svg.nx-icon-xs,
+.material-symbols-outlined.nx-icon-xs,
+.material-icons.nx-icon-xs,
+i.nx-icon-xs[data-feather],
+i.nx-icon-xs {
+  width: 12px !important;
+  height: 12px !important;
+  font-size: 12px !important;
+  stroke-width: 2 !important;
+  margin-right: 0px !important;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.nx-icon-xs > svg,
+svg.nx-icon-xs {
+  stroke: #6c757d !important;
+  color: #6c757d !important;
+}
+
+.nx-icon-xs > .material-symbols-outlined,
+.nx-icon-xs > .material-icons,
+.material-symbols-outlined.nx-icon-xs,
+.material-icons.nx-icon-xs {
+  color: #6c757d !important;
+}
+
+/* Small - 16px */
+.nx-icon-sm > svg,
+.nx-icon-sm > .material-symbols-outlined,
+.nx-icon-sm > .material-icons,
+.nx-icon-sm > i[data-feather],
+.nx-icon-sm > i,
+svg.nx-icon-sm,
+.material-symbols-outlined.nx-icon-sm,
+.material-icons.nx-icon-sm,
+i.nx-icon-sm[data-feather],
+i.nx-icon-sm {
+  width: 16px !important;
+  height: 16px !important;
+  font-size: 16px !important;
+  stroke-width: 2 !important;
+  margin-right: 0px !important;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.nx-icon-sm > svg,
+svg.nx-icon-sm {
+  stroke: #6c757d !important;
+  color: #6c757d !important;
+}
+
+.nx-icon-sm > .material-symbols-outlined,
+.nx-icon-sm > .material-icons,
+.material-symbols-outlined.nx-icon-sm,
+.material-icons.nx-icon-sm {
+  color: #6c757d !important;
+}
+
+/* Medium - 20px */
+.nx-icon-md > svg,
+.nx-icon-md > .material-symbols-outlined,
+.nx-icon-md > .material-icons,
+.nx-icon-md > i[data-feather],
+.nx-icon-md > i,
+svg.nx-icon-md,
+.material-symbols-outlined.nx-icon-md,
+.material-icons.nx-icon-md,
+i.nx-icon-md[data-feather],
+i.nx-icon-md {
+  width: 20px !important;
+  height: 20px !important;
+  font-size: 20px !important;
+  stroke-width: 2 !important;
+  margin-right: 0px !important;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.nx-icon-md > svg,
+svg.nx-icon-md {
+  stroke: #6c757d !important;
+  color: #6c757d !important;
+}
+
+.nexa-xlsx-add-sheet-btn svg{
+    stroke: #6c757d !important;
+    color: #6c757d !important;
+}
+
+.nx-icon-md > .material-symbols-outlined,
+.nx-icon-md > .material-icons,
+.material-symbols-outlined.nx-icon-md,
+.material-icons.nx-icon-md {
+  color: #6c757d !important;
+}
+
+/* Large - 24px */
+.nx-icon-lg > svg,
+.nx-icon-lg > .material-symbols-outlined,
+.nx-icon-lg > .material-icons,
+.nx-icon-lg > i[data-feather],
+.nx-icon-lg > i,
+svg.nx-icon-lg,
+.material-symbols-outlined.nx-icon-lg,
+.material-icons.nx-icon-lg,
+i.nx-icon-lg[data-feather],
+i.nx-icon-lg {
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 24px !important;
+  stroke-width: 2 !important;
+  margin-right: 0px !important;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.nx-icon-lg > svg,
+svg.nx-icon-lg {
+  stroke: #6c757d !important;
+  color: #6c757d !important;
+}
+
+.nx-icon-lg > .material-symbols-outlined,
+.nx-icon-lg > .material-icons,
+.material-symbols-outlined.nx-icon-lg,
+.material-icons.nx-icon-lg {
+  color: #6c757d !important;
+}
+
+/* Extra Large - 32px */
+.nx-icon-xl > svg,
+.nx-icon-xl > .material-symbols-outlined,
+.nx-icon-xl > .material-icons,
+.nx-icon-xl > i[data-feather],
+.nx-icon-xl > i,
+svg.nx-icon-xl,
+.material-symbols-outlined.nx-icon-xl,
+.material-icons.nx-icon-xl,
+i.nx-icon-xl[data-feather],
+i.nx-icon-xl {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 32px !important;
+  stroke-width: 2 !important;
+  margin-right: 0px !important;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.nx-icon-xl > svg,
+svg.nx-icon-xl {
+  stroke: #6c757d !important;
+  color: #6c757d !important;
+}
+
+.nx-icon-xl > .material-symbols-outlined,
+.nx-icon-xl > .material-icons,
+.material-symbols-outlined.nx-icon-xl,
+.material-icons.nx-icon-xl {
+  color: #6c757d !important;
+}
+
+/* Icon with text - add small margin only when needed */
+.btn .nx-icon-xs + span,
+.btn .nx-icon-sm + span,
+.btn .nx-icon-md + span,
+.btn .nx-icon-lg + span,
+.btn .nx-icon-xl + span,
+[class*="nx-btn-"] .nx-icon-xs + span,
+[class*="nx-btn-"] .nx-icon-sm + span,
+[class*="nx-btn-"] .nx-icon-md + span,
+[class*="nx-btn-"] .nx-icon-lg + span,
+[class*="nx-btn-"] .nx-icon-xl + span {
+  margin-left: 6px;
+}
+
+/* Icon with text using gap approach for modern browsers */
+/*.btn,
+[class*="nx-btn-"] {
+  gap: 6px;
+}*/
+
+/* Icon-only button fixes - remove margin when icon is the only child */
+.btn > svg:only-child,
+.btn > .material-symbols-outlined:only-child,
+.btn > .material-icons:only-child,
+.btn > i:only-child,
+[class*="nx-btn-"] > svg:only-child,
+[class*="nx-btn-"] > .material-symbols-outlined:only-child,
+[class*="nx-btn-"] > .material-icons:only-child,
+[class*="nx-btn-"] > i:only-child {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* Button icon overrides - icons in buttons inherit button text color */
+.btn svg,
+.btn .material-symbols-outlined,
+.btn .material-icons,
+.btn i[data-feather],
+.btn i {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+/* NexaUI Button icon overrides - untuk semua class nx-btn- */
+[class*="nx-btn-"] svg,
+[class*="nx-btn-"] .material-symbols-outlined,
+[class*="nx-btn-"] .material-icons,
+[class*="nx-btn-"] i[data-feather],
+[class*="nx-btn-"] i {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+/* Specific button type icon styling */
+.nx-btn-primary svg,
+.nx-btn-primary .material-symbols-outlined,
+.nx-btn-primary .material-icons,
+.nx-btn-primary i {
+  color: white !important;
+  stroke: white !important;
+}
+
+.nx-btn-secondary svg,
+.nx-btn-secondary .material-symbols-outlined,
+.nx-btn-secondary .material-icons,
+.nx-btn-secondary i {
+  color: white !important;
+  stroke: white !important;
+}
+
+.nx-btn-success svg,
+.nx-btn-success .material-symbols-outlined,
+.nx-btn-success .material-icons,
+.nx-btn-success i {
+  color: white !important;
+  stroke: white !important;
+}
+
+.nx-btn-danger svg,
+.nx-btn-danger .material-symbols-outlined,
+.nx-btn-danger .material-icons,
+.nx-btn-danger i {
+  color: white !important;
+  stroke: white !important;
+}
+
+.nx-btn-warning svg,
+.nx-btn-warning .material-symbols-outlined,
+.nx-btn-warning .material-icons,
+.nx-btn-warning i {
+  color: #000 !important;
+  stroke: #000 !important;
+}
+
+.nx-btn-info svg,
+.nx-btn-info .material-symbols-outlined,
+.nx-btn-info .material-icons,
+.nx-btn-info i {
+  color: white !important;
+  stroke: white !important;
+}
+
+.nx-btn-link svg,
+.nx-btn-link .material-symbols-outlined,
+.nx-btn-link .material-icons,
+.nx-btn-link i {
+  color: white !important;
+  stroke: white !important;
+}
+
+.nx-btn-dark svg,
+.nx-btn-dark .material-symbols-outlined,
+.nx-btn-dark .material-icons,
+.nx-btn-dark i {
+  color: white !important;
+  stroke: white !important;
+}
+
+.nx-btn-light svg,
+.nx-btn-light .material-symbols-outlined,
+.nx-btn-light .material-icons,
+.nx-btn-light i {
+  color: #495057 !important;
+  stroke: #495057 !important;
+}
+
+.nx-btn-white svg,
+.nx-btn-white .material-symbols-outlined,
+.nx-btn-white .material-icons,
+.nx-btn-white i {
+  color: #000 !important;
+  stroke: #000 !important;
+}
+
+.nx-btn-black svg,
+.nx-btn-black .material-symbols-outlined,
+.nx-btn-black .material-icons,
+.nx-btn-black i {
+  color: white !important;
+  stroke: white !important;
+}
+
+/* Ghost and outline button icon styling */
+.nx-btn-ghost svg,
+.nx-btn-ghost .material-symbols-outlined,
+.nx-btn-ghost .material-icons,
+.nx-btn-ghost i {
+  color: #00e5be !important;
+  stroke: #00e5be !important;
+}
+
+.nx-btn-text svg,
+.nx-btn-text .material-symbols-outlined,
+.nx-btn-text .material-icons,
+.nx-btn-text i {
+  color:#636F83 !important;
+  stroke:#636F83 !important;
+}
+
+/* Outline variants */
+[class*="nx-btn-"].outline svg,
+[class*="nx-btn-"].outline .material-symbols-outlined,
+[class*="nx-btn-"].outline .material-icons,
+[class*="nx-btn-"].outline i {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+/* Windows button styles */
+[class*="nx-btn-win-"] svg,
+[class*="nx-btn-win-"] .material-symbols-outlined,
+[class*="nx-btn-win-"] .material-icons,
+[class*="nx-btn-win-"] i {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+/* Secondary button variants */
+[class*="nx-btn-secondary"] svg,
+[class*="nx-btn-secondary"] .material-symbols-outlined,
+[class*="nx-btn-secondary"] .material-icons,
+[class*="nx-btn-secondary"] i {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+/* Custom button styling */
+.nx-btn-custom svg,
+.nx-btn-custom .material-symbols-outlined,
+.nx-btn-custom .material-icons,
+.nx-btn-custom i {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+/* Default nx-btn styling */
+.nx-btn svg,
+.nx-btn .material-symbols-outlined,
+.nx-btn .material-icons,
+.nx-btn i {
+  color: #18181b !important;
+  stroke: #18181b !important;
+}
+
+/* Specific adjustments for Material Icons */
+.material-symbols-outlined.nx-icon-xs,
+.material-icons.nx-icon-xs,
+.nx-icon-xs > .material-symbols-outlined,
+.nx-icon-xs > .material-icons {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 12;
+  line-height: 12px;
+}
+
+.material-symbols-outlined.nx-icon-sm,
+.material-icons.nx-icon-sm,
+.nx-icon-sm > .material-symbols-outlined,
+.nx-icon-sm > .material-icons {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 16;
+  line-height: 16px;
+}
+
+.material-symbols-outlined.nx-icon-md,
+.material-icons.nx-icon-md,
+.nx-icon-md > .material-symbols-outlined,
+.nx-icon-md > .material-icons {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
+  line-height: 20px;
+}
+
+.material-symbols-outlined.nx-icon-lg,
+.material-icons.nx-icon-lg,
+.nx-icon-lg > .material-symbols-outlined,
+.nx-icon-lg > .material-icons {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  line-height: 24px;
+}
+
+.material-symbols-outlined.nx-icon-xl,
+.material-icons.nx-icon-xl,
+.nx-icon-xl > .material-symbols-outlined,
+.nx-icon-xl > .material-icons {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 32;
+  line-height: 32px;
+}

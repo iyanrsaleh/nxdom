@@ -1,0 +1,105 @@
+<!-- Theme Upload - Dashboard Style -->
+<div class="theme-page">
+  <h2 class="page-title-bar"><i class="fas fa-file-archive"></i> Upload Paket Theme (ZIP)</h2>
+  <p class="page-subtitle">Unggah file ZIP berisi template (.html, .css, .js) untuk memperbarui layout aplikasi</p>
+
+  <div id="theme-alert-container"></div>
+
+  <div class="card theme-upload-card">
+    <div class="theme-card-header">
+      <i class="fas fa-upload"></i>
+      <h3>Upload Paket Theme</h3>
+    </div>
+    <div class="theme-card-body">
+      <p class="theme-upload-help">Maksimal {max_zip_mb}MB. File .html/.css/.js akan diekstrak ke layout.</p>
+      <form id="formThemeZip" class="theme-form">
+        <div class="account-form-group">
+          <label class="account-form-label"><i class="fas fa-folder"></i> Layout Tujuan</label>
+          <select name="layout" class="account-form-input theme-select" required>
+            <option value="theme">theme</option>
+            <option value="mobile">mobile</option>
+            <option value="tablet">tablet</option>
+            <option value="docs">docs</option>
+          </select>
+        </div>
+        <div class="account-form-group">
+          <label class="account-form-label"><i class="fas fa-file-archive"></i> File ZIP</label>
+          <input type="file" name="file" class="account-form-input theme-file-input" accept=".zip" required>
+        </div>
+        <div class="account-form-actions">
+          <button type="submit" class="account-btn account-btn-primary">
+            <i class="fas fa-file-archive"></i> Upload & Ekstrak ZIP
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var username = (window.location.pathname.split('/').filter(Boolean))[0] || '';
+  var uploadZipUrl = username ? ('/' + username + '/theme/uploadZip') : '';
+
+  function showThemeAlert(msg, type) {
+    var c = document.getElementById('theme-alert-container');
+    var cls = type === 'success' ? 'theme-alert theme-alert-success' : type === 'error' ? 'theme-alert theme-alert-error' : 'theme-alert theme-alert-info';
+    c.innerHTML = '<div class="' + cls + '"><i class="fas fa-' + (type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle') + '"></i> ' + msg + '</div>';
+    setTimeout(function() { c.innerHTML = ''; }, 5000);
+  }
+
+  document.getElementById('formThemeZip').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn = form.querySelector('button[type="submit"]');
+    var orig = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengunggah...';
+
+    var fd = new FormData();
+    fd.append('layout', form.layout.value);
+    fd.append('file', form.file.files[0]);
+
+    if (!uploadZipUrl) {
+      showThemeAlert('URL upload tidak tersedia. Refresh halaman.', 'error');
+      btn.disabled = false;
+      btn.innerHTML = orig;
+      return;
+    }
+
+    fetch(uploadZipUrl, {
+      method: 'POST',
+      body: fd,
+      credentials: 'same-origin',
+      headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    })
+    .then(function(r) {
+      return r.text().then(function(text) {
+        if (!r.ok) {
+          var err = 'Request gagal: ' + r.status;
+          if (text && text.length < 200) err += ' - ' + text.substring(0, 100);
+          throw new Error(err);
+        }
+        return text;
+      });
+    })
+    .then(function(text) {
+      var res;
+      try { res = JSON.parse(text); } catch (_) {
+        throw new Error('Response tidak valid (bukan JSON). Pastikan URL benar.');
+      }
+      var msg = res.message || (res.success ? 'Berhasil' : 'Gagal');
+      if (res.extracted_count !== undefined) msg += ' (' + res.extracted_count + ' file)';
+      showThemeAlert(msg, res.success ? 'success' : 'error');
+      if (res.success) form.reset();
+    })
+    .catch(function(err) {
+      showThemeAlert(err.message || 'Terjadi kesalahan', 'error');
+    })
+    .finally(function() {
+      btn.disabled = false;
+      btn.innerHTML = orig;
+    });
+  });
+})();
+</script>

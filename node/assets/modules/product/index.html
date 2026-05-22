@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexa Primer CSS Demo</title>
+
+  <link rel="stylesheet" href="../nexa.css">
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Product Bundle Demo</h1>
+  <p style="color:var(--fgColor-muted);margin-bottom:32px;">Halaman ini menampilkan semua komponen yang termasuk dalam bundle <code>@primer/css/product</code>.</p>
+
+  <!-- HEADER -->
+  <h2>Header</h2>
+  <header class="Header" style="margin-bottom:24px;">
+    <div class="Header-item">
+      <a class="Header-link" href="#">Brand</a>
+    </div>
+    <div class="Header-item Header-item--full">
+      <input class="Header-input" type="search" placeholder="Search..." style="padding:4px 8px;border-radius:4px;min-width:140px;">
+    </div>
+    <div class="Header-item">
+      <a class="Header-link" href="#">Docs</a>
+    </div>
+    <div class="Header-item">
+      <a class="Header-link" href="#">Sign in</a>
+    </div>
+  </header>
+
+  <!-- AVATARS -->
+  <h2>Avatars</h2>
+  <div class="demo-row" style="margin-bottom:24px;">
+    <span class="avatar-parent-child" style="display:inline-block;width:64px;height:64px;position:relative;">
+      <img src="https://avatars.githubusercontent.com/u/1?v=4" alt="Parent" style="width:52px;height:52px;border-radius:50%;">
+      <img class="avatar-child" src="https://avatars.githubusercontent.com/u/2?v=4" alt="Child" style="width:22px;height:22px;border-radius:4px;">
+    </span>
+    <span class="CircleBadge CircleBadge--small" style="margin-left:12px;">
+      <img class="CircleBadge-icon" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" alt="star">
+    </span>
+    <span class="CircleBadge CircleBadge--medium" style="margin-left:8px;">
+      <img class="CircleBadge-icon" src="https://github.githubassets.com/images/icons/emoji/unicode/1f680.png" alt="rocket">
+    </span>
+  </div>
+
+  <!-- BRANCH NAME -->
+  <h2>Branch Name</h2>
+  <div class="demo-row" style="margin-bottom:24px;">
+    <span class="branch-name">main</span>
+    <span class="branch-name">feature/new-ui</span>
+    <span class="branch-name">fix/issue-42</span>
+  </div>
+
+  <!-- LABELS -->
+  <h2>Labels</h2>
+  <div class="demo-row" style="margin-bottom:24px;">
+    <span class="IssueLabel" style="background:#d4f8e8;color:#22863a;">enhancement</span>
+    <span class="IssueLabel" style="background:#ffe3e6;color:#d73a49;">bug</span>
+    <span class="IssueLabel" style="background:#f9f1e6;color:#b08800;">help wanted</span>
+    <span class="IssueLabel" style="background:#e7e9f7;color:#0052cc;">question</span>
+    <span class="IssueLabel IssueLabel--big" style="background:#e4e7eb;color:#24292f;"><span class="g-emoji">✨</span> feature</span>
+  </div>
+
+  <!-- AUTOCOMPLETE -->
+  <h2>Autocomplete</h2>
+  <div style="max-width:280px;position:relative;margin-bottom:24px;">
+    <input id="prod-input" type="text" autocomplete="off" style="width:100%;padding:5px 8px;border:1px solid var(--borderColor-default);border-radius:6px;" placeholder="Search users...">
+    <ul class="suggester" id="prod-list" style="display:none;">
+      <li>octocat <small>GitHub mascot</small></li>
+      <li>torvalds <small>Linus Torvalds</small></li>
+      <li>gaearon <small>Dan Abramov</small></li>
+    </ul>
+  </div>
+
+  <!-- LOADERS -->
+  <h2>Loaders</h2>
+  <div class="demo-row" style="margin-bottom:24px;">
+    <span>Processing<span class="AnimatedEllipsis"></span></span>
+    <span style="margin-left:16px;">Saving<span class="AnimatedEllipsis"></span></span>
+  </div>
+
+  <!-- MARKDOWN -->
+  <h2>Markdown</h2>
+  <div class="markdown-body" style="border:1px solid var(--borderColor-default);border-radius:6px;padding:16px;margin-bottom:24px;">
+    <h3>Readme contoh</h3>
+    <p>Ini adalah konten <a href="#">markdown</a> dengan <strong>bold</strong> dan <em>italic</em>.</p>
+    <blockquote>Kutipan penting dari dokumentasi.</blockquote>
+    <ul>
+      <li>Item satu</li>
+      <li>Item dua</li>
+    </ul>
+    <pre><code>npm install @primer/css</code></pre>
+  </div>
+
+  <script>
+    const i = document.getElementById('prod-input');
+    const l = document.getElementById('prod-list');
+    i.addEventListener('input', () => { l.style.display = i.value.length ? '' : 'none'; });
+    i.addEventListener('blur', () => setTimeout(() => l.style.display = 'none', 100));
+    i.addEventListener('focus', () => { if (i.value.length) l.style.display = ''; });
+    l.addEventListener('mousedown', e => {
+      const li = e.target.closest('li');
+      if (li) { i.value = li.innerText.split('\n')[0]; l.style.display = 'none'; }
+    });
+  </script>
+
+</body>
+</html>

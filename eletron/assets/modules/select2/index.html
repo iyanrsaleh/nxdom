@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id" data-color-mode="light" data-light-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select2 — Primer CSS Demo</title>
+  <link rel="stylesheet" href="../nexa.css">
+  <link rel="stylesheet" href="./index.css">
+  <script src="../utilities/jquery.js"></script>
+  <script src="./select2.min.js"></script>
+
+  <style>
+    body {
+      padding: 32px;
+      max-width: 760px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fgColor-default);
+      background-color: var(--bgColor-default);
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+    .page-desc {
+      color: var(--fgColor-muted);
+      margin: 0 0 32px;
+      font-size: 13px;
+    }
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fgColor-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--borderColor-default);
+      padding-bottom: 6px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .demo-row .select2-container {
+      min-width: 200px;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      font-size: 12px;
+      background: var(--bgColor-neutral-muted, #f6f8fa);
+      border: 1px solid var(--borderColor-default, #d0d7de);
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: var(--fgColor-default);
+    }
+    .note {
+      font-size: 12px;
+      color: var(--fgColor-muted);
+      margin: 4px 0 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Select2</h1>
+  <p class="page-desc">Select2 dengan tema Primer CSS — single, multiple, searchable, grouping, ukuran, dan state.</p>
+
+  <!-- ==============================
+       1. Single — Default
+  ================================ -->
+  <h2>1. Single — Default</h2>
+  <div class="demo-row">
+    <select id="s1" style="width:240px">
+      <option value="">Pilih bahasa</option>
+      <option value="js">JavaScript</option>
+      <option value="ts">TypeScript</option>
+      <option value="php">PHP</option>
+      <option value="py">Python</option>
+      <option value="go">Go</option>
+      <option value="rs">Rust</option>
+    </select>
+  </div>
+  <p class="note">Gunakan <code>.select2()</code> tanpa opsi tambahan.</p>
+
+  <!-- ==============================
+       2. Single — Placeholder
+  ================================ -->
+  <h2>2. Single — Placeholder</h2>
+  <div class="demo-row">
+    <select id="s2" style="width:240px">
+      <option value=""></option>
+      <option value="js">JavaScript</option>
+      <option value="ts">TypeScript</option>
+      <option value="php">PHP</option>
+      <option value="py">Python</option>
+    </select>
+  </div>
+  <p class="note">Tambahkan <code>placeholder</code> dan <code>&lt;option value=""&gt;</code> kosong di awal.</p>
+
+  <!-- ==============================
+       3. Single — Allow Clear
+  ================================ -->
+  <h2>3. Single — Allow Clear (×)</h2>
+  <div class="demo-row">
+    <select id="s3" style="width:240px">
+      <option value=""></option>
+      <option value="js" selected>JavaScript</option>
+      <option value="ts">TypeScript</option>
+      <option value="php">PHP</option>
+      <option value="py">Python</option>
+    </select>
+  </div>
+  <p class="note">Tombol × muncul saat nilai dipilih. Butuh <code>allowClear: true</code> + <code>placeholder</code>.</p>
+
+  <!-- ==============================
+       4. Single — Disabled
+  ================================ -->
+  <h2>4. Single — Disabled</h2>
+  <div class="demo-row">
+    <select id="s4" style="width:240px" disabled>
+      <option value="php" selected>PHP</option>
+      <option value="py">Python</option>
+    </select>
+  </div>
+  <p class="note">Tambahkan atribut <code>disabled</code> pada elemen <code>&lt;select&gt;</code>.</p>
+
+  <!-- ==============================
+       5. Single — No Search
+  ================================ -->
+  <h2>5. Single — Tanpa Kotak Pencarian</h2>
+  <div class="demo-row">
+    <select id="s5" style="width:240px">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="auto">Auto</option>
+    </select>
+  </div>
+  <p class="note">Gunakan <code>minimumResultsForSearch: Infinity</code> untuk menyembunyikan input pencarian.</p>
+
+  <!-- ==============================
+       6. Multiple — Tags
+  ================================ -->
+  <h2>6. Multiple — Pilih Banyak</h2>
+  <div class="demo-row">
+    <select id="s6" multiple style="width:360px">
+      <option value="js" selected>JavaScript</option>
+      <option value="ts">TypeScript</option>
+      <option value="php" selected>PHP</option>
+      <option value="py">Python</option>
+      <option value="go">Go</option>
+      <option value="rs">Rust</option>
+      <option value="rb">Ruby</option>
+      <option value="java">Java</option>
+    </select>
+  </div>
+  <p class="note">Tambahkan atribut <code>multiple</code> pada <code>&lt;select&gt;</code>.</p>
+
+  <!-- ==============================
+       7. Multiple — Max Selection
+  ================================ -->
+  <h2>7. Multiple — Maks. 3 Pilihan</h2>
+  <div class="demo-row">
+    <select id="s7" multiple style="width:360px">
+      <option value="html">HTML</option>
+      <option value="css">CSS</option>
+      <option value="js">JavaScript</option>
+      <option value="ts">TypeScript</option>
+      <option value="react">React</option>
+      <option value="vue">Vue</option>
+    </select>
+  </div>
+  <p class="note">Gunakan <code>maximumSelectionLength: 3</code> — pilihan ke-4 akan ditolak.</p>
+
+  <!-- ==============================
+       8. Tags Mode
+  ================================ -->
+  <h2>8. Tags — Input Bebas</h2>
+  <div class="demo-row">
+    <select id="s8" multiple style="width:360px">
+      <option value="bug" selected>bug</option>
+      <option value="enhancement" selected>enhancement</option>
+      <option value="question">question</option>
+    </select>
+  </div>
+  <p class="note">Aktifkan <code>tags: true</code> — pengguna dapat mengetik nilai baru yang tidak ada di daftar.</p>
+
+  <!-- ==============================
+       9. Option Groups
+  ================================ -->
+  <h2>9. Option Groups</h2>
+  <div class="demo-row">
+    <select id="s9" style="width:280px">
+      <option value=""></option>
+      <optgroup label="Frontend">
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="js">JavaScript</option>
+        <option value="react">React</option>
+      </optgroup>
+      <optgroup label="Backend">
+        <option value="php">PHP</option>
+        <option value="py">Python</option>
+        <option value="go">Go</option>
+        <option value="node">Node.js</option>
+      </optgroup>
+      <optgroup label="Database">
+        <option value="mysql">MySQL</option>
+        <option value="pg">PostgreSQL</option>
+        <option value="mongo">MongoDB</option>
+      </optgroup>
+    </select>
+  </div>
+  <p class="note">Gunakan <code>&lt;optgroup&gt;</code> untuk mengelompokkan pilihan.</p>
+
+  <!-- ==============================
+       10. Disabled Options
+  ================================ -->
+  <h2>10. Option Disabled</h2>
+  <div class="demo-row">
+    <select id="s10" style="width:240px">
+      <option value=""></option>
+      <option value="free">Gratis</option>
+      <option value="pro">Pro</option>
+      <option value="enterprise" disabled>Enterprise (segera hadir)</option>
+    </select>
+  </div>
+  <p class="note">Tambahkan <code>disabled</code> pada <code>&lt;option&gt;</code> yang tidak bisa dipilih.</p>
+
+  <!-- ==============================
+       11. Ukuran — Small
+  ================================ -->
+  <h2>11. Ukuran — Small</h2>
+  <div class="demo-row" style="align-items:center;">
+    <div id="s11-parent" class="select2-size--small" style="position:relative;width:180px">
+      <select id="s11" style="width:100%">
+        <option value="">Pilih...</option>
+        <option value="asc">Terlama</option>
+        <option value="desc">Terbaru</option>
+      </select>
+    </div>
+  </div>
+  <p class="note">Tambahkan class <code>select2-container--small</code> via <code>containerCssClass</code>.</p>
+
+  <!-- ==============================
+       12. Ukuran — XS
+  ================================ -->
+  <h2>12. Ukuran — Extra Small</h2>
+  <div class="demo-row" style="align-items:center;">
+    <div id="s12-parent" class="select2-size--xs" style="position:relative;width:140px">
+      <select id="s12" style="width:100%">
+        <option value="10">10 / halaman</option>
+        <option value="25">25 / halaman</option>
+        <option value="50">50 / halaman</option>
+      </select>
+    </div>
+    <span style="font-size:13px;color:var(--fgColor-muted)">← ukuran xs cocok untuk toolbar / filter</span>
+  </div>
+
+  <!-- ==============================
+       13. Dalam form-group
+  ================================ -->
+  <h2>13. Dalam .form-group</h2>
+  <div class="form-group">
+    <dl>
+      <dt class="form-group-header"><label for="s13">Pilih Bahasa</label></dt>
+      <dd class="form-group-body">
+        <select id="s13" style="width:100%">
+          <option value=""></option>
+          <option value="id">Bahasa Indonesia</option>
+          <option value="en">English</option>
+          <option value="ja">日本語</option>
+          <option value="zh">中文</option>
+          <option value="ar">العربية</option>
+        </select>
+        <p class="note">Select2 berjalan di dalam <code>.form-group</code> standar.</p>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="form-group errored">
+    <dl>
+      <dt class="form-group-header"><label for="s13e">Pilih Role <span style="color:var(--fgColor-danger,#cf222e)">*</span></label></dt>
+      <dd class="form-group-body">
+        <select id="s13e" style="width:100%">
+          <option value=""></option>
+          <option value="admin">Admin</option>
+          <option value="editor">Editor</option>
+          <option value="viewer">Viewer</option>
+        </select>
+        <div class="error">Role wajib dipilih.</div>
+      </dd>
+    </dl>
+  </div>
+
+  <!-- ==============================
+       14. Grid Layout
+  ================================ -->
+  <h2>14. Dalam Grid Form</h2>
+  <form class="nx-row">
+    <dl class="form-group col-12 col-md-6">
+      <dt class="form-group-header"><label for="sg1">Negara</label></dt>
+      <dd class="form-group-body">
+        <select id="sg1" style="width:100%">
+          <option value=""></option>
+          <option value="id">Indonesia</option>
+          <option value="my">Malaysia</option>
+          <option value="sg">Singapura</option>
+          <option value="th">Thailand</option>
+          <option value="ph">Filipina</option>
+        </select>
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-6">
+      <dt class="form-group-header"><label for="sg2">Zona Waktu</label></dt>
+      <dd class="form-group-body">
+        <select id="sg2" style="width:100%">
+          <option value=""></option>
+          <option value="wib">WIB (UTC+7)</option>
+          <option value="wita">WITA (UTC+8)</option>
+          <option value="wit">WIT (UTC+9)</option>
+        </select>
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="sg3">Tahun</label></dt>
+      <dd class="form-group-body">
+        <select id="sg3" style="width:100%">
+          <option>2024</option>
+          <option>2025</option>
+          <option selected>2026</option>
+        </select>
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="sg4">Bulan</label></dt>
+      <dd class="form-group-body">
+        <select id="sg4" style="width:100%">
+          <option>Januari</option><option>Februari</option><option>Maret</option>
+          <option selected>April</option><option>Mei</option><option>Juni</option>
+          <option>Juli</option><option>Agustus</option><option>September</option>
+          <option>Oktober</option><option>November</option><option>Desember</option>
+        </select>
+      </dd>
+    </dl>
+    <dl class="form-group col-12 col-md-4">
+      <dt class="form-group-header"><label for="sg5">Status</label></dt>
+      <dd class="form-group-body">
+        <select id="sg5" style="width:100%">
+          <option value="active">Aktif</option>
+          <option value="inactive">Tidak Aktif</option>
+          <option value="pending">Pending</option>
+        </select>
+      </dd>
+    </dl>
+    <dl class="form-group col-12">
+      <dt class="form-group-header"><label for="sg6">Tag / Label</label></dt>
+      <dd class="form-group-body">
+        <select id="sg6" multiple style="width:100%">
+          <option value="bug" selected>bug</option>
+          <option value="docs" selected>documentation</option>
+          <option value="feat">feature</option>
+          <option value="fix">fix</option>
+          <option value="perf">performance</option>
+          <option value="test">test</option>
+        </select>
+      </dd>
+    </dl>
+    <div class="col-12 form-actions">
+      <button class="btn btn-primary" type="submit">Simpan</button>
+      <button class="btn" type="reset">Batal</button>
+    </div>
+  </form>
+
+  <script>
+    $(function () {
+      // 1. Default
+      $('#s1').select2({ width: '100%' });
+
+      // 2. Placeholder
+      $('#s2').select2({ width: '100%', placeholder: 'Pilih bahasa...' });
+
+      // 3. Allow clear
+      $('#s3').select2({ width: '100%', placeholder: 'Pilih bahasa...', allowClear: true });
+
+      // 4. Disabled
+      $('#s4').select2({ width: '100%' });
+
+      // 5. No search
+      $('#s5').select2({ width: '100%', minimumResultsForSearch: Infinity });
+
+      // 6. Multiple
+      $('#s6').select2({ width: '100%', placeholder: 'Pilih bahasa...' });
+
+      // 7. Max selection
+      $('#s7').select2({
+        width: '100%',
+        placeholder: 'Pilih maks. 3 teknologi...',
+        maximumSelectionLength: 3
+      });
+
+      // 8. Tags
+      $('#s8').select2({ width: '100%', tags: true, placeholder: 'Tambah label...' });
+
+      // 9. Option groups
+      $('#s9').select2({ width: '100%', placeholder: 'Pilih teknologi...' });
+
+      // 10. Disabled option
+      $('#s10').select2({ width: '100%', placeholder: 'Pilih paket...' });
+
+      // 11. Small
+      $('#s11').select2({ width: '100%', minimumResultsForSearch: Infinity, dropdownParent: $('#s11-parent') });
+      $('#s11').data('select2').$container.addClass('select2-container--small');
+
+      // 12. XS
+      $('#s12').select2({ width: '100%', minimumResultsForSearch: Infinity, dropdownParent: $('#s12-parent') });
+      $('#s12').data('select2').$container.addClass('select2-container--xs');
+
+      // 13. In form-group
+      $('#s13').select2({ width: '100%', placeholder: 'Pilih bahasa...' });
+      $('#s13e').select2({ width: '100%', placeholder: 'Pilih role...' });
+
+      // 14. Grid selects
+      $('#sg1').select2({ width: '100%', placeholder: 'Pilih negara...' });
+      $('#sg2').select2({ width: '100%', placeholder: 'Pilih zona waktu...' });
+      $('#sg3').select2({ width: '100%', minimumResultsForSearch: Infinity });
+      $('#sg4').select2({ width: '100%', minimumResultsForSearch: Infinity });
+      $('#sg5').select2({ width: '100%', minimumResultsForSearch: Infinity });
+      $('#sg6').select2({ width: '100%', tags: true, placeholder: 'Tambah tag...' });
+    });
+  </script>
+
+</body>
+</html>
