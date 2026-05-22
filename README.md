@@ -1,14 +1,14 @@
-# NexaJS — inisiasi & menjalankan aplikasi
+# NXDOM — inisiasi & menjalankan aplikasi
 
-Dokumen ini menjelaskan alur **entry HTML**, **inisiasi `NXUI.Page`** di `App.js`, dan **cara menjalankan** proyek SPA NexaJS di folder ini.
+Dokumen ini menjelaskan alur **entry HTML**, **inisiasi `NXUI.Page`** di `App.js`, dan **cara menjalankan** proyek SPA NXDOM di folder ini.
 
 ## Daftar isi
 
 - [Ringkasan alur](#ringkasan-alur)
-  - [Alur kerja NexaJS (diagram)](#alur-kerja-nexajs-diagram)
+  - [Alur kerja NXDOM (diagram)](#alur-kerja-nexajs-diagram)
 - [1. Entry: `index.html](#1-entry-indexhtml)`
   - [Base href](#base-href)
-  - [Memuat NexaJS](#memuat-nexajs)
+  - [Memuat NXDOM](#memuat-nexajs)
   - [NXUI, NX, dan `nx` — API global (Nexa.js)](#global-nx-dan-handler-string-nexajs)
     - [NXUI](#nxui)
     - [NX](#nx-alias-besar)
@@ -50,7 +50,7 @@ Setelah `**Nexa.js**` termuat, tersedia `**NXUI**` (API utama), `**NX**` (alias 
 
 Urutan script di HTML **harus** NexaUI dulu, baru `App.js`, agar simbol global seperti `NXUI` tersedia saat `App.js` dieksekusi.
 
-### Alur kerja NexaJS (diagram)
+### Alur kerja NXDOM (diagram)
 
 Diagram urutan di bawah merangkum **bootstrap** SPA: muat pustaka → `NXUI.Page` → pendaftaran route → impor modul di `**appRoot`** → handler mengisi kontainer. (Versi sumber ringkas ada di `docs/md.as`.)
 
@@ -108,7 +108,7 @@ flowchart LR
 
 Menetapkan root URL dokumen. Link seperti `/beranda`, `/contact/data` di-resolve ke origin yang sama (bukan relatif ke subfolder). Jika aplikasi di-deploy di subpath (misalnya `https://domain.com/app/`), sesuaikan `href` ke subpath tersebut.
 
-### Memuat NexaJS
+### Memuat NXDOM
 
 ```html
 <script type="module" src="/assets/modules/Nexa.js"></script>
@@ -336,7 +336,7 @@ Untuk entri **string** di `route`, `NexaPage.registerAllRoutes()` memuat modul l
 | `'contact/data'` | `contact/data.js` **(disarankan)** **atau** `contact_data.js` di akar `appRoot` | `contact_data`       |
 
 
-- **Subfolder di bawah `appRoot` didukung:** untuk `route` yang mengandung `/`, NexaJS memetakan ke path modul dengan **struktur folder yang sama** — mis. `'contact/data'` → `**{appRoot}/contact/data.js`** (folder `contact`, berkas `data.js`). Ini sesuai proyek ini: satu entri di `App.js` (`'contact/data'`) dan modul di `contact/data.js`.
+- **Subfolder di bawah `appRoot` didukung:** untuk `route` yang mengandung `/`, NXDOM memetakan ke path modul dengan **struktur folder yang sama** — mis. `'contact/data'` → `**{appRoot}/contact/data.js`** (folder `contact`, berkas `data.js`). Ini sesuai proyek ini: satu entri di `App.js` (`'contact/data'`) dan modul di `contact/data.js`.
 - **Fallback (tanpa subfolder):** jika impor di atas gagal, dicoba `**{appRoot}/contact_data.js`** (satu berkas di akar `appRoot`, slash pada string route diganti `_` pada nama berkas).
 - **Nama export** tidak mengikuti path folder: selalu `**route.replace(/\//g, "_")`** → fungsi bernama `**contact_data`** (identifier JS tidak boleh mengandung `/`).
 
@@ -756,4 +756,4 @@ Sub-route **dinamis** (data API, meta per item): set `**route.routeMetaByRoute`*
 
 **Storage / API:** panggilan HTTP berantai memakai `**NXUI.Storage().api(...)`** atau `**NXUI.Storage().package(...)`** — bukan `NXUI.api` (simbol tersebut tidak ada).
 
-Dengan mengikuti urutan memuat script, menyelaraskan `**url` / `urlApi**` atau `**endpoint**`, mendaftarkan `**route**` di `**App.js**`, dan menyelaraskan modul di `**appRoot**` serta meta di `**onRoute**`, aplikasi NexaJS di proyek ini siap dijalankan dan dikembangkan lebih lanjut.
+Dengan mengikuti urutan memuat script, menyelaraskan `**url` / `urlApi**` atau `**endpoint**`, mendaftarkan `**route**` di `**App.js**`, dan menyelaraskan modul di `**appRoot**` serta meta di `**onRoute**`, aplikasi NXDOM di proyek ini siap dijalankan dan dikembangkan lebih lanjut.
