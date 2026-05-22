@@ -2,7 +2,7 @@
 .env
 **/.env
 !**/.env.example
-
+command.md
 # Dependencies
 node_modules/
 vendor/
