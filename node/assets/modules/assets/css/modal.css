@@ -1,0 +1,4509 @@
+/* nexa Style Modal - Enhanced untuk mencegah berkedip */
+.nx-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(0px);
+  z-index: 1999999;
+  opacity: 0;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Mencegah flicker saat modal muncul */
+  visibility: hidden;
+  /* Optimasi performance */
+  will-change: opacity, visibility, backdrop-filter;
+  contain: layout style paint;
+  /* Prevent any layout shifts */
+  transform: translateZ(0);
+  /* Allow clicks to pass through modal backdrop */
+  pointer-events: none;
+}
+
+.nx-modal.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  backdrop-filter: blur(0px);
+}
+
+.nx-modal-dialog {
+  position: relative;
+  width: auto;
+  max-width: 80%;
+  margin: 2rem auto;
+  max-height: calc(100vh - 4rem);
+  pointer-events: auto;
+  transform: scale(0.95) translateY(-20px) translateZ(0);
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Mengurangi durasi transisi dan menggunakan easing yang lebih smooth */
+  will-change: transform, opacity;
+  contain: layout style;
+  opacity: 0;
+    z-index: 111000;
+  /* Remove overflow-y auto to prevent double scrollbars */
+  overflow: visible;
+}
+
+.nx-modal.show .nx-modal-dialog {
+  transform: scale(1) translateY(0) translateZ(0);
+  opacity: 1 !important;
+  pointer-events: auto;
+}
+
+/* Modal Size Classes */
+.nx-modal-sm {
+  max-width: 300px;
+}
+
+.nx-modal-md {
+  max-width: 500px;
+}
+
+.nx-modal-lg {
+  max-width: 800px;
+}
+
+.nx-modal-xl {
+  max-width: 1140px;
+}
+
+/* Responsive Modal Sizes */
+@media (max-width: 576px) {
+  .nx-modal-sm,
+  .nx-modal-md,
+  .nx-modal-lg,
+  .nx-modal-xl {
+    max-width: 95%;
+    margin: 1rem auto;
+    max-height: calc(100vh - 2rem);
+    overflow: visible;
+  }
+
+  .nx-modal-sm .nx-modal-body,
+  .nx-modal-md .nx-modal-body,
+  .nx-modal-lg .nx-modal-body,
+  .nx-modal-xl .nx-modal-body {
+    max-height: calc(100vh - 140px);
+  }
+}
+
+@media (max-width: 768px) {
+  .nx-modal-lg,
+  .nx-modal-xl {
+    max-width: 90%;
+    margin: 1.5rem auto;
+    max-height: calc(100vh - 3rem);
+    overflow: visible;
+  }
+
+  .nx-modal-lg .nx-modal-body,
+  .nx-modal-xl .nx-modal-body {
+    max-height: calc(100vh - 160px);
+  }
+}
+
+@media (max-width: 992px) {
+  .nx-modal-xl {
+    max-width: 85%;
+    margin: 1.5rem auto;
+    max-height: calc(100vh - 3rem);
+    overflow: visible;
+  }
+
+  .nx-modal-xl .nx-modal-body {
+    max-height: calc(100vh - 160px);
+  }
+}
+
+.nx-modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: calc(100vh - 4rem);
+  pointer-events: auto;
+  background-color: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 12px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+  outline: 0;
+  /* Mencegah layout shift dan double scrollbar */
+  overflow: hidden;
+}
+
+.nx-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+   padding: 5px 15px;
+  border-bottom: 1px solid #d0d7de;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background-color: #f6f8fa;
+}
+
+.nx-modal-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #24292f;
+}
+
+.nx-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 06px;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: #656d76;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.nx-modal-close .material-symbols-outlined {
+  font-family: "Material Symbols Outlined" !important;
+  font-size: 20px;
+}
+
+.nx-modal-close:hover {
+  background-color: #f3f4f6;
+  color: #24292f;
+}
+
+.nx-modal-close:active {
+  background-color: #e5e7ea;
+}
+
+.nx-modal-body {
+  padding: 24px;
+  flex: 1 1 auto;
+  background-color: #ffffff;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  /* Ensure only modal body scrolls when content exceeds viewport */
+  /* Prevent double scrollbars by being more specific with height calculation */
+}
+
+/* Modern Scrollbar Styling for Modal Body */
+.nx-modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.nx-modal-body::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 6px;
+}
+
+.nx-modal-body::-webkit-scrollbar-thumb {
+  background: #d0d7de;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.nx-modal-body::-webkit-scrollbar-thumb:hover {
+  background: #8c959f;
+}
+
+.nx-modal-body::-webkit-scrollbar-thumb:active {
+  background: #656d76;
+}
+
+/* Hide scrollbar arrows */
+.nx-modal-body::-webkit-scrollbar-button {
+  display: none;
+}
+
+.nx-modal-body::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox Scrollbar Styling */
+.nx-modal-body {
+  scrollbar-width: thin;
+  scrollbar-color: #d0d7de transparent;
+}
+
+/* Universal Modern Scrollbar - ONLY for elements INSIDE modals */
+.nx-modal *::-webkit-scrollbar,
+.modal *::-webkit-scrollbar,
+.dialog *::-webkit-scrollbar,
+.popup *::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.nx-modal *::-webkit-scrollbar-track,
+.modal *::-webkit-scrollbar-track,
+.dialog *::-webkit-scrollbar-track,
+.popup *::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 6px;
+}
+
+.nx-modal *::-webkit-scrollbar-thumb,
+.modal *::-webkit-scrollbar-thumb,
+.dialog *::-webkit-scrollbar-thumb,
+.popup *::-webkit-scrollbar-thumb {
+  background: #d0d7de;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.nx-modal *::-webkit-scrollbar-thumb:hover,
+.modal *::-webkit-scrollbar-thumb:hover,
+.dialog *::-webkit-scrollbar-thumb:hover,
+.popup *::-webkit-scrollbar-thumb:hover {
+  background: #8c959f;
+}
+
+.nx-modal *::-webkit-scrollbar-thumb:active,
+.modal *::-webkit-scrollbar-thumb:active,
+.dialog *::-webkit-scrollbar-thumb:active,
+.popup *::-webkit-scrollbar-thumb:active {
+  background: #656d76;
+}
+
+/* Hide scrollbar arrows for all elements INSIDE modals */
+.nx-modal *::-webkit-scrollbar-button,
+.modal *::-webkit-scrollbar-button,
+.dialog *::-webkit-scrollbar-button,
+.popup *::-webkit-scrollbar-button {
+  display: none;
+}
+
+.nx-modal *::-webkit-scrollbar-corner,
+.modal *::-webkit-scrollbar-corner,
+.dialog *::-webkit-scrollbar-corner,
+.popup *::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox Universal Scrollbar Styling - ONLY for elements INSIDE modals */
+.nx-modal *,
+.modal *,
+.dialog *,
+.popup * {
+  scrollbar-width: thin;
+  scrollbar-color: #d0d7de transparent;
+}
+
+/* Montserrat Font for All Modal Elements */
+.nx-modal,
+.nx-modal *,
+.modal,
+.modal *,
+.dialog,
+.dialog *,
+.popup,
+.popup * {
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+/* Exception: Material Icons should keep their original font */
+.nx-modal .material-symbols-outlined,
+.nx-modal .material-icons,
+.modal .material-symbols-outlined,
+.modal .material-icons,
+.dialog .material-symbols-outlined,
+.dialog .material-icons,
+.popup .material-symbols-outlined,
+.popup .material-icons {
+  font-family: "Material Symbols Outlined", "Material Icons" !important;
+}
+
+/* Ensure form elements in modals use Montserrat */
+.nx-modal input,
+.nx-modal select,
+.nx-modal textarea,
+.nx-modal button,
+.nx-modal label,
+.nx-modal .btn,
+.nx-modal .form-control,
+.nx-modal .form-label,
+.nx-modal .form-text,
+.nx-modal .form-error,
+.nx-modal .alert,
+.modal input,
+.modal select,
+.modal textarea,
+.modal button,
+.modal label,
+.modal .btn,
+.modal .form-control,
+.modal .form-label,
+.modal .form-text,
+.modal .form-error,
+.modal .alert,
+.dialog input,
+.dialog select,
+.dialog textarea,
+.dialog button,
+.dialog label,
+.dialog .btn,
+.popup input,
+.popup select,
+.popup textarea,
+.popup button,
+.popup label,
+.popup .btn {
+  font-family: "Montserrat", Arial, sans-serif !important;
+}
+
+/* Exception: Material Icons in form elements should keep their original font */
+.nx-modal .material-symbols-outlined,
+.nx-modal .material-icons,
+.modal .material-symbols-outlined,
+.modal .material-icons,
+.dialog .material-symbols-outlined,
+.dialog .material-icons,
+.popup .material-symbols-outlined,
+.popup .material-icons {
+  font-family: "Material Symbols Outlined", "Material Icons" !important;
+}
+
+.nx-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px 24px;
+  border-top: 1px solid #d0d7de;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background-color: #f6f8fa;
+}
+
+/* Custom footer content container */
+.nx-footer-custom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+/* Default buttons container */
+.nx-footer-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+/* Footer Alignment Classes */
+.nx-footer-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.nx-footer-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.nx-footer-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 100%;
+}
+
+.nx-footer-split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.nx-footer-split .nx-footer-left {
+  justify-content: flex-start;
+  flex: 0 0 auto;
+}
+
+.nx-footer-split .nx-footer-right {
+  justify-content: flex-end;
+  flex: 0 0 auto;
+}
+
+.nx-footer-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.nx-footer-between .nx-footer-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.nx-footer-between .nx-footer-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+/* Responsive Footer */
+@media (max-width: 576px) {
+  .nx-footer-split,
+  .nx-footer-between {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nx-footer-split .nx-footer-left,
+  .nx-footer-split .nx-footer-right,
+  .nx-footer-between .nx-footer-start,
+  .nx-footer-between .nx-footer-end {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Enhanced responsive positioning for small viewport heights */
+@media (max-height: 600px) {
+  .nx-modal-dialog {
+    margin: 1rem auto;
+    max-height: calc(100vh - 2rem);
+  }
+
+  .nx-modal-body {
+    max-height: calc(100vh - 160px);
+    padding: 16px 24px;
+  }
+}
+
+@media (max-height: 480px) {
+  .nx-modal-dialog {
+    margin: 0.5rem auto;
+    max-height: calc(100vh - 1rem);
+  }
+
+  .nx-modal-body {
+    max-height: calc(100vh - 120px);
+    padding: 12px 20px;
+  }
+
+  .nx-modal-header,
+  .nx-modal-footer {
+    padding: 12px 20px;
+  }
+}
+
+/* nexa Style Buttons */
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid;
+  border-radius: 6px;
+  appearance: none;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #2da44e;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.btn-primary:hover {
+  background-color: #2c974b;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.btn-primary:active {
+  background-color: #298e46;
+}
+
+.btn-secondary {
+  color: #24292f;
+  background-color: #f6f8fa;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.btn-secondary:hover {
+  background-color: #f3f4f6;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.btn-secondary:active {
+  background-color: #e5e7ea;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #cf222e;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.btn-danger:hover {
+  background-color: #a40e26;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.btn-danger:active {
+  background-color: #8e1538;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #1a7f37;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.btn-success:hover {
+  background-color: #2ea043;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.btn-success:active {
+  background-color: #238636;
+}
+
+/* Additional Button Styles */
+.nx-btn-white {
+  position: relative;
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid;
+  border-radius: 6px;
+  appearance: none;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.15s ease;
+  color: #24292f;
+  background-color: #ffffff;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.nx-btn-white:hover {
+  background-color: #f8f9fa;
+  border-color: rgba(27, 31, 36, 0.25);
+}
+
+.nx-btn-white:active {
+  background-color: #f3f4f6;
+}
+
+.nx-btn-light {
+  position: relative;
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid;
+  border-radius: 6px;
+  appearance: none;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.15s ease;
+  color: #24292f;
+  background-color: #f6f8fa;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.nx-btn-light:hover {
+  background-color: #f0f3f6;
+  border-color: rgba(27, 31, 36, 0.25);
+}
+
+.nx-btn-light:active {
+  background-color: #e9ecef;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #24292f;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #24292f;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  outline: none;
+  box-shadow: inset 0 1px 0 rgba(208, 215, 222, 0.2);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #0969da;
+  box-shadow: inset 0 1px 0 rgba(208, 215, 222, 0.2),
+    0 0 0 3px rgba(9, 105, 218, 0.3);
+}
+
+.form-control::placeholder {
+  color: #656d76;
+}
+
+/* Form Validation Styles */
+.form-text {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #656d76;
+}
+
+/* Form Error Styles */
+.form-error {
+  display: block;
+  margin-top: 1px;
+  font-size: 10px;
+  color: #cf222e;
+  font-weight: 500;
+}
+
+.form-error:empty {
+  display: none;
+}
+
+/* Form Control Error State */
+.form-control.error {
+  border-color: #cf222e;
+  box-shadow: inset 0 1px 0 rgba(208, 215, 222, 0.2),
+    0 0 0 3px rgba(207, 34, 46, 0.3);
+}
+
+.form-control.success {
+  border-color: #1a7f37;
+  box-shadow: inset 0 1px 0 rgba(208, 215, 222, 0.2),
+    0 0 0 3px rgba(26, 127, 55, 0.3);
+}
+
+/* Required field indicator */
+.form-label:has(+ input[required])::after,
+.form-label:has(+ select[required])::after {
+  content: " *";
+  color: #cf222e;
+}
+
+/* Checkbox styles */
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.form-check-input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  border: 1px solid #d0d7de;
+  border-radius: 3px;
+  appearance: none;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: #2da44e;
+  border-color: #2da44e;
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m13.854 3.646-7.5 7.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6 10.293l7.146-7.147a.5.5 0 0 1 .708.708z'/%3e%3c/svg%3e");
+}
+
+.form-check-input:focus {
+  border-color: #0969da;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.3);
+}
+
+.form-check-label {
+  font-size: 14px;
+  color: #24292f;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+/* Demo Page Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #24292f;
+}
+
+.header p {
+  font-size: 16px;
+  color: #656d76;
+}
+
+/* Alert Styles */
+.alert {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+
+.alert-info {
+  color: #0969da;
+  background-color: #ddf4ff;
+  border-color: #54aeff;
+}
+
+.alert-success {
+  color: #1a7f37;
+  background-color: #dafbe1;
+  border-color: #4ac26b;
+}
+
+.alert-warning {
+  color: #9a6700;
+  background-color: #fff8c5;
+  border-color: #d4a72c;
+}
+
+.alert-danger {
+  color: #cf222e;
+  background-color: #ffebe9;
+  border-color: #ff818a;
+}
+
+/* Loading state */
+.btn.loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.8;
+  color: transparent; /* Hide text when loading */
+  min-width: 120px; /* Ensure button doesn't shrink */
+}
+
+.btn.loading::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: button-loading-spinner 0.8s linear infinite;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.btn.loading::before {
+  content: "Loading...";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: #656d76;
+  white-space: nowrap;
+  margin-top: 4px;
+  z-index: 2;
+}
+
+/* For primary buttons (green) */
+.btn-primary.loading::after {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+}
+
+/* For secondary buttons (gray) */
+.btn-secondary.loading::after {
+  border-color: rgba(36, 41, 47, 0.3);
+  border-top-color: #24292f;
+}
+
+/* For danger buttons (red) */
+.btn-danger.loading::after {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+}
+
+/* For success buttons (green) */
+.btn-success.loading::after {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animation for backdrop */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.nx-modal.show {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.nx-modal.show .nx-modal-dialog {
+  animation: slideIn 0.2s ease-out;
+}
+
+/* Additional styles untuk mencegah berkedip dan optimasi performance */
+.nx-modal * {
+  /* Mencegah text selection yang dapat menyebabkan flicker */
+  -webkit-tap-highlight-color: transparent;
+  /* Optimasi rendering untuk smooth transition */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Mencegah berkedip saat modal content berubah */
+.nx-modal-content,
+.nx-modal-body,
+.nx-modal-header,
+.nx-modal-footer {
+  /* Force hardware acceleration untuk smooth animation */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  /* Mencegah layout shift */
+  will-change: auto;
+}
+
+/* Optimasi khusus untuk content yang sering berubah */
+.nx-modal-body [data-nexamodal-target] {
+  /* Smooth transition untuk content yang di-render ulang */
+  transition: all 0.1s ease-out;
+}
+
+/* Mencegah berkedip pada close button */
+.nx-modal-close {
+  /* Stable positioning */
+  flex-shrink: 0;
+  transform: translateZ(0);
+}
+
+/* Optimasi untuk loading states */
+.btn.loading {
+  /* Mencegah layout shift saat loading */
+  min-width: fit-content;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Anti-flicker untuk rapid state changes */
+.nx-modal.show .nx-modal-dialog {
+  /* Stable animation endpoint */
+  transform: scale(1) translateY(0) translateZ(0);
+}
+
+/* Prevent double scrollbars */
+.nx-modal-dialog {
+  /* Ensure modal dialog doesn't create its own scroll context */
+  overflow: visible !important;
+}
+
+.nx-modal-content {
+  /* Content container should not scroll */
+  overflow: hidden !important;
+}
+
+.nx-modal-body {
+  /* Only modal body should handle scrolling */
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Mencegah berkedip pada backdrop */
+.nx-modal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  z-index: -1;
+}
+.nx-modal-dialog.w-10px {
+  width: 10px;
+}
+.nx-modal-dialog.w-11px {
+  width: 11px;
+}
+.nx-modal-dialog.w-12px {
+  width: 12px;
+}
+.nx-modal-dialog.w-13px {
+  width: 13px;
+}
+.nx-modal-dialog.w-14px {
+  width: 14px;
+}
+.nx-modal-dialog.w-15px {
+  width: 15px;
+}
+.nx-modal-dialog.w-16px {
+  width: 16px;
+}
+.nx-modal-dialog.w-17px {
+  width: 17px;
+}
+.nx-modal-dialog.w-18px {
+  width: 18px;
+}
+.nx-modal-dialog.w-19px {
+  width: 19px;
+}
+.nx-modal-dialog.w-20px {
+  width: 20px;
+}
+.nx-modal-dialog.w-21px {
+  width: 21px;
+}
+.nx-modal-dialog.w-22px {
+  width: 22px;
+}
+.nx-modal-dialog.w-23px {
+  width: 23px;
+}
+.nx-modal-dialog.w-24px {
+  width: 24px;
+}
+.nx-modal-dialog.w-25px {
+  width: 25px;
+}
+.nx-modal-dialog.w-26px {
+  width: 26px;
+}
+.nx-modal-dialog.w-27px {
+  width: 27px;
+}
+.nx-modal-dialog.w-28px {
+  width: 28px;
+}
+.nx-modal-dialog.w-29px {
+  width: 29px;
+}
+.nx-modal-dialog.w-30px {
+  width: 30px;
+}
+.nx-modal-dialog.w-31px {
+  width: 31px;
+}
+.nx-modal-dialog.w-32px {
+  width: 32px;
+}
+.nx-modal-dialog.w-33px {
+  width: 33px;
+}
+.nx-modal-dialog.w-34px {
+  width: 34px;
+}
+.nx-modal-dialog.w-35px {
+  width: 35px;
+}
+.nx-modal-dialog.w-36px {
+  width: 36px;
+}
+.nx-modal-dialog.w-37px {
+  width: 37px;
+}
+.nx-modal-dialog.w-38px {
+  width: 38px;
+}
+.nx-modal-dialog.w-39px {
+  width: 39px;
+}
+.nx-modal-dialog.w-40px {
+  width: 40px;
+}
+.nx-modal-dialog.w-41px {
+  width: 41px;
+}
+.nx-modal-dialog.w-42px {
+  width: 42px;
+}
+.nx-modal-dialog.w-43px {
+  width: 43px;
+}
+.nx-modal-dialog.w-44px {
+  width: 44px;
+}
+.nx-modal-dialog.w-45px {
+  width: 45px;
+}
+.nx-modal-dialog.w-46px {
+  width: 46px;
+}
+.nx-modal-dialog.w-47px {
+  width: 47px;
+}
+.nx-modal-dialog.w-48px {
+  width: 48px;
+}
+.nx-modal-dialog.w-49px {
+  width: 49px;
+}
+.nx-modal-dialog.w-50px {
+  width: 50px;
+}
+.nx-modal-dialog.w-51px {
+  width: 51px;
+}
+.nx-modal-dialog.w-52px {
+  width: 52px;
+}
+.nx-modal-dialog.w-53px {
+  width: 53px;
+}
+.nx-modal-dialog.w-54px {
+  width: 54px;
+}
+.nx-modal-dialog.w-55px {
+  width: 55px;
+}
+.nx-modal-dialog.w-56px {
+  width: 56px;
+}
+.nx-modal-dialog.w-57px {
+  width: 57px;
+}
+.nx-modal-dialog.w-58px {
+  width: 58px;
+}
+.nx-modal-dialog.w-59px {
+  width: 59px;
+}
+.nx-modal-dialog.w-60px {
+  width: 60px;
+}
+.nx-modal-dialog.w-61px {
+  width: 61px;
+}
+.nx-modal-dialog.w-62px {
+  width: 62px;
+}
+.nx-modal-dialog.w-63px {
+  width: 63px;
+}
+.nx-modal-dialog.w-64px {
+  width: 64px;
+}
+.nx-modal-dialog.w-65px {
+  width: 65px;
+}
+.nx-modal-dialog.w-66px {
+  width: 66px;
+}
+.nx-modal-dialog.w-67px {
+  width: 67px;
+}
+.nx-modal-dialog.w-68px {
+  width: 68px;
+}
+.nx-modal-dialog.w-69px {
+  width: 69px;
+}
+.nx-modal-dialog.w-70px {
+  width: 70px;
+}
+.nx-modal-dialog.w-71px {
+  width: 71px;
+}
+.nx-modal-dialog.w-72px {
+  width: 72px;
+}
+.nx-modal-dialog.w-73px {
+  width: 73px;
+}
+.nx-modal-dialog.w-74px {
+  width: 74px;
+}
+.nx-modal-dialog.w-75px {
+  width: 75px;
+}
+.nx-modal-dialog.w-76px {
+  width: 76px;
+}
+.nx-modal-dialog.w-77px {
+  width: 77px;
+}
+.nx-modal-dialog.w-78px {
+  width: 78px;
+}
+.nx-modal-dialog.w-79px {
+  width: 79px;
+}
+.nx-modal-dialog.w-80px {
+  width: 80px;
+}
+.nx-modal-dialog.w-81px {
+  width: 81px;
+}
+.nx-modal-dialog.w-82px {
+  width: 82px;
+}
+.nx-modal-dialog.w-83px {
+  width: 83px;
+}
+.nx-modal-dialog.w-84px {
+  width: 84px;
+}
+.nx-modal-dialog.w-85px {
+  width: 85px;
+}
+.nx-modal-dialog.w-86px {
+  width: 86px;
+}
+.nx-modal-dialog.w-87px {
+  width: 87px;
+}
+.nx-modal-dialog.w-88px {
+  width: 88px;
+}
+.nx-modal-dialog.w-89px {
+  width: 89px;
+}
+.nx-modal-dialog.w-90px {
+  width: 90px;
+}
+.nx-modal-dialog.w-91px {
+  width: 91px;
+}
+.nx-modal-dialog.w-92px {
+  width: 92px;
+}
+.nx-modal-dialog.w-93px {
+  width: 93px;
+}
+.nx-modal-dialog.w-94px {
+  width: 94px;
+}
+.nx-modal-dialog.w-95px {
+  width: 95px;
+}
+.nx-modal-dialog.w-96px {
+  width: 96px;
+}
+.nx-modal-dialog.w-97px {
+  width: 97px;
+}
+.nx-modal-dialog.w-98px {
+  width: 98px;
+}
+.nx-modal-dialog.w-99px {
+  width: 99px;
+}
+.nx-modal-dialog.w-100px {
+  width: 100px;
+}
+.nx-modal-dialog.w-101px {
+  width: 101px;
+}
+.nx-modal-dialog.w-102px {
+  width: 102px;
+}
+.nx-modal-dialog.w-103px {
+  width: 103px;
+}
+.nx-modal-dialog.w-104px {
+  width: 104px;
+}
+.nx-modal-dialog.w-105px {
+  width: 105px;
+}
+.nx-modal-dialog.w-106px {
+  width: 106px;
+}
+.nx-modal-dialog.w-107px {
+  width: 107px;
+}
+.nx-modal-dialog.w-108px {
+  width: 108px;
+}
+.nx-modal-dialog.w-109px {
+  width: 109px;
+}
+.nx-modal-dialog.w-110px {
+  width: 110px;
+}
+.nx-modal-dialog.w-111px {
+  width: 111px;
+}
+.nx-modal-dialog.w-112px {
+  width: 112px;
+}
+.nx-modal-dialog.w-113px {
+  width: 113px;
+}
+.nx-modal-dialog.w-114px {
+  width: 114px;
+}
+.nx-modal-dialog.w-115px {
+  width: 115px;
+}
+.nx-modal-dialog.w-116px {
+  width: 116px;
+}
+.nx-modal-dialog.w-117px {
+  width: 117px;
+}
+.nx-modal-dialog.w-118px {
+  width: 118px;
+}
+.nx-modal-dialog.w-119px {
+  width: 119px;
+}
+.nx-modal-dialog.w-120px {
+  width: 120px;
+}
+.nx-modal-dialog.w-121px {
+  width: 121px;
+}
+.nx-modal-dialog.w-122px {
+  width: 122px;
+}
+.nx-modal-dialog.w-123px {
+  width: 123px;
+}
+.nx-modal-dialog.w-124px {
+  width: 124px;
+}
+.nx-modal-dialog.w-125px {
+  width: 125px;
+}
+.nx-modal-dialog.w-126px {
+  width: 126px;
+}
+.nx-modal-dialog.w-127px {
+  width: 127px;
+}
+.nx-modal-dialog.w-128px {
+  width: 128px;
+}
+.nx-modal-dialog.w-129px {
+  width: 129px;
+}
+.nx-modal-dialog.w-130px {
+  width: 130px;
+}
+.nx-modal-dialog.w-131px {
+  width: 131px;
+}
+.nx-modal-dialog.w-132px {
+  width: 132px;
+}
+.nx-modal-dialog.w-133px {
+  width: 133px;
+}
+.nx-modal-dialog.w-134px {
+  width: 134px;
+}
+.nx-modal-dialog.w-135px {
+  width: 135px;
+}
+.nx-modal-dialog.w-136px {
+  width: 136px;
+}
+.nx-modal-dialog.w-137px {
+  width: 137px;
+}
+.nx-modal-dialog.w-138px {
+  width: 138px;
+}
+.nx-modal-dialog.w-139px {
+  width: 139px;
+}
+.nx-modal-dialog.w-140px {
+  width: 140px;
+}
+.nx-modal-dialog.w-141px {
+  width: 141px;
+}
+.nx-modal-dialog.w-142px {
+  width: 142px;
+}
+.nx-modal-dialog.w-143px {
+  width: 143px;
+}
+.nx-modal-dialog.w-144px {
+  width: 144px;
+}
+.nx-modal-dialog.w-145px {
+  width: 145px;
+}
+.nx-modal-dialog.w-146px {
+  width: 146px;
+}
+.nx-modal-dialog.w-147px {
+  width: 147px;
+}
+.nx-modal-dialog.w-148px {
+  width: 148px;
+}
+.nx-modal-dialog.w-149px {
+  width: 149px;
+}
+.nx-modal-dialog.w-150px {
+  width: 150px;
+}
+.nx-modal-dialog.w-151px {
+  width: 151px;
+}
+.nx-modal-dialog.w-152px {
+  width: 152px;
+}
+.nx-modal-dialog.w-153px {
+  width: 153px;
+}
+.nx-modal-dialog.w-154px {
+  width: 154px;
+}
+.nx-modal-dialog.w-155px {
+  width: 155px;
+}
+.nx-modal-dialog.w-156px {
+  width: 156px;
+}
+.nx-modal-dialog.w-157px {
+  width: 157px;
+}
+.nx-modal-dialog.w-158px {
+  width: 158px;
+}
+.nx-modal-dialog.w-159px {
+  width: 159px;
+}
+.nx-modal-dialog.w-160px {
+  width: 160px;
+}
+.nx-modal-dialog.w-161px {
+  width: 161px;
+}
+.nx-modal-dialog.w-162px {
+  width: 162px;
+}
+.nx-modal-dialog.w-163px {
+  width: 163px;
+}
+.nx-modal-dialog.w-164px {
+  width: 164px;
+}
+.nx-modal-dialog.w-165px {
+  width: 165px;
+}
+.nx-modal-dialog.w-166px {
+  width: 166px;
+}
+.nx-modal-dialog.w-167px {
+  width: 167px;
+}
+.nx-modal-dialog.w-168px {
+  width: 168px;
+}
+.nx-modal-dialog.w-169px {
+  width: 169px;
+}
+.nx-modal-dialog.w-170px {
+  width: 170px;
+}
+.nx-modal-dialog.w-171px {
+  width: 171px;
+}
+.nx-modal-dialog.w-172px {
+  width: 172px;
+}
+.nx-modal-dialog.w-173px {
+  width: 173px;
+}
+.nx-modal-dialog.w-174px {
+  width: 174px;
+}
+.nx-modal-dialog.w-175px {
+  width: 175px;
+}
+.nx-modal-dialog.w-176px {
+  width: 176px;
+}
+.nx-modal-dialog.w-177px {
+  width: 177px;
+}
+.nx-modal-dialog.w-178px {
+  width: 178px;
+}
+.nx-modal-dialog.w-179px {
+  width: 179px;
+}
+.nx-modal-dialog.w-180px {
+  width: 180px;
+}
+.nx-modal-dialog.w-181px {
+  width: 181px;
+}
+.nx-modal-dialog.w-182px {
+  width: 182px;
+}
+.nx-modal-dialog.w-183px {
+  width: 183px;
+}
+.nx-modal-dialog.w-184px {
+  width: 184px;
+}
+.nx-modal-dialog.w-185px {
+  width: 185px;
+}
+.nx-modal-dialog.w-186px {
+  width: 186px;
+}
+.nx-modal-dialog.w-187px {
+  width: 187px;
+}
+.nx-modal-dialog.w-188px {
+  width: 188px;
+}
+.nx-modal-dialog.w-189px {
+  width: 189px;
+}
+.nx-modal-dialog.w-190px {
+  width: 190px;
+}
+.nx-modal-dialog.w-191px {
+  width: 191px;
+}
+.nx-modal-dialog.w-192px {
+  width: 192px;
+}
+.nx-modal-dialog.w-193px {
+  width: 193px;
+}
+.nx-modal-dialog.w-194px {
+  width: 194px;
+}
+.nx-modal-dialog.w-195px {
+  width: 195px;
+}
+.nx-modal-dialog.w-196px {
+  width: 196px;
+}
+.nx-modal-dialog.w-197px {
+  width: 197px;
+}
+.nx-modal-dialog.w-198px {
+  width: 198px;
+}
+.nx-modal-dialog.w-199px {
+  width: 199px;
+}
+.nx-modal-dialog.w-200px {
+  width: 200px;
+}
+.nx-modal-dialog.w-201px {
+  width: 201px;
+}
+.nx-modal-dialog.w-202px {
+  width: 202px;
+}
+.nx-modal-dialog.w-203px {
+  width: 203px;
+}
+.nx-modal-dialog.w-204px {
+  width: 204px;
+}
+.nx-modal-dialog.w-205px {
+  width: 205px;
+}
+.nx-modal-dialog.w-206px {
+  width: 206px;
+}
+.nx-modal-dialog.w-207px {
+  width: 207px;
+}
+.nx-modal-dialog.w-208px {
+  width: 208px;
+}
+.nx-modal-dialog.w-209px {
+  width: 209px;
+}
+.nx-modal-dialog.w-210px {
+  width: 210px;
+}
+.nx-modal-dialog.w-211px {
+  width: 211px;
+}
+.nx-modal-dialog.w-212px {
+  width: 212px;
+}
+.nx-modal-dialog.w-213px {
+  width: 213px;
+}
+.nx-modal-dialog.w-214px {
+  width: 214px;
+}
+.nx-modal-dialog.w-215px {
+  width: 215px;
+}
+.nx-modal-dialog.w-216px {
+  width: 216px;
+}
+.nx-modal-dialog.w-217px {
+  width: 217px;
+}
+.nx-modal-dialog.w-218px {
+  width: 218px;
+}
+.nx-modal-dialog.w-219px {
+  width: 219px;
+}
+.nx-modal-dialog.w-220px {
+  width: 220px;
+}
+.nx-modal-dialog.w-221px {
+  width: 221px;
+}
+.nx-modal-dialog.w-222px {
+  width: 222px;
+}
+.nx-modal-dialog.w-223px {
+  width: 223px;
+}
+.nx-modal-dialog.w-224px {
+  width: 224px;
+}
+.nx-modal-dialog.w-225px {
+  width: 225px;
+}
+.nx-modal-dialog.w-226px {
+  width: 226px;
+}
+.nx-modal-dialog.w-227px {
+  width: 227px;
+}
+.nx-modal-dialog.w-228px {
+  width: 228px;
+}
+.nx-modal-dialog.w-229px {
+  width: 229px;
+}
+.nx-modal-dialog.w-230px {
+  width: 230px;
+}
+.nx-modal-dialog.w-231px {
+  width: 231px;
+}
+.nx-modal-dialog.w-232px {
+  width: 232px;
+}
+.nx-modal-dialog.w-233px {
+  width: 233px;
+}
+.nx-modal-dialog.w-234px {
+  width: 234px;
+}
+.nx-modal-dialog.w-235px {
+  width: 235px;
+}
+.nx-modal-dialog.w-236px {
+  width: 236px;
+}
+.nx-modal-dialog.w-237px {
+  width: 237px;
+}
+.nx-modal-dialog.w-238px {
+  width: 238px;
+}
+.nx-modal-dialog.w-239px {
+  width: 239px;
+}
+.nx-modal-dialog.w-240px {
+  width: 240px;
+}
+.nx-modal-dialog.w-241px {
+  width: 241px;
+}
+.nx-modal-dialog.w-242px {
+  width: 242px;
+}
+.nx-modal-dialog.w-243px {
+  width: 243px;
+}
+.nx-modal-dialog.w-244px {
+  width: 244px;
+}
+.nx-modal-dialog.w-245px {
+  width: 245px;
+}
+.nx-modal-dialog.w-246px {
+  width: 246px;
+}
+.nx-modal-dialog.w-247px {
+  width: 247px;
+}
+.nx-modal-dialog.w-248px {
+  width: 248px;
+}
+.nx-modal-dialog.w-249px {
+  width: 249px;
+}
+.nx-modal-dialog.w-250px {
+  width: 250px;
+}
+.nx-modal-dialog.w-251px {
+  width: 251px;
+}
+.nx-modal-dialog.w-252px {
+  width: 252px;
+}
+.nx-modal-dialog.w-253px {
+  width: 253px;
+}
+.nx-modal-dialog.w-254px {
+  width: 254px;
+}
+.nx-modal-dialog.w-255px {
+  width: 255px;
+}
+.nx-modal-dialog.w-256px {
+  width: 256px;
+}
+.nx-modal-dialog.w-257px {
+  width: 257px;
+}
+.nx-modal-dialog.w-258px {
+  width: 258px;
+}
+.nx-modal-dialog.w-259px {
+  width: 259px;
+}
+.nx-modal-dialog.w-260px {
+  width: 260px;
+}
+.nx-modal-dialog.w-261px {
+  width: 261px;
+}
+.nx-modal-dialog.w-262px {
+  width: 262px;
+}
+.nx-modal-dialog.w-263px {
+  width: 263px;
+}
+.nx-modal-dialog.w-264px {
+  width: 264px;
+}
+.nx-modal-dialog.w-265px {
+  width: 265px;
+}
+.nx-modal-dialog.w-266px {
+  width: 266px;
+}
+.nx-modal-dialog.w-267px {
+  width: 267px;
+}
+.nx-modal-dialog.w-268px {
+  width: 268px;
+}
+.nx-modal-dialog.w-269px {
+  width: 269px;
+}
+.nx-modal-dialog.w-270px {
+  width: 270px;
+}
+.nx-modal-dialog.w-271px {
+  width: 271px;
+}
+.nx-modal-dialog.w-272px {
+  width: 272px;
+}
+.nx-modal-dialog.w-273px {
+  width: 273px;
+}
+.nx-modal-dialog.w-274px {
+  width: 274px;
+}
+.nx-modal-dialog.w-275px {
+  width: 275px;
+}
+.nx-modal-dialog.w-276px {
+  width: 276px;
+}
+.nx-modal-dialog.w-277px {
+  width: 277px;
+}
+.nx-modal-dialog.w-278px {
+  width: 278px;
+}
+.nx-modal-dialog.w-279px {
+  width: 279px;
+}
+.nx-modal-dialog.w-280px {
+  width: 280px;
+}
+.nx-modal-dialog.w-281px {
+  width: 281px;
+}
+.nx-modal-dialog.w-282px {
+  width: 282px;
+}
+.nx-modal-dialog.w-283px {
+  width: 283px;
+}
+.nx-modal-dialog.w-284px {
+  width: 284px;
+}
+.nx-modal-dialog.w-285px {
+  width: 285px;
+}
+.nx-modal-dialog.w-286px {
+  width: 286px;
+}
+.nx-modal-dialog.w-287px {
+  width: 287px;
+}
+.nx-modal-dialog.w-288px {
+  width: 288px;
+}
+.nx-modal-dialog.w-289px {
+  width: 289px;
+}
+.nx-modal-dialog.w-290px {
+  width: 290px;
+}
+.nx-modal-dialog.w-291px {
+  width: 291px;
+}
+.nx-modal-dialog.w-292px {
+  width: 292px;
+}
+.nx-modal-dialog.w-293px {
+  width: 293px;
+}
+.nx-modal-dialog.w-294px {
+  width: 294px;
+}
+.nx-modal-dialog.w-295px {
+  width: 295px;
+}
+.nx-modal-dialog.w-296px {
+  width: 296px;
+}
+.nx-modal-dialog.w-297px {
+  width: 297px;
+}
+.nx-modal-dialog.w-298px {
+  width: 298px;
+}
+.nx-modal-dialog.w-299px {
+  width: 299px;
+}
+.nx-modal-dialog.w-300px {
+  width: 300px;
+}
+.nx-modal-dialog.w-301px {
+  width: 301px;
+}
+.nx-modal-dialog.w-302px {
+  width: 302px;
+}
+.nx-modal-dialog.w-303px {
+  width: 303px;
+}
+.nx-modal-dialog.w-304px {
+  width: 304px;
+}
+.nx-modal-dialog.w-305px {
+  width: 305px;
+}
+.nx-modal-dialog.w-306px {
+  width: 306px;
+}
+.nx-modal-dialog.w-307px {
+  width: 307px;
+}
+.nx-modal-dialog.w-308px {
+  width: 308px;
+}
+.nx-modal-dialog.w-309px {
+  width: 309px;
+}
+.nx-modal-dialog.w-310px {
+  width: 310px;
+}
+.nx-modal-dialog.w-311px {
+  width: 311px;
+}
+.nx-modal-dialog.w-312px {
+  width: 312px;
+}
+.nx-modal-dialog.w-313px {
+  width: 313px;
+}
+.nx-modal-dialog.w-314px {
+  width: 314px;
+}
+.nx-modal-dialog.w-315px {
+  width: 315px;
+}
+.nx-modal-dialog.w-316px {
+  width: 316px;
+}
+.nx-modal-dialog.w-317px {
+  width: 317px;
+}
+.nx-modal-dialog.w-318px {
+  width: 318px;
+}
+.nx-modal-dialog.w-319px {
+  width: 319px;
+}
+.nx-modal-dialog.w-320px {
+  width: 320px;
+}
+.nx-modal-dialog.w-321px {
+  width: 321px;
+}
+.nx-modal-dialog.w-322px {
+  width: 322px;
+}
+.nx-modal-dialog.w-323px {
+  width: 323px;
+}
+.nx-modal-dialog.w-324px {
+  width: 324px;
+}
+.nx-modal-dialog.w-325px {
+  width: 325px;
+}
+.nx-modal-dialog.w-326px {
+  width: 326px;
+}
+.nx-modal-dialog.w-327px {
+  width: 327px;
+}
+.nx-modal-dialog.w-328px {
+  width: 328px;
+}
+.nx-modal-dialog.w-329px {
+  width: 329px;
+}
+.nx-modal-dialog.w-330px {
+  width: 330px;
+}
+.nx-modal-dialog.w-331px {
+  width: 331px;
+}
+.nx-modal-dialog.w-332px {
+  width: 332px;
+}
+.nx-modal-dialog.w-333px {
+  width: 333px;
+}
+.nx-modal-dialog.w-334px {
+  width: 334px;
+}
+.nx-modal-dialog.w-335px {
+  width: 335px;
+}
+.nx-modal-dialog.w-336px {
+  width: 336px;
+}
+.nx-modal-dialog.w-337px {
+  width: 337px;
+}
+.nx-modal-dialog.w-338px {
+  width: 338px;
+}
+.nx-modal-dialog.w-339px {
+  width: 339px;
+}
+.nx-modal-dialog.w-340px {
+  width: 340px;
+}
+.nx-modal-dialog.w-341px {
+  width: 341px;
+}
+.nx-modal-dialog.w-342px {
+  width: 342px;
+}
+.nx-modal-dialog.w-343px {
+  width: 343px;
+}
+.nx-modal-dialog.w-344px {
+  width: 344px;
+}
+.nx-modal-dialog.w-345px {
+  width: 345px;
+}
+.nx-modal-dialog.w-346px {
+  width: 346px;
+}
+.nx-modal-dialog.w-347px {
+  width: 347px;
+}
+.nx-modal-dialog.w-348px {
+  width: 348px;
+}
+.nx-modal-dialog.w-349px {
+  width: 349px;
+}
+.nx-modal-dialog.w-350px {
+  width: 350px;
+}
+.nx-modal-dialog.w-351px {
+  width: 351px;
+}
+.nx-modal-dialog.w-352px {
+  width: 352px;
+}
+.nx-modal-dialog.w-353px {
+  width: 353px;
+}
+.nx-modal-dialog.w-354px {
+  width: 354px;
+}
+.nx-modal-dialog.w-355px {
+  width: 355px;
+}
+.nx-modal-dialog.w-356px {
+  width: 356px;
+}
+.nx-modal-dialog.w-357px {
+  width: 357px;
+}
+.nx-modal-dialog.w-358px {
+  width: 358px;
+}
+.nx-modal-dialog.w-359px {
+  width: 359px;
+}
+.nx-modal-dialog.w-360px {
+  width: 360px;
+}
+.nx-modal-dialog.w-361px {
+  width: 361px;
+}
+.nx-modal-dialog.w-362px {
+  width: 362px;
+}
+.nx-modal-dialog.w-363px {
+  width: 363px;
+}
+.nx-modal-dialog.w-364px {
+  width: 364px;
+}
+.nx-modal-dialog.w-365px {
+  width: 365px;
+}
+.nx-modal-dialog.w-366px {
+  width: 366px;
+}
+.nx-modal-dialog.w-367px {
+  width: 367px;
+}
+.nx-modal-dialog.w-368px {
+  width: 368px;
+}
+.nx-modal-dialog.w-369px {
+  width: 369px;
+}
+.nx-modal-dialog.w-370px {
+  width: 370px;
+}
+.nx-modal-dialog.w-371px {
+  width: 371px;
+}
+.nx-modal-dialog.w-372px {
+  width: 372px;
+}
+.nx-modal-dialog.w-373px {
+  width: 373px;
+}
+.nx-modal-dialog.w-374px {
+  width: 374px;
+}
+.nx-modal-dialog.w-375px {
+  width: 375px;
+}
+.nx-modal-dialog.w-376px {
+  width: 376px;
+}
+.nx-modal-dialog.w-377px {
+  width: 377px;
+}
+.nx-modal-dialog.w-378px {
+  width: 378px;
+}
+.nx-modal-dialog.w-379px {
+  width: 379px;
+}
+.nx-modal-dialog.w-380px {
+  width: 380px;
+}
+.nx-modal-dialog.w-381px {
+  width: 381px;
+}
+.nx-modal-dialog.w-382px {
+  width: 382px;
+}
+.nx-modal-dialog.w-383px {
+  width: 383px;
+}
+.nx-modal-dialog.w-384px {
+  width: 384px;
+}
+.nx-modal-dialog.w-385px {
+  width: 385px;
+}
+.nx-modal-dialog.w-386px {
+  width: 386px;
+}
+.nx-modal-dialog.w-387px {
+  width: 387px;
+}
+.nx-modal-dialog.w-388px {
+  width: 388px;
+}
+.nx-modal-dialog.w-389px {
+  width: 389px;
+}
+.nx-modal-dialog.w-390px {
+  width: 390px;
+}
+.nx-modal-dialog.w-391px {
+  width: 391px;
+}
+.nx-modal-dialog.w-392px {
+  width: 392px;
+}
+.nx-modal-dialog.w-393px {
+  width: 393px;
+}
+.nx-modal-dialog.w-394px {
+  width: 394px;
+}
+.nx-modal-dialog.w-395px {
+  width: 395px;
+}
+.nx-modal-dialog.w-396px {
+  width: 396px;
+}
+.nx-modal-dialog.w-397px {
+  width: 397px;
+}
+.nx-modal-dialog.w-398px {
+  width: 398px;
+}
+.nx-modal-dialog.w-399px {
+  width: 399px;
+}
+.nx-modal-dialog.w-400px {
+  width: 400px;
+}
+.nx-modal-dialog.w-401px {
+  width: 401px;
+}
+.nx-modal-dialog.w-402px {
+  width: 402px;
+}
+.nx-modal-dialog.w-403px {
+  width: 403px;
+}
+.nx-modal-dialog.w-404px {
+  width: 404px;
+}
+.nx-modal-dialog.w-405px {
+  width: 405px;
+}
+.nx-modal-dialog.w-406px {
+  width: 406px;
+}
+.nx-modal-dialog.w-407px {
+  width: 407px;
+}
+.nx-modal-dialog.w-408px {
+  width: 408px;
+}
+.nx-modal-dialog.w-409px {
+  width: 409px;
+}
+.nx-modal-dialog.w-410px {
+  width: 410px;
+}
+.nx-modal-dialog.w-411px {
+  width: 411px;
+}
+.nx-modal-dialog.w-412px {
+  width: 412px;
+}
+.nx-modal-dialog.w-413px {
+  width: 413px;
+}
+.nx-modal-dialog.w-414px {
+  width: 414px;
+}
+.nx-modal-dialog.w-415px {
+  width: 415px;
+}
+.nx-modal-dialog.w-416px {
+  width: 416px;
+}
+.nx-modal-dialog.w-417px {
+  width: 417px;
+}
+.nx-modal-dialog.w-418px {
+  width: 418px;
+}
+.nx-modal-dialog.w-419px {
+  width: 419px;
+}
+.nx-modal-dialog.w-420px {
+  width: 420px;
+}
+.nx-modal-dialog.w-421px {
+  width: 421px;
+}
+.nx-modal-dialog.w-422px {
+  width: 422px;
+}
+.nx-modal-dialog.w-423px {
+  width: 423px;
+}
+.nx-modal-dialog.w-424px {
+  width: 424px;
+}
+.nx-modal-dialog.w-425px {
+  width: 425px;
+}
+.nx-modal-dialog.w-426px {
+  width: 426px;
+}
+.nx-modal-dialog.w-427px {
+  width: 427px;
+}
+.nx-modal-dialog.w-428px {
+  width: 428px;
+}
+.nx-modal-dialog.w-429px {
+  width: 429px;
+}
+.nx-modal-dialog.w-430px {
+  width: 430px;
+}
+.nx-modal-dialog.w-431px {
+  width: 431px;
+}
+.nx-modal-dialog.w-432px {
+  width: 432px;
+}
+.nx-modal-dialog.w-433px {
+  width: 433px;
+}
+.nx-modal-dialog.w-434px {
+  width: 434px;
+}
+.nx-modal-dialog.w-435px {
+  width: 435px;
+}
+.nx-modal-dialog.w-436px {
+  width: 436px;
+}
+.nx-modal-dialog.w-437px {
+  width: 437px;
+}
+.nx-modal-dialog.w-438px {
+  width: 438px;
+}
+.nx-modal-dialog.w-439px {
+  width: 439px;
+}
+.nx-modal-dialog.w-440px {
+  width: 440px;
+}
+.nx-modal-dialog.w-441px {
+  width: 441px;
+}
+.nx-modal-dialog.w-442px {
+  width: 442px;
+}
+.nx-modal-dialog.w-443px {
+  width: 443px;
+}
+.nx-modal-dialog.w-444px {
+  width: 444px;
+}
+.nx-modal-dialog.w-445px {
+  width: 445px;
+}
+.nx-modal-dialog.w-446px {
+  width: 446px;
+}
+.nx-modal-dialog.w-447px {
+  width: 447px;
+}
+.nx-modal-dialog.w-448px {
+  width: 448px;
+}
+.nx-modal-dialog.w-449px {
+  width: 449px;
+}
+.nx-modal-dialog.w-450px {
+  width: 450px;
+}
+.nx-modal-dialog.w-451px {
+  width: 451px;
+}
+.nx-modal-dialog.w-452px {
+  width: 452px;
+}
+.nx-modal-dialog.w-453px {
+  width: 453px;
+}
+.nx-modal-dialog.w-454px {
+  width: 454px;
+}
+.nx-modal-dialog.w-455px {
+  width: 455px;
+}
+.nx-modal-dialog.w-456px {
+  width: 456px;
+}
+.nx-modal-dialog.w-457px {
+  width: 457px;
+}
+.nx-modal-dialog.w-458px {
+  width: 458px;
+}
+.nx-modal-dialog.w-459px {
+  width: 459px;
+}
+.nx-modal-dialog.w-460px {
+  width: 460px;
+}
+.nx-modal-dialog.w-461px {
+  width: 461px;
+}
+.nx-modal-dialog.w-462px {
+  width: 462px;
+}
+.nx-modal-dialog.w-463px {
+  width: 463px;
+}
+.nx-modal-dialog.w-464px {
+  width: 464px;
+}
+.nx-modal-dialog.w-465px {
+  width: 465px;
+}
+.nx-modal-dialog.w-466px {
+  width: 466px;
+}
+.nx-modal-dialog.w-467px {
+  width: 467px;
+}
+.nx-modal-dialog.w-468px {
+  width: 468px;
+}
+.nx-modal-dialog.w-469px {
+  width: 469px;
+}
+.nx-modal-dialog.w-470px {
+  width: 470px;
+}
+.nx-modal-dialog.w-471px {
+  width: 471px;
+}
+.nx-modal-dialog.w-472px {
+  width: 472px;
+}
+.nx-modal-dialog.w-473px {
+  width: 473px;
+}
+.nx-modal-dialog.w-474px {
+  width: 474px;
+}
+.nx-modal-dialog.w-475px {
+  width: 475px;
+}
+.nx-modal-dialog.w-476px {
+  width: 476px;
+}
+.nx-modal-dialog.w-477px {
+  width: 477px;
+}
+.nx-modal-dialog.w-478px {
+  width: 478px;
+}
+.nx-modal-dialog.w-479px {
+  width: 479px;
+}
+.nx-modal-dialog.w-480px {
+  width: 480px;
+}
+.nx-modal-dialog.w-481px {
+  width: 481px;
+}
+.nx-modal-dialog.w-482px {
+  width: 482px;
+}
+.nx-modal-dialog.w-483px {
+  width: 483px;
+}
+.nx-modal-dialog.w-484px {
+  width: 484px;
+}
+.nx-modal-dialog.w-485px {
+  width: 485px;
+}
+.nx-modal-dialog.w-486px {
+  width: 486px;
+}
+.nx-modal-dialog.w-487px {
+  width: 487px;
+}
+.nx-modal-dialog.w-488px {
+  width: 488px;
+}
+.nx-modal-dialog.w-489px {
+  width: 489px;
+}
+.nx-modal-dialog.w-490px {
+  width: 490px;
+}
+.nx-modal-dialog.w-491px {
+  width: 491px;
+}
+.nx-modal-dialog.w-492px {
+  width: 492px;
+}
+.nx-modal-dialog.w-493px {
+  width: 493px;
+}
+.nx-modal-dialog.w-494px {
+  width: 494px;
+}
+.nx-modal-dialog.w-495px {
+  width: 495px;
+}
+.nx-modal-dialog.w-496px {
+  width: 496px;
+}
+.nx-modal-dialog.w-497px {
+  width: 497px;
+}
+.nx-modal-dialog.w-498px {
+  width: 498px;
+}
+.nx-modal-dialog.w-499px {
+  width: 499px;
+}
+.nx-modal-dialog.w-500px {
+  width: 500px;
+}
+.nx-modal-dialog.w-501px {
+  width: 501px;
+}
+.nx-modal-dialog.w-502px {
+  width: 502px;
+}
+.nx-modal-dialog.w-503px {
+  width: 503px;
+}
+.nx-modal-dialog.w-504px {
+  width: 504px;
+}
+.nx-modal-dialog.w-505px {
+  width: 505px;
+}
+.nx-modal-dialog.w-506px {
+  width: 506px;
+}
+.nx-modal-dialog.w-507px {
+  width: 507px;
+}
+.nx-modal-dialog.w-508px {
+  width: 508px;
+}
+.nx-modal-dialog.w-509px {
+  width: 509px;
+}
+.nx-modal-dialog.w-510px {
+  width: 510px;
+}
+.nx-modal-dialog.w-511px {
+  width: 511px;
+}
+.nx-modal-dialog.w-512px {
+  width: 512px;
+}
+.nx-modal-dialog.w-513px {
+  width: 513px;
+}
+.nx-modal-dialog.w-514px {
+  width: 514px;
+}
+.nx-modal-dialog.w-515px {
+  width: 515px;
+}
+.nx-modal-dialog.w-516px {
+  width: 516px;
+}
+.nx-modal-dialog.w-517px {
+  width: 517px;
+}
+.nx-modal-dialog.w-518px {
+  width: 518px;
+}
+.nx-modal-dialog.w-519px {
+  width: 519px;
+}
+.nx-modal-dialog.w-520px {
+  width: 520px;
+}
+.nx-modal-dialog.w-521px {
+  width: 521px;
+}
+.nx-modal-dialog.w-522px {
+  width: 522px;
+}
+.nx-modal-dialog.w-523px {
+  width: 523px;
+}
+.nx-modal-dialog.w-524px {
+  width: 524px;
+}
+.nx-modal-dialog.w-525px {
+  width: 525px;
+}
+.nx-modal-dialog.w-526px {
+  width: 526px;
+}
+.nx-modal-dialog.w-527px {
+  width: 527px;
+}
+.nx-modal-dialog.w-528px {
+  width: 528px;
+}
+.nx-modal-dialog.w-529px {
+  width: 529px;
+}
+.nx-modal-dialog.w-530px {
+  width: 530px;
+}
+.nx-modal-dialog.w-531px {
+  width: 531px;
+}
+.nx-modal-dialog.w-532px {
+  width: 532px;
+}
+.nx-modal-dialog.w-533px {
+  width: 533px;
+}
+.nx-modal-dialog.w-534px {
+  width: 534px;
+}
+.nx-modal-dialog.w-535px {
+  width: 535px;
+}
+.nx-modal-dialog.w-536px {
+  width: 536px;
+}
+.nx-modal-dialog.w-537px {
+  width: 537px;
+}
+.nx-modal-dialog.w-538px {
+  width: 538px;
+}
+.nx-modal-dialog.w-539px {
+  width: 539px;
+}
+.nx-modal-dialog.w-540px {
+  width: 540px;
+}
+.nx-modal-dialog.w-541px {
+  width: 541px;
+}
+.nx-modal-dialog.w-542px {
+  width: 542px;
+}
+.nx-modal-dialog.w-543px {
+  width: 543px;
+}
+.nx-modal-dialog.w-544px {
+  width: 544px;
+}
+.nx-modal-dialog.w-545px {
+  width: 545px;
+}
+.nx-modal-dialog.w-546px {
+  width: 546px;
+}
+.nx-modal-dialog.w-547px {
+  width: 547px;
+}
+.nx-modal-dialog.w-548px {
+  width: 548px;
+}
+.nx-modal-dialog.w-549px {
+  width: 549px;
+}
+.nx-modal-dialog.w-550px {
+  width: 550px;
+}
+.nx-modal-dialog.w-551px {
+  width: 551px;
+}
+.nx-modal-dialog.w-552px {
+  width: 552px;
+}
+.nx-modal-dialog.w-553px {
+  width: 553px;
+}
+.nx-modal-dialog.w-554px {
+  width: 554px;
+}
+.nx-modal-dialog.w-555px {
+  width: 555px;
+}
+.nx-modal-dialog.w-556px {
+  width: 556px;
+}
+.nx-modal-dialog.w-557px {
+  width: 557px;
+}
+.nx-modal-dialog.w-558px {
+  width: 558px;
+}
+.nx-modal-dialog.w-559px {
+  width: 559px;
+}
+.nx-modal-dialog.w-560px {
+  width: 560px;
+}
+.nx-modal-dialog.w-561px {
+  width: 561px;
+}
+.nx-modal-dialog.w-562px {
+  width: 562px;
+}
+.nx-modal-dialog.w-563px {
+  width: 563px;
+}
+.nx-modal-dialog.w-564px {
+  width: 564px;
+}
+.nx-modal-dialog.w-565px {
+  width: 565px;
+}
+.nx-modal-dialog.w-566px {
+  width: 566px;
+}
+.nx-modal-dialog.w-567px {
+  width: 567px;
+}
+.nx-modal-dialog.w-568px {
+  width: 568px;
+}
+.nx-modal-dialog.w-569px {
+  width: 569px;
+}
+.nx-modal-dialog.w-570px {
+  width: 570px;
+}
+.nx-modal-dialog.w-571px {
+  width: 571px;
+}
+.nx-modal-dialog.w-572px {
+  width: 572px;
+}
+.nx-modal-dialog.w-573px {
+  width: 573px;
+}
+.nx-modal-dialog.w-574px {
+  width: 574px;
+}
+.nx-modal-dialog.w-575px {
+  width: 575px;
+}
+.nx-modal-dialog.w-576px {
+  width: 576px;
+}
+.nx-modal-dialog.w-577px {
+  width: 577px;
+}
+.nx-modal-dialog.w-578px {
+  width: 578px;
+}
+.nx-modal-dialog.w-579px {
+  width: 579px;
+}
+.nx-modal-dialog.w-580px {
+  width: 580px;
+}
+.nx-modal-dialog.w-581px {
+  width: 581px;
+}
+.nx-modal-dialog.w-582px {
+  width: 582px;
+}
+.nx-modal-dialog.w-583px {
+  width: 583px;
+}
+.nx-modal-dialog.w-584px {
+  width: 584px;
+}
+.nx-modal-dialog.w-585px {
+  width: 585px;
+}
+.nx-modal-dialog.w-586px {
+  width: 586px;
+}
+.nx-modal-dialog.w-587px {
+  width: 587px;
+}
+.nx-modal-dialog.w-588px {
+  width: 588px;
+}
+.nx-modal-dialog.w-589px {
+  width: 589px;
+}
+.nx-modal-dialog.w-590px {
+  width: 590px;
+}
+.nx-modal-dialog.w-591px {
+  width: 591px;
+}
+.nx-modal-dialog.w-592px {
+  width: 592px;
+}
+.nx-modal-dialog.w-593px {
+  width: 593px;
+}
+.nx-modal-dialog.w-594px {
+  width: 594px;
+}
+.nx-modal-dialog.w-595px {
+  width: 595px;
+}
+.nx-modal-dialog.w-596px {
+  width: 596px;
+}
+.nx-modal-dialog.w-597px {
+  width: 597px;
+}
+.nx-modal-dialog.w-598px {
+  width: 598px;
+}
+.nx-modal-dialog.w-599px {
+  width: 599px;
+}
+.nx-modal-dialog.w-600px {
+  width: 600px;
+}
+.nx-modal-dialog.w-601px {
+  width: 601px;
+}
+.nx-modal-dialog.w-602px {
+  width: 602px;
+}
+.nx-modal-dialog.w-603px {
+  width: 603px;
+}
+.nx-modal-dialog.w-604px {
+  width: 604px;
+}
+.nx-modal-dialog.w-605px {
+  width: 605px;
+}
+.nx-modal-dialog.w-606px {
+  width: 606px;
+}
+.nx-modal-dialog.w-607px {
+  width: 607px;
+}
+.nx-modal-dialog.w-608px {
+  width: 608px;
+}
+.nx-modal-dialog.w-609px {
+  width: 609px;
+}
+.nx-modal-dialog.w-610px {
+  width: 610px;
+}
+.nx-modal-dialog.w-611px {
+  width: 611px;
+}
+.nx-modal-dialog.w-612px {
+  width: 612px;
+}
+.nx-modal-dialog.w-613px {
+  width: 613px;
+}
+.nx-modal-dialog.w-614px {
+  width: 614px;
+}
+.nx-modal-dialog.w-615px {
+  width: 615px;
+}
+.nx-modal-dialog.w-616px {
+  width: 616px;
+}
+.nx-modal-dialog.w-617px {
+  width: 617px;
+}
+.nx-modal-dialog.w-618px {
+  width: 618px;
+}
+.nx-modal-dialog.w-619px {
+  width: 619px;
+}
+.nx-modal-dialog.w-620px {
+  width: 620px;
+}
+.nx-modal-dialog.w-621px {
+  width: 621px;
+}
+.nx-modal-dialog.w-622px {
+  width: 622px;
+}
+.nx-modal-dialog.w-623px {
+  width: 623px;
+}
+.nx-modal-dialog.w-624px {
+  width: 624px;
+}
+.nx-modal-dialog.w-625px {
+  width: 625px;
+}
+.nx-modal-dialog.w-626px {
+  width: 626px;
+}
+.nx-modal-dialog.w-627px {
+  width: 627px;
+}
+.nx-modal-dialog.w-628px {
+  width: 628px;
+}
+.nx-modal-dialog.w-629px {
+  width: 629px;
+}
+.nx-modal-dialog.w-630px {
+  width: 630px;
+}
+.nx-modal-dialog.w-631px {
+  width: 631px;
+}
+.nx-modal-dialog.w-632px {
+  width: 632px;
+}
+.nx-modal-dialog.w-633px {
+  width: 633px;
+}
+.nx-modal-dialog.w-634px {
+  width: 634px;
+}
+.nx-modal-dialog.w-635px {
+  width: 635px;
+}
+.nx-modal-dialog.w-636px {
+  width: 636px;
+}
+.nx-modal-dialog.w-637px {
+  width: 637px;
+}
+.nx-modal-dialog.w-638px {
+  width: 638px;
+}
+.nx-modal-dialog.w-639px {
+  width: 639px;
+}
+.nx-modal-dialog.w-640px {
+  width: 640px;
+}
+.nx-modal-dialog.w-641px {
+  width: 641px;
+}
+.nx-modal-dialog.w-642px {
+  width: 642px;
+}
+.nx-modal-dialog.w-643px {
+  width: 643px;
+}
+.nx-modal-dialog.w-644px {
+  width: 644px;
+}
+.nx-modal-dialog.w-645px {
+  width: 645px;
+}
+.nx-modal-dialog.w-646px {
+  width: 646px;
+}
+.nx-modal-dialog.w-647px {
+  width: 647px;
+}
+.nx-modal-dialog.w-648px {
+  width: 648px;
+}
+.nx-modal-dialog.w-649px {
+  width: 649px;
+}
+.nx-modal-dialog.w-650px {
+  width: 650px;
+}
+.nx-modal-dialog.w-651px {
+  width: 651px;
+}
+.nx-modal-dialog.w-652px {
+  width: 652px;
+}
+.nx-modal-dialog.w-653px {
+  width: 653px;
+}
+.nx-modal-dialog.w-654px {
+  width: 654px;
+}
+.nx-modal-dialog.w-655px {
+  width: 655px;
+}
+.nx-modal-dialog.w-656px {
+  width: 656px;
+}
+.nx-modal-dialog.w-657px {
+  width: 657px;
+}
+.nx-modal-dialog.w-658px {
+  width: 658px;
+}
+.nx-modal-dialog.w-659px {
+  width: 659px;
+}
+.nx-modal-dialog.w-660px {
+  width: 660px;
+}
+.nx-modal-dialog.w-661px {
+  width: 661px;
+}
+.nx-modal-dialog.w-662px {
+  width: 662px;
+}
+.nx-modal-dialog.w-663px {
+  width: 663px;
+}
+.nx-modal-dialog.w-664px {
+  width: 664px;
+}
+.nx-modal-dialog.w-665px {
+  width: 665px;
+}
+.nx-modal-dialog.w-666px {
+  width: 666px;
+}
+.nx-modal-dialog.w-667px {
+  width: 667px;
+}
+.nx-modal-dialog.w-668px {
+  width: 668px;
+}
+.nx-modal-dialog.w-669px {
+  width: 669px;
+}
+.nx-modal-dialog.w-670px {
+  width: 670px;
+}
+.nx-modal-dialog.w-671px {
+  width: 671px;
+}
+.nx-modal-dialog.w-672px {
+  width: 672px;
+}
+.nx-modal-dialog.w-673px {
+  width: 673px;
+}
+.nx-modal-dialog.w-674px {
+  width: 674px;
+}
+.nx-modal-dialog.w-675px {
+  width: 675px;
+}
+.nx-modal-dialog.w-676px {
+  width: 676px;
+}
+.nx-modal-dialog.w-677px {
+  width: 677px;
+}
+.nx-modal-dialog.w-678px {
+  width: 678px;
+}
+.nx-modal-dialog.w-679px {
+  width: 679px;
+}
+.nx-modal-dialog.w-680px {
+  width: 680px;
+}
+.nx-modal-dialog.w-681px {
+  width: 681px;
+}
+.nx-modal-dialog.w-682px {
+  width: 682px;
+}
+.nx-modal-dialog.w-683px {
+  width: 683px;
+}
+.nx-modal-dialog.w-684px {
+  width: 684px;
+}
+.nx-modal-dialog.w-685px {
+  width: 685px;
+}
+.nx-modal-dialog.w-686px {
+  width: 686px;
+}
+.nx-modal-dialog.w-687px {
+  width: 687px;
+}
+.nx-modal-dialog.w-688px {
+  width: 688px;
+}
+.nx-modal-dialog.w-689px {
+  width: 689px;
+}
+.nx-modal-dialog.w-690px {
+  width: 690px;
+}
+.nx-modal-dialog.w-691px {
+  width: 691px;
+}
+.nx-modal-dialog.w-692px {
+  width: 692px;
+}
+.nx-modal-dialog.w-693px {
+  width: 693px;
+}
+.nx-modal-dialog.w-694px {
+  width: 694px;
+}
+.nx-modal-dialog.w-695px {
+  width: 695px;
+}
+.nx-modal-dialog.w-696px {
+  width: 696px;
+}
+.nx-modal-dialog.w-697px {
+  width: 697px;
+}
+.nx-modal-dialog.w-698px {
+  width: 698px;
+}
+.nx-modal-dialog.w-699px {
+  width: 699px;
+}
+.nx-modal-dialog.w-700px {
+  width: 700px;
+}
+.nx-modal-dialog.w-701px {
+  width: 701px;
+}
+.nx-modal-dialog.w-702px {
+  width: 702px;
+}
+.nx-modal-dialog.w-703px {
+  width: 703px;
+}
+.nx-modal-dialog.w-704px {
+  width: 704px;
+}
+.nx-modal-dialog.w-705px {
+  width: 705px;
+}
+.nx-modal-dialog.w-706px {
+  width: 706px;
+}
+.nx-modal-dialog.w-707px {
+  width: 707px;
+}
+.nx-modal-dialog.w-708px {
+  width: 708px;
+}
+.nx-modal-dialog.w-709px {
+  width: 709px;
+}
+.nx-modal-dialog.w-710px {
+  width: 710px;
+}
+.nx-modal-dialog.w-711px {
+  width: 711px;
+}
+.nx-modal-dialog.w-712px {
+  width: 712px;
+}
+.nx-modal-dialog.w-713px {
+  width: 713px;
+}
+.nx-modal-dialog.w-714px {
+  width: 714px;
+}
+.nx-modal-dialog.w-715px {
+  width: 715px;
+}
+.nx-modal-dialog.w-716px {
+  width: 716px;
+}
+.nx-modal-dialog.w-717px {
+  width: 717px;
+}
+.nx-modal-dialog.w-718px {
+  width: 718px;
+}
+.nx-modal-dialog.w-719px {
+  width: 719px;
+}
+.nx-modal-dialog.w-720px {
+  width: 720px;
+}
+.nx-modal-dialog.w-721px {
+  width: 721px;
+}
+.nx-modal-dialog.w-722px {
+  width: 722px;
+}
+.nx-modal-dialog.w-723px {
+  width: 723px;
+}
+.nx-modal-dialog.w-724px {
+  width: 724px;
+}
+.nx-modal-dialog.w-725px {
+  width: 725px;
+}
+.nx-modal-dialog.w-726px {
+  width: 726px;
+}
+.nx-modal-dialog.w-727px {
+  width: 727px;
+}
+.nx-modal-dialog.w-728px {
+  width: 728px;
+}
+.nx-modal-dialog.w-729px {
+  width: 729px;
+}
+.nx-modal-dialog.w-730px {
+  width: 730px;
+}
+.nx-modal-dialog.w-731px {
+  width: 731px;
+}
+.nx-modal-dialog.w-732px {
+  width: 732px;
+}
+.nx-modal-dialog.w-733px {
+  width: 733px;
+}
+.nx-modal-dialog.w-734px {
+  width: 734px;
+}
+.nx-modal-dialog.w-735px {
+  width: 735px;
+}
+.nx-modal-dialog.w-736px {
+  width: 736px;
+}
+.nx-modal-dialog.w-737px {
+  width: 737px;
+}
+.nx-modal-dialog.w-738px {
+  width: 738px;
+}
+.nx-modal-dialog.w-739px {
+  width: 739px;
+}
+.nx-modal-dialog.w-740px {
+  width: 740px;
+}
+.nx-modal-dialog.w-741px {
+  width: 741px;
+}
+.nx-modal-dialog.w-742px {
+  width: 742px;
+}
+.nx-modal-dialog.w-743px {
+  width: 743px;
+}
+.nx-modal-dialog.w-744px {
+  width: 744px;
+}
+.nx-modal-dialog.w-745px {
+  width: 745px;
+}
+.nx-modal-dialog.w-746px {
+  width: 746px;
+}
+.nx-modal-dialog.w-747px {
+  width: 747px;
+}
+.nx-modal-dialog.w-748px {
+  width: 748px;
+}
+.nx-modal-dialog.w-749px {
+  width: 749px;
+}
+.nx-modal-dialog.w-750px {
+  width: 750px;
+}
+.nx-modal-dialog.w-751px {
+  width: 751px;
+}
+.nx-modal-dialog.w-752px {
+  width: 752px;
+}
+.nx-modal-dialog.w-753px {
+  width: 753px;
+}
+.nx-modal-dialog.w-754px {
+  width: 754px;
+}
+.nx-modal-dialog.w-755px {
+  width: 755px;
+}
+.nx-modal-dialog.w-756px {
+  width: 756px;
+}
+.nx-modal-dialog.w-757px {
+  width: 757px;
+}
+.nx-modal-dialog.w-758px {
+  width: 758px;
+}
+.nx-modal-dialog.w-759px {
+  width: 759px;
+}
+.nx-modal-dialog.w-760px {
+  width: 760px;
+}
+.nx-modal-dialog.w-761px {
+  width: 761px;
+}
+.nx-modal-dialog.w-762px {
+  width: 762px;
+}
+.nx-modal-dialog.w-763px {
+  width: 763px;
+}
+.nx-modal-dialog.w-764px {
+  width: 764px;
+}
+.nx-modal-dialog.w-765px {
+  width: 765px;
+}
+.nx-modal-dialog.w-766px {
+  width: 766px;
+}
+.nx-modal-dialog.w-767px {
+  width: 767px;
+}
+.nx-modal-dialog.w-768px {
+  width: 768px;
+}
+.nx-modal-dialog.w-769px {
+  width: 769px;
+}
+.nx-modal-dialog.w-770px {
+  width: 770px;
+}
+.nx-modal-dialog.w-771px {
+  width: 771px;
+}
+.nx-modal-dialog.w-772px {
+  width: 772px;
+}
+.nx-modal-dialog.w-773px {
+  width: 773px;
+}
+.nx-modal-dialog.w-774px {
+  width: 774px;
+}
+.nx-modal-dialog.w-775px {
+  width: 775px;
+}
+.nx-modal-dialog.w-776px {
+  width: 776px;
+}
+.nx-modal-dialog.w-777px {
+  width: 777px;
+}
+.nx-modal-dialog.w-778px {
+  width: 778px;
+}
+.nx-modal-dialog.w-779px {
+  width: 779px;
+}
+.nx-modal-dialog.w-780px {
+  width: 780px;
+}
+.nx-modal-dialog.w-781px {
+  width: 781px;
+}
+.nx-modal-dialog.w-782px {
+  width: 782px;
+}
+.nx-modal-dialog.w-783px {
+  width: 783px;
+}
+.nx-modal-dialog.w-784px {
+  width: 784px;
+}
+.nx-modal-dialog.w-785px {
+  width: 785px;
+}
+.nx-modal-dialog.w-786px {
+  width: 786px;
+}
+.nx-modal-dialog.w-787px {
+  width: 787px;
+}
+.nx-modal-dialog.w-788px {
+  width: 788px;
+}
+.nx-modal-dialog.w-789px {
+  width: 789px;
+}
+.nx-modal-dialog.w-790px {
+  width: 790px;
+}
+.nx-modal-dialog.w-791px {
+  width: 791px;
+}
+.nx-modal-dialog.w-792px {
+  width: 792px;
+}
+.nx-modal-dialog.w-793px {
+  width: 793px;
+}
+.nx-modal-dialog.w-794px {
+  width: 794px;
+}
+.nx-modal-dialog.w-795px {
+  width: 795px;
+}
+.nx-modal-dialog.w-796px {
+  width: 796px;
+}
+.nx-modal-dialog.w-797px {
+  width: 797px;
+}
+.nx-modal-dialog.w-798px {
+  width: 798px;
+}
+.nx-modal-dialog.w-799px {
+  width: 799px;
+}
+.nx-modal-dialog.w-800px {
+  width: 800px;
+}
+.nx-modal-dialog.w-801px {
+  width: 801px;
+}
+.nx-modal-dialog.w-802px {
+  width: 802px;
+}
+.nx-modal-dialog.w-803px {
+  width: 803px;
+}
+.nx-modal-dialog.w-804px {
+  width: 804px;
+}
+.nx-modal-dialog.w-805px {
+  width: 805px;
+}
+.nx-modal-dialog.w-806px {
+  width: 806px;
+}
+.nx-modal-dialog.w-807px {
+  width: 807px;
+}
+.nx-modal-dialog.w-808px {
+  width: 808px;
+}
+.nx-modal-dialog.w-809px {
+  width: 809px;
+}
+.nx-modal-dialog.w-810px {
+  width: 810px;
+}
+.nx-modal-dialog.w-811px {
+  width: 811px;
+}
+.nx-modal-dialog.w-812px {
+  width: 812px;
+}
+.nx-modal-dialog.w-813px {
+  width: 813px;
+}
+.nx-modal-dialog.w-814px {
+  width: 814px;
+}
+.nx-modal-dialog.w-815px {
+  width: 815px;
+}
+.nx-modal-dialog.w-816px {
+  width: 816px;
+}
+.nx-modal-dialog.w-817px {
+  width: 817px;
+}
+.nx-modal-dialog.w-818px {
+  width: 818px;
+}
+.nx-modal-dialog.w-819px {
+  width: 819px;
+}
+.nx-modal-dialog.w-820px {
+  width: 820px;
+}
+.nx-modal-dialog.w-821px {
+  width: 821px;
+}
+.nx-modal-dialog.w-822px {
+  width: 822px;
+}
+.nx-modal-dialog.w-823px {
+  width: 823px;
+}
+.nx-modal-dialog.w-824px {
+  width: 824px;
+}
+.nx-modal-dialog.w-825px {
+  width: 825px;
+}
+.nx-modal-dialog.w-826px {
+  width: 826px;
+}
+.nx-modal-dialog.w-827px {
+  width: 827px;
+}
+.nx-modal-dialog.w-828px {
+  width: 828px;
+}
+.nx-modal-dialog.w-829px {
+  width: 829px;
+}
+.nx-modal-dialog.w-830px {
+  width: 830px;
+}
+.nx-modal-dialog.w-831px {
+  width: 831px;
+}
+.nx-modal-dialog.w-832px {
+  width: 832px;
+}
+.nx-modal-dialog.w-833px {
+  width: 833px;
+}
+.nx-modal-dialog.w-834px {
+  width: 834px;
+}
+.nx-modal-dialog.w-835px {
+  width: 835px;
+}
+.nx-modal-dialog.w-836px {
+  width: 836px;
+}
+.nx-modal-dialog.w-837px {
+  width: 837px;
+}
+.nx-modal-dialog.w-838px {
+  width: 838px;
+}
+.nx-modal-dialog.w-839px {
+  width: 839px;
+}
+.nx-modal-dialog.w-840px {
+  width: 840px;
+}
+.nx-modal-dialog.w-841px {
+  width: 841px;
+}
+.nx-modal-dialog.w-842px {
+  width: 842px;
+}
+.nx-modal-dialog.w-843px {
+  width: 843px;
+}
+.nx-modal-dialog.w-844px {
+  width: 844px;
+}
+.nx-modal-dialog.w-845px {
+  width: 845px;
+}
+.nx-modal-dialog.w-846px {
+  width: 846px;
+}
+.nx-modal-dialog.w-847px {
+  width: 847px;
+}
+.nx-modal-dialog.w-848px {
+  width: 848px;
+}
+.nx-modal-dialog.w-849px {
+  width: 849px;
+}
+.nx-modal-dialog.w-850px {
+  width: 850px;
+}
+.nx-modal-dialog.w-851px {
+  width: 851px;
+}
+.nx-modal-dialog.w-852px {
+  width: 852px;
+}
+.nx-modal-dialog.w-853px {
+  width: 853px;
+}
+.nx-modal-dialog.w-854px {
+  width: 854px;
+}
+.nx-modal-dialog.w-855px {
+  width: 855px;
+}
+.nx-modal-dialog.w-856px {
+  width: 856px;
+}
+.nx-modal-dialog.w-857px {
+  width: 857px;
+}
+.nx-modal-dialog.w-858px {
+  width: 858px;
+}
+.nx-modal-dialog.w-859px {
+  width: 859px;
+}
+.nx-modal-dialog.w-860px {
+  width: 860px;
+}
+.nx-modal-dialog.w-861px {
+  width: 861px;
+}
+.nx-modal-dialog.w-862px {
+  width: 862px;
+}
+.nx-modal-dialog.w-863px {
+  width: 863px;
+}
+.nx-modal-dialog.w-864px {
+  width: 864px;
+}
+.nx-modal-dialog.w-865px {
+  width: 865px;
+}
+.nx-modal-dialog.w-866px {
+  width: 866px;
+}
+.nx-modal-dialog.w-867px {
+  width: 867px;
+}
+.nx-modal-dialog.w-868px {
+  width: 868px;
+}
+.nx-modal-dialog.w-869px {
+  width: 869px;
+}
+.nx-modal-dialog.w-870px {
+  width: 870px;
+}
+.nx-modal-dialog.w-871px {
+  width: 871px;
+}
+.nx-modal-dialog.w-872px {
+  width: 872px;
+}
+.nx-modal-dialog.w-873px {
+  width: 873px;
+}
+.nx-modal-dialog.w-874px {
+  width: 874px;
+}
+.nx-modal-dialog.w-875px {
+  width: 875px;
+}
+.nx-modal-dialog.w-876px {
+  width: 876px;
+}
+.nx-modal-dialog.w-877px {
+  width: 877px;
+}
+.nx-modal-dialog.w-878px {
+  width: 878px;
+}
+.nx-modal-dialog.w-879px {
+  width: 879px;
+}
+.nx-modal-dialog.w-880px {
+  width: 880px;
+}
+.nx-modal-dialog.w-881px {
+  width: 881px;
+}
+.nx-modal-dialog.w-882px {
+  width: 882px;
+}
+.nx-modal-dialog.w-883px {
+  width: 883px;
+}
+.nx-modal-dialog.w-884px {
+  width: 884px;
+}
+.nx-modal-dialog.w-885px {
+  width: 885px;
+}
+.nx-modal-dialog.w-886px {
+  width: 886px;
+}
+.nx-modal-dialog.w-887px {
+  width: 887px;
+}
+.nx-modal-dialog.w-888px {
+  width: 888px;
+}
+.nx-modal-dialog.w-889px {
+  width: 889px;
+}
+.nx-modal-dialog.w-890px {
+  width: 890px;
+}
+.nx-modal-dialog.w-891px {
+  width: 891px;
+}
+.nx-modal-dialog.w-892px {
+  width: 892px;
+}
+.nx-modal-dialog.w-893px {
+  width: 893px;
+}
+.nx-modal-dialog.w-894px {
+  width: 894px;
+}
+.nx-modal-dialog.w-895px {
+  width: 895px;
+}
+.nx-modal-dialog.w-896px {
+  width: 896px;
+}
+.nx-modal-dialog.w-897px {
+  width: 897px;
+}
+.nx-modal-dialog.w-898px {
+  width: 898px;
+}
+.nx-modal-dialog.w-899px {
+  width: 899px;
+}
+.nx-modal-dialog.w-900px {
+  width: 900px;
+}
+.nx-modal-dialog.w-901px {
+  width: 901px;
+}
+.nx-modal-dialog.w-902px {
+  width: 902px;
+}
+.nx-modal-dialog.w-903px {
+  width: 903px;
+}
+.nx-modal-dialog.w-904px {
+  width: 904px;
+}
+.nx-modal-dialog.w-905px {
+  width: 905px;
+}
+.nx-modal-dialog.w-906px {
+  width: 906px;
+}
+.nx-modal-dialog.w-907px {
+  width: 907px;
+}
+.nx-modal-dialog.w-908px {
+  width: 908px;
+}
+.nx-modal-dialog.w-909px {
+  width: 909px;
+}
+.nx-modal-dialog.w-910px {
+  width: 910px;
+}
+.nx-modal-dialog.w-911px {
+  width: 911px;
+}
+.nx-modal-dialog.w-912px {
+  width: 912px;
+}
+.nx-modal-dialog.w-913px {
+  width: 913px;
+}
+.nx-modal-dialog.w-914px {
+  width: 914px;
+}
+.nx-modal-dialog.w-915px {
+  width: 915px;
+}
+.nx-modal-dialog.w-916px {
+  width: 916px;
+}
+.nx-modal-dialog.w-917px {
+  width: 917px;
+}
+.nx-modal-dialog.w-918px {
+  width: 918px;
+}
+.nx-modal-dialog.w-919px {
+  width: 919px;
+}
+.nx-modal-dialog.w-920px {
+  width: 920px;
+}
+.nx-modal-dialog.w-921px {
+  width: 921px;
+}
+.nx-modal-dialog.w-922px {
+  width: 922px;
+}
+.nx-modal-dialog.w-923px {
+  width: 923px;
+}
+.nx-modal-dialog.w-924px {
+  width: 924px;
+}
+.nx-modal-dialog.w-925px {
+  width: 925px;
+}
+.nx-modal-dialog.w-926px {
+  width: 926px;
+}
+.nx-modal-dialog.w-927px {
+  width: 927px;
+}
+.nx-modal-dialog.w-928px {
+  width: 928px;
+}
+.nx-modal-dialog.w-929px {
+  width: 929px;
+}
+.nx-modal-dialog.w-930px {
+  width: 930px;
+}
+.nx-modal-dialog.w-931px {
+  width: 931px;
+}
+.nx-modal-dialog.w-932px {
+  width: 932px;
+}
+.nx-modal-dialog.w-933px {
+  width: 933px;
+}
+.nx-modal-dialog.w-934px {
+  width: 934px;
+}
+.nx-modal-dialog.w-935px {
+  width: 935px;
+}
+.nx-modal-dialog.w-936px {
+  width: 936px;
+}
+.nx-modal-dialog.w-937px {
+  width: 937px;
+}
+.nx-modal-dialog.w-938px {
+  width: 938px;
+}
+.nx-modal-dialog.w-939px {
+  width: 939px;
+}
+.nx-modal-dialog.w-940px {
+  width: 940px;
+}
+.nx-modal-dialog.w-941px {
+  width: 941px;
+}
+.nx-modal-dialog.w-942px {
+  width: 942px;
+}
+.nx-modal-dialog.w-943px {
+  width: 943px;
+}
+.nx-modal-dialog.w-944px {
+  width: 944px;
+}
+.nx-modal-dialog.w-945px {
+  width: 945px;
+}
+.nx-modal-dialog.w-946px {
+  width: 946px;
+}
+.nx-modal-dialog.w-947px {
+  width: 947px;
+}
+.nx-modal-dialog.w-948px {
+  width: 948px;
+}
+.nx-modal-dialog.w-949px {
+  width: 949px;
+}
+.nx-modal-dialog.w-950px {
+  width: 950px;
+}
+.nx-modal-dialog.w-951px {
+  width: 951px;
+}
+.nx-modal-dialog.w-952px {
+  width: 952px;
+}
+.nx-modal-dialog.w-953px {
+  width: 953px;
+}
+.nx-modal-dialog.w-954px {
+  width: 954px;
+}
+.nx-modal-dialog.w-955px {
+  width: 955px;
+}
+.nx-modal-dialog.w-956px {
+  width: 956px;
+}
+.nx-modal-dialog.w-957px {
+  width: 957px;
+}
+.nx-modal-dialog.w-958px {
+  width: 958px;
+}
+.nx-modal-dialog.w-959px {
+  width: 959px;
+}
+.nx-modal-dialog.w-960px {
+  width: 960px;
+}
+.nx-modal-dialog.w-961px {
+  width: 961px;
+}
+.nx-modal-dialog.w-962px {
+  width: 962px;
+}
+.nx-modal-dialog.w-963px {
+  width: 963px;
+}
+.nx-modal-dialog.w-964px {
+  width: 964px;
+}
+.nx-modal-dialog.w-965px {
+  width: 965px;
+}
+.nx-modal-dialog.w-966px {
+  width: 966px;
+}
+.nx-modal-dialog.w-967px {
+  width: 967px;
+}
+.nx-modal-dialog.w-968px {
+  width: 968px;
+}
+.nx-modal-dialog.w-969px {
+  width: 969px;
+}
+.nx-modal-dialog.w-970px {
+  width: 970px;
+}
+.nx-modal-dialog.w-971px {
+  width: 971px;
+}
+.nx-modal-dialog.w-972px {
+  width: 972px;
+}
+.nx-modal-dialog.w-973px {
+  width: 973px;
+}
+.nx-modal-dialog.w-974px {
+  width: 974px;
+}
+.nx-modal-dialog.w-975px {
+  width: 975px;
+}
+.nx-modal-dialog.w-976px {
+  width: 976px;
+}
+.nx-modal-dialog.w-977px {
+  width: 977px;
+}
+.nx-modal-dialog.w-978px {
+  width: 978px;
+}
+.nx-modal-dialog.w-979px {
+  width: 979px;
+}
+.nx-modal-dialog.w-980px {
+  width: 980px;
+}
+.nx-modal-dialog.w-981px {
+  width: 981px;
+}
+.nx-modal-dialog.w-982px {
+  width: 982px;
+}
+.nx-modal-dialog.w-983px {
+  width: 983px;
+}
+.nx-modal-dialog.w-984px {
+  width: 984px;
+}
+.nx-modal-dialog.w-985px {
+  width: 985px;
+}
+.nx-modal-dialog.w-986px {
+  width: 986px;
+}
+.nx-modal-dialog.w-987px {
+  width: 987px;
+}
+.nx-modal-dialog.w-988px {
+  width: 988px;
+}
+.nx-modal-dialog.w-989px {
+  width: 989px;
+}
+.nx-modal-dialog.w-990px {
+  width: 990px;
+}
+.nx-modal-dialog.w-991px {
+  width: 991px;
+}
+.nx-modal-dialog.w-992px {
+  width: 992px;
+}
+.nx-modal-dialog.w-993px {
+  width: 993px;
+}
+.nx-modal-dialog.w-994px {
+  width: 994px;
+}
+.nx-modal-dialog.w-995px {
+  width: 995px;
+}
+.nx-modal-dialog.w-996px {
+  width: 996px;
+}
+.nx-modal-dialog.w-997px {
+  width: 997px;
+}
+.nx-modal-dialog.w-998px {
+  width: 998px;
+}
+.nx-modal-dialog.w-999px {
+  width: 999px;
+}
+
+/* ========================================
+   MODAL MINIMIZE FEATURE - EXTENSION
+   ======================================== */
+
+/* Modal Controls Container (for minimize & close buttons) */
+.nx-modal-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+/* Minimize Button */
+.nx-modal-minimize {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: #656d76;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+.nx-modal-minimize:hover {
+  background-color: #f3f4f6;
+  color: #24292f;
+}
+
+.nx-modal-minimize:active {
+  background-color: #e5e7ea;
+}
+
+.nx-modal-minimize::before {
+  content: "−";
+  font-size: 18px;
+}
+
+/* Minimized State */
+.nx-modal.minimized {
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.8) translateY(20px);
+}
+
+/* Minimized Modal Container (Taskbar) */
+.nx-minimized-container {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  z-index: 1070;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: calc(100vw - 40px);
+  pointer-events: none;
+}
+
+/* Individual Minimized Modal Item */
+.nx-modal-minimized {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Montserrat", Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto;
+  user-select: none;
+  min-width: 120px;
+  max-width: 200px;
+  transform: translateY(0);
+  animation: slideInFromBottom 0.3s ease-out;
+}
+
+.nx-modal-minimized:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4), 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nx-modal-minimized:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Minimized Modal Title */
+.nx-minimized-title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+/* Minimized Modal Close Button */
+.nx-minimized-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nx-minimized-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.nx-minimized-close:active {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0.95);
+}
+
+.nx-minimized-close .material-symbols-outlined {
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+}
+
+/* Minimized Modal Icon */
+.nx-modal-minimized::before {
+  content: "minimize";
+  font-family: "Material Symbols Outlined";
+  font-size: 16px;
+  margin-right: 6px;
+  opacity: 0.9;
+  font-weight: 400;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga";
+}
+
+/* Minimize Animation */
+@keyframes minimizeModal {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8) translateY(10px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3) translateY(50vh);
+  }
+}
+
+@keyframes restoreModal {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(50vh);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutToBottom {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Modal with minimize animation classes */
+.nx-modal.minimizing {
+  animation: minimizeModal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.nx-modal.restoring {
+  animation: restoreModal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Minimized item removing animation */
+.nx-modal-minimized.removing {
+  animation: slideOutToBottom 0.3s ease-in forwards;
+}
+
+/* Responsive Minimized Container */
+@media (max-width: 576px) {
+  .nx-minimized-container {
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    max-width: calc(100vw - 16px);
+    justify-content: center;
+  }
+
+  .nx-modal-minimized {
+    min-width: 100px;
+    max-width: 150px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .nx-minimized-close {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nx-minimized-close .material-symbols-outlined {
+    font-size: 14px;
+  }
+
+  .nx-modal-minimized::before {
+    font-size: 14px;
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nx-minimized-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nx-modal-minimized {
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
+  }
+}
+
+/* Dark mode support for minimized modals */
+@media (prefers-color-scheme: dark) {
+  .nx-modal-minimize {
+    color: #8b949e;
+  }
+
+  .nx-modal-minimize:hover {
+    background-color: #21262d;
+    color: #f0f6fc;
+  }
+
+  .nx-modal-minimize:active {
+    background-color: #30363d;
+  }
+
+  .nx-modal-minimized {
+    background: linear-gradient(135deg, #1f6feb 0%, #1a5de6 100%);
+    box-shadow: 0 4px 12px rgba(31, 111, 235, 0.3), 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .nx-modal-minimized:hover {
+    background: linear-gradient(135deg, #1a5de6 0%, #1450d1 100%);
+    box-shadow: 0 6px 16px rgba(31, 111, 235, 0.4), 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .nx-modal-minimized::before {
+    opacity: 0.85;
+  }
+
+  .nx-minimized-close {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .nx-minimized-close:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .nx-modal-minimize {
+    border: 1px solid currentColor;
+  }
+
+  .nx-modal-minimized {
+    border: 2px solid #ffffff;
+    background: #0066cc;
+  }
+
+  .nx-modal-minimized:hover {
+    background: #0052a3;
+  }
+
+  .nx-modal-minimized::before {
+    font-weight: 600;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .nx-modal-minimized,
+  .nx-modal-minimize {
+    transition: none;
+  }
+
+  .nx-modal.minimizing,
+  .nx-modal.restoring,
+  .nx-modal-minimized.removing {
+    animation: none;
+  }
+
+  @keyframes minimizeModal {
+    0%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes restoreModal {
+    0%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInFromBottom {
+    0%,
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nx-modal-minimized::before {
+    transition: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================================
+   DARK MODE STYLES FOR NEXA MODAL (Override via body.dark-mode-grid)
+   ========================================================================= */
+
+/* Definisi variabel dasar (asumsi, jika tidak didefinisikan secara global) */
+/*:root {
+  --dm-bg-surface: #1e1e1e;
+  --dm-bg-surface-alt: #282828;
+  --dm-text-primary: #e0e0e0;
+  --dm-text-secondary: #a0a0a0;
+  --dm-border-light: #404040;
+  --dm-color-primary: #1e88e5; 
+}*/
+
+/* --- Modal Backdrop (Overlay) --- */
+body.dark-mode-grid .nx-modal {
+  /* Di dark mode, background overlay dibuat lebih gelap untuk kontras yang lebih baik */
+  background-color: rgb(0 0 0 / 31%) !important;
+}
+
+/* Modal Content & Dialog */
+body.dark-mode-grid .nx-modal-dialog {
+  /* Menggunakan transform: translateZ(0) yang sudah ada */
+}
+
+body.dark-mode-grid .nx-modal-content {
+  background-color: var(--dm-bg-surface);
+  border: 1px solid var(--dm-border-light);
+  /* Shadow lebih halus di mode gelap */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Header */
+body.dark-mode-grid .nx-modal-header {
+  background-color: var(--dm-bg-surface-alt);
+  border-bottom: 1px solid var(--dm-border-light);
+}
+
+body.dark-mode-grid .nx-modal-title {
+  color: var(--dm-text-primary);
+}
+
+/* Tombol Tutup (Close Button) */
+body.dark-mode-grid .nx-modal-close {
+  color: var(--dm-text-secondary);
+}
+
+body.dark-mode-grid .nx-modal-close:hover {
+  color: var(--dm-text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Body */
+body.dark-mode-grid .nx-modal-body {
+  color: var(--dm-text-primary);
+  /* Pastikan padding dan margin tetap */
+}
+
+/* --- Scrollbar Styling di Modal Body (Jika konten overflow) --- */
+
+/* Scrollbar track */
+body.dark-mode-grid .nx-modal-body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+body.dark-mode-grid .nx-modal-body::-webkit-scrollbar-track {
+    background: #2b2b2b;
+}
+
+/* Scrollbar thumb (pegangan) */
+body.dark-mode-grid .nx-modal-body::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+    border: 1px solid #2b2b2b;
+}
+
+body.dark-mode-grid .nx-modal-body::-webkit-scrollbar-thumb:hover {
+    background-color: #777;
+}
+
+/* Footer */
+body.dark-mode-grid .nx-modal-footer {
+  background-color: var(--dm-bg-surface-alt);
+  border-top: 1px solid var(--dm-border-light);
+}
+
+/* --- Tombol Minimize (Maximize/Restore) --- */
+
+body.dark-mode-grid .nx-modal-minimize {
+  color: var(--dm-text-secondary);
+}
+
+body.dark-mode-grid .nx-modal-minimize:hover {
+  color: var(--dm-text-primary);
+  background: rgba(255, 255, 255, 0.08); /* Light hover effect on dark background */
+}
+
+body.dark-mode-grid .nx-modal-minimize:active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Minimized Modal State --- */
+
+body.dark-mode-grid .nx-modal-minimized {
+  /* Menggunakan gradien mode gelap yang lebih kontras */
+  background: linear-gradient(135deg, #1f6feb 0%, #1a5de6 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode-grid .nx-modal-minimized:hover {
+  background: linear-gradient(135deg, #1a5de6 0%, #1450d1 100%);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode-grid .nx-modal-minimized::before {
+  /* Keep default opacity as it is based on the dark background */
+  opacity: 0.85;
+}
+
+/* Tombol Tutup Minimized */
+body.dark-mode-grid .nx-minimized-close {
+  background: rgba(255, 255, 255, 0.15); /* Light overlay on dark button */
+}
+
+body.dark-mode-grid .nx-modal-body {
+background-color: var(--dm-bg-surface);
+}
+
+
+body.dark-mode-grid .nx-minimized-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+}

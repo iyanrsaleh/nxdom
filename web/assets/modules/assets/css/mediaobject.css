@@ -1,0 +1,206 @@
+/* Media Object Base */
+.nx-media {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0rem;
+}
+
+.nx-media-img {
+  margin-right:0.3rem;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.nx-media-img-round {
+  margin-right:0.3rem;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.nx-media-body {
+  flex: 1;
+}
+
+.nx-media-body h5 {
+  margin: 0rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.nx-media-body p {
+  margin: 0;
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+/* Media Object Alignment */
+.nx-media-center {
+  align-items: center;
+}
+
+.nx-media-bottom {
+  align-items: flex-end;
+}
+
+/* Media Object Sizes */
+.nx-media-sm .nx-media-img {
+  width: 48px;
+  height: 48px;
+}
+
+.nx-media-lg .nx-media-img {
+  width: 96px;
+  height: 96px;
+}
+
+/* Media Object Responsive */
+@media (max-width: 576px) {
+  .nx-media {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .nx-media-img {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Media Object Border */
+.nx-media-bordered {
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+}
+
+/* Media Object Hover Effect */
+.nx-media-hover:hover {
+  background-color: #f8f9fa;
+  transition: background-color 0.2s ease;
+}
+
+/* Media Object Right Position */
+.nx-media.nx-media-right {
+  flex-direction: row-reverse !important;
+}
+
+.nx-media.nx-media-right .nx-media-img {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+/* Responsive untuk media-right */
+@media (max-width: 576px) {
+  .nx-media.nx-media-right {
+    flex-direction: column !important;
+    text-align: center;
+  }
+  
+  .nx-media.nx-media-right .nx-media-img {
+    margin-left: 0;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+/* Media Object Position */
+.nx-media-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.nx-media-right .nx-media-body {
+  margin-right: 1rem;
+  margin-left: 0;
+  order: -1;
+}
+
+/* Responsive untuk media position */
+@media (max-width: 576px) {
+  .nx-media-right {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .nx-media-right .nx-media-body {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Media Object Position */
+.nx-media-text-right {
+  text-align: right;
+}
+
+.nx-media-text-right .nx-media-body {
+  text-align: right;
+}
+
+/* Responsive untuk text alignment */
+@media (max-width: 576px) {
+  .nx-media-text-right {
+    text-align: center;
+  }
+  
+  .nx-media-text-right .nx-media-body {
+    text-align: center;
+  }
+}
+
+/* Media Object Text Position with Image Position */
+.nx-media-text-left {
+  text-align: left;
+}
+
+.nx-media-text-left .nx-media-body {
+  text-align: left;
+}
+
+.nx-media-reverse {
+  flex-direction: row-reverse;
+}
+
+.nx-media-reverse .nx-media-img {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+/* Responsive untuk text-left dengan reverse */
+@media (max-width: 576px) {
+  .nx-media-text-left {
+    text-align: center;
+  }
+  
+  .nx-media-text-left .nx-media-body {
+    text-align: center;
+  }
+
+  .nx-media-reverse .nx-media-img {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+}
+/* Media Object Nesting */
+.nx-media .nx-submedia {
+  margin-top: 1rem;
+  margin-left: 0rem;
+}
+
+/* Media Object Nesting */
+.nx-media .nx-media {
+  margin-top:0rem;
+  margin-left:0rem;
+}
+
+/* Media Object Badge */
+.nx-media-img-wrapper {
+  position: relative;
+}
+
+
+
+/* Media Object List Group */

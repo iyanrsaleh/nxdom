@@ -1,0 +1,270 @@
+/* Gaya dasar avatar */
+.nx-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  position: relative;
+}
+
+/* Ukuran avatar */
+.nx-avatar-xs {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+
+.nx-avatar-sm {
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+}
+
+.nx-avatar-md {
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+}
+
+.nx-avatar-lg {
+  width: 64px;
+  height: 64px;
+  font-size: 24px;
+}
+
+.nx-avatar-xl {
+  width: 96px;
+  height: 96px;
+  font-size: 36px;
+}
+
+/* Avatar dengan gambar */
+.nx-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* Avatar dengan inisial */
+.nx-avatar-initial {
+  color: #ffffff;
+  background-color: #4f46e5;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Avatar dengan status */
+.nx-avatar-status {
+  position: relative;
+}
+
+.nx-avatar-status::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  right: 0;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  transform: translate(10%, 10%);
+}
+
+/* Warna status */
+.nx-avatar-online::after {
+  background-color: #22c55e;
+}
+
+.nx-avatar-offline::after {
+  background-color: #9ca3af;
+}
+
+.nx-avatar-busy::after {
+  background-color: #ef4444;
+}
+
+.nx-avatar-away::after {
+  background-color: #f59e0b;
+}
+
+/* Avatar grup */
+.nx-avatar-group {
+  display: inline-flex;
+}
+
+.nx-avatar-group .nx-avatar {
+  margin-left: -0.5rem;
+  border: 2px solid #ffffff;
+}
+
+.nx-avatar-group .nx-avatar:first-child {
+  margin-left: 0;
+}
+
+/* Avatar dengan border */
+.nx-avatar-bordered {
+  border: 2px solid #e2e8f0;
+}
+
+/* Avatar dengan badge */
+.nx-avatar-badge {
+  position: relative;
+}
+
+.nx-avatar-badge::after {
+  content: attr(data-badge);
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background-color: #ef4444;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+}
+
+/* Mode gelap */
+.nx-dark .nx-avatar {
+  background-color: #374151;
+}
+
+.nx-dark .nx-avatar-group .nx-avatar {
+  border-color: #1f2937;
+}
+
+.nx-dark .nx-avatar-bordered {
+  border-color: #374151;
+}
+
+/* Tambahkan spacing untuk container demo */
+.avatar-demo {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Mode gelap - penyesuaian border */
+.nx-dark .nx-avatar-status::after {
+  border-color: #1f2937;
+}
+
+/* Avatar dengan Border */
+.nx-avatar-border {
+  padding: 2px;
+}
+
+.nx-border-primary {
+  background-color: #4f46e5;
+}
+
+.nx-border-success {
+  background-color: #22c55e;
+}
+
+.nx-border-danger {
+  background-color: #ef4444;
+}
+
+/* Avatar dengan Tooltip */
+.nx-avatar-tooltip {
+  position: relative;
+}
+
+.nx-avatar-tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background-color: #1f2937;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+.nx-avatar-tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
+  bottom: calc(100% + 5px);
+}
+
+/* Avatar Stack */
+.nx-avatar-stack {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nx-avatar-stack .nx-avatar {
+  margin-left: -1rem;
+  border: 2px solid #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.nx-avatar-stack .nx-avatar:first-child {
+  margin-left: 0;
+}
+
+.nx-avatar-stack .nx-avatar:hover {
+  transform: translateY(-5px);
+}
+
+.nx-avatar-more {
+  background-color: #e5e7eb;
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Avatar Skeleton */
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.nx-avatar-skeleton {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+/* Dark Mode */
+.nx-dark .nx-avatar-badge::after {
+  border-color: #1f2937;
+}
+
+.nx-dark .nx-avatar-stack .nx-avatar {
+  border-color: #1f2937;
+}
+
+.nx-dark .nx-avatar-more {
+  background-color: #374151;
+  color: #e5e7eb;
+}
+
+.nx-dark .nx-avatar-skeleton {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200% 100%;
+}

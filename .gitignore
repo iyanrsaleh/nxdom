@@ -1,0 +1,23 @@
+# Environment & secrets
+.env
+**/.env
+!**/.env.example
+command.md
+# Dependencies
+node_modules/
+vendor/
+
+# Logs & cache
+*.log
+logs/
+.cache/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Build
+dist/
+build/

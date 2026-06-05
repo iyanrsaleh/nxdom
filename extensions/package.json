@@ -1,0 +1,11 @@
+{
+  "id": "dev_example",
+  "title": "My Example",
+  "description": "v1.0.0 · Example Developer Apps Extension",
+  "version": "1.0.0",
+  "author": "Developer Team",
+  "icon": "package_2",
+  "iconClass": "icon-folder-src",
+  "viewId": "example",
+  "place": "edge"
+}

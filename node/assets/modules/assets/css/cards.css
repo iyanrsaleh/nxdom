@@ -1,0 +1,1592 @@
+.nx-card-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--nx-card-bg);
+  border: 1px solid var(--nx-card-border-color);
+  /*  border-radius: var(--nx-card-border-radius);*/
+  /*  margin-bottom: 1rem;*/
+}
+
+/* Base Card Styles */
+.nx-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff00;
+  /*  background-color: var(--nx-card-bg);*/
+  border: 1px solid var(--nx-card-border-color);
+  /*  border-radius: var(--nx-card-border-radius);*/
+  /*  margin-bottom: 1rem;*/
+}
+
+.nx-card-header {
+  padding: 10px;
+  border-bottom: 1px solid var(--nx-card-border-color);
+  background-color: rgb(0 0 0 / 0%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.nx-card-body-x {
+  flex: 1 1 auto;
+}
+
+.nx-card-body {
+  padding: var(--nx-card-spacing);
+  flex: 1 1 auto;
+}
+
+.nx-card-footer {
+  padding: 10px;
+  border-top: 1px solid var(--nx-card-border-color);
+  background-color: rgb(0 0 0 / 0%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nx-card-title {
+  margin: 0;
+  font-weight:bold;
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  flex: 1;
+}
+
+.nx-card-text {
+  /*  margin-bottom: 1rem;*/
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* Card Variants */
+.nx-card-gradient {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  border: none;
+  color: white;
+}
+
+.nx-card-gradient .nx-card-title,
+.nx-card-gradient .nx-card-text {
+  color: white;
+  opacity: 0.9;
+}
+
+.nx-card-floating {
+  border: none;
+  box-shadow: var(--nx-card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nx-card-floating:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--nx-card-hover-shadow);
+}
+
+.nx-card-borderless {
+  border: none;
+  background: #f8fafc;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.nx-card-borderless .nx-card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.nx-card-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Groups */
+.nx-card-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.nx-card-group .nx-card {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Card dengan Image */
+.nx-card-img-top {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: calc(var(--nx-card-border-radius) - 1px);
+  border-top-right-radius: calc(var(--nx-card-border-radius) - 1px);
+}
+
+/* Horizontal Card */
+.nx-card-horizontal {
+  flex-direction: row;
+}
+
+.nx-card-horizontal .nx-card-side {
+  flex: 0 0 33.333333%;
+}
+
+.nx-card-horizontal .nx-card-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: calc(var(--nx-card-border-radius) - 1px);
+}
+
+/* Interactive Cards */
+.nx-card-flip {
+  perspective: 1000px;
+  height: 200px;
+}
+
+.nx-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.nx-card-flip:hover .nx-card-inner {
+  transform: rotateY(180deg);
+}
+
+.nx-card-front,
+.nx-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--nx-card-border-radius);
+}
+
+.nx-card-back {
+  transform: rotateY(180deg);
+  background-color: #4f46e5;
+  color: white;
+}
+
+/* Style untuk teks dalam card interaktif */
+.nx-card-back .nx-card-title,
+.nx-card-back .nx-card-text {
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.nx-card-back .nx-card-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.nx-card-back .nx-card-text {
+  opacity: 0.95;
+}
+
+/* Style untuk card front */
+.nx-card-front {
+  background-color: var(--nx-card-bg);
+}
+
+/* Style untuk card back */
+.nx-card-back {
+  transform: rotateY(180deg);
+  background-color: #4f46e5;
+}
+
+.nx-card-back .nx-card-title,
+.nx-card-back .nx-card-text,
+.nx-card-back .nx-card-body {
+  color: white !important;
+}
+
+.nx-card-back .nx-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Card dengan Overlay */
+.nx-card-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.nx-card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: var(--nx-card-spacing);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.7) 50%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 1;
+}
+
+/* Style khusus untuk teks dalam overlay */
+.nx-card-overlay .nx-card-title {
+  color: #ffffff !important;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.nx-card-overlay .nx-card-text {
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  margin-bottom: 0;
+  font-size: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Efek hover untuk card overlay */
+.nx-card-overlay:hover .nx-card-img-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.7) 50%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+}
+
+/* Card List Style */
+.nx-card-list .nx-card-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--nx-primary);
+  padding: 1rem;
+}
+
+/* Card Expandable */
+.nx-card-expandable .nx-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nx-card-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Card Grid */
+.nx-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Untuk card dengan background gelap */
+.nx-card-gradient .nx-card-text,
+.nx-card-overlay .nx-card-text {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Untuk card dengan background terang */
+.nx-card-floating .nx-card-text,
+.nx-card-borderless .nx-card-text,
+.nx-card-glass .nx-card-text {
+  color: var(--text-color-bx);
+}
+
+/* Untuk card dengan list style */
+.nx-card-list .nx-card-text {
+  color: var(--text-color-bx);
+  margin-bottom: 0.5rem;
+}
+
+/* Untuk card dengan hover effect */
+.nx-card-floating:hover .nx-card-text {
+  color: var(--text-color-bxh);
+}
+
+/* Untuk card dengan background gelap */
+.nx-card-gradient .nx-card-title,
+.nx-card-overlay .nx-card-title {
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+}
+
+/* Untuk card dengan background terang */
+.nx-card-floating .nx-card-title,
+.nx-card-borderless .nx-card-title,
+.nx-card-glass .nx-card-title {
+  color: var(--text-color-tx);
+  font-weight: 600;
+}
+
+/* Untuk card dengan list style */
+.nx-card-list .nx-card-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+/* Untuk card dengan hover effect */
+.nx-card-floating:hover .nx-card-title {
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+}
+
+/* Untuk card dengan expandable */
+.nx-card-expandable .nx-card-title {
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
+
+/* Untuk card dengan grid */
+.nx-card-grid .nx-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Card Groups */
+  .nx-card-group {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Card Grid */
+  .nx-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Horizontal Cards */
+  .nx-card-horizontal {
+    flex-direction: column;
+  }
+
+  .nx-card-horizontal .nx-card-side {
+    flex: 0 0 200px;
+  }
+
+  .nx-card-horizontal .nx-card-side img {
+    border-top-right-radius: calc(var(--nx-card-border-radius) - 1px);
+    border-bottom-left-radius: 0;
+  }
+
+  /* Card dengan Gambar */
+  .nx-card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  /* Table Responsive */
+  .nx-table-responsive {
+    margin: 0 -1rem;
+    padding: 0 1rem;
+    overflow-x: auto;
+  }
+
+  /* Card Title dan Text */
+  .nx-card-title {
+    font-size: 1.1rem;
+  }
+
+  .nx-card-text {
+    font-size: 0.9rem;
+  }
+
+  /* Card Flip */
+  .nx-card-flip {
+    height: 250px;
+  }
+
+  /* Header responsive */
+  .nx-card-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .nx-card-title {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .nx-card-controls {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  /* Footer responsive */
+  .nx-card-footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .nx-card .nx-footer-custom {
+    margin-right: 0;
+    justify-content: center;
+  }
+
+  .nx-card .nx-footer-buttons {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .nx-card .nx-footer-split,
+  .nx-card .nx-footer-between {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nx-card .nx-footer-split .nx-footer-left,
+  .nx-card .nx-footer-split .nx-footer-right,
+  .nx-card .nx-footer-between .nx-footer-start,
+  .nx-card .nx-footer-between .nx-footer-end {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Untuk layar sangat kecil */
+@media (max-width: 480px) {
+  .nx-card-body {
+    padding: 1rem;
+  }
+
+  .nx-card-header,
+  .nx-card-footer {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Footer buttons responsive untuk layar kecil */
+  .nx-card .nx-footer-buttons {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .nx-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Card Groups dan Grid dengan margin yang lebih kecil */
+  .nx-card-group,
+  .nx-card-grid {
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  /* Mengatur ukuran gambar untuk mobile */
+  .nx-card-img-top,
+  .nx-card-horizontal .nx-card-side {
+    height: 180px;
+  }
+}
+
+/* Status Cards */
+.nx-card-status {
+  position: relative;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nx-status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+/* Status Variants */
+.nx-status-success {
+  border-left-color: #10b981;
+}
+
+.nx-status-warning {
+  border-left-color: #f59e0b;
+}
+
+.nx-status-error {
+  border-left-color: #ef4444;
+}
+
+.nx-status-info {
+  border-left-color: #3b82f6;
+}
+
+.nx-status-success .nx-status-indicator {
+  background-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.nx-status-warning .nx-status-indicator {
+  background-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+.nx-status-error .nx-status-indicator {
+  background-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.nx-status-info .nx-status-indicator {
+  background-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Tabbed Cards */
+.nx-card-tabs .nx-tabs {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid var(--nx-card-border-color);
+  gap: 1rem;
+}
+
+.nx-tabs li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  color: #6b7280;
+}
+
+.nx-tabs li:hover {
+  color: #4f46e5;
+}
+
+.nx-tabs li.active {
+  border-bottom-color: #4f46e5;
+  color: #4f46e5;
+  font-weight: 500;
+}
+
+.nx-tab-content {
+  display: none;
+  padding: 1rem 0;
+}
+
+.nx-tab-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Timeline Cards */
+.nx-card-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.nx-card-timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #e5e7eb 0%, #6366f1 100%);
+}
+
+.nx-card-timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.nx-timeline-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #6366f1;
+  border-radius: 50%;
+  position: absolute;
+  left: -2.3rem;
+  top: 1.5rem;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px #6366f1;
+  transition: all 0.3s ease;
+}
+
+.nx-card-timeline-item:hover {
+  transform: translateX(5px);
+}
+
+.nx-card-timeline-item:hover .nx-timeline-dot {
+  transform: scale(1.2);
+  background-color: #4f46e5;
+}
+
+/* Hover Effects */
+.nx-card-status:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.nx-card-progress:hover .nx-progress-bar {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .nx-card-timeline {
+    padding-left: 1.5rem;
+  }
+
+  .nx-timeline-dot {
+    left: -1.8rem;
+  }
+
+  .nx-tabs {
+    flex-wrap: wrap;
+  }
+
+  .nx-tabs li {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
+
+body.dark-mode-grid .nx-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #212121;
+  border: 1px solid #383838;
+  border-radius: var(--nx-card-border-radius);
+  margin-bottom: 1rem;
+}
+body.dark-mode-grid .nx-card-horizontal {
+  flex-direction: row;
+}
+body.dark-mode-grid .nx-card-front .nx-card-body .nx-card-title,
+body.dark-mode-grid .nx-card-front .nx-card-body .nx-card-text {
+  color: #333;
+}
+body.dark-mode-grid .nx-card-grid .nx-card-title {
+  color: var(--text-primary);
+}
+
+/* ========================================
+   CARD FOOTER STYLES - SAME AS MODAL
+   ======================================== */
+
+/* Custom footer content container */
+.nx-card .nx-footer-custom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  margin-right: auto;
+}
+
+/* Default buttons container */
+.nx-card .nx-footer-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+/* Footer Alignment Classes */
+.nx-card .nx-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.nx-card .nx-footer-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.nx-card .nx-footer-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex: 1;
+}
+
+.nx-card .nx-footer-split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nx-card .nx-footer-split .nx-footer-left {
+  flex: 0 0 auto;
+}
+
+.nx-card .nx-footer-split .nx-footer-right {
+  flex: 0 0 auto;
+}
+
+.nx-card .nx-footer-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nx-card .nx-footer-between .nx-footer-start {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nx-card .nx-footer-between .nx-footer-end {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ========================================
+   CARD BUTTON STYLES - SAME AS MODAL
+   ======================================== */
+
+/* nexa Style Buttons (same as modal.css) */
+.nx-card .btn {
+  position: relative;
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid;
+  border-radius: 6px;
+  appearance: none;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.15s ease;
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+.nx-card .btn-primary {
+  color: #fff;
+  background-color: #2da44e;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.nx-card .btn-primary:hover {
+  background-color: #2c974b;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.nx-card .btn-primary:active {
+  background-color: #298e46;
+}
+
+.nx-card .btn-secondary {
+  color: #24292f;
+  background-color: #f6f8fa;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.nx-card .btn-secondary:hover {
+  background-color: #f3f4f6;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.nx-card .btn-secondary:active {
+  background-color: #e5e7ea;
+}
+
+.nx-card .btn-danger {
+  color: #fff;
+  background-color: #cf222e;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.nx-card .btn-danger:hover {
+  background-color: #bc1f2a;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.nx-card .btn-danger:active {
+  background-color: #8e1538;
+}
+
+.nx-card .btn-success {
+  color: #fff;
+  background-color: #1a7f37;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.nx-card .btn-success:hover {
+  background-color: #1a7f37;
+  border-color: rgba(27, 31, 36, 0.15);
+}
+
+.nx-card .btn-success:active {
+  background-color: #1a7f37;
+}
+
+/* Button Loading States (same as modal.css) */
+.nx-card .btn.loading {
+  color: transparent;
+  pointer-events: none;
+  position: relative;
+}
+
+.nx-card .btn.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  animation: button-loading-spinner 1s linear infinite;
+}
+
+.nx-card .btn.loading::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  animation: button-loading-spinner 1s linear infinite;
+}
+
+/* For primary buttons (green) */
+.nx-card .btn-primary.loading::after {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+}
+
+/* For secondary buttons (gray) */
+.nx-card .btn-secondary.loading::after {
+  border-color: rgba(36, 41, 47, 0.3);
+  border-top-color: #24292f;
+}
+
+/* For danger buttons (red) */
+.nx-card .btn-danger.loading::after {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+}
+
+/* For success buttons (green) */
+.nx-card .btn-success.loading::after {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+}
+
+@keyframes button-loading-spinner {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* ========================================
+   CARD MINIMIZE FEATURE - EXTENSION
+   ======================================== */
+
+/* Card Controls Container (for minimize & close buttons) */
+.nx-card-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Header action icons — satu warna (hindari bentrok rule .nx-btn-ghost / theme lain) */
+.nx-card-header .nx-card-controls .nx-btn-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #57606a;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.nx-card-header .nx-card-controls .nx-btn-text:hover {
+  background-color: #f3f4f6;
+  color: #24292f;
+}
+
+.nx-card-header .nx-card-controls .nx-btn-text .material-symbols-outlined,
+.nx-card-header .nx-card-controls .nx-btn-text .material-icons {
+  color: #57606a !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20 !important;
+}
+
+.nx-card-header .nx-card-controls .nx-btn-text:hover .material-symbols-outlined,
+.nx-card-header .nx-card-controls .nx-btn-text:hover .material-icons {
+  color: #24292f !important;
+}
+
+/* Dropdown menu (NexaLayer.showMenu) */
+.nx-card-menu {
+  box-sizing: border-box;
+  min-width: 180px;
+  max-width: min(280px, calc(100vw - 16px));
+  padding: 6px 0;
+  margin: 0;
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.12),
+    0 2px 8px rgba(15, 23, 42, 0.08);
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #24292f;
+  overflow: hidden;
+}
+
+.nx-card-menu .nx-menu-item {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 8px 14px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.12s ease;
+}
+
+.nx-card-menu .nx-menu-item:hover {
+  background: #f6f8fa;
+}
+
+.nx-card-menu .nx-menu-item:active {
+  background: #eaeef2;
+}
+
+.nx-card-menu .nx-menu-item:focus {
+  outline: 2px solid #0969da;
+  outline-offset: -2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .nx-card-menu {
+    background: #21262d;
+    border-color: #30363d;
+    color: #e6edf3;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.45),
+      0 2px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  .nx-card-menu .nx-menu-item:hover {
+    background: #30363d;
+  }
+
+  .nx-card-menu .nx-menu-item:active {
+    background: #484f58;
+  }
+
+  .nx-card-menu .nx-menu-item:focus {
+    outline-color: #58a6ff;
+  }
+
+  .nx-card-header .nx-card-controls .nx-btn-text .material-symbols-outlined,
+  .nx-card-header .nx-card-controls .nx-btn-text .material-icons {
+    color: #8b949e !important;
+  }
+
+  .nx-card-header .nx-card-controls .nx-btn-text:hover .material-symbols-outlined,
+  .nx-card-header .nx-card-controls .nx-btn-text:hover .material-icons {
+    color: #e6edf3 !important;
+  }
+}
+
+/* Minimize Button */
+.nx-card-minimize {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: #656d76;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+.nx-card-minimize:hover {
+  background-color: #f3f4f6;
+  color: #24292f;
+}
+
+.nx-card-minimize:active {
+  background-color: #e5e7ea;
+}
+
+.nx-card-minimize::before {
+  content: "−";
+  font-size: 18px;
+}
+
+/* Close Button */
+.nx-card-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: #656d76;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+.nx-card-close:hover {
+  background-color: #f3f4f6;
+  color: #24292f;
+}
+
+.nx-card-close:active {
+  background-color: #e5e7ea;
+}
+
+.nx-card-close .material-symbols-outlined {
+  font-family: "Material Symbols Outlined", sans-serif !important;
+  font-size: 20px;
+}
+
+/* Minimized State */
+.nx-card.minimized {
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.8) translateY(20px);
+}
+
+/* Minimized Card Container (Taskbar) */
+.nx-minimized-container {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  z-index: 1070;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: calc(100vw - 40px);
+  pointer-events: none;
+}
+
+/* Individual Minimized Card Item */
+.nx-card-minimized {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Montserrat", Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto;
+  user-select: none;
+  min-width: 120px;
+  max-width: 200px;
+  transform: translateY(0);
+  animation: slideInFromBottom 0.3s ease-out;
+}
+
+.nx-card-minimized:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4), 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nx-card-minimized:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Minimized Card Title */
+.nx-minimized-title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+/* Minimized Card Close Button */
+.nx-minimized-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nx-minimized-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.nx-minimized-close:active {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0.95);
+}
+
+.nx-minimized-close .material-symbols-outlined {
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+}
+
+/* Minimized Card Icon */
+.nx-card-minimized::before {
+  content: "minimize";
+  font-family: "Material Symbols Outlined", sans-serif;
+  font-size: 16px;
+  margin-right: 6px;
+  opacity: 0.9;
+  font-weight: 400;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga";
+}
+
+/* Minimize Animation */
+@keyframes minimizeCard {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8) translateY(10px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3) translateY(50vh);
+  }
+}
+
+@keyframes restoreCard {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(50vh);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutToBottom {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Card with minimize animation classes */
+.nx-card.minimizing {
+  animation: minimizeCard 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.nx-card.restoring {
+  animation: restoreCard 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Minimized item removing animation */
+.nx-card-minimized.removing {
+  animation: slideOutToBottom 0.3s ease-in forwards;
+}
+
+/* Responsive Minimized Container */
+@media (max-width: 576px) {
+  .nx-minimized-container {
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    max-width: calc(100vw - 16px);
+    justify-content: center;
+  }
+
+  .nx-card-minimized {
+    min-width: 100px;
+    max-width: 150px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .nx-minimized-close {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nx-minimized-close .material-symbols-outlined {
+    font-size: 14px;
+  }
+
+  .nx-card-minimized::before {
+    font-size: 14px;
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nx-minimized-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nx-card-minimized {
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
+  }
+}
+
+/* Dark mode support for buttons */
+@media (prefers-color-scheme: dark) {
+  .nx-card .btn-secondary {
+    color: #f0f6fc;
+    background-color: #21262d;
+    border-color: #30363d;
+  }
+
+  .nx-card .btn-secondary:hover {
+    background-color: #30363d;
+    border-color: #8b949e;
+  }
+
+  .nx-card .btn-secondary:active {
+    background-color: #161b22;
+  }
+
+  .nx-card .btn-primary {
+    color: #fff;
+    background-color: #238636;
+    border-color: rgba(240, 246, 252, 0.1);
+  }
+
+  .nx-card .btn-primary:hover {
+    background-color: #2ea043;
+    border-color: rgba(240, 246, 252, 0.1);
+  }
+
+  .nx-card .btn-primary:active {
+    background-color: #1a7f37;
+  }
+
+  .nx-card .btn-danger {
+    color: #fff;
+    background-color: #da3633;
+    border-color: rgba(240, 246, 252, 0.1);
+  }
+
+  .nx-card .btn-danger:hover {
+    background-color: #f85149;
+    border-color: rgba(240, 246, 252, 0.1);
+  }
+
+  .nx-card .btn-danger:active {
+    background-color: #b62324;
+  }
+
+  .nx-card .btn-success {
+    color: #fff;
+    background-color: #238636;
+    border-color: rgba(240, 246, 252, 0.1);
+  }
+
+  .nx-card .btn-success:hover {
+    background-color: #2ea043;
+    border-color: rgba(240, 246, 252, 0.1);
+  }
+
+  .nx-card .btn-success:active {
+    background-color: #1a7f37;
+  }
+}
+
+/* Dark mode support for minimized cards */
+@media (prefers-color-scheme: dark) {
+  .nx-card-minimize {
+    color: #8b949e;
+  }
+
+  .nx-card-minimize:hover {
+    background-color: #21262d;
+    color: #f0f6fc;
+  }
+
+  .nx-card-minimize:active {
+    background-color: #30363d;
+  }
+
+  .nx-card-close {
+    color: #8b949e;
+  }
+
+  .nx-card-close:hover {
+    background-color: #21262d;
+    color: #f0f6fc;
+  }
+
+  .nx-card-close:active {
+    background-color: #30363d;
+  }
+
+  .nx-card-minimized {
+    background: linear-gradient(135deg, #1f6feb 0%, #1a5de6 100%);
+    box-shadow: 0 4px 12px rgba(31, 111, 235, 0.3), 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .nx-card-minimized:hover {
+    background: linear-gradient(135deg, #1a5de6 0%, #1450d1 100%);
+    box-shadow: 0 6px 16px rgba(31, 111, 235, 0.4), 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .nx-card-minimized::before {
+    opacity: 0.85;
+  }
+
+  .nx-minimized-close {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .nx-minimized-close:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .nx-card .btn {
+    border: 2px solid currentColor;
+  }
+
+  .nx-card .btn-primary {
+    border-color: #ffffff;
+  }
+
+  .nx-card .btn-secondary {
+    border-color: #24292f;
+  }
+
+  .nx-card .btn-danger {
+    border-color: #ffffff;
+  }
+
+  .nx-card .btn-success {
+    border-color: #ffffff;
+  }
+
+  .nx-card-minimize {
+    border: 1px solid currentColor;
+  }
+
+  .nx-card-close {
+    border: 1px solid currentColor;
+  }
+
+  .nx-card-minimized {
+    border: 2px solid #ffffff;
+    background: #0066cc;
+  }
+
+  .nx-card-minimized:hover {
+    background: #0052a3;
+  }
+
+  .nx-card-minimized::before {
+    font-weight: 600;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .nx-card-minimized,
+  .nx-card-minimize,
+  .nx-card-close {
+    transition: none;
+  }
+
+  .nx-card.minimizing,
+  .nx-card.restoring,
+  .nx-card-minimized.removing {
+    animation: none;
+  }
+
+  @keyframes minimizeCard {
+    0%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes restoreCard {
+    0%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInFromBottom {
+    0%,
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nx-card-minimized::before {
+    transition: none;
+  }
+}
+
+
+body.dark-mode-grid .nx-card-footer {
+    border-top: 1px solid #535653
+}
+
+body.dark-mode-grid .nx-card-header {
+    border-bottom: 1px solid #535653
+
+}

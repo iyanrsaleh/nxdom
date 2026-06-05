@@ -1,0 +1,204 @@
+/* Accordion Base */
+.nx-accordion {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 1px;
+  /* border-radius: 8px;
+ box-shadow: 0 2px 8px rgba(0,0,0,0.05);*/
+  background: #fff;
+
+
+}
+
+.nx-accordion-item {
+  border: 1px solid rgba(72, 94, 144, 0.16);
+  margin-bottom: -1px;
+  transition: all 0.3s ease;
+}
+
+/*.nx-accordion-item:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.nx-accordion-item:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}*/
+
+.nx-accordion-header {
+  padding: 1.25rem;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+}
+
+/*.nx-accordion-header:hover {
+  background: rgba(0,0,0,0.02);
+}*/
+
+.nx-accordion-header .icon,
+.nx-accordion-header .custom-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+  font-size: 20px !important;
+}
+
+.nx-accordion-content {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.nx-accordion-content.active {
+  padding:10px; /* atas & bawah 1.25rem, kiri & kanan 0 */
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* Tema */
+.nx-accordion.theme-primary .nx-accordion-header {
+  color: var(--primary-color);
+}
+
+.nx-accordion.theme-primary .nx-accordion-item.active {
+  border-color: var(--primary-color);
+}
+
+.nx-accordion.theme-primary .nx-accordion-header .icon,
+.nx-accordion.theme-primary .nx-accordion-header .custom-icon {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Multiple Accordion */
+.nx-accordion.multiple .nx-accordion-item.active {
+  margin: 0.5rem 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* Nested Accordion */
+.nx-accordion-content .nx-accordion {
+  margin-top: 1rem;
+  box-shadow: none;
+  border-left: 2px solid rgba(0,0,0,0.08);
+  border-radius: 0;
+  margin-left: 1rem;
+}
+
+/* Custom Icon */
+.nx-accordion-header .custom-icon {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.nx-accordion-header .custom-icon.active {
+  transform: rotate(45deg);
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Animated Accordion */
+.nx-accordion.animated .nx-accordion-item.active {
+  background: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Disabled Accordion */
+.nx-accordion-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgba(0,0,0,0.02);
+}
+
+.nx-accordion-item.disabled .nx-accordion-header {
+  cursor: not-allowed;
+  color: #999;
+}
+
+/* Sizes */
+.nx-accordion.sm .nx-accordion-header {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+}
+
+.nx-accordion.sm .nx-accordion-content.active {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+}
+
+.nx-accordion.lg .nx-accordion-header {
+  padding: 1.5rem;
+  font-size: 1.125rem;
+}
+
+.nx-accordion.lg .nx-accordion-content.active {
+  padding: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Hover Effects */
+.nx-accordion-item:hover:not(.disabled) {
+  background: rgba(0,0,0,0.01);
+}
+
+.nx-accordion-header:hover .icon,
+.nx-accordion-header:hover .custom-icon {
+  transform: scale(1.1);
+}
+
+/* Active State */
+.nx-accordion-item.active .nx-accordion-header {
+  font-weight: 600;
+}
+
+.nx-accordion-item.active .icon,
+.nx-accordion-item.active .custom-icon {
+  transform: rotate(180deg);
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Custom icons variations */
+.nx-accordion-header .material-icons.custom-icon.add {
+  font-size: 18px !important;
+}
+
+/* Active state untuk Material Icons */
+.nx-accordion-item.active .material-icons.icon {
+  transform: rotate(180deg);
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Hover effect untuk Material Icons */
+.nx-accordion-header:hover .material-icons.icon {
+  transform: scale(1.1);
+  background: rgba(0,0,0,0.08);
+}
+
+/* Icon variations */
+.nx-accordion.theme-primary .material-icons.icon {
+  color: var(--primary-color);
+}
+
+.nx-accordion-item.active .material-icons.icon {
+  background: var(--primary-color);
+  color: white;
+}
