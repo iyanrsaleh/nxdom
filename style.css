@@ -94,10 +94,16 @@ a:hover {
 .navbar {
   position: fixed;
   top: 0; width: 100%;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  z-index: 100;
+  transition: background 0.3s ease, border-bottom 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.navbar.scrolled {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  z-index: 100;
 }
 
 .nav-inner {
@@ -563,21 +569,24 @@ a:hover {
 
 .principle-item {
   display: flex;
+  align-items: flex-start;
   gap: 24px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--border);
 }
 
 .p-num {
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--brand-primary);
-  background: rgba(37, 99, 235, 0.1);
-  width: 48px;
-  height: 48px;
+  background: rgba(37, 99, 235, 0.08);
+  width: 54px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 50%;
   flex-shrink: 0;
 }
 
@@ -634,6 +643,30 @@ a:hover {
 .text-pink {
   color: var(--brand-sponsor) !important;
 }
+
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger card animations */
+.grid-3 .div-card:nth-child(1) { transition-delay: 0.05s; }
+.grid-3 .div-card:nth-child(2) { transition-delay: 0.1s; }
+.grid-3 .div-card:nth-child(3) { transition-delay: 0.15s; }
+.grid-3 .div-card:nth-child(4) { transition-delay: 0.2s; }
+.grid-3 .div-card:nth-child(5) { transition-delay: 0.25s; }
+.grid-3 .div-card:nth-child(6) { transition-delay: 0.3s; }
+
+.project-grid .project-card:nth-child(1) { transition-delay: 0.1s; }
+.project-grid .project-card:nth-child(2) { transition-delay: 0.2s; }
+.project-grid .project-card:nth-child(3) { transition-delay: 0.3s; }
 
 /* Responsive */
 @media (max-width: 768px) {
