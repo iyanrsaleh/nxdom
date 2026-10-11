@@ -102,3 +102,5 @@ This website is released under the [MIT License](LICENSE).
   `data-cat`, nav entries carry `data-cat-link`, filtering lives in `index.js`
   (`applyEcoFilter`) and styles in `style.css` (`.eco-filter`, `.eco-chip`,
   `.nav-dropdown`, `.nav-menu`). ✅ DONE
+- Project grid uses `auto-fill` (not `auto-fit`) so a single filtered card keeps the
+  same width/size as in the "All" view instead of stretching across the row.
