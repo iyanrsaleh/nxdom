@@ -38,6 +38,7 @@ Open source products born and developed from our community:
 - **[NxCode (nxc)](https://nxcodeobject.github.io/coding/)** — AI coding agent right in your terminal. Build & Plan agents, code-aware via LSP, MCP extensions, multi-provider models. ([GitHub](https://github.com/nxcodeobject/code))
 - **[NXC Desktop SDK](https://nxcodeobject.github.io/nxc/)** — Native C++ desktop SDK based on Qt 6. Lightweight desktop framework without Electron, with fluent windows, PTY terminal, and runtime bridge.
 - **[TeritipDB](https://teritipdb.github.io/website/)** — JSON-based document database engine. Fast, lightweight, and designed for modern application scalability without complicated setup.
+- **[NxCode IDE](https://nxcodeobject.github.io/ide/)** — Desktop code editor built on the NXC Desktop SDK. Explorer, search, source control, API client, database, and an AI-agent terminal in a single window, with syntax highlighting for 400+ languages. ([GitHub](https://github.com/nxcodeobject/ide))
 
 ## Open Source Principles
 
