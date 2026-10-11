@@ -41,6 +41,20 @@ Open source products born and developed from our community:
 - **[NxCode IDE](https://nxcodeobject.github.io/ide/)** — Desktop code editor built on the NXC Desktop SDK. Explorer, search, source control, API client, database, and an AI-agent terminal in a single window, with syntax highlighting for 400+ languages. ([GitHub](https://github.com/nxcodeobject/ide))
 - **[NxSocket](https://nxcodeobject.github.io/nxsocket/)** — CLI and WebSocket platform for realtime features: chat, voice/video calls, AI streaming, tracking, and notifications. Every module ready in one token-protected gateway, with flexible data adapters and standalone binaries. ([GitHub](https://github.com/nxcodeobject/nxsocket))
 
+### Ecosystem categories
+
+Every project is labeled by category in the Project Ecosystem section. Visitors can filter the cards using the category chips, or pick a category from the "Ecosystem" dropdown in the navbar (both languages ID/EN):
+
+| Category | Project |
+|---|---|
+| Agent CLI | NxCode (nxc) |
+| Desktop SDK | NXC Desktop SDK |
+| IDE Desktop | NxCode IDE |
+| Database | TeritipDB |
+| Framework CLI | NxDOM CLI |
+| Package Manager | NxNode |
+| Realtime Platform | NxSocket |
+
 ## Open Source Principles
 
 1. **Open Development** — Code, design, and development processes are transparent.
@@ -79,3 +93,12 @@ NXDOM and its ecosystem projects are developed in the open and are free to use. 
 ## License
 
 This website is released under the [MIT License](LICENSE).
+
+## Decision log
+
+- Added explicit **category labels** to the Project Ecosystem section plus an
+  "Ecosystem" **dropdown in the navbar**, so each project's category is clear.
+  Categories are bilingual (ID/EN) and drive an interactive filter: cards carry
+  `data-cat`, nav entries carry `data-cat-link`, filtering lives in `index.js`
+  (`applyEcoFilter`) and styles in `style.css` (`.eco-filter`, `.eco-chip`,
+  `.nav-dropdown`, `.nav-menu`). ✅ DONE

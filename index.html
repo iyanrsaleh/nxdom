@@ -32,7 +32,19 @@
         <a href="#about" data-i18n="nav.about">Tentang</a>
         <a href="#divisions" data-i18n="nav.divisions">Divisi</a>
         <a href="#principles" data-i18n="nav.principles">Prinsip</a>
-        <a href="#ecosystem" data-i18n="nav.ecosystem">Ekosistem</a>
+        <div class="nav-dropdown">
+          <a href="#ecosystem" class="nav-dropdown-toggle"><span data-i18n="nav.ecosystem">Ekosistem</span></a>
+          <div class="nav-menu" role="menu">
+            <a href="#ecosystem" role="menuitem" data-cat-link="all" data-i18n="cat.all">Semua</a>
+            <a href="#ecosystem" role="menuitem" data-cat-link="agent-cli" data-i18n="cat.agent">Agent CLI</a>
+            <a href="#ecosystem" role="menuitem" data-cat-link="desktop-sdk" data-i18n="cat.desktop">Desktop SDK</a>
+            <a href="#ecosystem" role="menuitem" data-cat-link="ide" data-i18n="cat.ide">IDE Desktop</a>
+            <a href="#ecosystem" role="menuitem" data-cat-link="database" data-i18n="cat.database">Database</a>
+            <a href="#ecosystem" role="menuitem" data-cat-link="framework-cli" data-i18n="cat.framework">Framework CLI</a>
+            <a href="#ecosystem" role="menuitem" data-cat-link="package-manager" data-i18n="cat.pkg">Manajer Paket</a>
+            <a href="#ecosystem" role="menuitem" data-cat-link="realtime" data-i18n="cat.realtime">Platform Realtime</a>
+          </div>
+        </div>
       </nav>
       <div class="nav-actions">
         <a class="btn btn-ghost" href="https://github.com/sponsors/iyanrsaleh" target="_blank" rel="noopener" style="color: #db61a2; border-color: #db61a2; display: inline-flex; align-items: center; gap: 6px;">
@@ -148,9 +160,20 @@
           <p class="section-subtitle" data-i18n="eco.sub">Produk <em>open source</em> inovatif yang lahir dan dikembangkan dari rahim komunitas kami.</p>
         </div>
 
+        <div class="eco-filter" role="group" aria-label="Kategori proyek">
+          <button type="button" class="eco-chip active" data-cat="all" data-i18n="cat.all">Semua</button>
+          <button type="button" class="eco-chip" data-cat="agent-cli" data-i18n="cat.agent">Agent CLI</button>
+          <button type="button" class="eco-chip" data-cat="desktop-sdk" data-i18n="cat.desktop">Desktop SDK</button>
+          <button type="button" class="eco-chip" data-cat="ide" data-i18n="cat.ide">IDE Desktop</button>
+          <button type="button" class="eco-chip" data-cat="database" data-i18n="cat.database">Database</button>
+          <button type="button" class="eco-chip" data-cat="framework-cli" data-i18n="cat.framework">Framework CLI</button>
+          <button type="button" class="eco-chip" data-cat="package-manager" data-i18n="cat.pkg">Manajer Paket</button>
+          <button type="button" class="eco-chip" data-cat="realtime" data-i18n="cat.realtime">Platform Realtime</button>
+        </div>
+
         <div class="project-grid">
           <!-- Proyek 1 -->
-          <a href="https://nxcodeobject.github.io/coding/" target="_blank" rel="noopener" class="project-card reveal">
+          <a href="https://nxcodeobject.github.io/coding/" target="_blank" rel="noopener" class="project-card reveal" data-cat="agent-cli">
             <div class="project-image">
               <img src="https://placehold.co/600x300/2563EB/FFFFFF?text=NxCode+Agent&font=Montserrat" alt="NxCode Banner">
             </div>
@@ -165,7 +188,7 @@
           </a>
 
           <!-- Proyek 2 -->
-          <a href="https://nxcodeobject.github.io/nxc/" target="_blank" rel="noopener" class="project-card reveal">
+          <a href="https://nxcodeobject.github.io/nxc/" target="_blank" rel="noopener" class="project-card reveal" data-cat="desktop-sdk">
             <div class="project-image">
               <img src="https://placehold.co/600x300/10B981/FFFFFF?text=NXC+Desktop&font=Montserrat" alt="NXC Desktop Banner">
             </div>
@@ -180,7 +203,7 @@
           </a>
 
           <!-- Proyek 3 -->
-          <a href="https://teritipdb.github.io/website/" target="_blank" rel="noopener" class="project-card reveal">
+          <a href="https://teritipdb.github.io/website/" target="_blank" rel="noopener" class="project-card reveal" data-cat="database">
             <div class="project-image">
               <img src="https://placehold.co/600x300/EA580C/FFFFFF?text=TeritipDB&font=Montserrat" alt="TeritipDB Banner">
             </div>
@@ -195,7 +218,7 @@
           </a>
 
           <!-- Proyek 4 -->
-          <a href="https://nxcodeobject.github.io/ide/" target="_blank" rel="noopener" class="project-card reveal">
+          <a href="https://nxcodeobject.github.io/ide/" target="_blank" rel="noopener" class="project-card reveal" data-cat="ide">
             <div class="project-image">
               <img src="https://placehold.co/600x300/7C5CFF/FFFFFF?text=NxCode+IDE&font=Montserrat" alt="NxCode IDE Banner">
             </div>
@@ -210,7 +233,7 @@
           </a>
 
           <!-- Proyek 5 -->
-          <a href="https://nxdevmodel.github.io/nxdom-cli/" target="_blank" rel="noopener" class="project-card reveal">
+          <a href="https://nxdevmodel.github.io/nxdom-cli/" target="_blank" rel="noopener" class="project-card reveal" data-cat="framework-cli">
             <div class="project-image">
               <img src="https://placehold.co/600x300/0EA5E9/FFFFFF?text=NxDOM+CLI&font=Montserrat" alt="NxDOM CLI Banner">
             </div>
@@ -225,7 +248,7 @@
           </a>
 
           <!-- Proyek 6 -->
-          <a href="https://nxdevmodel.github.io/nxnode/" target="_blank" rel="noopener" class="project-card reveal">
+          <a href="https://nxdevmodel.github.io/nxnode/" target="_blank" rel="noopener" class="project-card reveal" data-cat="package-manager">
             <div class="project-image">
               <img src="https://placehold.co/600x300/16A34A/FFFFFF?text=NxNode&font=Montserrat" alt="NxNode Banner">
             </div>
@@ -240,7 +263,7 @@
           </a>
 
           <!-- Proyek 7 -->
-          <a href="https://nxcodeobject.github.io/nxsocket/" target="_blank" rel="noopener" class="project-card reveal">
+          <a href="https://nxcodeobject.github.io/nxsocket/" target="_blank" rel="noopener" class="project-card reveal" data-cat="realtime">
             <div class="project-image">
               <img src="https://placehold.co/600x300/2FBF71/FFFFFF?text=NxSocket&font=Montserrat" alt="NxSocket Banner">
             </div>

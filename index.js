@@ -44,6 +44,14 @@ const I18N = {
     "eco.desc6": "Package manager Node.js dengan Global Package Store bersama. Satu salinan package (mis. express) dipakai lintas semua project — hemat disk, hemat waktu install, dan tetap kompatibel dengan struktur node_modules standar Node.js.",
     "eco.tag7": "Platform Realtime",
     "eco.desc7": "CLI dan platform WebSocket untuk fitur realtime — chat, panggilan suara/video, AI streaming, tracking, dan notifikasi. Semua modul siap pakai dalam satu gateway ber-token, dengan adapter data fleksibel dan binary standalone.",
+    "cat.all": "Semua",
+    "cat.agent": "Agent CLI",
+    "cat.desktop": "Desktop SDK",
+    "cat.ide": "IDE Desktop",
+    "cat.database": "Database",
+    "cat.framework": "Framework CLI",
+    "cat.pkg": "Manajer Paket",
+    "cat.realtime": "Platform Realtime",
     "pr.title": "Prinsip Open Source",
     "pr.sub": "Pondasi etos kerja yang kami pegang teguh.",
     "pr.1": "Kode, perancangan, dan proses pengembangan kami buka secara transparan.",
@@ -101,6 +109,14 @@ const I18N = {
     "eco.desc6": "A Node.js package manager backed by a shared Global Package Store. One physical copy of a package (e.g. express) serves every project — saving disk and install time while staying compatible with the standard Node.js node_modules layout.",
     "eco.tag7": "Realtime Platform",
     "eco.desc7": "CLI and WebSocket platform for realtime features — chat, voice/video calls, AI streaming, tracking, and notifications. Every module ready in one token-protected gateway, with flexible data adapters and standalone binaries.",
+    "cat.all": "All",
+    "cat.agent": "CLI Agent",
+    "cat.desktop": "Desktop SDK",
+    "cat.ide": "Desktop IDE",
+    "cat.database": "Database",
+    "cat.framework": "Framework CLI",
+    "cat.pkg": "Package Manager",
+    "cat.realtime": "Realtime Platform",
     "pr.title": "Open Source Principles",
     "pr.sub": "The work ethic foundation we hold firmly.",
     "pr.1": "Our code, designs, and development processes are transparently open.",
@@ -168,6 +184,19 @@ function handleScroll() {
   }
 }
 
+// Ecosystem category filter
+function applyEcoFilter(cat) {
+  const cards = document.querySelectorAll('.project-grid .project-card');
+  cards.forEach(card => {
+    const show = cat === 'all' || card.dataset.cat === cat;
+    card.classList.toggle('eco-hidden', !show);
+    if (show) card.classList.add('active');
+  });
+  document.querySelectorAll('.eco-chip').forEach(chip => {
+    chip.classList.toggle('active', chip.dataset.cat === cat);
+  });
+}
+
 // Initialization on DOM Content Loaded
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize Lucide Icons
@@ -188,6 +217,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const browserLang = navigator.language.slice(0, 2).toLowerCase();
     setLang(browserLang === "id" ? "id" : "en");
   }
+
+  // Ecosystem category filter
+  document.querySelectorAll('.eco-chip').forEach(chip => {
+    chip.addEventListener('click', () => applyEcoFilter(chip.dataset.cat));
+  });
+  document.querySelectorAll('[data-cat-link]').forEach(link => {
+    link.addEventListener('click', () => applyEcoFilter(link.dataset.catLink));
+  });
 
   // Bind and trigger scroll handler
   window.addEventListener('scroll', handleScroll);
